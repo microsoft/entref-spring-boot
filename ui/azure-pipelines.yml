@@ -32,8 +32,8 @@ steps:
   workingDirectory: ui/
   displayName: 'NPM Build Step'
 - script: |
-    cd ui/
     docker build -t $ACR_SERVER/$ACR_CONTAINER_TAG .
+  workingDirectory: ui/
   displayName: 'Docker Build'
 - script: |
     docker login $(ACR_SERVER) -u $(ACR_USERNAME) -p $(ACR_PASSWORD)
