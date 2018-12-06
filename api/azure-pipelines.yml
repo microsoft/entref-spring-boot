@@ -17,13 +17,13 @@ pool:
 steps:
 - script: |
     echo Starting the build
-    cd api/
     mvn test
     mvn package
+  workingDirectory: ui/
   displayName: 'Maven test and build'
 - script: |
-    cd api/
     docker build -t $ACR_SERVER/$ACR_CONTAINER_TAG .
+  workingDirectory: ui/
   displayName: 'Docker Build'
 - script: |
     docker login $(ACR_SERVER) -u $(ACR_USERNAME) -p $(ACR_PASSWORD)
