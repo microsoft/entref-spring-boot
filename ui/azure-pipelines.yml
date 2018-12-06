@@ -16,17 +16,20 @@ steps:
     failOnStandardError: 'true'
   displayName: 'Install Node.js'
 - script: |
-    cd ui/
     npm install
+  workingDirectory: ui/
   displayName: 'NPM Install Step'
 - script: |
     npm run lint
+  workingDirectory: ui/
   displayName: 'NPM Lint Step'
 - script: |
     npm run test
+  workingDirectory: ui/
   displayName: 'NPM Test Step'
 - script: |
     npm run build
+  workingDirectory: ui/
   displayName: 'NPM Build Step'
 - script: |
     docker build -t $ACR_SERVER/$ACR_CONTAINER_TAG .
