@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+.page-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  padding: 0 10px;
+  justify-content: space-around;
+}
+
+.page-container--home {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-container {
+  width: 300px;
+}
+
+.form-description {
+  text-align: justify;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field-input {
+  display: block;
+  width: 300px;
+  border-radius: 5px;
+  font-size: 1rem;
+  -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  box-shadow: inset 2px 2px 2px 0px #dddddd;
+  border: 1px solid #ccc;
+  padding: 7px 10px;
+  box-sizing: border-box;
+}
+
+.form-field-submit {
+  width: 300px;
+  margin-top: 20px;
+  background-color: rgb(50, 146, 202);
+  border: 1px solid rgb(50, 146, 202);
+  border-radius: 5px;
+  color: #FFF;
+  font-size: 1.2rem;
+  padding: 10px 0;
+}
+
+.results-container {
+  padding: 20px;
+  width: max-content;
+  max-width: 50%;
+}
+
+.results-view {
+  overflow-x: scroll;
+  border: 1px solid #ccc;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.home-title {
+  text-align: center;
+}
+
+.home-img {
+  width: 250px;
+  margin: auto;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+}
+
+.auth-message-container {
+  background-color: #ccc;
+  padding: 5px 15px;
+}
+.auth-message {
+  color: rgb(221, 26, 26)
+}
+
+.auth-message-close-button {
+  color: rgb(221, 26, 26);
+  font-weight: 700;
+  padding: 5px;
+  margin-right: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.login-button {
+  border: none;
+  cursor: pointer;
+  background-color: rgb(50, 146, 202);
+}
+
+.default-page-image {
+  padding-left: 33%;
+  width: 400px;
+}

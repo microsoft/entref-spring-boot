@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PageForm /> renders correctly 1`] = `
+<form
+  className="form"
+>
+  <label>
+    <span
+      className="form-field-pre-text"
+    >
+      test
+    </span>
+    <input
+      className="form-field-input"
+      name="id"
+      onChange={[Function]}
+      placeholder="test"
+      type="text"
+    />
+    <span
+      className="form-field-sub-text"
+    >
+      Leave empty for random sample
+    </span>
+  </label>
+  <input
+    className="form-field-submit"
+    onClick={[Function]}
+    type="submit"
+    value="Search"
+  />
+</form>
+`;

@@ -1,0 +1,35 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - infrastructure/*
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+steps:
+# Validate ARM template
+- task: AzureResourceGroupDeployment@2
+  displayName: 'Validate ARM template'
+  inputs:
+    azureSubscription: $(serviceConnectionAzureSubscription)
+    resourceGroupName: $(resourceGroupName)
+    location: $(location)
+    csmFile: infrastructure/azuredeploy.json
+    overrideParameters: '-application_name $(applicationName) -docker_registry_url $(ACR_SERVER) -docker_registry_username $(ACR_USERNAME) -docker_registry_password $(ACR_PASSWORD)'
+    deploymentMode: Validation
+
+# Copy ARM deployment JSON
+- task: CopyFiles@2
+  displayName: 'Copy ARM deployment JSON'
+  inputs:
+    contents: 'infrastructure/azuredeploy.json'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+
+# Publish Build Artifacts
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathToPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: package
+    publishLocation: Container

@@ -1,0 +1,67 @@
+[
+  {
+    "nconst" : "nm0000496",
+    "primaryName" : "Juliette Lewis",
+    "birthYear" : 1973,
+    "deathYear" : "",
+    "primaryProfession" : "actress,soundtrack,director",
+    "knownForTitles" : "tt0116367,tt1322269,tt0110632,tt0101540"
+  },
+  {
+    "nconst" : "nm0000342",
+    "primaryName" : "James Cromwell",
+    "birthYear" : 1940,
+    "deathYear" : "",
+    "primaryProfession" : "actor,producer,soundtrack",
+    "knownForTitles" : "tt0112431,tt0120689,tt2245084,tt0119488"
+  },
+  {
+    "nconst" : "nm0000230",
+    "primaryName" : "Sylvester Stallone",
+    "birthYear" : 1946,
+    "deathYear" : "",
+    "primaryProfession" : "actor,writer,producer",
+    "knownForTitles" : "tt3076658,tt0089927,tt0084602,tt0075148"
+  },
+  {
+    "nconst" : "nm0001500",
+    "primaryName" : "Karl Malden",
+    "birthYear" : 1912,
+    "deathYear" : 2009,
+    "primaryProfession" : "actor,soundtrack,director",
+    "knownForTitles" : "tt0047296,tt0066206,tt0048973,tt0044081"
+  },
+  {
+    "nconst" : "nm0000548",
+    "primaryName" : "Elizabeth Montgomery",
+    "birthYear" : 1933,
+    "deathYear" : 1995,
+    "primaryProfession" : "actress,soundtrack,miscellaneous",
+    "knownForTitles" : "tt0076981,tt0088713,tt0057733,tt0073273"
+  },
+  {
+    "nconst":"nm0000428",
+    "primaryName": "D.W. Griffith",
+    "birthYear": 1875,
+    "deathYear": 1948,
+    "primaryProfession": "director,writer,producer",
+    "knownForTitles": "tt0006864,tt0010484,tt0004972,tt0012532"
+  },
+  {
+    "nconst":"nm0492757",
+    "primaryName": "Florence Lawrence",
+    "birthYear": 1886,
+    "deathYear": 1938,
+    "primaryProfession": "actress",
+    "knownForTitles": "tt0143358,tt0200577,tt0000770,tt0200909"
+  },
+  {
+    "nconst":"nm0555522",
+    "primaryName": "Arthur Marvin",
+    "birthYear": 1859,
+    "deathYear": 1911,
+    "primaryProfession": "cinematographer,director,camera_department",
+    "knownForTitles": "tt0291476,tt0000412,tt0233612,tt0300052"
+  }
+
+]

@@ -1,0 +1,32 @@
+.nav-container {
+  height: 65px;
+  background-color: rgb(43, 43, 43);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.nav-title {
+  font-size: 1.6rem;
+  color: rgb(50, 146, 202);
+}
+
+.nav-link-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+.nav-link {
+  margin: 0 10px;
+  font-size: 1.3rem;
+  color: rgb(50, 146, 202);
+  text-decoration: none;
+}
+
+.active {
+  color: rgb(61, 173, 85);
+}

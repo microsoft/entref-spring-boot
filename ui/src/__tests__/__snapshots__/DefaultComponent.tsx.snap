@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DefaultComponent /> renders correctly 1`] = `
+<div
+  className="default-component cover"
+>
+  <h1>
+    Oh Deer :(
+    <br />
+    <small>
+      Error 404
+    </small>
+  </h1>
+  <p
+    className="lead"
+  >
+    The requested resource could not be found but may be available again in the future.
+  </p>
+  <img
+    className="default-page-image"
+    src="https://i.gifer.com/KG8.gif"
+  />
+</div>
+`;

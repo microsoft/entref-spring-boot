@@ -1,0 +1,645 @@
+tconst	titleType	primaryTitle	originalTitle	isAdult	startYear	endYear	runtimeMinutes	genres
+tt0120737	movie	The Lord of the Rings: The Fellowship of the Ring	The Lord of the Rings: The Fellowship of the Ring	0	2001	\N	178	Adventure,Drama,Fantasy
+tt0133093	movie	The Matrix	The Matrix	0	1999	\N	136	Action,Sci-Fi
+tt0166924	movie	Mulholland Dr.	Mulholland Dr.	0	2001	\N	147	Drama,Mystery,Thriller
+tt0167260	movie	The Lord of the Rings: The Return of the King	The Lord of the Rings: The Return of the King	0	2003	\N	201	Action,Adventure,Drama
+tt0167261	movie	The Lord of the Rings: The Two Towers	The Lord of the Rings: The Two Towers	0	2002	\N	179	Adventure,Drama,Fantasy
+tt0168629	movie	Dancer in the Dark	Dancer in the Dark	0	2000	\N	140	Crime,Drama,Musical
+tt0169102	movie	Lagaan: Once Upon a Time in India	Lagaan: Once Upon a Time in India	0	2001	\N	224	Adventure,Drama,Musical
+tt0172495	movie	Gladiator	Gladiator	0	2000	\N	155	Action,Adventure,Drama
+tt0180093	movie	Requiem for a Dream	Requiem for a Dream	0	2000	\N	102	Drama
+tt0198781	movie	Monsters, Inc.	Monsters, Inc.	0	2001	\N	92	Adventure,Animation,Comedy
+tt0208092	movie	Snatch	Snatch	0	2000	\N	104	Comedy,Crime
+tt0209144	movie	Memento	Memento	0	2000	\N	113	Mystery,Thriller
+tt0209180	movie	Sky Hook	Nebeska udica	0	2000	\N	95	Drama,War
+tt0222012	movie	Hey Ram	Hey Ram	0	2000	\N	186	Crime,Drama,History
+tt0242256	movie	Alai Payuthey	Alai Payuthey	0	2000	\N	156	Drama,Musical,Romance
+tt0242519	movie	Chicanery	Hera Pheri	0	2000	\N	156	Action,Comedy,Crime
+tt0246578	movie	Donnie Darko	Donnie Darko	0	2001	\N	113	Drama,Sci-Fi,Thriller
+tt0253474	movie	The Pianist	The Pianist	0	2002	\N	150	Biography,Drama,Music
+tt0264464	movie	Catch Me If You Can	Catch Me If You Can	0	2002	\N	141	Biography,Crime,Drama
+tt0264476	movie	Children Underground	Children Underground	0	2001	\N	104	Documentary
+tt0266543	movie	Finding Nemo	Finding Nemo	0	2003	\N	100	Adventure,Animation,Comedy
+tt0266697	movie	Kill Bill: Vol. 1	Kill Bill: Vol. 1	0	2003	\N	111	Action,Crime,Thriller
+tt0268978	movie	A Beautiful Mind	A Beautiful Mind	0	2001	\N	135	Biography,Drama
+tt0270053	movie	Vizontele	Vizontele	0	2001	\N	110	Comedy,Drama
+tt0276919	movie	Dogville	Dogville	0	2003	\N	178	Crime,Drama
+tt0278736	movie	Stanley Kubrick: A Life in Pictures	Stanley Kubrick: A Life in Pictures	0	2001	\N	142	Biography,Documentary
+tt0282864	movie	Promises	Promises	0	2001	\N	106	Documentary
+tt0283509	movie	No Man's Land	No Man's Land	0	2001	\N	98	Drama,War
+tt0287467	movie	Talk to Her	Hable con ella	0	2002	\N	112	Drama,Mystery,Romance
+tt0296574	movie	Company	Company	0	2002	\N	155	Action,Crime,Drama
+tt0307385	movie	Rivers and Tides: Andy Goldsworthy Working with Time	Rivers and Tides	0	2001	\N	90	Documentary
+tt0309061	movie	War Photographer	War Photographer	0	2001	\N	96	Documentary,War
+tt0310793	movie	Bowling for Columbine	Bowling for Columbine	0	2002	\N	120	Crime,Documentary,Drama
+tt0312859	movie	A Peck on the Cheek	Kannathil Muthamittal	0	2002	\N	123	Drama,War
+tt0314067	movie	Philanthropy	Filantropica	0	2002	\N	110	Comedy,Drama
+tt0317705	movie	The Incredibles	The Incredibles	0	2004	\N	115	Action,Adventure,Animation
+tt0317910	movie	The Fog of War: Eleven Lessons from the Life of Robert S. McNamara	The Fog of War: Eleven Lessons from the Life of Robert S. McNamara	0	2003	\N	107	Biography,Documentary,History
+tt0319061	movie	Big Fish	Big Fish	0	2003	\N	125	Adventure,Drama,Fantasy
+tt0319736	movie	The Legend of Bhagat Singh	The Legend of Bhagat Singh	0	2002	\N	155	Biography,Drama,History
+tt0325980	movie	Pirates of the Caribbean: The Curse of the Black Pearl	Pirates of the Caribbean: The Curse of the Black Pearl	0	2003	\N	143	Action,Adventure,Fantasy
+tt0327056	movie	Mystic River	Mystic River	0	2003	\N	138	Crime,Drama,Mystery
+tt0329393	movie	Mr. and Mrs. Iyer	Mr. and Mrs. Iyer	0	2002	\N	120	Drama
+tt0338013	movie	Eternal Sunshine of the Spotless Mind	Eternal Sunshine of the Spotless Mind	0	2004	\N	108	Drama,Romance,Sci-Fi
+tt0342804	movie	My Flesh and Blood	My Flesh and Blood	0	2003	\N	83	Documentary
+tt0343121	movie	Tupac: Resurrection	Tupac: Resurrection	0	2003	\N	112	Biography,Documentary,Music
+tt0347048	movie	Head-On	Gegen die Wand	0	2004	\N	121	Drama,Romance
+tt0347149	movie	Howl's Moving Castle	Hauru no ugoku shiro	0	2004	\N	119	Adventure,Animation,Family
+tt0347779	movie	Pinjar	Pinjar: Beyond Boundaries...	0	2003	\N	188	Drama
+tt0352248	movie	Cinderella Man	Cinderella Man	0	2005	\N	144	Biography,Drama,Sport
+tt0358456	movie	Earthlings	Earthlings	0	2005	\N	95	Documentary,Horror
+tt0361748	movie	Inglourious Basterds	Inglourious Basterds	0	2009	\N	153	Adventure,Drama,War
+tt0363163	movie	Downfall	Der Untergang	0	2004	\N	156	Biography,Drama,History
+tt0363510	movie	The Revolution Will Not Be Televised	Chavez: Inside the Coup	0	2003	\N	74	Documentary
+tt0364569	movie	Oldboy	Oldeuboi	0	2003	\N	120	Action,Drama,Mystery
+tt0364647	movie	Virumandi	Virumandi	0	2004	\N	175	Action,Drama,Romance
+tt0366840	movie	The One	Okkadu	0	2003	\N	170	Action,Romance
+tt0367110	movie	Swades	Swades: We, the People	0	2004	\N	210	Drama
+tt0367495	movie	Anbe Sivam	Anbe Sivam	0	2003	\N	160	Adventure,Comedy,Drama
+tt0368711	movie	End of the Century	End of the Century	0	2003	\N	110	Biography,Documentary,Music
+tt0369702	movie	The Sea Inside	Mar adentro	0	2004	\N	125	Biography,Drama,Romance
+tt0371392	movie	Watermark	Watermark	0	2003	\N	76	Crime,Drama,Mystery
+tt0372784	movie	Batman Begins	Batman Begins	0	2005	\N	140	Action,Adventure,Thriller
+tt0375611	movie	Black	Black	0	2005	\N	122	Drama
+tt0376127	movie	The Stranger	Anniyan	0	2005	\N	181	Action,Drama,Thriller
+tt0378194	movie	Kill Bill: Vol. 2	Kill Bill: Vol. 2	0	2004	\N	137	Action,Crime,Thriller
+tt0378647	movie	Ramana	Ramana	0	2002	\N	140	Action,Drama
+tt0379225	movie	The Corporation	The Corporation	0	2003	\N	145	Documentary,History
+tt0379357	movie	Los Angeles Plays Itself	Los Angeles Plays Itself	0	2003	\N	169	Documentary,History
+tt0379370	movie	Maqbool	Maqbool	0	2003	\N	132	Crime,Drama
+tt0379557	movie	Touching the Void	Touching the Void	0	2003	\N	106	Adventure,Documentary,Drama
+tt0379730	movie	Charlie: The Life and Art of Charles Chaplin	Charlie: The Life and Art of Charles Chaplin	0	2003	\N	132	Biography,Documentary
+tt0381061	movie	Casino Royale	Casino Royale	0	2006	\N	144	Action,Adventure,Thriller
+tt0381681	movie	Before Sunset	Before Sunset	0	2004	\N	80	Drama,Romance
+tt0382932	movie	Ratatouille	Ratatouille	0	2007	\N	111	Adventure,Animation,Comedy
+tt0383846	movie	When I Grow Up, I'll Be a Kangaroo	Kad porastem bicu Kengur	0	2004	\N	92	Comedy
+tt0384116	movie	G.O.R.A.	G.O.R.A.	0	2004	\N	127	Adventure,Comedy,Sci-Fi
+tt0385928	movie	Panchatanthiram	Panchatanthiram	0	2002	\N	150	Comedy
+tt0386032	movie	Sicko	Sicko	0	2007	\N	123	Documentary,Drama
+tt0386064	movie	Tae Guk Gi: The Brotherhood of War	Taegukgi hwinalrimyeo	0	2004	\N	140	Action,Drama,War
+tt0393597	movie	Earth	Earth	0	2007	\N	90	Documentary
+tt0393775	movie	Simon	Simon	0	2004	\N	102	Comedy,Drama
+tt0395169	movie	Hotel Rwanda	Hotel Rwanda	0	2004	\N	121	Biography,Drama,History
+tt0396962	movie	Shwaas	Shwaas	0	2004	\N	107	Drama
+tt0399040	movie	My Girl	Fan chan	0	2003	\N	110	Comedy,Romance
+tt0400234	movie	Black Friday	Black Friday	0	2004	\N	143	Action,Crime,Drama
+tt0401085	movie	C.R.A.Z.Y.	C.R.A.Z.Y.	0	2005	\N	127	Comedy,Drama
+tt0401383	movie	The Diving Bell and the Butterfly	Le scaphandre et le papillon	0	2007	\N	112	Biography,Drama
+tt0401792	movie	Sin City	Sin City	0	2005	\N	124	Crime,Thriller
+tt0405094	movie	The Lives of Others	Das Leben der Anderen	0	2006	\N	137	Drama,Thriller
+tt0405159	movie	Million Dollar Baby	Million Dollar Baby	0	2004	\N	132	Drama,Sport
+tt0405508	movie	Rang De Basanti	Rang De Basanti	0	2006	\N	157	Comedy,Drama
+tt0407887	movie	The Departed	The Departed	0	2006	\N	151	Crime,Drama,Thriller
+tt0408664	movie	Nobody Knows	Dare mo shiranai	0	2004	\N	141	Drama
+tt0410407	movie	Orwell Rolls in His Grave	Orwell Rolls in His Grave	0	2003	\N	84	Documentary
+tt0411469	movie	Hazaaron Khwaishein Aisi	Hazaaron Khwaishein Aisi	0	2003	\N	120	Drama
+tt0412631	movie	Death in Gaza	Death in Gaza	0	2004	\N	80	Documentary
+tt0413615	movie	Unforgivable Blackness: The Rise and Fall of Jack Johnson	Unforgivable Blackness: The Rise and Fall of Jack Johnson	0	2004	\N	214	Biography,Documentary,Sport
+tt0416960	movie	The Lizard	Marmoulak	0	2004	\N	115	Comedy,Drama
+tt0419781	movie	Graves End	Graves End	0	2005	\N	90	Mystery,Thriller
+tt0423866	movie	3-Iron	Bin-jip	0	2004	\N	88	Crime,Drama,Romance
+tt0424227	movie	Turtles Can Fly	Lakposhtha parvaz mikonand	0	2004	\N	98	Drama,War
+tt0425162	movie	Kaazhcha	Kaazhcha	0	2004	\N	137	Drama
+tt0425333	movie	Pardon	Pardon	0	2005	\N	94	Comedy,Drama
+tt0428870	movie	A Moment to Remember	Nae meorisokui jiwoogae	0	2004	\N	117	Drama,Romance
+tt0434409	movie	V for Vendetta	V for Vendetta	0	2005	\N	132	Action,Drama,Sci-Fi
+tt0435761	movie	Toy Story 3	Toy Story 3	0	2010	\N	103	Adventure,Animation,Comedy
+tt0436231	movie	The Devil and Daniel Johnston	The Devil and Daniel Johnston	0	2005	\N	110	Biography,Documentary,Music
+tt0436971	movie	Why We Fight	Why We Fight	0	2005	\N	98	Documentary,History,War
+tt0440963	movie	The Bourne Ultimatum	The Bourne Ultimatum	0	2007	\N	115	Action,Mystery,Thriller
+tt0442268	movie	Be with You	Ima, ai ni yukimasu	0	2004	\N	119	Drama,Fantasy,Romance
+tt0450259	movie	Blood Diamond	Blood Diamond	0	2006	\N	143	Adventure,Drama,Thriller
+tt0453729	movie	Iqbal	Iqbal	0	2005	\N	132	Drama,Sport
+tt0454921	movie	The Pursuit of Happyness	The Pursuit of Happyness	0	2006	\N	117	Biography,Drama
+tt0455829	movie	Vettaiyaadu Vilaiyaadu	Vettaiyaadu Vilaiyaadu	0	2006	\N	174	Action,Crime,Thriller
+tt0456144	movie	Keep at It Munna Bhai	Lage Raho Munna Bhai	0	2006	\N	144	Comedy,Drama,Fantasy
+tt0456149	movie	The Death of Mr. Lazarescu	Moartea domnului Lãzãrescu	0	2005	\N	153	Drama
+tt0457430	movie	Pan's Labyrinth	El laberinto del fauno	0	2006	\N	118	Drama,Fantasy,War
+tt0457496	movie	Street Fight	Street Fight	0	2005	\N	83	Documentary
+tt0458050	movie	Paruthiveeran	Paruthiveeran	0	2007	\N	162	Action,Drama,Romance
+tt0459516	movie	Pudhu Pettai	Pudhu Pettai	0	2006	\N	168	Action,Crime,Drama
+tt0462441	movie	Amazing Journey: The Story of The Who	Amazing Journey: The Story of The Who	0	2007	\N	237	Documentary,Music
+tt0466460	movie	Khosla Ka Ghosla!	Khosla Ka Ghosla!	0	2006	\N	135	Comedy,Crime,Drama
+tt0468569	movie	The Dark Knight	The Dark Knight	0	2008	\N	152	Action,Crime,Drama
+tt0469494	movie	There Will Be Blood	There Will Be Blood	0	2007	\N	158	Drama
+tt0471571	movie	Athadu	Athadu	0	2005	\N	172	Action,Comedy,Musical
+tt0473453	movie	The Bondage	Bondage	0	2006	\N	100	Biography,Drama
+tt0473604	movie	Anukokunda Oka Roju	Anukokunda Oka Roju	0	2005	\N	145	Mystery,Thriller
+tt0476735	movie	My Father and My Son	Babam ve Oglum	0	2005	\N	108	Drama,Family
+tt0477348	movie	No Country for Old Men	No Country for Old Men	0	2007	\N	122	Crime,Drama,Thriller
+tt0478209	movie	Metal: A Headbanger's Journey	Metal: A Headbanger's Journey	0	2005	\N	96	Documentary,Music
+tt0478331	movie	Workingman's Death	Workingman's Death	0	2005	\N	122	Documentary
+tt0480732	movie	Shyamol Chhaya	Shyamol Chhaya	0	2004	\N	110	Drama
+tt0482571	movie	The Prestige	The Prestige	0	2006	\N	130	Drama,Mystery,Sci-Fi
+tt0483180	movie	Thanmathra	Thanmathra	0	2005	\N	160	Drama
+tt0488414	movie	Omkara	Omkara	0	2006	\N	155	Action,Crime,Drama
+tt0493393	movie	Ashes and Snow	Ashes and Snow	0	2005	\N	63	Documentary,Drama
+tt0494724	movie	1 Litre of Tears	Ichi ritoru no namida	0	2005	\N	98	Drama
+tt0758758	movie	Into the Wild	Into the Wild	0	2007	\N	148	Adventure,Biography,Drama
+tt0759952	movie	American Zeitgeist	American Zeitgeist	0	2006	\N	150	Documentary
+tt0770802	movie	Samsara	Samsara	0	2011	\N	102	Documentary,Music
+tt0772153	movie	America: Freedom to Fascism	America: Freedom to Fascism	0	2006	\N	95	Documentary
+tt0790636	movie	Dallas Buyers Club	Dallas Buyers Club	0	2013	\N	117	Biography,Drama
+tt0796366	movie	Star Trek	Star Trek	0	2009	\N	127	Action,Adventure,Sci-Fi
+tt0805188	movie	Marilena from P7	Marilena de la P7	0	2006	\N	48	Drama,Fantasy
+tt0807956	movie	Occupation 101	Occupation 101	0	2006	\N	90	Documentary
+tt0808417	movie	Persepolis	Persepolis	0	2007	\N	96	Animation,Biography,Drama
+tt0814075	movie	Deliver Us from Evil	Deliver Us from Evil	0	2006	\N	101	Crime,Documentary
+tt0816692	movie	Interstellar	Interstellar	0	2014	\N	169	Adventure,Drama,Sci-Fi
+tt0824316	movie	Dor	Dor	0	2006	\N	147	Drama
+tt0839967	movie	The Rest is Silence	Restul e tacere	0	2007	\N	114	Comedy,Drama
+tt0841119	movie	Lake of Fire	Lake of Fire	0	2006	\N	152	Documentary
+tt0843326	movie	Bommarillu	Bommarillu	0	2006	\N	170	Comedy,Drama,Romance
+tt0848228	movie	The Avengers	The Avengers	0	2012	\N	143	Action,Adventure,Sci-Fi
+tt0851577	movie	The Island	Ostrov	0	2006	\N	112	Drama
+tt0855822	movie	Huddersfield	Hadersfild	0	2007	\N	95	Drama
+tt0856008	movie	Sharkwater	Sharkwater	0	2006	\N	89	Documentary
+tt0860906	movie	Evangelion: 2.0 You Can (Not) Advance	Evangerion shin gekijôban: Ha	0	2009	\N	112	Action,Animation,Drama
+tt0861739	movie	Elite Squad	Tropa de Elite	0	2007	\N	115	Action,Crime,Drama
+tt0867145	movie	Classmates	Classmates	0	2006	\N	175	Drama,Mystery,Romance
+tt0870112	movie	Future by Design	Future by Design	0	2006	\N	86	Documentary,Sci-Fi
+tt0871510	movie	Chak de! India	Chak De! India	0	2007	\N	153	Drama,Family,Sport
+tt0892375	movie	U2 3D	U2 3D	0	2007	\N	85	Documentary,Music
+tt0892425	movie	Before Flying Back to Earth	Pries parskrendant i zeme	0	2005	\N	52	Documentary
+tt0892769	movie	How to Train Your Dragon	How to Train Your Dragon	0	2010	\N	98	Action,Adventure,Animation
+tt0910970	movie	WALL·E	WALL·E	0	2008	\N	98	Adventure,Animation,Family
+tt0911010	movie	White Light/Black Rain: The Destruction of Hiroshima and Nagasaki	White Light/Black Rain: The Destruction of Hiroshima and Nagasaki	0	2007	\N	86	Documentary,History
+tt0912593	movie	No End in Sight	No End in Sight	0	2007	\N	102	Documentary,War
+tt0923752	movie	The King of Kong: A Fistful of Quarters	The King of Kong	0	2007	\N	79	Biography,Documentary,Sport
+tt0925130	movie	Suryam	Suryam	0	2004	\N	150	Action,Romance
+tt0925248	movie	In the Shadow of the Moon	In the Shadow of the Moon	0	2007	\N	100	Documentary,History
+tt0929620	movie	Political Rowdy	Political Rowdy	0	2005	\N	\N	Action
+tt0947798	movie	Black Swan	Black Swan	0	2010	\N	108	Drama,Thriller
+tt0965382	movie	Tom Petty and the Heartbreakers: Runnin' Down a Dream	Tom Petty and the Heartbreakers: Runnin' Down a Dream	0	2007	\N	239	Documentary,Music
+tt0978762	movie	Mary and Max	Mary and Max	0	2009	\N	92	Animation,Comedy,Drama
+tt0986264	movie	Like Stars on Earth	Taare Zameen Par	0	2007	\N	165	Drama,Family
+tt0986329	movie	Mungaru Male	Mungaru Male	0	2006	\N	143	Comedy,Music,Romance
+tt0988108	movie	The Class	Klass	0	2007	\N	99	Drama
+tt0993846	movie	The Wolf of Wall Street	The Wolf of Wall Street	0	2013	\N	180	Biography,Comedy,Crime
+tt1010048	movie	Slumdog Millionaire	Slumdog Millionaire	0	2008	\N	120	Drama,Romance
+tt1014762	movie	Home	Home	0	2009	\N	120	Documentary,Drama,Family
+tt1015246	movie	War Made Easy: How Presidents & Pundits Keep Spinning Us to Death	War Made Easy: How Presidents & Pundits Keep Spinning Us to Death	0	2007	\N	73	Documentary,History,War
+tt1028532	movie	Hachi: A Dog's Tale	Hachi: A Dog's Tale	0	2009	\N	93	Drama,Family
+tt1029172	movie	The War on Democracy	The War on Democracy	0	2007	\N	96	Documentary
+tt1034053	movie	Mozhi	Mozhi	0	2007	\N	155	Comedy,Musical,Romance
+tt1039647	movie	The Union: The Business Behind Getting High	The Union: The Business Behind Getting High	0	2007	\N	104	Documentary
+tt1049413	movie	Up	Up	0	2009	\N	96	Adventure,Animation,Comedy
+tt1068956	movie	In the Name of God	Khuda Kay Liye	0	2007	\N	168	Drama
+tt1069238	movie	Departures	Okuribito	0	2008	\N	130	Drama,Music
+tt1087578	movie	Still Walking	Aruitemo aruitemo	0	2008	\N	115	Drama
+tt1094594	movie	Sigur Rós: Heima	Sigur Rós: Heima	0	2007	\N	97	Documentary,Music
+tt1097256	movie	Please Vote for Me	Please Vote for Me	0	2007	\N	58	Documentary
+tt1113829	movie	George Harrison: Living in the Material World	George Harrison: Living in the Material World	0	2011	\N	208	Biography,Documentary,Music
+tt1128075	movie	Love Exposure	Ai no mukidashi	0	2008	\N	237	Action,Comedy,Drama
+tt1129435	movie	The Beaches of Agnès	Les plages d'Agnès	0	2008	\N	110	Biography,Documentary
+tt1130884	movie	Shutter Island	Shutter Island	0	2010	\N	138	Mystery,Thriller
+tt1152758	movie	Dear Zachary: A Letter to a Son About His Father	Dear Zachary: A Letter to a Son About His Father	0	2008	\N	95	Biography,Crime,Documentary
+tt1157720	movie	Stranded: I've Come from a Plane That Crashed on the Mountains	Stranded: I've Come from a Plane That Crashed on the Mountains	0	2007	\N	130	Documentary
+tt1171701	movie	The Breath	Nefes: Vatan Sagolsun	0	2009	\N	128	Action,Drama,Thriller
+tt1178197	movie	The World is Big and Salvation Lurks Around the Corner	Svetat e golyam i spasenie debne otvsyakade	0	2008	\N	105	Drama
+tt1180583	movie	Vaaranam Aayiram	Vaaranam Aayiram	0	2008	\N	169	Drama,Musical,Romance
+tt1183919	movie	Marley	Marley	0	2012	\N	144	Biography,Documentary,Music
+tt1185616	movie	Waltz with Bashir	Vals Im Bashir	0	2008	\N	90	Animation,Biography,Drama
+tt1187043	movie	3 Idiots	3 Idiots	0	2009	\N	170	Comedy,Drama
+tt1188996	movie	My Name Is Khan	My Name Is Khan	0	2010	\N	165	Drama
+tt1194437	movie	Rats and Cats	Rats and Cats	0	2007	\N	87	Comedy,Drama
+tt1194620	movie	Silent Wedding	Nunta muta	0	2008	\N	87	Comedy,Drama,Romance
+tt1201607	movie	Harry Potter and the Deathly Hallows: Part 2	Harry Potter and the Deathly Hallows: Part 2	0	2011	\N	130	Adventure,Drama,Fantasy
+tt1205489	movie	Gran Torino	Gran Torino	0	2008	\N	116	Drama
+tt1220719	movie	Ip Man	Yip Man	0	2008	\N	106	Action,Biography,Drama
+tt1249171	movie	Global Metal	Global Metal	0	2008	\N	93	Documentary,Music
+tt1255953	movie	Incendies	Incendies	0	2010	\N	131	Drama,Mystery,War
+tt1260502	movie	Ghost in the Shell 2.0	Kôkaku kidôtai 2.0	0	2008	\N	83	Action,Animation,Crime
+tt1261047	movie	Gulaal	Gulaal	0	2009	\N	140	Crime,Drama,Thriller
+tt1277737	movie	The Stoning of Soraya M.	The Stoning of Soraya M.	0	2008	\N	114	Drama
+tt1278060	movie	Kara no Kyoukai: The Garden of Sinners - Paradox Spiral	Gekijô ban Kara no kyôkai: Dai go shô - Mujun rasen	0	2008	\N	114	Action,Animation,Crime
+tt1280558	movie	A Wednesday	A Wednesday	0	2008	\N	104	Crime,Drama,Mystery
+tt1282139	movie	Cars of the Revolution	Devrim Arabalari	0	2008	\N	115	Drama
+tt1282371	movie	Sorry for the Disturbance	Aasef ala el-iz'ag	0	2008	\N	116	Comedy,Drama,Mystery
+tt1291584	movie	Warrior	Warrior	0	2011	\N	140	Drama,Sport
+tt1294182	movie	Living in Emergency	Living in Emergency	0	2008	\N	93	Documentary
+tt1305806	movie	The Secret in Their Eyes	El secreto de sus ojos	0	2009	\N	129	Drama,Mystery,Romance
+tt1305871	movie	The Soviet Story	The Soviet Story	0	2008	\N	86	Documentary,History,War
+tt1313104	movie	The Cove	The Cove	0	2009	\N	92	Crime,Documentary
+tt1320254	movie	Presumed Guilty	Presunto culpable	0	2008	\N	87	Documentary
+tt1327035	movie	Dev D	Dev.D	0	2009	\N	144	Comedy,Drama,Romance
+tt1327819	movie	Boy Interrupted	Boy Interrupted	0	2009	\N	92	Biography,Documentary,Drama
+tt1333634	movie	Burma VJ: Reporting from a Closed Country	Burma VJ: Reporter i et lukket land	0	2008	\N	84	Documentary,History,News
+tt1345836	movie	The Dark Knight Rises	The Dark Knight Rises	0	2012	\N	164	Action,Thriller
+tt1360860	movie	About Elly	Darbareye Elly	0	2009	\N	119	Drama,Mystery,Thriller
+tt1361558	movie	Iron Maiden: Flight 666	Iron Maiden: Flight 666	0	2009	\N	112	Documentary,Music
+tt1375666	movie	Inception	Inception	0	2010	\N	148	Action,Adventure,Sci-Fi
+tt1392190	movie	Mad Max: Fury Road	Mad Max: Fury Road	0	2015	\N	120	Action,Adventure,Sci-Fi
+tt1392214	movie	Prisoners	Prisoners	0	2013	\N	153	Crime,Drama,Mystery
+tt1417299	movie	Unnaipol Oruvan	Unnaipol Oruvan	0	2009	\N	106	Crime,Drama,Thriller
+tt1417592	movie	Pearl Jam Twenty	Pearl Jam Twenty	0	2011	\N	109	Documentary,History,Music
+tt1419318	movie	Facing Ali	Facing Ali	0	2009	\N	100	Biography,Documentary,Sport
+tt1424432	movie	Senna	Senna	0	2010	\N	106	Biography,Documentary,Sport
+tt1430836	movie	Yaavarum Nalam	Yaavarum Nalam	0	2009	\N	138	Horror,Mystery,Sci-Fi
+tt1431045	movie	Deadpool	Deadpool	0	2016	\N	108	Action,Adventure,Comedy
+tt1454029	movie	The Help	The Help	0	2011	\N	146	Drama
+tt1487275	movie	The White Stripes Under Great White Northern Lights	The White Stripes Under Great White Northern Lights	0	2009	\N	93	Documentary,Music
+tt1496729	movie	Aaranya Kaandam	Aaranya Kaandam	0	2010	\N	153	Action,Comedy,Crime
+tt1499666	movie	Castaway on the Moon	Kimssi pyoryugi	0	2009	\N	116	Drama,Romance
+tt1501298	movie	Kattradhu Thamizh	Kattradhu Thamizh	0	2007	\N	147	Drama,Mystery
+tt1504320	movie	The King's Speech	The King's Speech	0	2010	\N	118	Biography,Drama,History
+tt1517451	movie	A Star Is Born	A Star Is Born	0	2018	\N	136	Drama,Music,Romance
+tt1524539	movie	Harishchandrachi Factory	Harishchandrachi Factory	0	2009	\N	96	Biography,Comedy,Drama
+tt1545103	movie	Rush: Beyond the Lighted Stage	Rush: Beyond the Lighted Stage	0	2010	\N	107	Biography,Documentary,Music
+tt1555149	movie	Elite Squad: The Enemy Within	Tropa de Elite 2: O Inimigo Agora é Outro	0	2010	\N	115	Action,Crime,Drama
+tt1562872	movie	Zindagi Na Milegi Dobara	Zindagi Na Milegi Dobara	0	2011	\N	155	Comedy,Drama
+tt1572781	movie	The Disappearance of Haruhi Suzumiya	Suzumiya Haruhi no shôshitsu	0	2010	\N	163	Animation,Comedy,Drama
+tt1583256	movie	Gamyam	Gamyam	0	2008	\N	120	Drama
+tt1583323	movie	Steam of Life	Miesten vuoro	0	2010	\N	81	Documentary
+tt1587707	movie	Exit Through the Gift Shop	Exit Through the Gift Shop	0	2010	\N	87	Comedy,Crime,Documentary
+tt1590129	movie	Natarang	Natarang	0	2010	\N	127	Drama
+tt1601792	movie	Aa Naluguru	Aa Naluguru	0	2004	\N	141	Drama
+tt1603362	movie	Prasthanam	Prasthanam	0	2010	\N	153	Action,Drama
+tt1606829	movie	The Other Dream Team	The Other Dream Team	0	2012	\N	89	Documentary,Sport
+tt1609168	movie	Vinnaithaandi Varuvaayaa	Vinnaithaandi Varuvaayaa	0	2010	\N	157	Drama,Romance
+tt1613040	movie	Leader	Leader	0	2010	\N	167	Drama
+tt1618448	movie	Racing Extinction	Racing Extinction	0	2015	\N	90	Adventure,Documentary,Drama
+tt1620933	movie	Paan Singh Tomar	Paan Singh Tomar	0	2012	\N	135	Action,Biography,Crime
+tt1621830	movie	Monpura	Monpura	0	2009	\N	136	Crime,Drama,Musical
+tt1634013	movie	Montevideo: Taste of a Dream	Montevideo, Bog te video!	0	2010	\N	140	Adventure,Comedy,Drama
+tt1639426	movie	Udaan	Udaan	0	2010	\N	134	Drama
+tt1645089	movie	Inside Job	Inside Job	0	2010	\N	109	Crime,Documentary
+tt1646967	movie	The Art of Flight	The Art of Flight	0	2011	\N	80	Adventure,Documentary,Sport
+tt1649431	movie	Vedam	Vedam	0	2010	\N	135	Action,Crime,Drama
+tt1659337	movie	The Perks of Being a Wallflower	The Perks of Being a Wallflower	0	2012	\N	103	Drama,Romance
+tt1663202	movie	The Revenant	The Revenant	0	2015	\N	156	Action,Adventure,Biography
+tt1670703	movie	Footsteps in the Sand	Stapki v pyasaka	0	2010	\N	89	Comedy,Drama
+tt1675434	movie	The Intouchables	Intouchables	0	2011	\N	112	Biography,Comedy,Drama
+tt1692928	movie	The Last Lions	The Last Lions	0	2011	\N	88	Documentary,Family
+tt1695800	movie	Pranchiyettan and the Saint	Pranchiyettan and the Saint	0	2010	\N	140	Comedy,Drama
+tt1698010	movie	TT3D: Closer to the Edge	TT3D: Closer to the Edge	0	2011	\N	104	Documentary,Sport
+tt1715802	movie	How to Die in Oregon	How to Die in Oregon	0	2011	\N	107	Documentary,Drama,Family
+tt1720035	movie	59 Seconds	59 Seconds	0	2016	\N	95	Action,Drama,Thriller
+tt1727824	movie	Bohemian Rhapsody	Bohemian Rhapsody	0	2018	\N	134	Biography,Drama,Music
+tt1754109	movie	Les Misérables in Concert: The 25th Anniversary	Les Misérables in Concert: The 25th Anniversary	0	2010	\N	178	Drama,Music,Musical
+tt1773764	movie	Ship of Theseus	Ship of Theseus	0	2012	\N	140	Drama
+tt1778338	movie	The Culture High	The Culture High	0	2014	\N	120	Documentary,News
+tt1781069	movie	Zeitgeist: Moving Forward	Zeitgeist: Moving Forward	0	2011	\N	161	Documentary
+tt1789083	movie	The Weight of Chains	The Weight of Chains	0	2010	\N	125	Documentary,History,News
+tt1789810	movie	José and Pilar	José e Pilar	0	2010	\N	117	Biography,Documentary
+tt1795369	movie	Frankenstein	National Theatre Live: Frankenstein	0	2011	\N	130	Drama
+tt1798709	movie	Her	Her	0	2013	\N	126	Drama,Romance,Sci-Fi
+tt1801071	movie	See You in Montevideo	Montevideo, vidimo se!	0	2014	\N	141	Adventure,Biography,Comedy
+tt1805263	movie	I Am Kalam	I Am Kalam	0	2010	\N	88	Comedy,Drama
+tt1807022	movie	Super	Super	0	2010	\N	140	Drama
+tt1809387	movie	The War You Don't See	The War You Don't See	0	2010	\N	97	Documentary,War
+tt1813757	movie	Who Killed Captain Alex?	Who Killed Captain Alex?	0	2010	\N	64	Action,Crime,Mystery
+tt1821317	movie	Aadukalam	Aadukalam	0	2011	\N	160	Action,Drama,Sport
+tt1821480	movie	Kahaani	Kahaani	0	2012	\N	122	Mystery,Thriller
+tt1821682	movie	Traffic	Traffic	0	2011	\N	122	Action,Adventure,Mystery
+tt1821700	movie	Waar	Waar	0	2013	\N	130	Action,Crime,Thriller
+tt1825163	movie	The Light Bulb Conspiracy	Prêt-à-jeter	0	2010	\N	75	Documentary
+tt1826603	movie	Asmaa	Asmaa	0	2011	\N	96	Drama
+tt1828232	movie	Life Cycles	Life Cycles	0	2010	\N	47	Documentary,Sport
+tt1830802	movie	Shala	Shala	0	2011	\N	108	Romance
+tt1832382	movie	A Separation	Jodaeiye Nader az Simin	0	2011	\N	123	Crime,Drama,Family
+tt1843335	movie	Yutham Sei	Yutham Sei	0	2011	\N	160	Crime,Drama,Mystery
+tt1853563	movie	Foo Fighters: Back and Forth	Foo Fighters: Back and Forth	0	2011	\N	101	Documentary,Music
+tt1853728	movie	Django Unchained	Django Unchained	0	2012	\N	165	Drama,Western
+tt1856101	movie	Blade Runner 2049	Blade Runner 2049	0	2017	\N	164	Drama,Mystery,Sci-Fi
+tt1857670	movie	Deiva Thirumagal	Deiva Thirumagal	0	2011	\N	166	Drama,Family,Musical
+tt1865505	movie	Song of the Sea	Song of the Sea	0	2014	\N	93	Adventure,Animation,Drama
+tt1874522	movie	Here Without Me	Inja bedoone man	0	2011	\N	100	Drama,Family
+tt1877832	movie	X-Men: Days of Future Past	X-Men: Days of Future Past	0	2014	\N	132	Action,Adventure,Sci-Fi
+tt1891757	movie	Bol	Bol	0	2011	\N	165	Drama
+tt1895587	movie	Spotlight	Spotlight	0	2015	\N	129	Crime,Drama,History
+tt1906386	movie	Guerrilla	Guerrilla	0	2011	\N	\N	Drama,History,War
+tt1918969	movie	Amar Bondhu Rashed	Amar Bondhu Rashed	0	2011	\N	96	War
+tt1922545	movie	Anjathe	Anjathe	0	2008	\N	185	Action,Drama,Thriller
+tt1935156	movie	Jodorowsky's Dune	Jodorowsky's Dune	0	2013	\N	90	Documentary
+tt1945039	movie	Abu, Son of Adam	Adaminte Makan Abu	0	2011	\N	101	Drama
+tt1954470	movie	Gangs of Wasseypur	Gangs of Wasseypur	0	2012	\N	321	Action,Comedy,Crime
+tt1979320	movie	Rush	Rush	0	2013	\N	123	Action,Biography,Drama
+tt1998204	movie	Home from Home: Chronicle of a Vision	Die andere Heimat - Chronik einer Sehnsucht	0	2013	\N	231	Drama,History
+tt2004304	movie	Mission Blue	Mission Blue	0	2014	\N	95	Documentary,Drama
+tt2015381	movie	Guardians of the Galaxy	Guardians of the Galaxy	0	2014	\N	121	Action,Adventure,Comedy
+tt2022522	movie	Runway	Runway	0	2010	\N	90	Drama
+tt2024544	movie	12 Years a Slave	12 Years a Slave	0	2013	\N	134	Biography,Drama,History
+tt2028530	movie	Paradise Lost 3: Purgatory	Paradise Lost 3: Purgatory	0	2011	\N	121	Crime,Documentary
+tt2049586	movie	Glen Campbell: I'll Be Me	Glen Campbell: I'll Be Me	0	2014	\N	116	Biography,Documentary,Family
+tt2070649	movie	Silenced	Do-ga-ni	0	2011	\N	125	Drama
+tt2073600	movie	Lad: A Yorkshire Story	Lad: A Yorkshire Story	0	2013	\N	96	Drama
+tt2075108	movie	Baishe Srabon	Baishe Srabon	0	2011	\N	120	Drama,Mystery,Thriller
+tt2077886	movie	The Phantom of the Opera at the Royal Albert Hall	The Phantom of the Opera at the Royal Albert Hall	0	2011	\N	137	Drama,Music,Musical
+tt2082197	movie	Barfi!	Barfi!	0	2012	\N	151	Comedy,Drama,Romance
+tt2084970	movie	The Imitation Game	The Imitation Game	0	2014	\N	114	Biography,Drama,Thriller
+tt2085783	movie	Deool	Deool	0	2011	\N	135	Drama
+tt2096673	movie	Inside Out	Inside Out	0	2015	\N	95	Adventure,Animation,Comedy
+tt2104994	movie	Steve Jobs: The Lost Interview	Steve Jobs: The Lost Interview	0	2012	\N	70	Documentary
+tt2106476	movie	The Hunt	Jagten	0	2012	\N	115	Drama
+tt2111478	movie	Mea Maxima Culpa: Silence in the House of God	Mea Maxima Culpa: Silence in the House of God	0	2012	\N	106	Documentary
+tt2119532	movie	Hacksaw Ridge	Hacksaw Ridge	0	2016	\N	139	Biography,Drama,History
+tt2120779	movie	Jason Becker: Not Dead Yet	Jason Becker: Not Dead Yet	0	2012	\N	87	Biography,Documentary,Music
+tt2124189	movie	The Revelation of the Pyramids	La révélation des pyramides	0	2010	\N	106	Documentary
+tt2125608	movie	Searching for Sugar Man	Searching for Sugar Man	0	2012	\N	86	Biography,Documentary,Music
+tt2129928	movie	Bones Brigade: An Autobiography	Bones Brigade: An Autobiography	0	2012	\N	90	Documentary,Sport
+tt2140203	movie	Wolf Children	Ookami kodomo no Ame to Yuki	0	2012	\N	117	Animation,Drama,Family
+tt2146960	movie	Vazhakku Enn 18/9	Vazhakku Enn 18/9	0	2012	\N	124	Crime,Drama,Thriller
+tt2150209	movie	My Grandfather's People	Dedemin Insanlari	0	2011	\N	126	Comedy,Drama,Family
+tt2153891	movie	Metal Warrior	Metal Warrior	0	2011	\N	100	Musical
+tt2170667	movie	Wheels	Wheels	0	2014	\N	115	Drama
+tt2181831	movie	Shahid	Shahid	0	2012	\N	129	Biography,Crime,Drama
+tt2199711	movie	Vishwaroopam	Vishwaroopam	0	2013	\N	148	Action,Thriller
+tt2215151	movie	Inequality for All	Inequality for All	0	2013	\N	89	Documentary
+tt2218988	movie	Ustad Hotel	Ustad Hotel	0	2012	\N	151	Comedy,Drama,Family
+tt2220642	movie	Bad 25	Bad 25	0	2012	\N	131	Documentary,Music
+tt2243299	movie	Final Cut: Ladies and Gentlemen	Final Cut: Hölgyeim és uraim	0	2012	\N	84	Comedy,Drama,Romance
+tt2244877	movie	Halima's Path	Halimin put	0	2012	\N	97	Drama
+tt2245544	movie	Carry on Jatta	Carry on Jatta	0	2012	\N	143	Comedy
+tt2265171	movie	The Raid 2	Serbuan maut 2: Berandal	0	2014	\N	150	Action,Crime,Thriller
+tt2265179	movie	Blood Brother	Blood Brother	0	2013	\N	92	Documentary
+tt2267998	movie	Gone Girl	Gone Girl	0	2014	\N	149	Crime,Drama,Mystery
+tt2278388	movie	The Grand Budapest Hotel	The Grand Budapest Hotel	0	2014	\N	99	Adventure,Comedy,Drama
+tt2283748	movie	OMG: Oh My God!	OMG: Oh My God!	0	2012	\N	125	Comedy,Drama,Fantasy
+tt2296909	movie	Pink Floyd: The Story of Wish You Were Here	Pink Floyd: The Story of Wish You Were Here	0	2012	\N	85	Documentary,Music
+tt2338151	movie	PK	PK	0	2014	\N	153	Comedy,Drama
+tt2351177	movie	Bhooter Bhabishyat	Bhooter Bhabishyat	0	2012	\N	123	Comedy,Fantasy,Horror
+tt2354205	movie	McCullin	McCullin	0	2012	\N	91	Documentary
+tt2356180	movie	Bhaag Milkha Bhaag	Bhaag Milkha Bhaag	0	2013	\N	186	Biography,Drama,Sport
+tt2358592	movie	Lucia	Lucia	0	2013	\N	135	Drama,Romance,Sci-Fi
+tt2358913	movie	Berserk: The Golden Age Arc III - The Advent	Beruseruku: Ougon jidai-hen III - Kourin	0	2013	\N	110	Action,Adventure,Animation
+tt2359814	movie	Speciesism: The Movie	Speciesism: The Movie	0	2013	\N	94	Comedy,Documentary
+tt2370248	movie	Short Term 12	Short Term 12	0	2013	\N	96	Drama
+tt2370718	movie	Artifact	Artifact	0	2012	\N	103	Documentary,Music
+tt2374144	movie	Gintama the Movie: The Final Chapter - Be Forever Yorozuya	Gekijouban Gintama Kanketsu-hen: Yorozuyayo eien nare	0	2013	\N	110	Action,Animation,Comedy
+tt2375379	movie	One Piece Film Z	One Piece Film Z	0	2012	\N	108	Action,Adventure,Animation
+tt2375559	movie	1 - Nenokkadine	1 - Nenokkadine	0	2014	\N	170	Action,Mystery,Thriller
+tt2375605	movie	The Act of Killing	The Act of Killing	0	2012	\N	117	Crime,Documentary
+tt2377938	movie	Special 26	Special Chabbis	0	2013	\N	144	Crime,Thriller
+tt2380307	movie	Coco	Coco	0	2017	\N	105	Adventure,Animation,Comedy
+tt2391492	movie	Balak Palak	Balak Palak	0	2012	\N	109	Family
+tt2396224	movie	It's Such a Beautiful Day	It's Such a Beautiful Day	0	2012	\N	62	Animation,Comedy,Drama
+tt2412748	movie	Saving Mes Aynak	Saving Mes Aynak	0	2014	\N	60	Documentary
+tt2414166	movie	Led Zeppelin: Celebration Day	Led Zeppelin: Celebration Day	0	2012	\N	124	Documentary,Music
+tt2415372	movie	Inner Worlds, Outer Worlds	Inner Worlds, Outer Worlds	0	2012	\N	122	Documentary,History
+tt2471640	movie	The Mountain	Dag	0	2012	\N	90	Adventure,Drama,Thriller
+tt2473476	movie	Be Here Now	Be Here Now	0	2015	\N	100	Biography,Documentary,Drama
+tt2486682	movie	The Square	Al midan	0	2013	\N	108	Documentary,Drama,History
+tt2488496	movie	Star Wars: The Force Awakens	Star Wars: Episode VII - The Force Awakens	0	2015	\N	136	Action,Adventure,Fantasy
+tt2499076	movie	The Crash Reel	The Crash Reel	0	2013	\N	108	Biography,Documentary,Sport
+tt2516280	movie	Dream Team 1935	Sapnu komanda 1935	0	2012	\N	120	Comedy,Drama,History
+tt2518788	movie	1	1	0	2013	\N	112	Documentary,History,Sport
+tt2542406	movie	Vagabond	Paradesi	0	2013	\N	126	Drama,History
+tt2543472	movie	Wonder	Wonder	0	2017	\N	113	Drama,Family
+tt2545118	movie	Blackfish	Blackfish	0	2013	\N	83	Documentary,Drama
+tt2550858	movie	Antikaci	Antikaci	0	2015	\N	84	Drama,Thriller
+tt2564144	movie	Naduvula Konjam Pakkatha Kaanom	Naduvula Konjam Pakkatha Kaanom	0	2012	\N	155	Comedy,Drama
+tt2564706	movie	Television	Television	0	2012	\N	106	Drama
+tt2576852	movie	The Tale of the Princess Kaguya	Kaguyahime no monogatari	0	2013	\N	137	Adventure,Animation,Drama
+tt2582802	movie	Whiplash	Whiplash	0	2014	\N	106	Drama,Music
+tt2585562	movie	Pizza	Pizza	0	2012	\N	127	Horror,Thriller
+tt2592910	movie	CM101MMXI Fundamentals	CM101MMXI Fundamentals	0	2013	\N	139	Comedy,Documentary
+tt2593392	movie	Alive Inside	Alive Inside	0	2014	\N	78	Documentary,News
+tt2631186	movie	Baahubali: The Beginning	Bahubali: The Beginning	0	2015	\N	159	Action,Drama,Fantasy
+tt2640460	movie	Queen of the Mountains	Kurmanjan datka	0	2014	\N	135	Action,Biography,Drama
+tt2659414	movie	Miracle in Cell No. 7	7-beon-bang-ui seon-mul	0	2013	\N	127	Comedy,Drama
+tt2700330	movie	The Two Escobars	The Two Escobars	0	2010	\N	104	Biography,Documentary,Sport
+tt2758880	movie	Winter Sleep	Kis Uykusu	0	2014	\N	196	Drama
+tt2827320	movie	Fandry	Fandry	0	2013	\N	101	Drama,Family
+tt2865822	movie	All the World in a Design School	All the World in a Design School	0	2015	\N	59	Documentary,Drama,News
+tt2869878	movie	The Poodles: In the Flesh	The Poodles: In the Flesh	0	2010	\N	\N	Documentary
+tt2877108	movie	Soodhu Kavvum	Soodhu Kavvum	0	2013	\N	135	Comedy,Crime,Thriller
+tt2882328	movie	Ugly	Ugly	0	2013	\N	128	Crime,Drama,Mystery
+tt2905772	movie	Thou Gild'st the Even	Sen Aydinlatirsin Geceyi	0	2013	\N	107	Drama,Fantasy,Romance
+tt2924472	movie	Mumbai Police	Mumbai Police	0	2013	\N	145	Mystery,Thriller
+tt2926068	movie	Manam	Manam	0	2014	\N	163	Comedy,Drama,Fantasy
+tt2948356	movie	Zootopia	Zootopia	0	2016	\N	108	Adventure,Animation,Comedy
+tt2976176	movie	Lakshmi	Lakshmi	0	2014	\N	115	Drama
+tt2991224	movie	Tangerines	Mandariinid	0	2013	\N	87	Drama,War
+tt3006576	movie	Simple Agi Ondh Love Story	Simple Agi Ondh Love Story	0	2013	\N	130	Comedy,Romance
+tt3011894	movie	Wild Tales	Relatos salvajes	0	2014	\N	122	Comedy,Drama,Thriller
+tt3034728	movie	Left Right Left	Left Right Left	0	2013	\N	155	Crime,Drama
+tt3037582	movie	The Guide	Povodyr	0	2014	\N	122	Drama,History
+tt3039472	movie	Return to Return to Nuke 'Em High Aka Vol. 2	Return to Return to Nuke 'Em High Aka Vol. 2	0	2017	\N	85	Action,Adventure,Comedy
+tt3124456	movie	Memories	Memories	0	2013	\N	132	Mystery,Thriller
+tt3153634	movie	Wish	So-won	0	2013	\N	122	Drama
+tt3170832	movie	Room	Room	0	2015	\N	118	Drama,Thriller
+tt3185772	movie	The Wolf and the Lamb	Onaayum Aattukkuttiyum	0	2013	\N	141	Crime,Mystery,Thriller
+tt3203290	movie	Free to Play	Free to Play	0	2014	\N	75	Action,Documentary
+tt3268458	movie	The Internet's Own Boy: The Story of Aaron Swartz	The Internet's Own Boy: The Story of Aaron Swartz	0	2014	\N	105	Biography,Crime,Documentary
+tt3270538	movie	Requiem for the American Dream	Requiem for the American Dream	0	2015	\N	73	Biography,Documentary,News
+tt3274484	movie	Ekskursante	Ekskursante	0	2013	\N	110	Action,Drama
+tt3302820	movie	Cowspiracy: The Sustainability Secret	Cowspiracy: The Sustainability Secret	0	2014	\N	90	Documentary
+tt3311384	movie	The Class of 92	The Class of 92	0	2013	\N	99	Documentary,Sport
+tt3313066	movie	Coriolanus	National Theatre Live: Coriolanus	0	2014	\N	192	Drama,History,War
+tt3315342	movie	Logan	Logan	0	2017	\N	137	Action,Drama,Sci-Fi
+tt3320542	movie	Ugramm	Ugramm	0	2014	\N	132	Action,Drama,Thriller
+tt3322420	movie	Queen	Queen	0	2013	\N	146	Comedy,Drama
+tt3327994	movie	Human	Human	0	2015	\N	190	Documentary
+tt3341582	movie	Killa	Killa	0	2014	\N	78	Comedy,Drama
+tt3365690	movie	Jaatishwar	Jaatishwar	0	2014	\N	150	Biography,Drama,History
+tt3390572	movie	Haider	Haider	0	2014	\N	160	Action,Crime,Drama
+tt3394420	movie	As Seen by the Rest	Ulidavaru Kandanthe	0	2014	\N	154	Comedy,Crime,Drama
+tt3395608	movie	O21	O21	0	2014	\N	124	Action,Thriller
+tt3417422	movie	Drishyam	Drishyam	0	2013	\N	160	Crime,Drama,Thriller
+tt3445270	movie	The Battered Bastards of Baseball	The Battered Bastards of Baseball	0	2014	\N	80	Documentary,Sport
+tt3449292	movie	Manjhi: The Mountain Man	Manjhi: The Mountain Man	0	2015	\N	120	Adventure,Biography,Drama
+tt3455224	movie	Virunga	Virunga	0	2014	\N	100	Documentary,War
+tt3455822	movie	Night Will Fall	Night Will Fall	0	2014	\N	75	Documentary,History,War
+tt3461252	movie	The Blue Elephant	The Blue Elephant	0	2014	\N	170	Drama,Horror,Mystery
+tt3521134	movie	The Look of Silence	The Look of Silence	0	2014	\N	103	Biography,Documentary,History
+tt3526810	movie	Adolf Hitler: The Greatest Story Never Told	Adolf Hitler: The Greatest Story Never Told	0	2013	\N	350	Biography,Documentary,History
+tt3544112	movie	Sing Street	Sing Street	0	2016	\N	106	Comedy,Drama,Music
+tt3557258	movie	Caur Adatu	Caur Adatu	0	2014	\N	74	Biography,Documentary,Drama
+tt3560686	movie	The Fool	Durak	0	2014	\N	116	Crime,Drama,Thriller
+tt3569782	movie	Jigarthanda	Jigarthanda	0	2014	\N	171	Action,Crime,Drama
+tt3576728	movie	Bilal: A New Breed of Hero	Bilal: A New Breed of Hero	0	2015	\N	105	Action,Adventure,Animation
+tt3590482	movie	Bey Yaar	Bey Yaar	0	2014	\N	150	Comedy,Drama,Family
+tt3592030	movie	Mystery: Born to Rock	Mystery: Born to Rock	0	2014	\N	85	Musical
+tt3606756	movie	Incredibles 2	Incredibles 2	0	2018	\N	118	Action,Adventure,Animation
+tt3607198	movie	Punjab 1984	Punjab 1984	0	2014	\N	159	Drama,Family,History
+tt3612616	movie	Mommy	Mommy	0	2014	\N	139	Drama
+tt3614516	movie	Ankhon Dekhi	Ankhon Dekhi	0	2013	\N	107	Comedy,Drama
+tt3646462	movie	Let's Sin	Itirazim Var	0	2014	\N	110	Action,Crime,Drama
+tt3659388	movie	The Martian	The Martian	0	2015	\N	144	Adventure,Drama,Sci-Fi
+tt3668162	movie	Bangalore Days	Bangalore Days	0	2014	\N	171	Comedy,Drama,Romance
+tt3674140	movie	The Salt of the Earth	The Salt of the Earth	0	2014	\N	110	Biography,Documentary,History
+tt3686998	movie	The Red Pill	The Red Pill	0	2016	\N	108	Documentary
+tt3711164	movie	Sathuranga Vettai	Sathuranga Vettai	0	2014	\N	145	Crime,Thriller
+tt3722234	movie	Gosnell: The Trial of America's Biggest Serial Killer	Gosnell: The Trial of America's Biggest Serial Killer	0	2018	\N	93	Crime,Drama
+tt3741834	movie	Lion	Lion	0	2016	\N	118	Biography,Drama
+tt3783958	movie	La La Land	La La Land	0	2016	\N	128	Comedy,Drama,Music
+tt3784160	movie	Valley Uprising	Valley Uprising	0	2014	\N	103	Documentary
+tt3801314	movie	The Knife	Kaththi	0	2014	\N	166	Action,Drama
+tt3810932	movie	Drushyam	Drushyam	0	2014	\N	150	Drama,Family,Thriller
+tt3822388	movie	Madras	Madras	0	2014	\N	156	Action,Drama
+tt3848892	movie	Baby	Baby	0	2015	\N	159	Action,Thriller
+tt3863552	movie	Bajrangi Bhaijaan	Bajrangi Bhaijaan	0	2015	\N	163	Action,Comedy,Drama
+tt3917908	movie	An Insignificant Man	An Insignificant Man	0	2016	\N	96	Documentary,Thriller
+tt3970482	movie	Roger Waters: The Wall	Roger Waters: The Wall	0	2014	\N	132	Documentary,Music
+tt3973410	movie	Kaakkaa Muttai	Kaakkaa Muttai	0	2014	\N	91	Comedy,Drama
+tt3982254	movie	Mad_e in Bangladesh	Mad_e in Bangladesh	0	2007	\N	\N	Comedy,Drama
+tt4016934	movie	The Handmaiden	Ah-ga-ssi	0	2016	\N	144	Drama,Romance,Thriller
+tt4044364	movie	Citizenfour	Citizenfour	0	2014	\N	114	Biography,Documentary
+tt4058426	movie	India's Daughter	India's Daughter	0	2015	\N	63	Biography,Crime,Documentary
+tt4085696	movie	Billy Elliot	Billy Elliot the Musical Live	0	2014	\N	169	Comedy,Drama,Music
+tt4088588	movie	Rainbow	Dhanak	0	2015	\N	106	Drama
+tt4115752	movie	Chotushkone	Chotushkone	0	2014	\N	148	Thriller
+tt4130418	movie	Hip-Hop Evolution	Hip-Hop Evolution	0	2016	\N	90	Documentary,Music
+tt4131686	movie	I Want to Live	I Want to Live	0	2015	\N	106	Adventure,Biography,Documentary
+tt4145178	movie	Listen to Me Marlon	Listen to Me Marlon	0	2015	\N	103	Biography,Documentary
+tt4154756	movie	Avengers: Infinity War	Avengers: Infinity War	0	2018	\N	149	Action,Adventure,Fantasy
+tt4168188	movie	Chaar Sahibzaade	Chaar Sahibzaade	0	2014	\N	135	Animation,History
+tt4257858	movie	Going Clear: Scientology & the Prison of Belief	Going Clear: Scientology & the Prison of Belief	0	2015	\N	119	Documentary
+tt4295126	movie	Maikol Yordan Traveling Lost	Maikol Yordan de Viaje Perdido	0	2014	\N	101	Comedy
+tt4309356	movie	Ivy	Sarmasik	0	2015	\N	104	Drama,Fantasy,Thriller
+tt4387040	movie	Airlift	Airlift	0	2016	\N	130	Drama,History
+tt4393514	movie	Bitter Lake	Bitter Lake	0	2015	\N	136	Documentary
+tt4429128	movie	Papanasam	Papanasam	0	2015	\N	179	Drama,Thriller
+tt4430212	movie	Drishyam	Drishyam	0	2015	\N	163	Crime,Drama,Thriller
+tt4432480	movie	RangiTaranga	RangiTaranga	0	2015	\N	149	Adventure,Music,Mystery
+tt4449576	movie	Tomorrow	Demain	0	2015	\N	118	Documentary
+tt4476736	movie	Hamlet	National Theatre Live: Hamlet	0	2015	\N	217	Drama
+tt4519488	movie	Mudras Calling	Mudras Calling	0	2018	\N	95	Adventure,Drama,Romance
+tt4523112	movie	Selam: Bahara Yolculuk	Selam: Bahara Yolculuk	0	2015	\N	126	Biography,Drama,History
+tt4532404	movie	Marching to Zion	Marching to Zion	0	2015	\N	101	Documentary,History
+tt4618398	movie	Boruto: Naruto the Movie	Boruto: Naruto the Movie	0	2015	\N	95	Action,Adventure,Animation
+tt4632316	movie	Gleason	Gleason	0	2016	\N	110	Documentary
+tt4635372	movie	Masaan	Masaan	0	2015	\N	109	Drama
+tt4640206	movie	Sachin	Sachin	0	2017	\N	138	Biography,Documentary,Drama
+tt4658770	movie	Belaseshe	Belaseshe	0	2015	\N	141	Drama,Family
+tt4679210	movie	Premam	Premam	0	2015	\N	156	Comedy,Drama,Romance
+tt4741412	movie	Uriyadi	Uriyadi	0	2016	\N	90	Action,Thriller
+tt4806232	movie	Indru Netru Naalai	Indru Netru Naalai	0	2015	\N	146	Comedy,Romance,Sci-Fi
+tt4833824	movie	Uppi 2	Uppi 2	0	2015	\N	135	Action,Mystery,Thriller
+tt4846952	movie	Angrej	Angrej	0	2015	\N	130	Comedy,Romance
+tt4849438	movie	Baahubali 2: The Conclusion	Baahubali 2: The Conclusion	0	2017	\N	167	Action,Drama,Fantasy
+tt4851630	movie	Maheshinte Prathikaaram	Maheshinte Prathikaaram	0	2016	\N	120	Comedy,Drama,Thriller
+tt4857264	movie	The Invisible Guest	Contratiempo	0	2016	\N	106	Crime,Mystery,Thriller
+tt4881362	movie	Thithi	Thithi	0	2015	\N	123	Drama
+tt4888834	movie	Ennu Ninte Moideen	Ennu Ninte Moideen	0	2015	\N	166	Biography,Drama,Romance
+tt4899880	movie	Shah	Shah	0	2015	\N	109	Biography,Drama,Sport
+tt4908644	movie	Winter on Fire: Ukraine's Fight for Freedom	Winter on Fire: Ukraine's Fight for Freedom	0	2015	\N	102	Documentary
+tt4909506	movie	Godhi Banna Sadharana Mykattu	Godhi Banna Sadharana Mykattu	0	2016	\N	144	Drama,Family
+tt4912910	movie	Mission: Impossible - Fallout	Mission: Impossible - Fallout	0	2018	\N	147	Action,Adventure,Thriller
+tt4928620	movie	Pathemari	Pathemari	0	2015	\N	118	Drama
+tt4934950	movie	Talvar	Talvar	0	2015	\N	132	Crime,Drama,Mystery
+tt4943992	movie	Manto	Manto	0	2015	\N	127	Biography,Drama
+tt4973112	movie	Hitting the Apex	Hitting the Apex	0	2015	\N	138	Documentary
+tt4987556	movie	Thani Oruvan	Thani Oruvan	0	2015	\N	160	Action,Crime,Thriller
+tt4991384	movie	Interrogation	Visaaranai	0	2015	\N	117	Crime,Drama,Thriller
+tt5005684	movie	Nil Battey Sannata	Nil Battey Sannata	0	2015	\N	100	Drama,Family
+tt5016442	movie	Gujjubhai the Great	Gujjubhai the Great	0	2015	\N	145	Comedy
+tt5021536	movie	Kendasampige	Kendasampige	0	2015	\N	99	Romance,Thriller
+tt5027202	movie	Colombia magia salvaje	Colombia magia salvaje	0	2015	\N	94	Documentary
+tt5027774	movie	Three Billboards Outside Ebbing, Missouri	Three Billboards Outside Ebbing, Missouri	0	2017	\N	115	Comedy,Crime,Drama
+tt5039054	movie	Oopiri	Oopiri	0	2016	\N	158	Comedy,Drama
+tt5046534	movie	Felix Manalo	Felix Manalo	0	2015	\N	178	Biography
+tt5066616	movie	Crusty Demons 18: Twenty Years of Fear	Crusty Demons 18: Twenty Years of Fear	0	2015	\N	67	Documentary
+tt5069074	movie	A Billion Lives	A Billion Lives	0	2016	\N	95	Documentary,History,News
+tt5074352	movie	Dangal	Dangal	0	2016	\N	161	Action,Biography,Drama
+tt5078886	movie	Fanged Up	Fanged Up	0	2017	\N	88	Comedy,Horror
+tt5083738	movie	The Favourite	The Favourite	0	2018	\N	119	Biography,Drama
+tt5086104	movie	Chhello Divas	Chhello Divas	0	2015	\N	138	Comedy
+tt5104080	movie	Surga Yang Tak Dirindukan	Surga Yang Tak Dirindukan	0	2015	\N	125	Drama
+tt5104604	movie	Isle of Dogs	Isle of Dogs	0	2018	\N	101	Adventure,Animation,Comedy
+tt5116410	movie	Tower	Tower	0	2016	\N	82	Animation,Crime,Documentary
+tt5137380	movie	Kanche	Kanche	0	2015	\N	126	Action,Drama,History
+tt5161204	movie	Diary of a Fatman	Diary of a Fatman	0	2016	\N	\N	Comedy,Fantasy,Sci-Fi
+tt5190958	movie	Katyar Kaljat Ghusali	Katyar Kaljat Ghusali	0	2015	\N	162	Musical
+tt5271442	movie	Maalik	Maalik	0	2016	\N	155	Action,Crime,Drama
+tt5275892	movie	O.J.: Made in America	O.J.: Made in America	0	2016	\N	467	Biography,Crime,Documentary
+tt5311514	movie	Your Name.	Kimi no na wa.	0	2016	\N	106	Animation,Drama,Fantasy
+tt5311546	movie	Natsamrat	Natsamrat	0	2016	\N	166	Drama,Family
+tt5312232	movie	Wild	Sairat	0	2016	\N	174	Drama,Romance
+tt5323662	movie	The Shape of Voice	Koe no katachi	0	2016	\N	130	Animation,Drama,Romance
+tt5335314	movie	One Step Behind the Seraphim	One Step Behind the Seraphim	0	2017	\N	150	Drama
+tt5354160	movie	Aynabaji	Aynabaji	0	2016	\N	147	Crime,Mystery,Thriller
+tt5458088	movie	Kammatti Paadam	Kammatti Paadam	0	2016	\N	177	Action,Drama
+tt5460658	movie	Life+1Day	Abad va yek rooz	0	2016	\N	95	Drama
+tt5466576	movie	BoBoiBoy: The Movie	BoBoiBoy: The Movie	0	2016	\N	100	Action,Animation,Comedy
+tt5477194	movie	Iraivi	Iraivi	0	2016	\N	160	Crime,Drama
+tt5494396	movie	Tickling Giants	Tickling Giants	0	2016	\N	111	Documentary
+tt5504168	movie	Kshanam	Kshanam	0	2016	\N	110	Thriller
+tt5510934	movie	The Unnamed	Oggatonama	0	2016	\N	100	Drama
+tt5534436	movie	Dhaka Attack	Dhaka Attack	0	2017	\N	147	Action,Thriller
+tt5559528	movie	Maanagaram	Maanagaram	0	2017	\N	137	Action,Thriller
+tt5571734	movie	Pink	Pink	0	2016	\N	136	Drama
+tt5600714	movie	Red Color	Laal Rang	0	2016	\N	147	Action,Crime,Drama
+tt5611648	movie	Joker	Joker	0	2016	\N	130	Comedy,Drama
+tt5691226	movie	Pashupati Prasad	Pashupati Prasad	0	2016	\N	140	Drama,Romance
+tt5726616	movie	Call Me by Your Name	Call Me by Your Name	0	2017	\N	132	Drama,Romance
+tt5732482	movie	Hans Zimmer: Live in Prague	Hans Zimmer: Live in Prague	0	2017	\N	150	Documentary,Music
+tt5777628	movie	One More Time with Feeling	One More Time with Feeling	0	2016	\N	113	Documentary,Music
+tt5813916	movie	The Mountain II	Dag II	0	2016	\N	135	Drama,War
+tt5824826	movie	#Pellichoopulu	#Pellichoopulu	0	2016	\N	125	Comedy,Drama,Romance
+tt5836866	movie	The Work	The Work	0	2017	\N	89	Documentary
+tt5849148	movie	Appa	Appa	0	2016	\N	124	Drama
+tt5867800	movie	Aruvi	Aruvi	0	2016	\N	130	Drama
+tt5870084	movie	Beyond Brotherhood	Mas Que Hermanos	0	2017	\N	110	Drama
+tt5889462	movie	Guppy	Guppy	0	2016	\N	158	Comedy,Drama,Family
+tt5895028	movie	13th	13th	0	2016	\N	100	Crime,Documentary,History
+tt5906392	movie	The Mainour and the Witness	Thondimuthalum Dhriksakshiyum	0	2017	\N	135	Crime,Drama,Thriller
+tt5929776	movie	Before the Flood	Before the Flood	0	2016	\N	96	Documentary,News
+tt5959980	movie	Vada Chennai	Vada Chennai	0	2018	\N	164	Action,Crime
+tt5963218	movie	Aloko Udapadi	Aloko Udapadi	0	2017	\N	113	Drama,History
+tt6019206	movie	Kill Bill: The Whole Bloody Affair	Kill Bill: The Whole Bloody Affair	0	2011	\N	247	Action,Crime,Thriller
+tt6023118	movie	Word from a Gamer	Word from a Gamer	0	2018	\N	92	Documentary
+tt6027478	movie	Dhruva	Dhruva	0	2016	\N	165	Action,Thriller
+tt6054758	movie	Kirik Party	Kirik Party	0	2016	\N	159	Comedy,Drama
+tt6058226	movie	Ekvtime: Man of God	Ekvtime: Man of God	0	2018	\N	132	Biography,Drama,Romance
+tt6076366	movie	Aandavan Kattalai	Aandavan Kattalai	0	2016	\N	151	Drama
+tt6108090	movie	Secret Superstar	Secret Superstar	0	2017	\N	150	Drama,Music
+tt6148156	movie	Vikram Vedha	Vikram Vedha	0	2017	\N	147	Action,Crime,Thriller
+tt6155172	movie	Roma	Roma	0	2018	\N	135	Drama
+tt6156350	movie	HyperNormalisation	HyperNormalisation	0	2016	\N	166	Documentary
+tt6167894	movie	Angamaly Diaries	Angamaly Diaries	0	2017	\N	132	Action,Comedy,Thriller
+tt6212984	movie	Parava	Parava	0	2017	\N	147	Action,Comedy,Drama
+tt6223974	movie	The Farthest	The Farthest	0	2017	\N	121	Documentary,History
+tt6315524	movie	Take Off	Take Off	0	2017	\N	139	Action,Drama,Thriller
+tt6316138	movie	Ayla: The Daughter of War	Ayla: The Daughter of War	0	2017	\N	125	Drama,History,War
+tt6333054	movie	Chasing Coral	Chasing Coral	0	2017	\N	93	Documentary
+tt6346162	movie	Disney's Newsies the Broadway Musical	Disney's Newsies the Broadway Musical	0	2017	\N	149	Musical
+tt6413712	movie	Finding Fatimah	Finding Fatimah	0	2017	\N	99	Comedy,Romance
+tt6452574	movie	Sanju	Sanju	0	2018	\N	155	Biography,Drama
+tt6485666	movie	Mersal	Mersal	0	2017	\N	172	Action,Thriller
+tt6510332	movie	McQueen	McQueen	0	2018	\N	111	Biography,Documentary
+tt6520954	movie	Debi	Debi	0	2018	\N	107	Drama,Mystery
+tt6543652	movie	Cold War	Zimna wojna	0	2018	\N	88	Drama,Music,Romance
+tt6628102	movie	The Wild Pear Tree	Ahlat Agaci	0	2018	\N	188	Drama
+tt6679360	movie	On vam ne Dimon	On vam ne Dimon	0	2017	\N	50	Documentary
+tt6794424	movie	LA 92	LA 92	0	2017	\N	114	Documentary,History
+tt6980546	movie	Bharat Ane Nenu	Bharat Ane Nenu	0	2018	\N	173	Action,Drama
+tt7019842	movie	96	96	0	2018	\N	158	Romance
+tt7060460	movie	Braveman - Chapter One	Theeran Adhigaaram Ondru	0	2017	\N	157	Action,Crime,Thriller
+tt7180544	movie	The Brawler	Mukkabaaz	0	2017	\N	154	Action,Drama,Sport
+tt7218518	movie	Padman	Padman	0	2018	\N	140	Biography,Drama
+tt7252000	movie	Maktub	Maktub	0	2017	\N	100	Comedy,Drama
+tt7294534	movie	Arjun Reddy	Arjun Reddy	0	2017	\N	182	Action,Drama,Romance
+tt7320560	movie	Cuba and the Cameraman	Cuba and the Cameraman	0	2017	\N	113	Documentary
+tt7345930	movie	Abrahaminte Santhathikal	Abrahaminte Santhathikal	0	2018	\N	131	Action,Crime,Thriller
+tt7362036	movie	Dying to Survive	Wo bu shi yao shen	0	2018	\N	117	Comedy,Drama
+tt7391996	movie	C/o Kancharapalem	C/o Kancharapalem	0	2018	\N	152	Drama
+tt7392212	movie	Stage	Rangasthalam	0	2018	\N	170	Action,Drama
+tt7465992	movie	The Great Actress	Mahanati	0	2018	\N	177	Biography,Drama,History
+tt7581572	movie	Sudani from Nigeria	Sudani from Nigeria	0	2018	\N	123	Comedy,Sport
+tt7610196	movie	Do Women Have A Higher Sex Drive?	Do Women Have A Higher Sex Drive?	0	2018	\N	70	Documentary
+tt7642818	movie	Aile Arasinda	Aile Arasinda	0	2017	\N	124	Comedy
+tt7681902	movie	Won't You Be My Neighbor?	Won't You Be My Neighbor?	0	2018	\N	94	Biography,Documentary
+tt7689966	movie	Robin Williams: Come Inside My Mind	Robin Williams: Come Inside My Mind	0	2018	\N	116	Biography,Comedy,Documentary
+tt7691572	movie	Kiborgy	Cyborgs: Heroes Never Die	0	2017	\N	112	War
+tt7725596	movie	Badhaai Ho	Badhaai Ho	0	2018	\N	124	Comedy,Drama
+tt7745068	movie	My Hero Academia: The Movie	Boku no Hero Academia the Movie	0	2018	\N	96	Action,Animation,Comedy
+tt7748244	movie	Ölümlü Dünya	Ölümlü Dünya	0	2018	\N	107	Action,Comedy
+tt7762982	movie	Sajjan Singh Rangroot	Sajjan Singh Rangroot	0	2018	\N	140	Action,Biography,Drama
+tt7765910	movie	Aravindha Sametha Veera Raghava	Aravindha Sametha Veera Raghava	0	2018	\N	162	Action,Drama
+tt7797658	movie	Awe!	Awe!	0	2018	\N	150	Sci-Fi,Thriller
+tt7914416	movie	One Cut of the Dead	Kamera o tomeru na!	0	2017	\N	96	Comedy,Horror
+tt8043306	movie	Teefa in Trouble	Teefa in Trouble	0	2018	\N	155	Action,Comedy,Crime
+tt8075192	movie	Shoplifters	Manbiki kazoku	0	2018	\N	121	Crime,Drama
+tt8108198	movie	Andhadhun	Andhadhun	0	2018	\N	139	Comedy,Mystery,Thriller
+tt8108202	movie	Stree	Stree	0	2018	\N	128	Comedy,Horror
+tt8135494	movie	Active Measures	Active Measures	0	2018	\N	109	Documentary
+tt8176054	movie	Pariyerum Perumal	Pariyerum Perumal	0	2018	\N	154	Drama
+tt8239946	movie	Tumbbad	Tumbbad	0	2018	\N	104	Drama,Horror,Thriller
+tt8288836	movie	Red Forrest	Red Forrest	0	2018	\N	75	Horror
+tt8368032	movie	Miss Granny	Miss Granny	0	2018	\N	120	Comedy,Fantasy,Music
+tt8590896	movie	Geetha Govindam	Geetha Govindam	0	2018	\N	142	Drama,Romance
+tt9042284	movie	Ratsasan	Ratsasan	0	2018	\N	170	Thriller
+tt9063106	movie	Paskal: The Movie	Paskal: The Movie	0	2018	\N	115	Action,Drama

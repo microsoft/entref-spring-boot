@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Person /> renders correctly 1`] = `
+<div
+  className="page-container"
+>
+  <div
+    className="form-container"
+  >
+    <h1>
+      Search People
+    </h1>
+    <p
+      className="form-description"
+    >
+      Enter the ID for a person to get their information from the database. Leave the form empty for a random sample of people from the database.
+    </p>
+    <form
+      className="form"
+    >
+      <label>
+        <span
+          className="form-field-pre-text"
+        >
+          Person ID:
+        </span>
+        <input
+          className="form-field-input"
+          name="id"
+          onChange={[Function]}
+          placeholder="Person ID"
+          type="text"
+        />
+        <span
+          className="form-field-sub-text"
+        >
+          Leave empty for random sample
+        </span>
+      </label>
+      <input
+        className="form-field-submit"
+        onClick={[Function]}
+        type="submit"
+        value="Search"
+      />
+    </form>
+  </div>
+  <div
+    className="results-container"
+  >
+    <h2
+      className="results-title"
+    >
+      Results for PersonId: 
+    </h2>
+    <pre
+      className="results-view"
+    >
+      null
+    </pre>
+    <h4 />
+  </div>
+</div>
+`;

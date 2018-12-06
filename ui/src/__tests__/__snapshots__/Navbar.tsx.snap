@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar /> renders correctly 1`] = `
+<nav
+  className="nav-container"
+>
+  <span
+    className="nav-title"
+  >
+    Project Jackson
+  </span>
+  <div
+    className="nav-link-container"
+  >
+    <a
+      aria-current="page"
+      className="nav-link active"
+      href="/"
+      onClick={[Function]}
+    >
+      Home
+    </a>
+    <a
+      className="nav-link"
+      href="/people"
+      onClick={[Function]}
+    >
+      People
+    </a>
+    <a
+      className="nav-link"
+      href="/titles"
+      onClick={[Function]}
+    >
+      Titles
+    </a>
+    <button
+      className="login-button"
+      onClick={[Function]}
+    >
+      Log In
+    </button>
+  </div>
+</nav>
+`;

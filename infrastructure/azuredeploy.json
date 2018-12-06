@@ -1,0 +1,283 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "application_name": {
+      "type": "string"
+    },
+    "docker_registry_url": {
+      "type": "string"
+    },
+    "docker_registry_username": {
+      "type": "securestring"
+    },
+    "docker_registry_password": {
+      "type": "securestring"
+    }
+  },
+  "variables": {
+    "autoscale_settings_name": "[concat(parameters('application_name'), '-autoscale')]",
+    "components_insights_name": "[concat(parameters('application_name'), '-componentsinsights')]",
+    "database_accounts_name": "[concat(parameters('application_name'), '-databaseaccounts')]",
+    "sites_api_title_name": "[concat(parameters('application_name'), '-title')]",
+    "sites_api_person_name": "[concat(parameters('application_name'), '-person')]",
+    "serverfarms_appservice_plan_name": "[concat(parameters('application_name'), '-appserviceplan')]",
+    "traffic_manager_profiles_name": "[concat(parameters('application_name'), '-trafficManager')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "kind": "MongoDB",
+      "name": "[variables('database_accounts_name')]",
+      "apiVersion": "2015-04-08",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "defaultExperience": "MongoDB"
+      },
+      "scale": null,
+      "properties": {
+        "databaseAccountOfferType": "Standard",
+        "consistencyPolicy": {
+          "defaultConsistencyLevel": "Session",
+          "maxIntervalInSeconds": 5,
+          "maxStalenessPrefix": 100
+        },
+        "name": "[variables('database_accounts_name')]"
+      },
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.Insights/components",
+      "kind": "web",
+      "name": "[variables('components_insights_name')]",
+      "apiVersion": "2015-05-01",
+      "location": "South Central US",
+      "tags": {},
+      "scale": null,
+      "properties": {
+        "Application_Type": "java",
+        "Flow_Type": "Redfield",
+        "Request_Source": "IbizaAIExtension",
+        "HockeyAppId": null,
+        "SamplingPercentage": null
+      },
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "sku": {
+        "name": "S1",
+        "tier": "Basic",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
+      },
+      "kind": "linux",
+      "name": "[variables('serverfarms_appservice_plan_name')]",
+      "apiVersion": "2016-09-01",
+      "location": "[resourceGroup().location]",
+      "scale": null,
+      "properties": {
+        "name": "[variables('serverfarms_appservice_plan_name')]",
+        "workerTierName": null,
+        "adminSiteName": null,
+        "hostingEnvironmentProfile": null,
+        "perSiteScaling": false,
+        "reserved": true,
+        "targetWorkerCount": 0,
+        "targetWorkerSizeId": 0
+      },
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('sites_api_title_name')]",
+      "apiVersion": "2016-03-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "name": "[variables('sites_api_title_name')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
+      ],
+      "resources": [
+        {
+          "name": "appsettings",
+          "type": "config",
+          "apiVersion": "2016-03-01",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('sites_api_title_name'))]"
+          ],
+          "tags": {
+            "displayName": "appSettings"
+          },
+          "properties": {
+            "DB_CONNSTR": "[concat('mongodb://', variables('database_accounts_name'), ':', listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('database_accounts_name')), '2015-04-08').primaryMasterKey, '@', variables('database_accounts_name'), '.documents.azure.com:10250/?ssl=true&replicaSet=globaldb')]",
+            "DB_NAME": "IMDb",
+            "RESOURCE_GROUP": "[resourceGroup().name]",
+            "spring.profiles.active": "production",
+            "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
+            "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
+            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]",
+            "EXCLUDE_FILTER": "PersonRepository"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('sites_api_person_name')]",
+      "apiVersion": "2016-03-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "name": "[variables('sites_api_person_name')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
+      ],
+      "resources": [
+        {
+          "name": "appsettings",
+          "type": "config",
+          "apiVersion": "2016-03-01",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('sites_api_person_name'))]"
+          ],
+          "tags": {
+            "displayName": "appSettings"
+          },
+          "properties": {
+            "DB_CONNSTR": "[concat('mongodb://', variables('database_accounts_name'), ':', listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('database_accounts_name')), '2015-04-08').primaryMasterKey, '@', variables('database_accounts_name'), '.documents.azure.com:10250/?ssl=true&replicaSet=globaldb')]",
+            "DB_NAME": "IMDb",
+            "RESOURCE_GROUP": "[resourceGroup().name]",
+            "spring.profiles.active": "production",
+            "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
+            "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
+            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]",
+            "EXCLUDE_FILTER": "PersonRepository"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.Network/trafficManagerProfiles",
+      "name": "[variables('traffic_manager_profiles_name')]",
+      "apiVersion": "2017-05-01",
+      "location": "global",
+      "tags": {},
+      "scale": null,
+      "properties": {
+        "profileStatus": "Enabled",
+        "trafficRoutingMethod": "Geographic",
+        "dnsConfig": {
+          "relativeName": "[variables('traffic_manager_profiles_name')]",
+          "fqdn": "[concat(variables('traffic_manager_profiles_name'),'.trafficmanager.net')]",
+          "ttl": 60
+        },
+        "monitorConfig": {
+          "protocol": "HTTP",
+          "port": 80,
+          "path": "/",
+          "intervalInSeconds": 30,
+          "toleratedNumberOfFailures": 3,
+          "timeoutInSeconds": 10
+        },
+        "endpoints": [
+          {
+            "name": "[concat(variables('traffic_manager_profiles_name'),'-endpoint-west')]",
+            "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
+            "properties": {
+              "endpointStatus": "Enabled",
+              "targetResourceId": "[resourceId('Microsoft.Web/sites', variables('sites_api_title_name'))]",
+              "target": "[concat(variables('sites_api_title_name'),'.azurewebsites.net')]",
+              "weight": 1,
+              "priority": 1,
+              "endpointLocation": "westus",
+              "geoMapping": [
+                "US-WA"
+              ]
+            }
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('sites_api_title_name'))]"
+      ]
+    },
+    {
+      "comments": "Autoscale Settings",
+      "type": "microsoft.insights/autoscalesettings",
+      "name": "[variables('autoscale_settings_name')]",
+      "apiVersion": "2014-04-01",
+      "location": "[resourceGroup().location]",
+      "tags": {},
+      "scale": null,
+      "properties": {
+        "profiles": [
+          {
+            "name": "Auto created scale condition",
+            "capacity": {
+              "minimum": "1",
+              "maximum": "5",
+              "default": "1"
+            },
+            "rules": [
+              {
+                "metricTrigger": {
+                  "metricName": "CpuPercentage",
+                  "metricNamespace": "",
+                  "metricResourceUri": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]",
+                  "timeGrain": "PT1M",
+                  "statistic": "Average",
+                  "timeWindow": "PT10M",
+                  "timeAggregation": "Average",
+                  "operator": "GreaterThan",
+                  "threshold": 70
+                },
+                "scaleAction": {
+                  "direction": "Increase",
+                  "type": "ChangeCount",
+                  "value": "1",
+                  "cooldown": "PT5M"
+                }
+              },
+              {
+                "metricTrigger": {
+                  "metricName": "MemoryPercentage",
+                  "metricNamespace": "",
+                  "metricResourceUri": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]",
+                  "timeGrain": "PT1M",
+                  "statistic": "Average",
+                  "timeWindow": "PT10M",
+                  "timeAggregation": "Average",
+                  "operator": "GreaterThan",
+                  "threshold": 70
+                },
+                "scaleAction": {
+                  "direction": "Increase",
+                  "type": "ChangeCount",
+                  "value": "1",
+                  "cooldown": "PT5M"
+                }
+              }
+            ]
+          }
+        ],
+        "enabled": true,
+        "name": "[variables('autoscale_settings_name')]",
+        "targetResourceUri": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
+      ]
+    }
+  ],
+  "outputs": {
+    "connectionString": {
+      "value": "[concat('mongodb://', variables('database_accounts_name'), ':', listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('database_accounts_name')), '2015-04-08').primaryMasterKey, '@', variables('database_accounts_name'), '.documents.azure.com:10250/?ssl=true&replicaSet=globaldb')]",
+      "type": "string"
+    }
+  }
+}
