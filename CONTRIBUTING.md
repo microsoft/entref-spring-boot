@@ -10,18 +10,21 @@ Have you identified a reproducible problem in this project? Open an issue and ma
 - Software Versions (whichever software is relevant to your issue i.e. Java, Node.js, etc.)
 - Clear description of issue
 - Detailed steps how to reproduce the issue
-- Solutions you tried to fix it and/or relevant links to potential solutions
+- Attempted solutions you have tried and/or relevant links to potential solutions
 - Do you plan on fixing this yourself or not?
 
 Do you have a feature request? Include the following information in your issue:
-- Detailed desription of feature
-- What value will this bring to this project
-- Are you going to add this feature or not?
+- Detailed description of feature
+- What value will this bring to this project?
+- Whether you plan on adding this feature yourself or not
 
 ## Opening a PR
-Before we can accept a pull request from you, you'll need to sign a Contributor License Agreement (CLA). It is an automated process and you only need to do it once.
+Before we can accept a pull request from you, you'll need to sign a Contributor License Agreement (CLA). It is an automated process and you will only need to sign the agreement once.
 
-To enable us to quickly review and accept your pull requests, always create one pull request per issue and link the issue in the pull request. Never merge multiple requests in one unless they have the same root cause. Avoid pure formatting changes to code that has not been modified otherwise. Pull requests should contain tests whenever possible.
+- In order to quickly review and accept your pull requests: create one pull request per issue and link the issue in the pull request.
+- Never merge multiple requests in one unless they have the same root cause.
+- Avoid pure formatting changes to code that have not been modified otherwise.
+- Pull requests should contain tests whenever possible.
 
 --
 This document is based off of the [`CONTRIBUTING.md`](https://github.com/Microsoft/vscode/blob/master/CONTRIBUTING.md) file in the [vscode](https://github.com/Microsoft/vscode) project.
