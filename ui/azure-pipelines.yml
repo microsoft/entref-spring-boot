@@ -16,6 +16,7 @@ steps:
     failOnStandardError: 'true'
   displayName: 'Install Node.js'
 - script: |
+    cd ui/
     npm install
   displayName: 'NPM Install Step'
 - script: |
