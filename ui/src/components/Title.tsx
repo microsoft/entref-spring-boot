@@ -59,8 +59,7 @@ export class Title extends React.Component<ITitleProps, ITitleState> {
 
     // set up endpoint
     const id = this.state.titleId && this.state.titleId.replace(/\s+/g, '')
-    const base = 'https://jackson-title.azurewebsites.net/titles/'
-    // const base = 'http://localhost:8080/titles/'
+    const base = WEBPACK_PROP_TITLE_BASE_URL
     const endpoint = id ? base + id : base
 
     // set up request header with Bearer token
