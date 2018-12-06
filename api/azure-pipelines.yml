@@ -19,11 +19,11 @@ steps:
     echo Starting the build
     mvn test
     mvn package
-  workingDirectory: ui/
+  workingDirectory: api/
   displayName: 'Maven test and build'
 - script: |
     docker build -t $ACR_SERVER/$ACR_CONTAINER_TAG .
-  workingDirectory: ui/
+  workingDirectory: api/
   displayName: 'Docker Build'
 - script: |
     docker login $(ACR_SERVER) -u $(ACR_USERNAME) -p $(ACR_PASSWORD)
