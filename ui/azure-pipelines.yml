@@ -1,0 +1,38 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - ui/*
+    
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.13.0'
+    failOnStandardError: 'true'
+  displayName: 'Install Node.js'
+- script: |
+    npm install
+  displayName: 'NPM Install Step'
+- script: |
+    npm run lint
+  displayName: 'NPM Lint Step'
+- script: |
+    npm run test
+  displayName: 'NPM Test Step'
+- script: |
+    npm run build
+  displayName: 'NPM Build Step'
+- script: |
+    docker build -t $ACR_SERVER/$ACR_CONTAINER_TAG .
+  displayName: 'Docker Build'
+- script: |
+    docker login $(ACR_SERVER) -u $(ACR_USERNAME) -p $(ACR_PASSWORD)
+  displayName: 'Docker Login'
+- script: |
+    docker push $ACR_SERVER/$ACR_CONTAINER_TAG
+  displayName: 'Docker Push'

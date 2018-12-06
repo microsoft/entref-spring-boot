@@ -1,0 +1,63 @@
+[
+  {
+    "tconst" : "tt0000843",
+    "ordering" : 6,
+    "nconst" : "nm0878494",
+    "category" : "writer",
+    "job" : "story",
+    "characters" : ""
+  },
+  {
+    "tconst" : "tt0000854",
+    "ordering" : 5,
+    "nconst" : "nm0000428",
+    "category" : "director",
+    "job" : "",
+    "characters" : ""
+  },
+  {
+    "tconst" : "tt0000442",
+    "ordering" : 1,
+    "nconst" : "nm0622273",
+    "category" : "actress",
+    "job" : "",
+    "characters" : "[\"Barnemordersken\"]"
+  },
+  {
+    "tconst" : "tt0001008",
+    "ordering" : 1,
+    "nconst" : "nm0819384",
+    "category" : "actress",
+    "job" : "",
+    "characters" : "[\"The Prince\",\"Tom Canty\"]"
+  },
+  {
+    "tconst" : "tt0000698",
+    "ordering" : 3,
+    "nconst" : "nm0000428",
+    "category" : "actor",
+    "job" : "",
+    "characters" : "[\"Footman\"]"
+  },
+  {
+    "tconst" : "tt0092377",
+    "ordering" : 4,
+    "nconst" : "nm0000496",
+    "category" : "actress",
+    "characters" : "[\"Kate Farrell\"]"
+  },
+  {
+    "tconst" : "tt0000698",
+    "ordering" : 1,
+    "nconst" : "nm0492757",
+    "category" : "actress",
+    "characters" : "[\"O'Yama\"]"
+  },
+  {
+    "tconst" : "tt0000698",
+    "ordering" : 6,
+    "nconst" : "nm0555522",
+    "category" : "cinematographer",
+    "characters" : ""
+  }
+]

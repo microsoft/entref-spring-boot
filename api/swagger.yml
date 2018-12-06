@@ -1,0 +1,478 @@
+swagger: "2.0"
+info:
+  description: "The ProjectJackson API. Azure-based services."
+  version: "1.0.0"
+  title: "Project Jackson API"
+schemes:
+- "https"
+paths:
+  /people:
+    post:
+      tags:
+      - people
+      - active
+      summary: "Creates a person"
+      description: "Returns information and ID of new person"
+      produces:
+      - "application/json"
+      parameters:
+        - in: body
+          name: person
+          required: true
+          schema:
+            $ref: "#/definitions/Person"
+      responses:
+        201:
+          description: Successful person creation
+        400:
+          description: Incorrect/incomplete person supplied
+        401:
+          description: Unauthorized
+    get:
+      tags:
+      - people
+      - active
+      summary: "An endpoint that returns some people objects"
+      description: "Returns a small number of people entries"
+      responses:
+        200:
+          description: Successful person creation
+          schema:
+            $ref: "#/definitions/Person"
+        401:
+          description: Unauthorized
+  "/people/{nconst}":
+    get:
+      tags:
+      - people
+      - active
+      summary: "Gets the person associated with ID"
+      description: "Returns information about person"
+      produces:
+      - "application/json"
+      parameters:
+      - in: path
+        name: nconst
+        description: "ID (nconst) of the person"
+        required: true
+        type: string
+      responses:
+        200:
+          description: Successful get of person
+          schema:
+            $ref: "#/definitions/Person"
+        401:
+          description: Unauthorized
+        404:
+          description: Person not found
+    put:
+      tags:
+      - people
+      - active
+      summary: "Updates a person for a given ID"
+      description: "Returns information about updated person"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: path
+        name: nconst
+        description: "ID (nconst) of the person"
+        required: true
+        type: string
+      - in: body
+        name: person
+        required: true
+        schema:
+          $ref: "#/definitions/Person"
+      responses:
+        200:
+          description: Successful update
+          schema:
+            $ref: "#/definitions/Person"
+        401:
+          description: Unauthorized
+        404:
+          description: Person not found
+    delete:
+      tags:
+      - people
+      - active
+      summary: "Deletes a person"
+      description: "Returns success/failure of deletion"
+      produces:
+      - "application/json"
+      parameters:
+      - in: path
+        name: nconst
+        description: "ID (nconst) of the person"
+        required: true
+        type: string
+      responses:
+        200:
+          description: Successful deletion
+        401:
+          description: Unauthorized
+        404:
+          description: Person not found
+  "/people/{nconst}/titles":
+    get:
+      tags:
+      - people
+      - active
+      summary: "Gets the titles associated with the person associated with specified ID"
+      description: "Returns array of titles"
+      produces:
+      - "application/json"
+      parameters:
+      - in: path
+        name: nconst
+        description: "ID (nconst) of the person"
+        required: true
+        type: string
+      responses:
+        200:
+          description: Successful return of titles
+          schema:
+            $ref: "#/definitions/Title"
+        401:
+          description: Unauthorized
+        404:
+          description: No valid ID Supplied
+  "/people/search":
+    get:
+      tags:
+      - people
+      - upcoming feature
+      summary: "Search people by specified terms"
+      description: "Returns collection of titles, where 'Type' may be like Role/Name/etc and 'Value' is the filtering search criterion"
+      produces:
+      - "application/json"
+      parameters:
+      - in: query
+        name: filterType
+        description: "Filtering type, eg Role, Name, etc."
+        required: true
+        type: string
+      - in: query
+        name: filterValue
+        description: "Filtering value"
+        required: true
+        type: string
+      responses:
+        200:
+          description: Successful return of people
+          schema:
+            $ref: "#/definitions/Person"
+        401:
+          description: Unauthorized
+        404:
+          description: No people found with matching criteria
+  /titles:
+    post:
+      tags:
+      - titles
+      - active
+      summary: "Creates a title"
+      description: "Returns information and ID of new title"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: body
+        name: title
+        description: "the details for a title"
+        required: true
+        schema:
+          $ref: "#/definitions/Title" 
+      responses:
+        201:
+          description: Successful title creation
+        401:
+          description: Unauthorized
+    get:
+      tags:
+      - titles
+      - active
+      summary: "An endpoint that returns some title objects"
+      description: "Returns a small number of title entries"
+      responses:
+        200:
+          description: Successful return of some titles
+          schema:
+            $ref: "#/definitions/Title"
+        401:
+          description: Unauthorized
+  "/titles/{tconst}":
+    get:
+      tags:
+      - titles
+      - active
+      summary: "Gets the title of a piece given an ID"
+      description: "Returns information about title"
+      produces:
+      - "application/json"
+      parameters:
+      - in: path
+        name: tconst
+        description: "tconst of title to return"
+        required: true
+        type: string
+      responses:
+        200:
+          description: Successful get
+          schema:
+            $ref: "#/definitions/Title"
+        401:
+          description: Unauthorized
+        404:
+          description: Title not found
+    put:
+      tags:
+      - titles
+      - active
+      summary: "Updates the title of a piece given an ID"
+      description: "Returns information about title"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: path
+        name: tconst
+        description: "tconst of title to update and return"
+        required: true
+        type: string
+      responses:
+        201:
+          description: Successful update of Title
+          schema:
+            $ref: "#/definitions/Title"
+        401:
+          description: Unauthorized
+        404:
+          description: Title not found
+    delete:
+      tags:
+      - titles
+      - active
+      summary: "Deletes the piece of media given an ID"
+      description: "Returns success/failure message"
+      produces:
+      - "application/json"
+      parameters:
+      - in: path
+        name: tconst
+        description: "ID of title to delete"
+        required: true
+        type: string
+      responses:
+        200:
+          description: Successful deletion
+        401:
+          description: Unauthorized
+        404:
+          description: Title not found
+  "/titles/{tconst}/people":
+    get:
+      tags:
+      - titles
+      - active
+      - principalwithname
+      summary: "Gets the people popularly associated with the given title"
+      description: "Returns list of PrincipalWithName objects"
+      produces:
+      - "application/json"
+      parameters:
+      - in: path
+        name: tconst
+        description: "tconst of title to get"
+        required: true
+        type: string
+      responses:
+        200:
+          description: Successful get
+          schema:
+            $ref: "#/definitions/PrincipalWithName"
+        401:
+          description: Unauthorized
+        404:
+          description: Title not supplied/found
+  "/titles/{tconst}/cast":
+    get:
+      tags:
+      - titles
+      - active
+      - principalwithname
+      summary: "Gets the actors associated with the given title"
+      description: "Returns list of PrincipalWithName objects whose role is actor"
+      produces:
+      - "application/json"
+      parameters:
+      - in: path
+        name: tconst
+        description: "tconst of title to get"
+        required: true
+        type: string
+      responses:
+        200:
+          description: Successful get
+          schema:
+            $ref: "#/definitions/PrincipalWithName"
+        401:
+          description: Unauthorized
+        404:
+          description: Title not supplied/found
+  "/titles/{tconst}/crew":
+    get:
+      tags:
+      - titles
+      - active
+      - principalwithname
+      summary: "Gets the crew members associated with the given title"
+      description: "Returns list of PrincipalWithName objects whose roles are not actor"
+      produces:
+      - "application/json"
+      parameters:
+      - in: path
+        name: tconst
+        description: "tconst of title to get"
+        required: true
+        type: string
+      responses:
+        200:
+          description: Successful get
+          schema:
+            $ref: "#/definitions/PrincipalWithName"
+        401:
+          description: Unauthorized
+        404:
+          description: Title not supplied/found
+  "/titles/search":
+    get:
+      tags:
+      - titles
+      - upcoming feature
+      summary: "Search titles by specified terms"
+      description: "Returns collection of titles based on search criteria"
+      produces:
+      - "application/json"
+      parameters:
+      - in: query
+        name: filterType
+        description: "Filtering type"
+        required: true
+        type: string
+      - in: query
+        name: filterValue
+        description: "Filtering value"
+        required: true
+        type: string
+      responses:
+        200:
+          description: Successful return of titles
+          schema:
+            $ref: "#/definitions/Title"
+        401:
+          description: Unauthorized
+        404:
+          description: No people found with matching criteria
+  /search:
+    get:
+      tags:
+      - upcoming feature
+      summary: "Upcoming Feature: Performs an aggregate search"
+      description: "Upcoming Feature: Any title or person who has a field that matches the search term(s)"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: Successful get
+        401:
+          description: Unauthorized
+definitions:
+  Title:
+    properties:
+      tconst:
+        description: "A string of a sequential number prepended with 'tt'"
+        type: string
+      titleType:
+        description: "A string describing the type of content, eg. tvSeries, movie, tvMiniSeries"
+        type: string
+      primaryTitle:
+        description: "A string of the title of the piece of media"
+        type: string
+      originalTitle:
+        description: "A string of the original title of the piece of media, typically distinct from primaryTitle if film name is originally in a foreign language"
+        type: string
+      isAdult:
+        description: "An integer representation of a boolean (0 or 1) whether the content is adult, ie. typically of pornographic nature"
+        type: integer
+        format: int32
+      startYear:
+        description: "An integer of the year; for non-serialized content it's the release year"
+        type: integer
+        format: int32
+      endYear:
+        description: "An integer of the year; for serialized content it's the year media completes"
+        type: integer
+        format: int32
+      runtimeMinutes:
+        description: "An integer of the number of minutes long the content lasts"
+        type: integer
+        format: int32
+      genres:
+        description: "A array of strings for genres associated with the piece"
+        type: array
+        items:
+          type: string
+  Person:
+    properties:
+      nconst:
+        description: "A string of a sequential number prepended with 'nm'"
+        type: string
+      primaryName:
+        description: "A string representing a person's name"
+        type: string
+      birthYear:
+        description: "An integer representing the person's birth year"
+        type: integer
+        format: int32
+      deathYear:
+        description: "An integer representing the person's year of death"
+        type: integer
+        format: int32
+      primaryProfession:
+        description: "A string of a comma-separated list of professions"
+        type: string
+      knownForTitles:
+        description: "An array of strings of tconsts (from the titles)"
+        type: array
+        items:
+          type: string
+  PrincipalWithName:
+    properties:
+      tconst:
+        description: "A string representing a title's IMDb ID, one half of the title-person join"
+        type: string
+      ordering:
+        description: "An integer representing the billing order when searching on IMDb for the piece of media"
+        type: integer
+        format: int32
+      person:
+        description: "An LinkedHashMap object that maps to the fields found in an a Person object"
+        type: object
+      category:
+        description: "A string that contains what kind of role a Person has in a piece of media"
+        type: integer
+        format: int32
+      job:
+        description: "A string that has a person's job in the piece of media"
+        type: string
+      characters:
+        description: "An array of strings that optionally contain what characters a Person plays in the piece of media"
+        type: array
+        items:
+          type: string
