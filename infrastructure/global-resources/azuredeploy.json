@@ -3,13 +3,20 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "database_account_name": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "cosmos-instance"
         },
         "database-name": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "cosmos-data"
         },
         "container_registry_name": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "acr-images"
+        },
+        "traffic_manager_profiles_name": {
+            "type": "string",
+            "defaultValue": "tm-profiles"
         }
     },
     "resources": [
@@ -59,6 +66,33 @@
                 "adminUserEnabled": true
             },
             "dependsOn": []
-        }
+        },
+        {
+            "type": "Microsoft.Network/trafficManagerProfiles",
+            "name": "[parameters('traffic_manager_profiles_name')]",
+            "apiVersion": "2017-05-01",
+            "location": "global",
+            "tags": {},
+            "scale": null,
+            "properties": {
+              "profileStatus": "Enabled",
+              "trafficRoutingMethod": "Geographic",
+              "dnsConfig": {
+                "relativeName": "[parameters('traffic_manager_profiles_name')]",
+                "fqdn": "[concat(parameters('traffic_manager_profiles_name'),'.trafficmanager.net')]",
+                "ttl": 60
+              },
+              "monitorConfig": {
+                "protocol": "HTTP",
+                "port": 80,
+                "path": "/",
+                "intervalInSeconds": 30,
+                "toleratedNumberOfFailures": 3,
+                "timeoutInSeconds": 10
+              },
+              "endpoints": []
+            },
+            "dependsOn": []
+          }
     ]
 }
