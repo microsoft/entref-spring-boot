@@ -2,10 +2,13 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "resource-name": {
+        "database_account_name": {
             "type": "string"
         },
         "database-name": {
+            "type": "string"
+        },
+        "container_registry_name": {
             "type": "string"
         }
     },
@@ -13,9 +16,9 @@
         {
             "type": "Microsoft.DocumentDB/databaseAccounts",
             "kind": "MongoDB",
-            "name": "[parameters('resource-name')]",
+            "name": "[parameters('database_account_name')]",
             "apiVersion": "2015-04-08",
-            "location": "West US",
+            "location": "[resourceGroup().location]",
             "tags": {
                 "defaultExperience": "MongoDB"
             },
@@ -28,6 +31,22 @@
                     "maxStalenessPrefix": 100
                 },
                 "name": "[parameters('database-name')]"
+            },
+            "dependsOn": []
+        },
+        {
+            "type": "Microsoft.ContainerRegistry/registries",
+            "sku": {
+                "name": "Basic",
+                "tier": "Basic"
+            },
+            "name": "[parameters('container_registry_name')]",
+            "apiVersion": "2017-10-01",
+            "location": "[resourceGroup().location]",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "adminUserEnabled": true
             },
             "dependsOn": []
         }

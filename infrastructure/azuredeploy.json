@@ -13,39 +13,20 @@
     },
     "docker_registry_password": {
       "type": "securestring"
+    },
+    "database_connection_string": {
+      "type": "securestring"
     }
   },
   "variables": {
     "autoscale_settings_name": "[concat(parameters('application_name'), '-autoscale')]",
     "components_insights_name": "[concat(parameters('application_name'), '-componentsinsights')]",
-    "database_accounts_name": "[concat(parameters('application_name'), '-databaseaccounts')]",
     "sites_api_title_name": "[concat(parameters('application_name'), '-title')]",
     "sites_api_person_name": "[concat(parameters('application_name'), '-person')]",
-    "serverfarms_appservice_plan_name": "[concat(parameters('application_name'), '-appserviceplan')]",
+    "serverfarms_appservice_plan_name": "[concat(parameters('application_name'), '-', resourceGroup().location, '-appserviceplan')]",
     "traffic_manager_profiles_name": "[concat(parameters('application_name'), '-trafficManager')]"
   },
   "resources": [
-    {
-      "type": "Microsoft.DocumentDB/databaseAccounts",
-      "kind": "MongoDB",
-      "name": "[variables('database_accounts_name')]",
-      "apiVersion": "2015-04-08",
-      "location": "[resourceGroup().location]",
-      "tags": {
-        "defaultExperience": "MongoDB"
-      },
-      "scale": null,
-      "properties": {
-        "databaseAccountOfferType": "Standard",
-        "consistencyPolicy": {
-          "defaultConsistencyLevel": "Session",
-          "maxIntervalInSeconds": 5,
-          "maxStalenessPrefix": 100
-        },
-        "name": "[variables('database_accounts_name')]"
-      },
-      "dependsOn": []
-    },
     {
       "type": "Microsoft.Insights/components",
       "kind": "web",
@@ -113,7 +94,7 @@
             "displayName": "appSettings"
           },
           "properties": {
-            "DB_CONNSTR": "[concat('mongodb://', variables('database_accounts_name'), ':', listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('database_accounts_name')), '2015-04-08').primaryMasterKey, '@', variables('database_accounts_name'), '.documents.azure.com:10250/?ssl=true&replicaSet=globaldb')]",
+            "DB_CONNSTR": "[parameters('database_connection_string')]",
             "DB_NAME": "IMDb",
             "RESOURCE_GROUP": "[resourceGroup().name]",
             "spring.profiles.active": "production",
@@ -149,14 +130,15 @@
             "displayName": "appSettings"
           },
           "properties": {
-            "DB_CONNSTR": "[concat('mongodb://', variables('database_accounts_name'), ':', listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('database_accounts_name')), '2015-04-08').primaryMasterKey, '@', variables('database_accounts_name'), '.documents.azure.com:10250/?ssl=true&replicaSet=globaldb')]",
+            "TEST": "foo",
+            "DB_CONNSTR": "[parameters('database_connection_string')]",
             "DB_NAME": "IMDb",
             "RESOURCE_GROUP": "[resourceGroup().name]",
             "spring.profiles.active": "production",
             "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
             "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
             "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]",
-            "EXCLUDE_FILTER": "PersonRepository"
+            "EXCLUDE_FILTER": "TitleRepository"
           }
         }
       ]
@@ -275,9 +257,5 @@
     }
   ],
   "outputs": {
-    "connectionString": {
-      "value": "[concat('mongodb://', variables('database_accounts_name'), ':', listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('database_accounts_name')), '2015-04-08').primaryMasterKey, '@', variables('database_accounts_name'), '.documents.azure.com:10250/?ssl=true&replicaSet=globaldb')]",
-      "type": "string"
-    }
   }
 }
