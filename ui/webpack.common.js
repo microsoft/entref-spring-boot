@@ -26,7 +26,8 @@ module.exports = {
     }),
     // DefinePlugin will inject this env variable anywhere in the code base it ref the attr name
     new webpack.DefinePlugin({
-      WEBPACK_PROP_AAD_CLIENT_ID: `"${process.env.WEBPACK_PROP_AAD_CLIENT_ID}"`
+      WEBPACK_PROP_AAD_CLIENT_ID: `"${process.env.WEBPACK_PROP_AAD_CLIENT_ID}"`,
+      WEBPACK_PROP_API_BASE_URL: `"${process.env.WEBPACK_PROP_API_BASE_URL}"`
     })
   ],
 }

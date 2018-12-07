@@ -7,8 +7,9 @@
 ## Deploy
 
 In order to deploy this app, in development or production, you must define the AAD Client ID as an environment variable. It will be injected during build time with Webpack. The environment variable that needs to be set is called `WEBPACK_PROP_AAD_CLIENT_ID` and is provided by your AAD App settings available on the AAD Azure Portal.
+You also must define the domain for the '/people' and '/titles' API endpoints as an environment variable, which will also be injected during build time with Webpack. The environment variable that must be set for the people and titles endpoints is `WEBPACK_PROP_API_BASE_URL`.
 
-In development, you should need to set the env variable on process and then run `npm run dev` as usual. For example, on a UNIX Bash shell you can run `WEBPACK_PROP_AAD_CLIENT_ID=<insert-id-here> npm run dev`.
+In development, you should need to set the env variables on process and then run `npm run dev` as usual. For example, on a UNIX Bash shell you can run `WEBPACK_PROP_AAD_CLIENT_ID=<insert-id-here> npm run dev`.
 
 In production, make sure to set this in the build pipeline such as in Azure Dev Ops.
 
