@@ -1,6 +1,8 @@
 ---
-title: 'Bug Report'
+name: 'Bug Report'
+about: Create a report to help us improve
 labels: bug
+
 ---
 
 ### Have you identified a reproducible problem in this project? 
