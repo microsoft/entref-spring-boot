@@ -23,6 +23,7 @@
     "components_insights_name": "[concat(parameters('application_name'), '-componentsinsights')]",
     "sites_api_title_name": "[concat(parameters('application_name'), '-title')]",
     "sites_api_person_name": "[concat(parameters('application_name'), '-person')]",
+    "sites_ui_client_name": "[concat(parameters('application_name'), '-client')]",
     "serverfarms_appservice_plan_name": "[concat(parameters('application_name'), '-', resourceGroup().location, '-appserviceplan')]",
     "traffic_manager_profiles_name": "[concat(parameters('application_name'), '-trafficManager')]"
   },
@@ -139,6 +140,38 @@
             "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
             "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]",
             "EXCLUDE_FILTER": "TitleRepository"
+          }
+        }
+      ]
+    },    
+    {
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('sites_ui_client_name')]",
+      "apiVersion": "2016-03-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "name": "[variables('sites_ui_client_name')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
+      ],
+      "resources": [
+        {
+          "name": "appsettings",
+          "type": "config",
+          "apiVersion": "2016-03-01",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('sites_ui_client_name'))]"
+          ],
+          "tags": {
+            "displayName": "appSettings"
+          },
+          "properties": {
+            "RESOURCE_GROUP": "[resourceGroup().name]",
+            "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
+            "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
+            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]"
           }
         }
       ]
