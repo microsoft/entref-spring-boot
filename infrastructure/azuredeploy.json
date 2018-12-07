@@ -3,50 +3,37 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "application_name": {
-      "type": "string"
+      "type": "string",
+      "defaultValue": "asc-app"
     },
     "docker_registry_url": {
-      "type": "string"
+      "type": "string",
+      "defaultValue": "https://azure.com"
     },
     "docker_registry_username": {
-      "type": "securestring"
+      "type": "securestring",
+      "defaultValue": "username"
     },
     "docker_registry_password": {
-      "type": "securestring"
+      "type": "securestring",
+      "defaultValue": "password"
+    },
+    "database_connection_string": {
+      "type": "securestring",
+      "defaultValue": "mongodb://localhost"
     }
   },
   "variables": {
-    "autoscale_settings_name": "[concat(parameters('application_name'), '-autoscale')]",
-    "components_insights_name": "[concat(parameters('application_name'), '-componentsinsights')]",
-    "database_accounts_name": "[concat(parameters('application_name'), '-databaseaccounts')]",
-    "sites_api_title_name": "[concat(parameters('application_name'), '-title')]",
-    "sites_api_person_name": "[concat(parameters('application_name'), '-person')]",
-    "serverfarms_appservice_plan_name": "[concat(parameters('application_name'), '-appserviceplan')]",
-    "traffic_manager_profiles_name": "[concat(parameters('application_name'), '-trafficManager')]",
+    "regional_application_name": "[concat(parameters('application_name'), '-', resourceGroup().location)]",
+    "autoscale_settings_name": "[concat(variables('regional_application_name'), '-autoscale')]",
+    "components_insights_name": "[concat(variables('regional_application_name'), '-componentsinsights')]",
+    "sites_api_title_name": "[concat(variables('regional_application_name'), '-title')]",
+    "sites_api_person_name": "[concat(variables('regional_application_name'), '-person')]",
+    "sites_ui_client_name": "[concat(variables('regional_application_name'), '-ui')]",
+    "serverfarms_appservice_plan_name": "[concat(variables('regional_application_name'), '-appserviceplan')]",
     "canary_slot_name": "canary"
   },
   "resources": [
-    {
-      "type": "Microsoft.DocumentDB/databaseAccounts",
-      "kind": "MongoDB",
-      "name": "[variables('database_accounts_name')]",
-      "apiVersion": "2015-04-08",
-      "location": "[resourceGroup().location]",
-      "tags": {
-        "defaultExperience": "MongoDB"
-      },
-      "scale": null,
-      "properties": {
-        "databaseAccountOfferType": "Standard",
-        "consistencyPolicy": {
-          "defaultConsistencyLevel": "Session",
-          "maxIntervalInSeconds": 5,
-          "maxStalenessPrefix": 100
-        },
-        "name": "[variables('database_accounts_name')]"
-      },
-      "dependsOn": []
-    },
     {
       "type": "Microsoft.Insights/components",
       "kind": "web",
@@ -109,13 +96,15 @@
           "type": "config",
           "apiVersion": "2016-03-01",
           "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', variables('sites_api_title_name'))]"
+            "[resourceId('Microsoft.Web/sites', variables('sites_api_title_name'))]",
+            "[resourceId('Microsoft.Insights/components', variables('components_insights_name'))]"
           ],
           "tags": {
             "displayName": "appSettings"
           },
           "properties": {
-            "DB_CONNSTR": "[concat('mongodb://', variables('database_accounts_name'), ':', listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('database_accounts_name')), '2015-04-08').primaryMasterKey, '@', variables('database_accounts_name'), '.documents.azure.com:10250/?ssl=true&replicaSet=globaldb')]",
+            "APPLICATION_INSIGHTS_IKEY": "[reference(concat(resourceId('Microsoft.Insights/components', variables('components_insights_name')))).InstrumentationKey]",
+            "DB_CONNSTR": "[parameters('database_connection_string')]",
             "DB_NAME": "IMDb",
             "RESOURCE_GROUP": "[resourceGroup().name]",
             "spring.profiles.active": "production",
@@ -191,24 +180,27 @@
           "type": "config",
           "apiVersion": "2016-03-01",
           "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', variables('sites_api_person_name'))]"
+            "[resourceId('Microsoft.Web/sites', variables('sites_api_person_name'))]",
+            "[resourceId('Microsoft.Insights/components', variables('components_insights_name'))]"
           ],
           "tags": {
             "displayName": "appSettings"
           },
           "properties": {
-            "DB_CONNSTR": "[concat('mongodb://', variables('database_accounts_name'), ':', listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('database_accounts_name')), '2015-04-08').primaryMasterKey, '@', variables('database_accounts_name'), '.documents.azure.com:10250/?ssl=true&replicaSet=globaldb')]",
+            "APPLICATION_INSIGHTS_IKEY": "[reference(concat(resourceId('Microsoft.Insights/components', variables('components_insights_name')))).InstrumentationKey]",
+            "TEST": "foo",
+            "DB_CONNSTR": "[parameters('database_connection_string')]",
             "DB_NAME": "IMDb",
             "RESOURCE_GROUP": "[resourceGroup().name]",
             "spring.profiles.active": "production",
             "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
             "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
             "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]",
-            "EXCLUDE_FILTER": "PersonRepository"
+            "EXCLUDE_FILTER": "TitleRepository"
           }
         }
       ]
-    },
+    },    
     {
       "type": "Microsoft.Web/sites/slots",
       "kind": "app,linux,container",
@@ -262,41 +254,30 @@
       "tags": {},
       "scale": null,
       "properties": {
-        "profileStatus": "Enabled",
-        "trafficRoutingMethod": "Geographic",
-        "dnsConfig": {
-          "relativeName": "[variables('traffic_manager_profiles_name')]",
-          "fqdn": "[concat(variables('traffic_manager_profiles_name'),'.trafficmanager.net')]",
-          "ttl": 60
-        },
-        "monitorConfig": {
-          "protocol": "HTTP",
-          "port": 80,
-          "path": "/",
-          "intervalInSeconds": 30,
-          "toleratedNumberOfFailures": 3,
-          "timeoutInSeconds": 10
-        },
-        "endpoints": [
-          {
-            "name": "[concat(variables('traffic_manager_profiles_name'),'-endpoint-west')]",
-            "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
-            "properties": {
-              "endpointStatus": "Enabled",
-              "targetResourceId": "[resourceId('Microsoft.Web/sites', variables('sites_api_title_name'))]",
-              "target": "[concat(variables('sites_api_title_name'),'.azurewebsites.net')]",
-              "weight": 1,
-              "priority": 1,
-              "endpointLocation": "westus",
-              "geoMapping": [
-                "US-WA"
-              ]
-            }
-          }
-        ]
+        "name": "[variables('sites_ui_client_name')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_api_title_name'))]"
+        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
+      ],
+      "resources": [
+        {
+          "name": "appsettings",
+          "type": "config",
+          "apiVersion": "2016-03-01",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('sites_ui_client_name'))]"
+          ],
+          "tags": {
+            "displayName": "appSettings"
+          },
+          "properties": {
+            "RESOURCE_GROUP": "[resourceGroup().name]",
+            "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
+            "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
+            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]"
+          }
+        }
       ]
     },
     {
@@ -368,9 +349,5 @@
     }
   ],
   "outputs": {
-    "connectionString": {
-      "value": "[concat('mongodb://', variables('database_accounts_name'), ':', listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('database_accounts_name')), '2015-04-08').primaryMasterKey, '@', variables('database_accounts_name'), '.documents.azure.com:10250/?ssl=true&replicaSet=globaldb')]",
-      "type": "string"
-    }
   }
 }

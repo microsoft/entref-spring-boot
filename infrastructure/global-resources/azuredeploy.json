@@ -1,0 +1,98 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "database_account_name": {
+            "type": "string",
+            "defaultValue": "cosmos-instance"
+        },
+        "database-name": {
+            "type": "string",
+            "defaultValue": "cosmos-data"
+        },
+        "container_registry_name": {
+            "type": "string",
+            "defaultValue": "acr-images"
+        },
+        "traffic_manager_profiles_name": {
+            "type": "string",
+            "defaultValue": "tm-profiles"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "kind": "MongoDB",
+            "name": "[parameters('database_account_name')]",
+            "apiVersion": "2015-04-08",
+            "location": "westus",
+            "tags": {
+                "defaultExperience": "MongoDB"
+            },
+            "scale": null,
+            "properties": {
+                "name": "[parameters('database-name')]",
+                "databaseAccountOfferType": "Standard",
+                "consistencyPolicy": {
+                    "defaultConsistencyLevel": "Session",
+                    "maxIntervalInSeconds": 5,
+                    "maxStalenessPrefix": 100
+                },
+                "locations": [
+                    {
+                      "locationName": "westus",
+                      "failoverPriority": 0
+                    },
+                    {
+                      "locationName": "eastus",
+                      "failoverPriority": 1
+                    }
+                  ]
+            },
+            "dependsOn": []
+        },
+        {
+            "type": "Microsoft.ContainerRegistry/registries",
+            "sku": {
+                "name": "Basic",
+                "tier": "Basic"
+            },
+            "name": "[parameters('container_registry_name')]",
+            "apiVersion": "2017-10-01",
+            "location": "[resourceGroup().location]",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "adminUserEnabled": true
+            },
+            "dependsOn": []
+        },
+        {
+            "type": "Microsoft.Network/trafficManagerProfiles",
+            "name": "[parameters('traffic_manager_profiles_name')]",
+            "apiVersion": "2017-05-01",
+            "location": "global",
+            "tags": {},
+            "scale": null,
+            "properties": {
+              "profileStatus": "Enabled",
+              "trafficRoutingMethod": "Geographic",
+              "dnsConfig": {
+                "relativeName": "[parameters('traffic_manager_profiles_name')]",
+                "fqdn": "[concat(parameters('traffic_manager_profiles_name'),'.trafficmanager.net')]",
+                "ttl": 60
+              },
+              "monitorConfig": {
+                "protocol": "HTTP",
+                "port": 80,
+                "path": "/",
+                "intervalInSeconds": 30,
+                "toleratedNumberOfFailures": 3,
+                "timeoutInSeconds": 10
+              },
+              "endpoints": []
+            },
+            "dependsOn": []
+          }
+    ]
+}

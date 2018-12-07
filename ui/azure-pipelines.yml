@@ -5,7 +5,7 @@ trigger:
   paths:
     include:
     - ui/*
-    
+
 pool:
   vmImage: 'Ubuntu 16.04'
 
@@ -17,18 +17,23 @@ steps:
   displayName: 'Install Node.js'
 - script: |
     npm install
+  workingDirectory: ui/
   displayName: 'NPM Install Step'
 - script: |
     npm run lint
+  workingDirectory: ui/
   displayName: 'NPM Lint Step'
 - script: |
     npm run test
+  workingDirectory: ui/
   displayName: 'NPM Test Step'
 - script: |
     npm run build
+  workingDirectory: ui/
   displayName: 'NPM Build Step'
 - script: |
     docker build -t $ACR_SERVER/$ACR_CONTAINER_TAG .
+  workingDirectory: ui/
   displayName: 'Docker Build'
 - script: |
     docker login $(ACR_SERVER) -u $(ACR_USERNAME) -p $(ACR_PASSWORD)
@@ -36,3 +41,4 @@ steps:
 - script: |
     docker push $ACR_SERVER/$ACR_CONTAINER_TAG
   displayName: 'Docker Push'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))

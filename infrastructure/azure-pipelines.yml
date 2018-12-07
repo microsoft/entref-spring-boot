@@ -17,7 +17,7 @@ steps:
     resourceGroupName: $(resourceGroupName)
     location: $(location)
     csmFile: infrastructure/azuredeploy.json
-    overrideParameters: '-application_name $(applicationName) -docker_registry_url $(ACR_SERVER) -docker_registry_username $(ACR_USERNAME) -docker_registry_password $(ACR_PASSWORD)'
+    overrideParameters: '-application_name $(applicationName) -docker_registry_url $(ACR_SERVER) -docker_registry_username $(ACR_USERNAME) -docker_registry_password $(ACR_PASSWORD) -database_connection_string $(databaseConnectionString)'
     deploymentMode: Validation
 
 # Copy ARM deployment JSON
@@ -26,6 +26,7 @@ steps:
   inputs:
     contents: 'infrastructure/azuredeploy.json'
     targetFolder: '$(Build.ArtifactStagingDirectory)'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 # Publish Build Artifacts
 - task: PublishBuildArtifacts@1
@@ -33,3 +34,4 @@ steps:
     PathToPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: package
     publishLocation: Container
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))

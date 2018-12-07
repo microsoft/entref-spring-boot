@@ -113,3 +113,5 @@ fabric.properties
 
 .idea/misc.xml
 # End of https://www.gitignore.io/api/intellij
+
+.DS_Store
