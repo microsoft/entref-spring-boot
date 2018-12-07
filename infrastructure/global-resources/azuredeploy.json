@@ -18,19 +18,29 @@
             "kind": "MongoDB",
             "name": "[parameters('database_account_name')]",
             "apiVersion": "2015-04-08",
-            "location": "[resourceGroup().location]",
+            "location": "westus",
             "tags": {
                 "defaultExperience": "MongoDB"
             },
             "scale": null,
             "properties": {
+                "name": "[parameters('database-name')]",
                 "databaseAccountOfferType": "Standard",
                 "consistencyPolicy": {
                     "defaultConsistencyLevel": "Session",
                     "maxIntervalInSeconds": 5,
                     "maxStalenessPrefix": 100
                 },
-                "name": "[parameters('database-name')]"
+                "locations": [
+                    {
+                      "locationName": "westus",
+                      "failoverPriority": 0
+                    },
+                    {
+                      "locationName": "eastus",
+                      "failoverPriority": 1
+                    }
+                  ]
             },
             "dependsOn": []
         },
