@@ -5,7 +5,7 @@ trigger:
   paths:
     include:
     - ui/*
-    
+
 pool:
   vmImage: 'Ubuntu 16.04'
 
@@ -41,3 +41,4 @@ steps:
 - script: |
     docker push $ACR_SERVER/$ACR_CONTAINER_TAG
   displayName: 'Docker Push'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
