@@ -19,13 +19,12 @@
     }
   },
   "variables": {
-    "autoscale_settings_name": "[concat(parameters('application_name'), '-autoscale')]",
-    "components_insights_name": "[concat(parameters('application_name'), '-componentsinsights')]",
-    "sites_api_title_name": "[concat(parameters('application_name'), '-title')]",
-    "sites_api_person_name": "[concat(parameters('application_name'), '-person')]",
-    "sites_ui_client_name": "[concat(parameters('application_name'), '-client')]",
-    "serverfarms_appservice_plan_name": "[concat(parameters('application_name'), '-', resourceGroup().location, '-appserviceplan')]",
-    "traffic_manager_profiles_name": "[concat(parameters('application_name'), '-trafficManager')]"
+    "regional_application_name": "[concat(parameters('application_name'), '-', resourceGroup().location]",
+    "autoscale_settings_name": "[concat(variables('regional_application_name'), '-autoscale')]",
+    "components_insights_name": "[concat(variables('regional_application_name'), '-componentsinsights')]",
+    "sites_api_title_name": "[concat(variables('regional_application_name'), '-title')]",
+    "sites_api_person_name": "[concat(variables('regional_application_name'), '-person')]",
+    "serverfarms_appservice_plan_name": "[concat(variables('regional_application_name'), '-appserviceplan')]"
   },
   "resources": [
     {
@@ -89,12 +88,14 @@
           "type": "config",
           "apiVersion": "2016-03-01",
           "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', variables('sites_api_title_name'))]"
+            "[resourceId('Microsoft.Web/sites', variables('sites_api_title_name'))]",
+            "[resourceId('Microsoft.Insights/components', variables('components_insights_name'))]"
           ],
           "tags": {
             "displayName": "appSettings"
           },
           "properties": {
+            "APPLICATION_INSIGHTS_IKEY": "[reference(concat(resourceId('Microsoft.Insights/components', variables('components_insights_name'))).Properties.InstrumentationKey]",
             "DB_CONNSTR": "[parameters('database_connection_string')]",
             "DB_NAME": "IMDb",
             "RESOURCE_GROUP": "[resourceGroup().name]",
@@ -174,51 +175,6 @@
             "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]"
           }
         }
-      ]
-    },
-    {
-      "type": "Microsoft.Network/trafficManagerProfiles",
-      "name": "[variables('traffic_manager_profiles_name')]",
-      "apiVersion": "2017-05-01",
-      "location": "global",
-      "tags": {},
-      "scale": null,
-      "properties": {
-        "profileStatus": "Enabled",
-        "trafficRoutingMethod": "Geographic",
-        "dnsConfig": {
-          "relativeName": "[variables('traffic_manager_profiles_name')]",
-          "fqdn": "[concat(variables('traffic_manager_profiles_name'),'.trafficmanager.net')]",
-          "ttl": 60
-        },
-        "monitorConfig": {
-          "protocol": "HTTP",
-          "port": 80,
-          "path": "/",
-          "intervalInSeconds": 30,
-          "toleratedNumberOfFailures": 3,
-          "timeoutInSeconds": 10
-        },
-        "endpoints": [
-          {
-            "name": "[concat(variables('traffic_manager_profiles_name'),'-endpoint-west')]",
-            "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
-            "properties": {
-              "endpointStatus": "Enabled",
-              "targetResourceId": "[resourceId('Microsoft.Web/sites', variables('sites_api_title_name'))]",
-              "target": "[concat(variables('sites_api_title_name'),'.azurewebsites.net')]",
-              "weight": 1,
-              "priority": 1,
-              "endpointLocation": "westus",
-              "geoMapping": [
-                "US-WA"
-              ]
-            }
-          }
-        ]
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_api_title_name'))]"
       ]
     },
     {
