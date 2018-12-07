@@ -3,19 +3,24 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "application_name": {
-      "type": "string"
+      "type": "string",
+      "defaultValue": "asc-app"
     },
     "docker_registry_url": {
-      "type": "string"
+      "type": "string",
+      "defaultValue": "https://azure.com"
     },
     "docker_registry_username": {
-      "type": "securestring"
+      "type": "securestring",
+      "defaultValue": "username"
     },
     "docker_registry_password": {
-      "type": "securestring"
+      "type": "securestring",
+      "defaultValue": "password"
     },
     "database_connection_string": {
-      "type": "securestring"
+      "type": "securestring",
+      "defaultValue": "mongodb://localhost"
     }
   },
   "variables": {
@@ -24,6 +29,7 @@
     "components_insights_name": "[concat(variables('regional_application_name'), '-componentsinsights')]",
     "sites_api_title_name": "[concat(variables('regional_application_name'), '-title')]",
     "sites_api_person_name": "[concat(variables('regional_application_name'), '-person')]",
+    "sites_ui_client_name": "[concat(variables('regional_application_name'), '-ui')]",
     "serverfarms_appservice_plan_name": "[concat(variables('regional_application_name'), '-appserviceplan')]"
   },
   "resources": [
@@ -126,12 +132,14 @@
           "type": "config",
           "apiVersion": "2016-03-01",
           "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', variables('sites_api_person_name'))]"
+            "[resourceId('Microsoft.Web/sites', variables('sites_api_person_name'))]",
+            "[resourceId('Microsoft.Insights/components', variables('components_insights_name'))]"
           ],
           "tags": {
             "displayName": "appSettings"
           },
           "properties": {
+            "APPLICATION_INSIGHTS_IKEY": "[reference(concat(resourceId('Microsoft.Insights/components', variables('components_insights_name')))).Properties.InstrumentationKey]",
             "TEST": "foo",
             "DB_CONNSTR": "[parameters('database_connection_string')]",
             "DB_NAME": "IMDb",
