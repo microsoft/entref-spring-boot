@@ -19,7 +19,7 @@
     }
   },
   "variables": {
-    "regional_application_name": "[concat(parameters('application_name'), '-', resourceGroup().location]",
+    "regional_application_name": "[concat(parameters('application_name'), '-', resourceGroup().location)]",
     "autoscale_settings_name": "[concat(variables('regional_application_name'), '-autoscale')]",
     "components_insights_name": "[concat(variables('regional_application_name'), '-componentsinsights')]",
     "sites_api_title_name": "[concat(variables('regional_application_name'), '-title')]",
