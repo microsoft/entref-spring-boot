@@ -31,3 +31,4 @@ steps:
 - script: |
     docker push $ACR_SERVER/$ACR_CONTAINER_TAG
   displayName: 'Docker Push'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
