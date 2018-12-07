@@ -101,7 +101,7 @@
             "displayName": "appSettings"
           },
           "properties": {
-            "APPLICATION_INSIGHTS_IKEY": "[reference(concat(resourceId('Microsoft.Insights/components', variables('components_insights_name')))).Properties.InstrumentationKey]",
+            "APPLICATION_INSIGHTS_IKEY": "[reference(concat(resourceId('Microsoft.Insights/components', variables('components_insights_name')))).InstrumentationKey]",
             "DB_CONNSTR": "[parameters('database_connection_string')]",
             "DB_NAME": "IMDb",
             "RESOURCE_GROUP": "[resourceGroup().name]",
@@ -139,7 +139,7 @@
             "displayName": "appSettings"
           },
           "properties": {
-            "APPLICATION_INSIGHTS_IKEY": "[reference(concat(resourceId('Microsoft.Insights/components', variables('components_insights_name')))).Properties.InstrumentationKey]",
+            "APPLICATION_INSIGHTS_IKEY": "[reference(concat(resourceId('Microsoft.Insights/components', variables('components_insights_name')))).InstrumentationKey]",
             "TEST": "foo",
             "DB_CONNSTR": "[parameters('database_connection_string')]",
             "DB_NAME": "IMDb",
