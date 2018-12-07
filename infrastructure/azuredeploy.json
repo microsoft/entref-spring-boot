@@ -22,7 +22,8 @@
     "sites_api_title_name": "[concat(parameters('application_name'), '-title')]",
     "sites_api_person_name": "[concat(parameters('application_name'), '-person')]",
     "serverfarms_appservice_plan_name": "[concat(parameters('application_name'), '-appserviceplan')]",
-    "traffic_manager_profiles_name": "[concat(parameters('application_name'), '-trafficManager')]"
+    "traffic_manager_profiles_name": "[concat(parameters('application_name'), '-trafficManager')]",
+    "canary_slot_name": "canary"
   },
   "resources": [
     {
@@ -91,6 +92,7 @@
     },
     {
       "type": "Microsoft.Web/sites",
+      "kind": "app,linux,container",
       "name": "[variables('sites_api_title_name')]",
       "apiVersion": "2016-03-01",
       "location": "[resourceGroup().location]",
@@ -126,7 +128,53 @@
       ]
     },
     {
+      "type": "Microsoft.Web/sites/slots",
+      "kind": "app,linux,container",
+      "name": "[concat(variables('sites_api_title_name'), '/', variables('canary_slot_name'))]",
+      "apiVersion": "2016-08-01",
+      "location": "West US",
+      "scale": null,
+      "properties": {
+        "enabled": true,
+        "hostNameSslStates": [
+          {
+            "name": "[concat(variables('sites_api_title_name'), '-', variables('canary_slot_name'), '.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "virtualIP": null,
+            "thumbprint": null,
+            "toUpdate": null,
+            "hostType": "Standard"
+          },
+          {
+            "name": "[concat(variables('sites_api_title_name'), '-', variables('canary_slot_name'), '.scm.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "virtualIP": null,
+            "thumbprint": null,
+            "toUpdate": null,
+            "hostType": "Repository"
+          }
+        ],
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]",
+        "reserved": true,
+        "siteConfig": null,
+        "scmSiteAlsoStopped": false,
+        "hostingEnvironmentProfile": null,
+        "clientAffinityEnabled": true,
+        "clientCertEnabled": false,
+        "hostNamesDisabled": false,
+        "containerSize": 0,
+        "dailyMemoryTimeQuota": 0,
+        "cloningInfo": null,
+        "httpsOnly": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('sites_api_title_name'))]",
+        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
+      ]
+    },
+    {
       "type": "Microsoft.Web/sites",
+      "kind": "app,linux,container",
       "name": "[variables('sites_api_person_name')]",
       "apiVersion": "2016-03-01",
       "location": "[resourceGroup().location]",
@@ -159,6 +207,51 @@
             "EXCLUDE_FILTER": "PersonRepository"
           }
         }
+      ]
+    },
+    {
+      "type": "Microsoft.Web/sites/slots",
+      "kind": "app,linux,container",
+      "name": "[concat(variables('sites_api_person_name'), '/', variables('canary_slot_name'))]",
+      "apiVersion": "2016-08-01",
+      "location": "West US",
+      "scale": null,
+      "properties": {
+        "enabled": true,
+        "hostNameSslStates": [
+          {
+            "name": "[concat(variables('sites_api_person_name'), '-', variables('canary_slot_name'), '.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "virtualIP": null,
+            "thumbprint": null,
+            "toUpdate": null,
+            "hostType": "Standard"
+          },
+          {
+            "name": "[concat(variables('sites_api_person_name'), '-', variables('canary_slot_name'), '.scm.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "virtualIP": null,
+            "thumbprint": null,
+            "toUpdate": null,
+            "hostType": "Repository"
+          }
+        ],
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]",
+        "reserved": true,
+        "siteConfig": null,
+        "scmSiteAlsoStopped": false,
+        "hostingEnvironmentProfile": null,
+        "clientAffinityEnabled": true,
+        "clientCertEnabled": false,
+        "hostNamesDisabled": false,
+        "containerSize": 0,
+        "dailyMemoryTimeQuota": 0,
+        "cloningInfo": null,
+        "httpsOnly": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('sites_api_person_name'))]",
+        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
       ]
     },
     {
