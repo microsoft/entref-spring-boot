@@ -119,7 +119,7 @@
       "type": "Microsoft.Web/sites/slots",
       "name": "[concat(variables('sites_api_title_name'), '/', variables('canary_slot_name'))]",
       "apiVersion": "2016-08-01",
-      "location": "West US",
+      "location": "[resourceGroup().location]",
       "scale": null,
       "properties": {
         "enabled": true,
@@ -202,7 +202,7 @@
       "type": "Microsoft.Web/sites/slots",
       "name": "[concat(variables('sites_api_person_name'), '/', variables('canary_slot_name'))]",
       "apiVersion": "2016-08-01",
-      "location": "West US",
+      "location": "[resourceGroup().location]",
       "scale": null,
       "properties": {
         "enabled": true,
@@ -278,7 +278,7 @@
       "type": "Microsoft.Web/sites/slots",
       "name": "[concat(variables('sites_ui_client_name'), '/', variables('canary_slot_name'))]",
       "apiVersion": "2016-08-01",
-      "location": "West US",
+      "location": "[resourceGroup().location]",
       "scale": null,
       "properties": {
         "enabled": true,
