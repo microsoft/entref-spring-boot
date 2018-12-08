@@ -180,7 +180,8 @@
             "RESOURCE_GROUP": "[resourceGroup().name]",
             "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
             "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
-            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]"
+            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]",
+            "WEBSITES_PORT": "8080"
           }
         }
       ]
