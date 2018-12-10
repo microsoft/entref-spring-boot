@@ -18,7 +18,8 @@ const appConfig = {
 }
 
 // initialize the UserAgentApplication globally so popup and iframe can run in the background
-const userAgentApp = new Msal.UserAgentApplication(appConfig.clientID, null, null)
+const userAgentApp = appConfig.clientID && new Msal.UserAgentApplication(appConfig.clientID, null, null)
+// short circuit userAgentApp. If clientID is an empty string so is userAgentApp
 
 export class App extends React.Component {
 
@@ -31,25 +32,35 @@ export class App extends React.Component {
     }
 
     public handleAuth = async () => {
-        let accessToken = null
-        try {
-            if (this.state.accessToken) {
-                // log out
-                await userAgentApp.logout()
+        if (!appConfig.clientID) {
+            if (this.state.accessToken !== null) {
+                this.setState({ accessToken: null })
             } else {
-                // log in
-                if (!appConfig.clientID) {
-                    throw new Error(
-                        'AAD Client ID has not been configured. See the \'deploy\' documentation for more details.')
-                }
-                const graphScopes = [appConfig.clientID]
-                await userAgentApp.loginPopup(graphScopes)
-                accessToken = await userAgentApp.acquireTokenSilent(graphScopes,
-                    'https://login.microsoftonline.com/microsoft.onmicrosoft.com')
+                // tslint:disable-next-line no-console max-line-length
+                console.warn('AAD Client ID has not been configured. If you are currently in production mode, see the \'deploy\' documentation for details on how to fix this.')
+                this.setState({ accessToken: '' })
             }
-            this.setState({ accessToken })
-        } catch (err) {
-            this.setAuthResponse(err.toString())
+        } else {
+            let accessToken = null
+            try {
+                if (this.state.accessToken) {
+                    // log out
+                    await userAgentApp.logout()
+                } else {
+                    // log in
+                    if (!appConfig.clientID) {
+                        throw new Error(
+                            'AAD Client ID has not been configured. See the \'deploy\' documentation for more details.')
+                    }
+                    const graphScopes = [appConfig.clientID]
+                    await userAgentApp.loginPopup(graphScopes)
+                    accessToken = await userAgentApp.acquireTokenSilent(graphScopes,
+                        'https://login.microsoftonline.com/microsoft.onmicrosoft.com')
+                }
+                this.setState({ accessToken })
+            } catch (err) {
+                this.setAuthResponse(err.toString())
+            }
         }
     }
 
