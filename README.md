@@ -1,5 +1,7 @@
 # SpringDAL
 
+> Looking to get running quickly? Jump ahead to our [quickstart](#quickstart).
+
 A RESTful DAL (Database Abstraction Layer) reference implementation written using Spring.
 
 # Introduction
@@ -23,6 +25,37 @@ We built the solution to provide a common enterprise-ready foundation for Azure-
 - A full CI/CD pipeline
 - Robust but simple codebase that follows common enterprise-engineering best practices
 - Load and failure simulators to validate scale, resiliency and failover
+
+### API Routes
+
+We're using three kinds of models: `Person`, `Title`, and `Principal`. The `Person` model represents a person who participates in media, either in front of the camera or behind the scenes. The `Title` represents what it sounds like - the title of the piece of media, be it a movie, a TV series, or some other kind of similar media. Finally, the `Principal` model and its derivative child class `PrincipalWithName` represent the intersection of Person and Title, ie. what a particular person does or plays in a specific title.
+
+To meaninfully access this IMDb dataset and these models, there are a few routes one can access on the API.
+
++ `/people`
+  + `POST` - Creates a person, and returns information and ID of new person
+  + `GET` - Returns a small number of people entries
++ `/people/{nconst}` > nconst is the unique identifier
+  + `GET` - Gets the person associated with ID, and returns information about the person
+  + `PUT` - Updates a person for a given ID, and returns information about updated person
+  + `DELETE` - Deletes a person with a given ID, and returns the success/failure code
++ `/people/{nconst}/titles` > nconst is the unique identifier
+  + `GET` - Gets the titles in the dataset associated with the person with specified ID and returns them in an array
++ `/titles`
+  + `POST` - Creates a title, and returns the information and ID of the new titles
+  + `GET` - returns a small number of title entries
++ `/titles/{tconst}` > tconst is the unique identifier
+  + `GET` - Gets the title of piece given the ID, and returns information about that title
+  + `PUT` - Updates the title of a piece given the ID, and returns that updated information based on ID
+  + `DELETE` - Deletes the piece of media given the ID, and returns the success/failure code
++ `/titles/{tconst}/people` > tconst is the unique identifier
+  + `GET` - Gets the people in the dataset associated with the given title, and returns that list
++ `/titles/{tconst}/cast` > tconst is the unique identifier
+  + `GET` - Gets the people in the dataset associated with the given title who act, and returns that list
++ `/titles/{tconst}/crew` > tconst is the unique identifier
+  + `GET` - Gets the people in the dataset associated with the given title who participate behind the scenes, and returns that list
+
+For more details, check out the [Swagger documentation](./api/swagger.yml).
 
 ### Why We Chose App Services
 
@@ -49,97 +82,85 @@ Key technologies and concepts demonstrated:
 | Load and performance testing | The solution includes an integrated traffic simulator to demonstrate that the solution auto-scales properly, maintaining application performance as scale increases
 | Proves application resiliency through chaos testing | A Chaos Monkey-style solution to shut down different portions of the architecture in order to validate that resilience measures keep everything runing in the event of any single failure
 
-## Getting Started With Azure
+# Quickstart
 
-Follow these instructions to begin using the solution
+NIT: Move to api subfolder, reference here
+Same for ui :smile:
 
-### Pre-Requisites
+> Are [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment)s more your style? Skip ahead to our [IDE Quickstart](#quickstart-with-ide).
 
-- Clone the reference solution to your computer:
+* 🔄 [Clone](https://www.git-scm.com/docs/git-clone) the Repository using [Git](https://git-scm.com/downloads)
 ```
-git clone https://<your alias>@dev.azure.com/csebostoncrew/ProjectJackson/_git/ProjectJackson
+git clone https://github.com/Microsoft/containers-rest-cosmos-appservice-java.git
 ```
+* 🏗 Install [JDK8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to help us build Java code
+* 📦 Install [Maven](https://maven.apache.org/install.html) to help manage our dependencies
+* ⚙️ Ensure JDK8 tools, and Maven are [in your path](https://java.com/en/download/help/path.xml) (typically done for you on Windows and Mac OS X)
+```
+> # Validate Maven is installed by attempting to query it's version
+> mvn --version
+Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-17T14:33:14-04:00)
+Maven home: c:\bin\maven\bin\..
+Java version: 1.8.0_181, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jre1.8.0_181
+Default locale: en_US, platform encoding: Cp1252
+OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
 
-- Install [Java 8 (version 1.8)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-- Install [the latest Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
-- Install MongoDB:
-  - Windows: [Install MongoDB Community Edition on Windows](https://docs.mongodb.com/v3.2/tutorial/install-mongodb-on-windows/)
-  - MacOS: From a command line, run `brew install mongodb`
-  - Linux: From command line, run `apt-get install mongodb`
+> # Validate Javac (The Java Compiler) is installed by attempting to query it's version
+> javac --version
+javac 1.8.0_181
+```
+* 📝 Configure necessary [Application Configuration](#application-configuration) values as [Environment variables](https://en.wikipedia.org/wiki/Environment_variable)
+```
+> # On Windows we can use:
+> set spring.profiles.active=development
 
-Temporary instructions before we have automated deployments running:
-
-### Create Azure Resources
-
-- [Create a resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-portal#manage-resource-groups)
-- [Add a Cosmos DB instance](https://docs.microsoft.com/en-us/azure/cosmos-db/create-mongodb-java#create-a-database-account) to the resource group
-
-*OPTIONAL: Enable the MongoDB Aggregation Pipeline*
-
-The aggregation pipeline must be enabled in order to support aggregation queries like `count()`:
-
-- From the Cosmos DB resource view, click the "Preview Features" option (just below "Connection String")
-- Click the "Enable" button next to "MongoDB Aggregation Pipeline"
-
-### Set up your environment variables
-
-- Open the Cosmos Connection String blade
-- Open the `data/importdata.sh` file.  
-- Make sure the Cosmos DB resource is already created as mentioned above, for the next steps to be successful.
-- From Bash command line, run `load_env.sh`. It will will write/load any needed variables to the `vars.env` file. 
-  - `RESOURCE_GROUP` - the Azure resource group name
-  - `COSMOSDB_NAME` - the CosmosDB collection name (which is case sensitive)
-  - `COSMOSDB_PASSWORD` - the CosmosDB's password (needed for when you load the data into Cosmos)
-- Load `vars.env` into your environment or VM where the app is being built locally.
-  - `source vars.env`
-  - or in your chosen IDE, set your environment variables within your project.
-- NB: there will also be a DB_NAME and DB_CONNSTR for the Spring application (see the database section below in Application Configuration)
-
-### Prepare the command line
-
-- Switch into the project `data` directory: `cd data`
-- Log into Azure: `az login`
-- If you have multiple subscriptions, confirm that the project subscription is active:
-
-``` Bash
-az account show
-az account set --subscription <subscription name/ID>
+> # On Linux we can use:
+> export spring.profiles.active=development
+```
+* 🏃‍♀️ Build and Run from your project directory (created when you cloned, typically `containers-rest-cosmos-appservice-java`)
+```
+mvn spring-boot:run
 ```
 
-### Import the sample IMDb data to Cosmos DB
+Note: Running will use [Maven](https://maven.apache.org/) to install all dependencies, and then use [Java](https://www.java.com/) to run the application.
 
-- Open a Bash command line
-- Download and prepare the required IMDb data files:
+# Quickstart with IDE
 
-``` Bash
-data/getdata.sh
+> We recommend using [IDEA](https://www.jetbrains.com/idea/) so these steps assume the use of that IDE.
+
+* 🔄 [Clone](https://www.git-scm.com/docs/git-clone) the Repository using [Git](https://git-scm.com/downloads)
 ```
-
-- Before starting to import data make sure the step `Set up your environment variables` is completed.
-- Import the data into Cosmos collections
-
-``` Bash
-data/importdata.sh
+git clone https://github.com/Microsoft/containers-rest-cosmos-appservice-java.git
 ```
-
-### TIP: Explore the data from the MongoDB command-line
-
-- Copy the Cosmos DB connection string from the "Connection String" blade
-- Start the MongoDB CLI with this command: `mongo <connection string>`
-- Begin executing MongoDB commands, such as:
-
-``` Mongo
-use moviesdb
-show collections
-db.titles.count()
-db.titles.find ({primaryTitle: "Casablanca"})
+* 🏗 Install [JDK8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to help us build Java code
+* 📦 Install [IntelliJ IDEA](https://www.jetbrains.com/idea/download)
+* 💡 Open IDEA and Select "Open Project", Choosing `api/` from the project directory as the IDEA project location
+* ⚙️ In the bottom right, IDEA will tell you "Maven projects need to be imported" - Select "Import Changes"
+* 📓 Create a [Run configuration](https://www.jetbrains.com/help/idea/run-debug-configurations-dialog.html) for "Maven", specifying `spring-boot:run` as the "Command Line" value in the "Parameters" pane
 ```
+Command Line: spring-boot:run
+```
+* 🔠 Add the necessary [Application Configuration](#application-configuration) values as [Environment variables](https://en.wikipedia.org/wiki/Environment_variable) in the "Runner" pane under "Environment variables"
+```
+Key: spring.profiles.active, Value: development
+```
+* ▶️ [Run the application](https://www.jetbrains.com/help/idea/running-applications.html), by selecting the ▶️ button in the top right (hint: It's a green play button) 
+
+Note: Running the application will use [Maven](https://maven.apache.org/) to install all dependencies, and then use [Java](https://www.java.com/) to run the application.
+
+## Deploying to Production
+
+In the Quickstart sections above, we covered how to run this reference solution locally. In this next section, we'll discuss how to deploy the solution to Azure, to simulation a scalable production environment.
+
+When running in a production environment, there are a number of required [Application Configuration](#application-configuration) values that must be defined. Please see the [Application Configuration](#application-configuration) section for more information.
+
+To Deploy a production instance of this service to Azure, we recommend reading the [infrastructure README.md](./infrastructure/README.md) file, which includes an easy deploy to Azure button. Please note that we also recommend the use of a Continuous Delivery pipeline to manage scalable deployments to Azure. A walkthrough is [in the works](https://github.com/Microsoft/containers-rest-cosmos-appservice-java/issues/24).
 
 ## Application Configuration
 
 We use [Profiles](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-profiles.html) for configuration.
 Currently `development` and `production` are possible values for the `spring.profiles.active` property.
-By default, `development` is assumed. Note: `default` is technically it's own profile, that is the same as `development`.
+By default, `development` is assumed. Note: `default` is technically it's own profile, that is the same as `development`. The following sections document the possible configuration values, as logically grouped sets.
 
 ### Authentication
 
@@ -187,49 +208,10 @@ To configure [application insights](https://docs.microsoft.com/en-us/azure/appli
 
 + `APPLICATION_INSIGHTS_IKEY` - an [application insights telemetry key](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-java-get-started#1-get-an-application-insights-instrumentation-key)
 
-## Building
-
-> Note: Before running, please make sure everything is [configured](#configuration) to your liking!
-
-To build, use `mvn compile`. To run, use `mvn spring-boot:run`. To run in production, first set the `spring.profiles.active` environment variable to `production` (as per [the above section](#configuration)).
-
-### API Routes
-
-We're using three kinds of models: `Person`, `Title`, and `Principal`. The `Person` model represents a person who participates in media, either in front of the camera or behind the scenes. The `Title` represents what it sounds like - the title of the piece of media, be it a movie, a TV series, or some other kind of similar media. Finally, the `Principal` model and its derivative child class `PrincipalWithName` represent the intersection of Person and Title, ie. what a particular person does or plays in a specific title.
-
-To meaninfully access this IMDb dataset and these models, there are a few routes one can access on the API.
-
-+ `/people`
-  + `POST` - Creates a person, and returns information and ID of new person
-  + `GET` - Returns a small number of people entries
-+ `/people/{nconst}` > nconst is the unique identifier
-  + `GET` - Gets the person associated with ID, and returns information about the person
-  + `PUT` - Updates a person for a given ID, and returns information about updated person
-  + `DELETE` - Deletes a person with a given ID, and returns the success/failure code
-+ `/people/{nconst}/titles` > nconst is the unique identifier
-  + `GET` - Gets the titles in the dataset associated with the person with specified ID and returns them in an array
-+ `/titles`
-  + `POST` - Creates a title, and returns the information and ID of the new titles
-  + `GET` - returns a small number of title entries
-+ `/titles/{tconst}` > tconst is the unique identifier
-  + `GET` - Gets the title of piece given the ID, and returns information about that title
-  + `PUT` - Updates the title of a piece given the ID, and returns that updated information based on ID
-  + `DELETE` - Deletes the piece of media given the ID, and returns the success/failure code
-+ `/titles/{tconst}/people` > tconst is the unique identifier
-  + `GET` - Gets the people in the dataset associated with the given title, and returns that list
-+ `/titles/{tconst}/cast` > tconst is the unique identifier
-  + `GET` - Gets the people in the dataset associated with the given title who act, and returns that list
-+ `/titles/{tconst}/crew` > tconst is the unique identifier
-  + `GET` - Gets the people in the dataset associated with the given title who participate behind the scenes, and returns that list
-
-For more details, check out the [Swagger documentation](https://dev.azure.com/csebostoncrew/_git/ProjectJackson?path=%2Fswagger.yml).
-
-TODO: Any `upcoming feature` endpoints.
-
 ## Testing
 
 To run the tests, use `mvn test`. This project strives to unit test each behavior, and integration test end to end scenarios.
 
 ## Contribute
 
-TODO: Explain how other users and developers can contribute to make your code better.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for more information.
