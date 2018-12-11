@@ -74,7 +74,7 @@ Key technologies and concepts demonstrated:
 | Common, standard technologies | <li>Java programming language<li>Spring Boot Framework, one of the most widely used EE frameworks for Java<li>MongoDB NoSQL API (via Azure Cosmos DB)<li>Redis Cache
 | Production-ready codebase | High quality codebase that is easily enhanced, well-documented and meets typical enterprise code quality standards
 | Well-designed RESTful API | Solution follows RESTful design best-practices
-| Enhanced productivity via Docker| Microservices implemented in Docker containers, which are hosted by the Azure App Service for Containers PaaS service. Developer productivity enhance due to service isolation and easy service updates
+| Enhanced productivity via Docker| Microservices implemented in Docker containers, which are hosted by the Azure App Service for Containers PaaS service. Developer productivity enhanced due to service isolation and easy service updates
 | Example of well-designed CI/CD pipeline | Full continuous integration/continuous delivery (CI/CD) is implemented using Azure DevOps with a pipeline of environments that support dev, testing and production
 | Automated infrastructure deployment | <li>Azure ARM templates<li>App Service for Containers<li>Azure container registry
 | High Availability/Disaster Recovery (HA/DR) | Full geo-replication of microservices and data, with automatic failover in the event of an issue in any region:<br><br><li>Cosmos DB deployed to multiple regions with active-active read/write<li>Session consistency to assure that user experience is consistent across failover<li>Stateless microservices deployed to multiple regions<li>Health monitoring to detect errors that require failover<li>Azure Traffic Manager redirects traffic to healthy region
