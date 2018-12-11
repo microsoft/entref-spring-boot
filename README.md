@@ -135,7 +135,7 @@ git clone https://github.com/Microsoft/containers-rest-cosmos-appservice-java.gi
 * 🏗 Install [JDK8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to help us build Java code
 * 📦 Install [IntelliJ IDEA](https://www.jetbrains.com/idea/download)
 * 💡 Open IDEA and select "Open Project", choosing `api/` from the project directory as the IDEA project location
-* ⚙️ In the bottom right, IDEA will tell you "Maven projects need to be imported" - Select "Import Changes"
+* ⚙️ In the bottom right, IDEA will tell you "Maven projects need to be imported" - select "Import Changes"
 * 📓 Create a [Run Configuration](https://www.jetbrains.com/help/idea/run-debug-configurations-dialog.html) for Maven, specifying `spring-boot:run` as the "Command Line" value in the "Parameters" pane
 ```
 Command Line: spring-boot:run
