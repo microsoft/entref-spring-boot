@@ -10,7 +10,7 @@ This project provides a reference implementation for of Java-based microservices
 
 Cosmos DB is configured to use the NoSQL MongoDB API.
 
-In order to demonstrate Cosmos DB performance with large amounts of data, the project imports historial movie data from [IMDb](https://www.imdb.com/interfaces/). See (https://datasets.imdbws.com/). The datasets include 8.9 million peple, 5.3 million movies and 30 million relationships between them.
+In order to demonstrate Cosmos DB performance with large amounts of data, the project imports historical movie data from [IMDb](https://www.imdb.com/interfaces/). See (https://datasets.imdbws.com/). The datasets include 8.9 million peple, 5.3 million movies and 30 million relationships between them.
 
 ## Architecture
 
