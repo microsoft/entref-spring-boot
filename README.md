@@ -30,7 +30,7 @@ We built the solution to provide a common enterprise-ready foundation for Azure-
 
 We're using three kinds of models: `Person`, `Title`, and `Principal`. The `Person` model represents a person who participates in media, either in front of the camera or behind the scenes. The `Title` represents what it sounds like - the title of the piece of media, be it a movie, a TV series, or some other kind of similar media. Finally, the `Principal` model and its derivative child class `PrincipalWithName` represent the intersection of Person and Title, ie. what a particular person does or plays in a specific title.
 
-To meaninfully access this IMDb dataset and these models, there are a few routes one can access on the API.
+To meaningfully access this IMDb dataset and these models, there are a few routes one can access on the API.
 
 + `/people`
   + `POST` - Creates a person, and returns information and ID of new person
