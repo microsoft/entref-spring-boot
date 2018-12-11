@@ -18,8 +18,8 @@ const appConfig = {
 }
 
 // initialize the UserAgentApplication globally so popup and iframe can run in the background
-const userAgentApp = appConfig.clientID && new Msal.UserAgentApplication(appConfig.clientID, null, null)
 // short circuit userAgentApp. If clientID is null so is userAgentApp
+const userAgentApp = appConfig.clientID && new Msal.UserAgentApplication(appConfig.clientID, null, null)
 
 export class App extends React.Component {
 
