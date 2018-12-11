@@ -22,7 +22,7 @@ Java version: 1.8.0_181, vendor: Oracle Corporation, runtime: C:\Program Files\J
 Default locale: en_US, platform encoding: Cp1252
 OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
 
-> # Validate Javac (The Java Compiler) is installed by attempting to query it's version
+> # Validate Javac (The Java Compiler) is installed by attempting to query its version
 > javac --version
 javac 1.8.0_181
 ```

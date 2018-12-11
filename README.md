@@ -59,7 +59,7 @@ For more details, check out the [Swagger documentation](./api/swagger.yml).
 
 ### Why We Chose App Services
 
-We decided to host our application using Azure App Services instead of using Azure Kuberenetes Cluster. We made this decision because Azure App Services gave us better control over scaling the app accross regions. It also required less configuration with our traffic manager and load balancer architecture. Furthermore, Azure App Services has an easy-to-use, built-in load testing service that we utilize to test the container scaling of our app. Out of the box, Azure App Services offers auto-scaling, authentication, and deployment slots. In the future, because Azure App Services is a PaaS provider, we can implement [Platform Chaos](https://github.com/Azure/platform-chaos) to initiate chaos testing services too. While this approach does not provide as much control of the server itself, the deployed docker container will keep the JVM consistent across deployments.
+We decided to host our application using Azure App Services instead of using Azure Kubernetes Cluster. We made this decision because Azure App Services gave us better control over scaling the app accross regions. It also required less configuration with our traffic manager and load balancer architecture. Furthermore, Azure App Services has an easy-to-use, built-in load testing service that we utilize to test the container scaling of our app. Out of the box, Azure App Services offers auto-scaling, authentication, and deployment slots. In the future, because Azure App Services is a PaaS provider, we can implement [Platform Chaos](https://github.com/Azure/platform-chaos) to initiate chaos testing services too. While this approach does not provide as much control of the server itself, the deployed docker container will keep the JVM consistent across deployments.
 
 If you'd like to learn more you can read these articles:
  - [Container? Why not App Services?](https://blogs.msdn.microsoft.com/premier_developer/2018/06/15/container-why-not-app-services/)
@@ -74,13 +74,13 @@ Key technologies and concepts demonstrated:
 | Common, standard technologies | <li>Java programming language<li>Spring Boot Framework, one of the most widely used EE frameworks for Java<li>MongoDB NoSQL API (via Azure Cosmos DB)<li>Redis Cache
 | Production-ready codebase | High quality codebase that is easily enhanced, well-documented and meets typical enterprise code quality standards
 | Well-designed RESTful API | Solution follows RESTful design best-practices
-| Enhanced productivity via Docker| Micros-services implemented in Docker containers, which are hosted by the Azure App Service for Containers PaaS service. Developer productivity enhance due to service isolation and easy service updates
+| Enhanced productivity via Docker| Microservices implemented in Docker containers, which are hosted by the Azure App Service for Containers PaaS service. Developer productivity enhance due to service isolation and easy service updates
 | Example of well-designed CI/CD pipeline | Full continuous integration/continuous delivery (CI/CD) is implemented using Azure DevOps with a pipeline of environments that support dev, testing and production
 | Automated infrastructure deployment | <li>Azure ARM templates<li>App Service for Containers<li>Azure container registry
 | High Availability/Disaster Recovery (HA/DR) | Full geo-replication of microservices and data, with automatic failover in the event of an issue in any region:<br><br><li>Cosmos DB deployed to multiple regions with active-active read/write<li>Session consistency to assure that user experience is consistent across failover<li>Stateless microservices deployed to multiple regions<li>Health monitoring to detect errors that require failover<li>Azure Traffic Manager redirects traffic to healthy region
 | Demonstrates insfrastructure best practices | <li>Application auto-scaling<li>Minimize network latency through geo-based DNS routing<li>API authentication<li>Distributed denial of service (DDoS) protection & mitigation
 | Load and performance testing | The solution includes an integrated traffic simulator to demonstrate that the solution auto-scales properly, maintaining application performance as scale increases
-| Proves application resiliency through chaos testing | A Chaos Monkey-style solution to shut down different portions of the architecture in order to validate that resilience measures keep everything runing in the event of any single failure
+| Proves application resiliency through chaos testing | A Chaos Monkey-style solution to shut down different portions of the architecture in order to validate that resilience measures keep everything running in the event of any single failure
 
 ## Quickstart
 
