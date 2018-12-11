@@ -43,7 +43,7 @@ To meaningfully access this IMDb dataset and these models, there are a few route
   + `GET` - Gets the titles in the dataset associated with the person with specified ID and returns them in an array
 + `/titles`
   + `POST` - Creates a title, and returns the information and ID of the new titles
-  + `GET` - returns a small number of title entries
+  + `GET` - Returns a small number of title entries
 + `/titles/{tconst}` > tconst is the unique identifier
   + `GET` - Gets the title of piece given the ID, and returns information about that title
   + `PUT` - Updates the title of a piece given the ID, and returns that updated information based on ID
@@ -87,9 +87,9 @@ Key technologies and concepts demonstrated:
 NIT: Move to api subfolder, reference here
 Same for ui :smile:
 
-> Are [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment)s more your style? Skip ahead to our [IDE Quickstart](#quickstart-with-ide).
+> Are [IDEs](https://en.wikipedia.org/wiki/Integrated_development_environment) more your style? Skip ahead to our [IDE Quickstart](#quickstart-with-ide).
 
-* 🔄 [Clone](https://www.git-scm.com/docs/git-clone) the Repository using [Git](https://git-scm.com/downloads)
+* 🔄 [Clone](https://www.git-scm.com/docs/git-clone) the repository using [Git](https://git-scm.com/downloads)
 ```
 git clone https://github.com/Microsoft/containers-rest-cosmos-appservice-java.git
 ```
@@ -97,7 +97,7 @@ git clone https://github.com/Microsoft/containers-rest-cosmos-appservice-java.gi
 * 📦 Install [Maven](https://maven.apache.org/install.html) to help manage our dependencies
 * ⚙️ Ensure JDK8 tools, and Maven are [in your path](https://java.com/en/download/help/path.xml) (typically done for you on Windows and Mac OS X)
 ```
-> # Validate Maven is installed by attempting to query it's version
+> # Validate Maven is installed by attempting to query its version
 > mvn --version
 Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-17T14:33:14-04:00)
 Maven home: c:\bin\maven\bin\..
@@ -134,13 +134,13 @@ git clone https://github.com/Microsoft/containers-rest-cosmos-appservice-java.gi
 ```
 * 🏗 Install [JDK8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to help us build Java code
 * 📦 Install [IntelliJ IDEA](https://www.jetbrains.com/idea/download)
-* 💡 Open IDEA and Select "Open Project", Choosing `api/` from the project directory as the IDEA project location
+* 💡 Open IDEA and select "Open Project", choosing `api/` from the project directory as the IDEA project location
 * ⚙️ In the bottom right, IDEA will tell you "Maven projects need to be imported" - Select "Import Changes"
-* 📓 Create a [Run configuration](https://www.jetbrains.com/help/idea/run-debug-configurations-dialog.html) for "Maven", specifying `spring-boot:run` as the "Command Line" value in the "Parameters" pane
+* 📓 Create a [Run Configuration](https://www.jetbrains.com/help/idea/run-debug-configurations-dialog.html) for Maven, specifying `spring-boot:run` as the "Command Line" value in the "Parameters" pane
 ```
 Command Line: spring-boot:run
 ```
-* 🔠 Add the necessary [Application Configuration](#application-configuration) values as [Environment variables](https://en.wikipedia.org/wiki/Environment_variable) in the "Runner" pane under "Environment variables"
+* 🔠 Add the necessary [Application Configuration](#application-configuration) values as [Environment Variables](https://en.wikipedia.org/wiki/Environment_variable) in the "Runner" pane under "Environment variables"
 ```
 Key: spring.profiles.active, Value: development
 ```
@@ -150,17 +150,17 @@ Note: Running the application will use [Maven](https://maven.apache.org/) to ins
 
 ## Deploying to Production
 
-In the Quickstart sections above, we covered how to run this reference solution locally. In this next section, we'll discuss how to deploy the solution to Azure, to simulation a scalable production environment.
+In the Quickstart sections above, we covered how to run this reference solution locally. In this next section, we'll discuss how to deploy the solution to Azure to simulate a scalable production environment.
 
 When running in a production environment, there are a number of required [Application Configuration](#application-configuration) values that must be defined. Please see the [Application Configuration](#application-configuration) section for more information.
 
-To Deploy a production instance of this service to Azure, we recommend reading the [infrastructure README.md](./infrastructure/README.md) file, which includes an easy deploy to Azure button. Please note that we also recommend the use of a Continuous Delivery pipeline to manage scalable deployments to Azure. A walkthrough is [in the works](https://github.com/Microsoft/containers-rest-cosmos-appservice-java/issues/24).
+To deploy a production instance of this service to Azure, we recommend reading the [infrastructure README.md](./infrastructure/README.md) file, which features an easy deploy to Azure button. Please note that we also recommend the use of a Continuous Delivery pipeline to manage scalable deployments to Azure. A walk-through is [in the works](https://github.com/Microsoft/containers-rest-cosmos-appservice-java/issues/24).
 
 ## Application Configuration
 
 We use [Profiles](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-profiles.html) for configuration.
-Currently `development` and `production` are possible values for the `spring.profiles.active` property.
-By default, `development` is assumed. Note: `default` is technically it's own profile, that is the same as `development`. The following sections document the possible configuration values, as logically grouped sets.
+Currently `development` and `production` are the two possible values for the `spring.profiles.active` property.
+By default, `development` is assumed. Note: `default` is technically it's own profile, which is the same as `development`. The following sections document the possible configuration values as logically grouped sets.
 
 ### Authentication
 
@@ -206,7 +206,7 @@ To configure logging, the following environment variables can be used:
 
 To configure [application insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview) logging, the following environment variable must be set:
 
-+ `APPLICATION_INSIGHTS_IKEY` - an [application insights telemetry key](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-java-get-started#1-get-an-application-insights-instrumentation-key)
++ `APPLICATION_INSIGHTS_IKEY` - an [Application Insights telemetry key](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-java-get-started#1-get-an-application-insights-instrumentation-key)
 
 ## Testing
 

@@ -7,7 +7,7 @@ This repository tracks various Project Jackson ARM templates.
 
 > Note: Regional resources depend on Global ARM resources via certain variables. Complete this deployment first, so those variables can be used below!
 
-To deploy all the global resources, see [The Global Readme](./global-resources/README.md) which also includes details on populating a [CosmosDB](https://azure.microsoft.com/en-us/services/cosmos-db/) instance with test data. 
+To deploy all the global resources, see the [Global Readme](./global-resources/README.md) which also includes details on populating a [CosmosDB](https://azure.microsoft.com/en-us/services/cosmos-db/) instance with test data. 
 
 ## Regional ARM Template
 
@@ -63,6 +63,6 @@ How to performance test an App Service.
 !['This image is of new performance testing button'](/images/perftest2.png)
 4. Name the new performance test and configure the settings appropriately
 !['This image is of performance testing settings'](/images/perftest3.png)
-5. Submit the test and after resources are automatically allocated it will run
+5. Submit the test and after resources are automatically allocated, the test will run
 
 After it completes, Azure will automatically generate graphs and charts for you to easily analyze the performance test.
