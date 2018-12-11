@@ -10,7 +10,7 @@ export class AuthButton extends React.Component {
                 onClick={this.context.handleAuth}
                 className='login-button'
             >
-                {this.context.accessToken ? 'Log Out' : 'Log In'}
+                {this.context.accessToken !== null ? 'Log Out' : 'Log In'}
             </button>
         )
     }

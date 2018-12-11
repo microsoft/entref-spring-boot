@@ -30,6 +30,6 @@ export class PrivateRoute extends React.Component<IPrivateRouteProps> {
     // lock/unlock the private routes. We don't pass down the values from
     // context as we would rather subscribe to them directly in the
     // components themselves.
-    return this.context.accessToken ? <Component {...props} /> : <Home {...props} />
+    return this.context.accessToken !== null ? <Component {...props} /> : <Home {...props} />
   }
 }
