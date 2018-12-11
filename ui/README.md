@@ -14,7 +14,7 @@ This UI is written entirely in [TypeScript](https://www.typescriptlang.org/) and
 
 ## Environment Variables
 
-The application is built to support authentication with Azure Active Directory and interact with the API defined in [`containers-rest-cosmos-appservice-java/api`](./../api). You must specify the following environment variables in order to connect the UI to these aspects of your project:
+The application is built to support authentication with Azure Active Directory and interact with the API defined in [`containers-rest-cosmos-appservice-java/api`](../api). You must specify the following environment variables in order to connect the UI to these aspects of your project:
   - `WEBPACK_PROP_AAD_CLIENT_ID` - OAuth provider application ID from Azure Active Directory portal
   - `WEBPACK_PROP_API_BASE_URL` - API Base url such as `http://localhost:8080` or `https://example.com/api`
   - *Note* both environment variables are optional and the app will build without them.
@@ -37,7 +37,7 @@ The UI itself is built using [`React.js`](https://reactjs.org/). The `package.js
 
 ## Testing & Linting
 
-*tldr:* Run test suite using: `npm run test`. Run linter using: `npm run lint`
+> *tldr:* Run test suite using: `npm run test`. Run linter using: `npm run lint`
 
 The UI is tested using `Jest` and `Enzyme`. All tests are written in `TypeScript` and are compiled/run in a similar way to how the `webpack` configs are set up. You can run the test suite using `npm run test`. A majority of the testing utilizies snapshots; if you are making a user interface change you will need to update the snapshots using: `npm run test -- --updateSnapshot`. 
 
