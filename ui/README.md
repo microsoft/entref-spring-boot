@@ -7,7 +7,14 @@ This UI is written entirely in [TypeScript](https://www.typescriptlang.org/) and
   This includes the latest version of `NPM` as well.
 - Run `cd ui` from the root of this project to navigate into the client directory
 - Run `npm install` to install necessary dependencies
-- Set the environment variables:
+- Start the dev server using `npm run dev` 
+  If you'd like to learn about configuring Authentication with AAD and an API URL read the [Environment Variables](#environment-variables) section
+- Access your local dev instance at http://localhost:3000. `webpack-dev-server` should open this automatically in your default browser.
+- When you are ready to ship to production, you can run `npm run build` for an optimized production build. It will be output to the `dist/` directory.
+
+## Environment Variables
+
+The application is built to support authentication with Azure Active Directory and interact with the API defined in [`containers-rest-cosmos-appservice-java/api`](./../api). You must specify the following environment variables in order to connect the UI to these aspects of your project:
   - `WEBPACK_PROP_AAD_CLIENT_ID` - OAuth provider application ID from Azure Active Directory portal
   - `WEBPACK_PROP_API_BASE_URL` - API Base url such as `http://localhost:8080` or `https://example.com/api`
   - *Note* both environment variables are optional and the app will build without them.
@@ -18,8 +25,7 @@ This UI is written entirely in [TypeScript](https://www.typescriptlang.org/) and
   > export WEBPACK_PROP_AAD_CLIENT_ID=abc123
 - Alternatively, you can prepend these environment variables to the `npm run dev` command such as:
   > WEBPACK_PROP_AAD_CLIENT_ID=abc123 WEBPACK_PROP_API_BASE_URL=http://localhost:8080 npm run dev
-- Access your local dev instance at http://localhost:3000. webpack-dev-server should open this automatically in your default browser.
-- When you are ready to ship to production, you can run `npm run build` for an optimized production build. It will be output to the `dist/` directory.
+- Remember to set up these environment variables with your deployment pipeline as shipping a production build without these values will result in a poor user experience.
 
 ## Dependency Walkthrough
 
@@ -30,6 +36,8 @@ This project is written in a typed version of `JavaScript` called [`TypeScript`]
 The UI itself is built using [`React.js`](https://reactjs.org/). The `package.json` should enforce the correct `React.js` version; however, if for whatever reason you need to make changes, you must use `React.js` version `16.6.x` or greater. The application makes use of the new `Context` api for managing state accross DOM Nodes. It uses a great module called [`Reach Router`](https://reach.tech/router) which is an accessibility-first client-side routing library. Microsoft's own authentication library [`MSAL`](https://github.com/AzureAD/microsoft-authentication-library-for-js) is used for the client side authentication. It is essential if your API is configured with OAuth tokens (as such in the case of the code in `./../api`). 
 
 ## Testing & Linting
+
+*tldr:* Run test suite using: `npm run test`. Run linter using: `npm run lint`
 
 The UI is tested using `Jest` and `Enzyme`. All tests are written in `TypeScript` and are compiled/run in a similar way to how the `webpack` configs are set up. You can run the test suite using `npm run test`. A majority of the testing utilizies snapshots; if you are making a user interface change you will need to update the snapshots using: `npm run test -- --updateSnapshot`. 
 
