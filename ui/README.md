@@ -1,24 +1,28 @@
 # Project Jackson Client
 
-- Built using `React`
-- Compiled and bundled using `TypeScript` and `Webpack`
-- Tested using `Jest` and `Enzyme`
+## Quickstart
+This UI is written entirely in `TypeScript` and `JavaScript`. It uses `Node.js`, `React.js`, and `Webpack` as well as various dependencies from `NPM`. To get started:
+- Install (or update) latest version of [`Node.js`](https://nodejs.org/en/) 
+  This includes the latest version of `NPM` as well.
+- Run `cd ui` from the root of this project to navigate into the client directory
+- Run `npm install` to install necessary dependencies
+- Set the environment variables:
+  - `WEBPACK_PROP_AAD_CLIENT_ID` - OAuth provider application ID from Azure Active Directory portal
+  - `WEBPACK_PROP_API_BASE_URL` - API Base url such as `http://localhost:8080` or `https://example.com/api`
+  - *Note* both environment variables are optional and the app will build without them.
+  > #### On Windows we can use:
+  > set WEBPACK_PROP_AAD_CLIENT_ID=abc123
 
-## Deploy
+  > #### On Linux we can use:
+  > export WEBPACK_PROP_AAD_CLIENT_ID=abc123
+- Alternatively, you can prepend these environment variables to the `npm run dev` command such as:
+  > WEBPACK_PROP_AAD_CLIENT_ID=abc123 WEBPACK_PROP_API_BASE_URL=http://localhost:8080 npm run dev
 
-In order to deploy this app, in development or production, you must define the AAD Client ID as an environment variable. It will be injected during build time with Webpack. The environment variable that needs to be set is called `WEBPACK_PROP_AAD_CLIENT_ID` and is provided by your AAD App settings available on the AAD Azure Portal.
-You also must define the domain for the '/people' and '/titles' API endpoints as an environment variable, which will also be injected during build time with Webpack. The environment variable that must be set for the people and titles endpoints is `WEBPACK_PROP_API_BASE_URL`.
+## Dependency Walkthrough
+This project is written in a typed version of `JavaScript` called [`TypeScript`](https://www.typescriptlang.org/). It requires a `build` step that is handled by [`webpack`](https://webpack.js.org/). There is one main `webpack` config filed called [`webpack.common.js`](./webpack.common.js) and two aditional configs for [`development`](./webpack.dev.js) and [`production`](./webpack.prod.js). Using the `npm run dev` command will merge and use the `common` and `dev` configs, and `npm run build` will merge and use the `common` and `prod` configs. 
 
-In development, you should need to set the env variables on process and then run `npm run dev` as usual. For example, on a UNIX Bash shell you can run `WEBPACK_PROP_AAD_CLIENT_ID=<insert-id-here> npm run dev`.
+`webpack` compiles the `TypeScript` source code into `JavaScript`, then it bundles all of that code into a single `bundle.js` file that is loaded into a basic `index.html` file. Running `npm run build` will generate these files in a `dist/` director. `webpack` is also responsible for loading in the Azure Active Directory Client ID and API Base URL through process environment variables. We have included `webpack-dev-server` in the `development` config to enable developers a better developer experience. It hot-reloads UI changes in browser as you make changes to files in your editor. Be sure to use the output from `npm run build` when shipping to production as the build output from this command is compressed and optimized for production.
 
-In production, make sure to set this in the build pipeline such as in Azure Dev Ops.
+The UI itself is built using [`React.js`](https://webpack.js.org/). The `package.json` should enforce the correct `React.js` version; however, if for whatever reason you need to make changes, you must use `React.js` version `16.6.x` or greater. The application makes use of the new `Context` api for managing state accross DOM Nodes. It uses a great module called [`Reach Router`](https://reach.tech/router) which is an accessibility-first client-side routing library. Microsoft's own authentication library [`MSAL`](https://github.com/AzureAD/microsoft-authentication-library-for-js) is used for the client side authentication. It is essential if your API is configured with OAuth tokens (as such in the case of the code in `./../api`). 
 
-## Contributing
-
-Run `npm run dev` to launch a hot-reloading webpack server
-
-Before commiting your changes make sure to run `npm run lint`
-
-Testing with `npm run test` will run all test files in the `src/__tests__` directory
-
-The `conf` directory is for production deployment purposes with NGINX
+Finally, the UI is tested using `Jest` and `Enzyme`. All tests are written in `TypeScript` and are compiled/run in a similar way to how the `webpack` configs are set up. You can run the test suite using `npm run test`. A majority of the testing utilizies snapshots; if you are making a user interface change you will need to update the snapshots using: `npm run test -- --updateSnapshot`. In conjunction with `TypeScript` typings, developers can utilize our `tslint` configuration to lint their projects. If you are using VS Code, the editor will lint for you as you develop; otherwise, run `npm run lint` to verify the code fits our formatting standards.
