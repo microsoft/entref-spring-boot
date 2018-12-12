@@ -10,30 +10,9 @@ This contains the Backend API, written in [Java](https://www.java.com) using the
 ```
 git clone https://github.com/Microsoft/containers-rest-cosmos-appservice-java.git
 ```
-* 🏗 Install [JDK8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to help us build Java code
-* 📦 Install [Maven](https://maven.apache.org/install.html) to help manage our dependencies
-* ⚙️ Ensure JDK8 tools, and Maven are [in your path](https://java.com/en/download/help/path.xml) (typically done for you on Windows and Mac OS X)
-```
-> # Validate Maven is installed by attempting to query its version
-> mvn --version
-Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-17T14:33:14-04:00)
-Maven home: c:\bin\maven\bin\..
-Java version: 1.8.0_181, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jre1.8.0_181
-Default locale: en_US, platform encoding: Cp1252
-OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
-
-> # Validate Javac (The Java Compiler) is installed by attempting to query its version
-> javac --version
-javac 1.8.0_181
-```
-* 📝 Configure necessary [Application Configuration](#application-configuration) values as [Environment variables](https://en.wikipedia.org/wiki/Environment_variable)
-```
-> # On Windows we can use:
-> set spring.profiles.active=development
-
-> # On Linux we can use:
-> export spring.profiles.active=development
-```
+* 🏗 Install [Oracle JDK8u191](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to help us build Java code
+* 📦 Install [Maven 3.6.0](https://maven.apache.org/install.html) to help manage our dependencies
+* 📝 (Optionally) Configure necessary [Application Configuration](#application-configuration) values as [Environment variables](https://en.wikipedia.org/wiki/Environment_variable)
 * 🏃‍♀️ Build and Run from your project directory (created when you cloned, typically `containers-rest-cosmos-appservice-java`)
 ```
 mvn spring-boot:run
@@ -49,7 +28,7 @@ Note: Running will use [Maven](https://maven.apache.org/) to install all depende
 ```
 git clone https://github.com/Microsoft/containers-rest-cosmos-appservice-java.git
 ```
-* 🏗 Install [JDK8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to help us build Java code
+* 🏗 Install [Oracle JDK8u191](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to help us build Java code
 * 📦 Install [IntelliJ IDEA](https://www.jetbrains.com/idea/download)
 * 💡 Open IDEA and select "Open Project", choosing `api/` from the project directory as the IDEA project location
 * ⚙️ In the bottom right, IDEA will tell you "Maven projects need to be imported" - select "Import Changes"
@@ -57,11 +36,8 @@ git clone https://github.com/Microsoft/containers-rest-cosmos-appservice-java.gi
 ```
 Command Line: spring-boot:run
 ```
-* 🔠 Add the necessary [Application Configuration](#application-configuration) values as [Environment Variables](https://en.wikipedia.org/wiki/Environment_variable) in the "Runner" pane under "Environment variables"
-```
-Key: spring.profiles.active, Value: development
-```
-* ▶️ [Run the application](https://www.jetbrains.com/help/idea/running-applications.html), by selecting the ▶️ button in the top right (hint: It's a green play button) 
+* 📝 (Optionally) Configure necessary [Application Configuration](#application-configuration) values as [Environment variables](https://en.wikipedia.org/wiki/Environment_variable)
+* ▶️ [Run the application](https://www.jetbrains.com/help/idea/running-applications.html)
 
 Note: Running the application will use [Maven](https://maven.apache.org/) to install all dependencies, and then use [Java](https://www.java.com/) to run the application.
 
