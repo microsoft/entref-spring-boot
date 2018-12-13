@@ -9,22 +9,26 @@ This UI is written entirely in [TypeScript](https://www.typescriptlang.org/) and
 - Run `npm install` to install necessary dependencies
 - Start the dev server using `npm run dev` 
   If you'd like to learn about configuring Authentication with AAD and an API URL read the [Environment Variables](#environment-variables) section
-- Access your local dev instance at http://localhost:3000. `webpack-dev-server` should open this automatically in your default browser.
-- When you are ready to ship to production, you can run `npm run build` for an optimized production build. It will be output to the `dist/` directory.
+- Access your local dev instance at http://localhost:3000. `webpack-dev-server` should open this automatically in your default browser. If everything was setup correctly you should see a landing page like this:
+!['This image is of the UI landing page'](./images/uiScreenshot.png)
+- When you are ready to ship to production, you can run `npm run build` for an optimized production build. It will be output to the `dist/` directory. Refer to our [infrastructure](../infrastructure/readme.md) documentation for more information on deploying this application to a production environment.
 
 ## Environment Variables
 
-The application is built to support authentication with Azure Active Directory and interact with the API defined in [`containers-rest-cosmos-appservice-java/api`](../api). You must specify the following environment variables in order to connect the UI to these aspects of your project:
+The application is built to support authentication with Azure Active Directory and interact with the API defined in [`containers-rest-cosmos-appservice-java/api`](../api). To obtain your AAD keys follow [this](docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) tutorial from the Microsoft Doc website. For more information on setting up AAD read our [AAD setup guide](../docs/azureActiveDirectory.md). You must specify the following environment variables in order to connect the UI to these aspects of your project:
   - `WEBPACK_PROP_AAD_CLIENT_ID` - OAuth provider application ID from Azure Active Directory portal
   - `WEBPACK_PROP_API_BASE_URL` - API Base url such as `http://localhost:8080` or `https://example.com/api`
   - *Note* both environment variables are optional and the app will build without them.
-  > # On Windows we can use:
-  > set WEBPACK_PROP_AAD_CLIENT_ID=abc123
-
-  > # On Linux we can use:
-  > export WEBPACK_PROP_AAD_CLIENT_ID=abc123
+  ```bash
+  # On Windows we can use:
+  set WEBPACK_PROP_AAD_CLIENT_ID=abc123
+  # On Linux we can use:
+  export WEBPACK_PROP_AAD_CLIENT_ID=abc123
+  ```
 - Alternatively, you can prepend these environment variables to the `npm run dev` command such as:
-  > WEBPACK_PROP_AAD_CLIENT_ID=abc123 WEBPACK_PROP_API_BASE_URL=http://localhost:8080 npm run dev
+  ```bash
+  WEBPACK_PROP_AAD_CLIENT_ID=abc123 WEBPACK_PROP_API_BASE_URL=http://localhost:8080 npm run dev
+  ```
 - Remember to set up these environment variables with your deployment pipeline as shipping a production build without these values will result in a poor user experience.
 
 ## Dependency Walkthrough
