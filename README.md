@@ -12,6 +12,12 @@ Cosmos DB is configured to use the NoSQL MongoDB API.
 
 In order to demonstrate Cosmos DB performance with large amounts of data, the project imports historical movie data from [IMDb](https://www.imdb.com/interfaces/). See (https://datasets.imdbws.com/). The datasets include 8.9 million people, 5.3 million movies and 30 million relationships between them.
 
+API Build Status: [![Build Status](https://dev.azure.com/csebostoncrew/ProjectJackson/_apis/build/status/GitHub%20Builds/ProjectJackson-API-GitHub?branchName=master)](https://dev.azure.com/csebostoncrew/ProjectJackson/_build/latest?definitionId=22?branchName=master)
+
+UI Build Status: [![Build Status](https://dev.azure.com/csebostoncrew/ProjectJackson/_apis/build/status/GitHub%20Builds/ProjectJackson-UI-GitHub?branchName=master)](https://dev.azure.com/csebostoncrew/ProjectJackson/_build/latest?definitionId=25?branchName=master)
+
+Infrastructure Build Status: [![Build Status](https://dev.azure.com/csebostoncrew/ProjectJackson/_apis/build/status/GitHub%20Builds/ProjectJackson-Infrastructure-GitHub?branchName=master)](https://dev.azure.com/csebostoncrew/ProjectJackson/_build/latest?definitionId=23?branchName=master)
+
 ## Architecture
 
 This solution provides a robust foundation on which enterprise engineering (EE) teams may build and deploy production-ready microservices solutions.

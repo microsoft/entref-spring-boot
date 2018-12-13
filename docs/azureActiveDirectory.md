@@ -18,6 +18,7 @@ This document will describe how to configure and leverage AAD for this applicati
 7. Select "Settings" from the top panel
 8. Select "Properties" from the right-most panel
 9. Find "App ID URI" in the panel, note its value
+10. From the main AAD page toggle the `Multi-tenanted` switch to `Yes`. This step is required if you plan on using the accompanying [UI](../ui)
 
 ## Configure SpringDAL
 
