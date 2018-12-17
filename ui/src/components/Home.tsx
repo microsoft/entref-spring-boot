@@ -5,26 +5,10 @@ export interface IHomeProps { path?: string, }
 export interface IHomeState { image: string }
 
 export class Home extends React.Component<IHomeProps, IHomeState> {
-    public state = {
-        image: null,
-    }
-
-    public componentDidMount() {
-        this.setState({ image: 'https://media.giphy.com/media/3o6Ztrs0GnTt4GkFO0/giphy.gif' })
-    }
-
-    public componentWillUnmount() {
-        this.setState({ image: null })
-    }
-
     public render() {
         return(
         <div className = 'page-container--home' >
             <h1 className='home-title'>Welcome to Project Jackson!</h1>
-                <img className='home-img'
-                    src={ this.state.image }
-                    alt='Welcome to the Home Page'>
-                </img>
             <p className='center'>
                 <b>Project Jackson</b> is an open-source project, created by members of Microsoft's CSE team,
                  to demonstrate the handiness and effictiveness of Azure resources.

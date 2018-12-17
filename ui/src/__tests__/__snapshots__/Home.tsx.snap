@@ -9,11 +9,6 @@ exports[`<Home /> renders correctly 1`] = `
   >
     Welcome to Project Jackson!
   </h1>
-  <img
-    alt="Welcome to the Home Page"
-    className="home-img"
-    src="https://media.giphy.com/media/3o6Ztrs0GnTt4GkFO0/giphy.gif"
-  />
   <p
     className="center"
   >
