@@ -5,7 +5,7 @@ This repository tracks various Project Jackson ARM templates.
 
 ## Global ARM Template
 
-> Note: Regional resources depend on Global ARM resources via certain variables. Complete this deployment first, so those variables can be used below!
+__Regional resources depend on Global ARM resources via certain variables. Complete this deployment first, so those variables can be used below!__
 
 To deploy all the global resources, see the [Global Readme](./global-resources/README.md) which also includes details on populating a [CosmosDB](https://azure.microsoft.com/en-us/services/cosmos-db/) instance with test data. 
 
