@@ -58,11 +58,11 @@ How to performance test an App Service.
 
 1. Navigate to the Azure Portal for your App Service
 2. Under `Developer Tools` select `Performance Testing`
-!['This image is of the performance testing menu item'](/images/perftest1.png)
+!['This image is of the performance testing menu item'](./images/perftest1.png)
 3. Select `New`
-!['This image is of new performance testing button'](/images/perftest2.png)
+!['This image is of new performance testing button'](./images/perftest2.png)
 4. Name the new performance test and configure the settings appropriately
-!['This image is of performance testing settings'](/images/perftest3.png)
+!['This image is of performance testing settings'](./images/perftest3.png)
 5. Submit the test and after resources are automatically allocated, the test will run
 
 After it completes, Azure will automatically generate graphs and charts for you to easily analyze the performance test.
