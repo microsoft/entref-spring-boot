@@ -41,7 +41,22 @@ Command Line: spring-boot:run
 
 Note: Running the application will use [Maven](https://maven.apache.org/) to install all dependencies, and then use [Java](https://www.java.com/) to run the application.
 
-## Deploying to Production
+# Quickstart with our mock data
+
+- [Create a resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-portal#manage-resource-groups)
+- [Add a Cosmos DB instance](https://docs.microsoft.com/en-us/azure/cosmos-db/create-sql-api-java#create-a-database-account) to the resource group
+  - When selecting an API, choose `Core (SQL)` if you need a NoSQL solution with the ability to query using SQL
+- Set up environment variables
+  - From Bash command line, run `load_env.sh`. It will will write/load any needed variables to the `vars.env` file. 
+    - `RESOURCE_GROUP` - the Azure resource group name
+    - `COSMOSDB_NAME` - the CosmosDB collection name (which is case sensitive)
+    - `COSMOSDB_PASSWORD` - the CosmosDB's password (needed for when you load the data into Cosmos)
+  - Load `vars.env` into your environment or VM where the app is being built locally.
+    - `source vars.env`
+    - or in your chosen IDE, set your environment variables within your project.
+  
+
+# Deploying to Production
 
 In the Quickstart sections above, we covered how to run this reference solution locally. In this next section, we'll discuss how to deploy the solution to Azure to simulate a scalable production environment.
 
@@ -84,6 +99,24 @@ However, __if you set the above environment variables, that configuration will t
 
 This mock data contains about 8 entries from each collection, and can be found in the `src/main/resources/testdata` folder. There are related entries across each collection to prove out the custom API routes.
 
+Before any downloading make sure that you have you have the environment variables loaded (preferably in a shell); to so run `load_env.sh`. 
+
+1. Run `data/getdata.sh` in Bash or your prefered shell. This downloads a dataset from IMDb for the people in our scenario, and also downloads a product dataset from the USDA.
+2. Use the Azure Portal to create the database `jacksonDatabase` with three collections: `products`, `names`, and `carts`.
+3. During upload you may want to increase the throughput value - maybe as high as 100,000 - but remember to lower it back down once you're done to avoid over-charging! 
+    - Read more [here.](https://docs.microsoft.com/en-us/azure/cosmos-db/set-throughput)
+
+Follow the steps on Azure Cosmos DB's [import documentation for CSVs](https://docs.microsoft.com/en-us/azure/cosmos-db/import-data#CSV):
+1. Download the DocumentDB Data Migration tool (see the link above for download).
+2. For the `names.basic.tsv` file, it is recommended to edit the file from TSV into a CSV, using something like Excel to make certain columns into text fields.
+    - Feel free to make this change in a Command Line editor like emacs or vim. Some fields have commas, so you want to make sure they're encapsulated as a string.
+3. Upload your files using the DocumentDB Data Migration tool
+    - The link provided at the beginning of this list also provides steps for the CLI, which we will not cover here.
+4. In the Source Information section, select 'CSV file(s)' from the 'Import From' dropdown; enter a ',' (comma) for the 'Nesting Separator.'
+5. In the Target Information section, enter your database connection string, appending `;Database=jacksonDatabase` to the end; verify by clicking the button.
+6. Associate with a collection ([made separately](https://docs.microsoft.com/en-us/azure/cosmos-db/create-sql-api-java)) that corresponds to the data being imported.
+7. The partition key maybe the unique identifier for the dataset; for the `products` collection, it's the 'NDBNumber' and for `names` it's the 'nconst' fields.
+
 ### Logging
 
 Spring uses [Commons Logging](https://commons.apache.org/logging) under the hood, more details can be found
@@ -95,7 +128,6 @@ To configure logging, the following environment variables can be used:
 + `logging.level.root` - Configures the logging level for the whole application, including frameworks
 + `logging.level.com.microsoft.cse.*` - Configures the logging level for our application, excluding frameworks
 + `logging.level.org.zalando.logbook` - Configures the logging of HTTP requests/responses to the console. *Set to TRACE*
-+ `logging.level.org.springframework.data.mongodb.core.MongoTemplate` - Configures the logging of a MongoDB query. *Set to DEBUG* to see how any constructed query gets data from MongoDB
 
 To configure [application insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview) logging, the following environment variable must be set:
 
