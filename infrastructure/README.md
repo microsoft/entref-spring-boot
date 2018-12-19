@@ -43,7 +43,7 @@ Your deployment resources can now be used as part of your CD pipeline.
 
 - A Redis cache is used to enhance query performance.
 - The capacity of the Redis cache can be set to a value 1-6 in the ARM template.
-- You and enable or disable non-SSL port in the ARM template.
+- You can enable or disable non-SSL port in the ARM template.
 - Azure allows 3 different values for the sku viz. Basic, Standard and Premium having different costs for each.
 
 ## Auto Scaling
