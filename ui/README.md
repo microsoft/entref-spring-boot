@@ -10,6 +10,7 @@ This UI is written entirely in [TypeScript](https://www.typescriptlang.org/) and
 - Start the dev server using `npm run dev` 
   If you'd like to learn about configuring Authentication with AAD and an API URL read the [Environment Variables](#environment-variables) section
 - Access your local dev instance at http://localhost:3000. `webpack-dev-server` should open this automatically in your default browser. If everything was setup correctly you should see a landing page like this:
+
 !['This image is of the UI landing page'](./images/uiScreenshot.png)
 - When you are ready to ship to production, you can run `npm run build` for an optimized production build. It will be output to the `dist/` directory. Refer to our [infrastructure](../infrastructure/readme.md) documentation for more information on deploying this application to a production environment.
 
