@@ -12,7 +12,7 @@ To deploy all the global resources, see the [Global Readme](./global-resources/R
 ## Regional ARM Template
 
 To deploy all the resources, the script deploy.sh can be used.
-The below values are required as input to the script:
+The below values are required as inputs to the script:
 
 1. Azure Subscription ID
 2. Azure Resource Group (Add existing if one exists; else create a new one)
