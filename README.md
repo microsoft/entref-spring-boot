@@ -33,7 +33,7 @@ This solution provides a foundation to build and deploy microservices solutions,
 
 This solution uses three kinds of models: `Person`, `Title`, and `Principal`. The `Person` model represents a person who participates in media, either in front of the camera or behind the scenes. The `Title` represents the title of the piece of media, be it a movie, a TV series, or some other kind of media. Finally, the `Principal` model and its derivative child class `PrincipalWithName` represent the intersection of Person and Title, ie. what a particular person does or plays in a specific title.
 
-To meaningfully access this IMDb dataset and these models, this solultion provides the following API:
+To meaningfully access this IMDb dataset and these models, this solution provides the following API:
 
 + `/people`
   + `POST` - Creates a person, and returns information and ID of new person
