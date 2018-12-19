@@ -90,12 +90,12 @@ public class Constants {
     public static final String DB_PERSON_COLLECTION = "names";
 
     /**
-     * The collection from which we pull Principal objects
+     * The collection from which we pull Product objects
      */
-    public static final String DB_PRINCIPAL_COLLECTION = "principals_mapping";
+    public static final String DB_PRODUCT_COLLECTION = "products";
 
     /**
-     * The collection from which we pull Title objects
+     * The collection from which we pull Cart objects
      */
-    public static final String DB_TITLE_COLLECTION = "titles";
+    public static final String DB_CART_COLLECTION = "carts";
 }

@@ -42,8 +42,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+			<groupId>com.microsoft.azure</groupId>
+			<artifactId>azure-documentdb-spring-boot-starter</artifactId>
+			<version>2.0.4</version>
 		</dependency>
 
 		<dependency>
@@ -70,12 +71,12 @@
 			<version>1.11.1</version>
 		</dependency>
 
-		<!-- from oss-sonartype repository -->
-		<dependency>
-			<groupId>de.flapdoodle.embed</groupId>
-			<artifactId>de.flapdoodle.embed.mongo</artifactId>
-			<version>2.0.0</version>
-		</dependency>
+		<!--&lt;!&ndash; from oss-sonartype repository &ndash;&gt;-->
+		<!--<dependency>-->
+			<!--<groupId>de.flapdoodle.embed</groupId>-->
+			<!--<artifactId>de.flapdoodle.embed.mongo</artifactId>-->
+			<!--<version>2.0.0</version>-->
+		<!--</dependency>-->
 
 	</dependencies>
 

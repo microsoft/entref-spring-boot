@@ -1,14 +1,11 @@
 package com.microsoft.cse.reference.spring.dal.config;
 
 import com.microsoft.cse.reference.spring.dal.models.Person;
-import com.microsoft.cse.reference.spring.dal.models.Title;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.data.repository.core.RepositoryMetadata;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
-import org.springframework.data.rest.core.mapping.RepositoryDetectionStrategy;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
 
 import java.util.regex.Pattern;
@@ -22,7 +19,6 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
         // expose the ids for the given model types
         config.exposeIdsFor(Person.class);
-        config.exposeIdsFor(Title.class);
 
         // configure how we find and load repositories to let us disable them at runtime with an environment variable
         config.setRepositoryDetectionStrategy(metadata -> {
