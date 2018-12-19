@@ -45,7 +45,7 @@ Note: Running the application will use [Maven](https://maven.apache.org/) to ins
 
 - [Create a resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-portal#manage-resource-groups)
 - [Add a Cosmos DB instance](https://docs.microsoft.com/en-us/azure/cosmos-db/create-sql-api-java#create-a-database-account) to the resource group
-  - When selecting an API, choose `Core (SQL)` if you need a NoSQL solution with the ability to query using SQL
+  - When selecting an API, choose `Core (SQL)` if you need a NoSQL solution with the ability to query using SQL. You 
 - Set up environment variables
   - From Bash command line, run `load_env.sh`. It will will write/load any needed variables to the `vars.env` file. 
     - `RESOURCE_GROUP` - the Azure resource group name
@@ -86,15 +86,29 @@ Learn more about how to configure an Azure Active Directory application [here](.
 
 > Note: If you're running with the `development` profile, this is __optional__.
 
-To configure communications with a database, the following environment variables are used:
+The following environment variable may be used:
 
-+ `DB_CONNSTR` - a mongo [database connection string](https://docs.mongodb.com/manual/reference/connection-string/) (ex: `mongodb://db.com/myDb`)
-+ `DB_NAME` - a mongo database name (ex: `myDb`)
 + `EXCLUDE_FILTER` - [optional] a (regex capable) list of classes to exclude from loading (ex: `TitleRepository,PersonRepository`)
+
+You'll separately need to create a file in the same directory as this README called `application.properties`.  There will be at least three fields if you use Azure's DocumentDB:
+
+```bash
+# Specify the DNS URI of your Azure Cosmos DB.
+azure.documentdb.uri=URLGOESHERE
+
+# Specify the access key for your database.
+azure.documentdb.key=YOURKEYGOESHERE
+
+# Specify the name of your database.
+azure.documentdb.database=YOURDATABASENAMEGOESHERE
+```
+
+These values can be found in the `Keys` subsection in the portal's Cosmos DB account's resource for production. For development you can access them in a similar fashion from the Cosmos DB Emulator. See below for more details.
+
 
 ### Mock Data
 
-By default, when running with the `development` profile, test data is auto-loaded into the embedded mongo instance.
+By default, when running with the `development` profile, ~~test data is auto-loaded into the embedded mongo instance.~~
 However, __if you set the above environment variables, that configuration will take precedence__.
 
 This mock data contains about 8 entries from each collection, and can be found in the `src/main/resources/testdata` folder. There are related entries across each collection to prove out the custom API routes.
@@ -102,19 +116,19 @@ This mock data contains about 8 entries from each collection, and can be found i
 Before any downloading make sure that you have you have the environment variables loaded (preferably in a shell); to so run `load_env.sh`. 
 
 1. Run `data/getdata.sh` in Bash or your prefered shell. This downloads a dataset from IMDb for the people in our scenario, and also downloads a product dataset from the USDA.
-2. Use the Azure Portal to create the database `jacksonDatabase` with three collections: `products`, `names`, and `carts`.
+2. Use the Azure Portal to create the database `jacksonDatabases` with three collections: `products`, `names`, and `carts`. We'll be loading data into `products` and `names`
 3. During upload you may want to increase the throughput value - maybe as high as 100,000 - but remember to lower it back down once you're done to avoid over-charging! 
     - Read more [here.](https://docs.microsoft.com/en-us/azure/cosmos-db/set-throughput)
 
 Follow the steps on Azure Cosmos DB's [import documentation for CSVs](https://docs.microsoft.com/en-us/azure/cosmos-db/import-data#CSV):
 1. Download the DocumentDB Data Migration tool (see the link above for download).
 2. For the `names.basic.tsv` file, it is recommended to edit the file from TSV into a CSV, using something like Excel to make certain columns into text fields.
-    - Feel free to make this change in a Command Line editor like emacs or vim. Some fields have commas, so you want to make sure they're encapsulated as a string.
+    - Feel free to make this change in a Command Line editor like [emacs](https://www.gnu.org/software/emacs/) or [vim](https://www.vim.org/). Some fields have commas, so you want to make sure they're encapsulated as a string.
 3. Upload your files using the DocumentDB Data Migration tool
     - The link provided at the beginning of this list also provides steps for the CLI, which we will not cover here.
 4. In the Source Information section, select 'CSV file(s)' from the 'Import From' dropdown; enter a ',' (comma) for the 'Nesting Separator.'
-5. In the Target Information section, enter your database connection string, appending `;Database=jacksonDatabase` to the end; verify by clicking the button.
-6. Associate with a collection ([made separately](https://docs.microsoft.com/en-us/azure/cosmos-db/create-sql-api-java)) that corresponds to the data being imported.
+5. In the Target Information section, enter your database connection string, appending `;Database=jacksonDatabases` to the end - or if you chose a different database, then that name; verify by clicking the button.
+6. Associate with a collection that corresponds to the data being imported. See the previous list's step 2.
 7. The partition key maybe the unique identifier for the dataset; for the `products` collection, it's the 'NDBNumber' and for `names` it's the 'nconst' fields.
 
 ### Logging
