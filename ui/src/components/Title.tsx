@@ -59,7 +59,7 @@ export class Title extends React.Component<ITitleProps, ITitleState> {
 
     // set up endpoint
     const id = this.state.titleId && this.state.titleId.replace(/\s+/g, '')
-    const base = `${WEBPACK_PROP_API_BASE_URL}/titles`
+    const base = `${process.env.WEBPACK_PROP_API_BASE_URL}/titles`
     const endpoint = id ? base + id : base
 
     // set up request header with Bearer token

@@ -25,9 +25,15 @@ module.exports = {
       favicon: './src/public/mountains.svg'
     }),
     // DefinePlugin will inject this env variable anywhere in the code base it ref the attr name
-    new webpack.DefinePlugin({
-      WEBPACK_PROP_AAD_CLIENT_ID: process.env.WEBPACK_PROP_AAD_CLIENT_ID ? `"${process.env.WEBPACK_PROP_AAD_CLIENT_ID}"` : null,
-      WEBPACK_PROP_API_BASE_URL: process.env.WEBPACK_PROP_API_BASE_URL ? `"${process.env.WEBPACK_PROP_API_BASE_URL}"` : null
+    // new webpack.DefinePlugin({
+    //   WEBPACK_PROP_AAD_CLIENT_ID: process.env.WEBPACK_PROP_AAD_CLIENT_ID ? `"${process.env.WEBPACK_PROP_AAD_CLIENT_ID}"` : null,
+    //   WEBPACK_PROP_API_BASE_URL: process.env.WEBPACK_PROP_API_BASE_URL ? `"${process.env.WEBPACK_PROP_API_BASE_URL}"` : null,
+    //   WEBPACK_PROP_UI_BASEPATH: process.env.WEBPACK_PROP_UI_BASEPATH ? `"${process.env.WEBPACK_PROP_UI_BASEPATH}"` : null
+    // }),
+    new webpack.EnvironmentPlugin({
+      WEBPACK_PROP_AAD_CLIENT_ID: '',
+      WEBPACK_PROP_API_BASE_URL: '',
+      WEBPACK_PROP_UI_BASEPATH: 'ui'
     })
   ],
 }

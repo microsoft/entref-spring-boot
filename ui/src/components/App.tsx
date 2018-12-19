@@ -14,12 +14,15 @@ import { Title } from './Title'
 import './../styles/App.css'
 
 const appConfig = {
-    clientID: WEBPACK_PROP_AAD_CLIENT_ID, // nullified when no OAuth client id is passed in
+    clientID: process.env.WEBPACK_PROP_AAD_CLIENT_ID, // nullified when no OAuth client id is passed in
 }
 
 // initialize the UserAgentApplication globally so popup and iframe can run in the background
 // short circuit userAgentApp. If clientID is null so is userAgentApp
 const userAgentApp = appConfig.clientID && new Msal.UserAgentApplication(appConfig.clientID, null, null)
+
+let basepath = process.env.WEBPACK_PROP_UI_BASEPATH
+basepath = basepath.charAt(0) === '/' ? basepath : `/${basepath}`
 
 export class App extends React.Component {
 
@@ -77,9 +80,9 @@ export class App extends React.Component {
                 setAuthResponse: this.setAuthResponse,
             }}>
                 <div className='app-container'>
-                    <Navbar />
+                    <Navbar basepath={basepath} />
                     <AuthResponseBar />
-                    <Router>
+                    <Router basepath={basepath}>
                         <Home path='/' />
                         <PrivateRoute as={Person} path='/people' />
                         <PrivateRoute as={Title} path='/titles' />
