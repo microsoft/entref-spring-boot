@@ -12,7 +12,7 @@
         },
         "container_registry_name": {
             "type": "string",
-            "defaultValue": "acr-images"
+            "defaultValue": "acrImages"
         },
         "traffic_manager_profiles_name": {
             "type": "string",
@@ -22,12 +22,12 @@
     "resources": [
         {
             "type": "Microsoft.DocumentDB/databaseAccounts",
-            "kind": "MongoDB",
+            "kind": "GlobalDocumentDB",
             "name": "[parameters('database_account_name')]",
             "apiVersion": "2015-04-08",
             "location": "westus",
             "tags": {
-                "defaultExperience": "MongoDB"
+                "defaultExperience": "Core (SQL)"
             },
             "scale": null,
             "properties": {
