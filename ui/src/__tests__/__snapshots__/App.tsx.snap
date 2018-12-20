@@ -71,7 +71,7 @@ exports[`<App /> renders correctly 1`] = `
          is an open-source project that creates an application and deployment infrastructure using Azure App Service for Containers.
         <br />
         <br />
-        Azure resources used include 
+        Azure resources used include
         <a
           href="https://azure.microsoft.com/en-us/services/app-service/containers/"
         >
