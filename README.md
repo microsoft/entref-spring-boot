@@ -61,33 +61,12 @@ As with our OSS technology choices, we intentionally selected a set of Azure tec
 >Azure Kubernetes Service (AKS) for apps that require certain advanced capabilities.
 
 * **Cosmos DB:** Cosmos DB is perhaps the fastest and most reliable NoSQL data storage service in the world. It is an excellent choice when performance and reliability are a must, and when enterprises require multi-region write capabilities, which are essential for both application/service performance and for HA/DR scenarios.
-* **Azure Traffic Manager:**
-* **Application Gateway:**
+* **Azure Traffic Manager:** DNS-based routing service to connect users to the nearest data center. Redirects traffic to healthy location when another region goes offline. Also enables recommended method blue-green (aka canary) deployments with Azure App Services.
+* **Application Gateway:** Provides a single public end-point (public IP) and acts as a reverse proxy (based on URI path) to send requests to the correct App Service instance.
 * **App Insights:** Enterprise developers use App Insights to monitor and detect performance anomolies in production applications.
 
 The solution leverages Azure Dev Ops for Continuous Integration 
 and Delivery (CI/CD), and it deploys complete Azure environments via Azure Resource Manager (ARM) templates.
-
-## Architecture
-
-This solution provides a robust foundation on which enterprise engineering (EE) teams may build and deploy production-ready microservices solutions.
-
-We built the solution to provide a common enterprise-ready foundation for Azure-based applications with the following architecture:
-
-* Java-based microservices
-* Data stored in Cosmos DB
-* High Availability & Disaster Recovery (HA/DR)
-* A full CI/CD pipeline
-* Robust but simple codebase that follows common enterprise-engineering best practices
-* Load and failure simulators to validate scale, resiliency and failover
-
-### Why We Chose App Services
-
-We decided to host our application using Azure App Services instead of using Azure Kubernetes Cluster. We made this decision because Azure App Services gave us better control over scaling the app accross regions. It also required less configuration with our traffic manager and load balancer architecture. Furthermore, Azure App Services has an easy-to-use, built-in load testing service that we utilize to test the container scaling of our app. Out of the box, Azure App Services offers auto-scaling, authentication, and deployment slots. In the future, because Azure App Services is a PaaS provider, we can implement [Platform Chaos](https://github.com/Azure/platform-chaos) to initiate chaos testing services too. While this approach does not provide as much control of the server itself, the deployed docker container will keep the JVM consistent across deployments.
-
-If you'd like to learn more you can read these articles:
- - [Container? Why not App Services?](https://blogs.msdn.microsoft.com/premier_developer/2018/06/15/container-why-not-app-services/)
- - [Azure Deployment Models](https://stackify.com/azure-deployment-models/)
 
 ## Key Benefits
 
