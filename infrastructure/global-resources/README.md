@@ -25,7 +25,6 @@ In this section we'll explain how to populate the [CosmosDB](https://azure.micro
 
 - Locate the provisioned CosmosDB instance in the [Azure Portal](https://portal.azure.com)
 - Open the Cosmos Connection String blade
-- Open the `data/importdata.sh` file
 - Make sure the Cosmos DB resource is already created as described above
 - From Bash command line, run `load_env.sh`. This will write/load any needed variables to the `vars.env` file
   - `RESOURCE_GROUP` - the Azure resource group name
