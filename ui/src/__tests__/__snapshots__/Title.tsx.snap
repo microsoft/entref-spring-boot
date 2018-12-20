@@ -13,7 +13,7 @@ exports[`<Title /> renders correctly 1`] = `
     <p
       className="form-description"
     >
-      Enter the ID for a title to get their information from the database. Leave the form empty for a random sample of people from the database.
+      Enter an ID to get information about a title from the database. Leave the form empty to get information about a random title.
     </p>
     <form
       className="form"
@@ -33,9 +33,7 @@ exports[`<Title /> renders correctly 1`] = `
         />
         <span
           className="form-field-sub-text"
-        >
-          Leave empty for random sample
-        </span>
+        />
       </label>
       <input
         className="form-field-submit"
@@ -51,7 +49,7 @@ exports[`<Title /> renders correctly 1`] = `
     <h2
       className="results-title"
     >
-      Results for TitleId: 
+      Results for Title ID: 
     </h2>
     <pre
       className="results-view"

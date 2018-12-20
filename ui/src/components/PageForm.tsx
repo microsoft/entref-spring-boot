@@ -19,7 +19,8 @@ export function PageForm(props: IPageFormProps) {
           onChange={props.onInputChange}
           placeholder={props.inputPlaceholder}
         />
-        <span className='form-field-sub-text'>Leave empty for random sample</span>
+       <span className='form-field-sub-text'></span>
+
       </label>
       <input
         className='form-field-submit'

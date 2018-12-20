@@ -15,10 +15,16 @@ exports[`<Home /> renders correctly 1`] = `
     <b>
       Project Jackson
     </b>
-     is an open-source project, created by members of Microsoft's CSE team, to demonstrate the handiness and effictiveness of Azure resources.
+     is an open-source project that creates an application and deployment infrastructure using Azure App Service for Containers.
     <br />
     <br />
-    Azure resources used include 
+    Azure resources used include
+    <a
+      href="https://azure.microsoft.com/en-us/services/app-service/containers/"
+    >
+      App Service for Containers
+    </a>
+    , 
     <a
       href="https://docs.microsoft.com/en-us/azure/cosmos-db/"
     >
@@ -30,12 +36,6 @@ exports[`<Home /> renders correctly 1`] = `
     >
       Traffic Manager
     </a>
-    , 
-    <a
-      href="https://azure.microsoft.com/en-us/services/app-service/containers/"
-    >
-      App Service for Containers
-    </a>
     , and 
     <a
       href="https://azure.microsoft.com/en-us/services/application-gateway/"
@@ -45,7 +45,7 @@ exports[`<Home /> renders correctly 1`] = `
     .
     <br />
     <br />
-    In order to demonstrate Cosmos DB performance with large amounts of data, the project imports historical movie data from IMDb. See 
+    To demonstrate Cosmos DB performance with large amounts of data, the project imports historical movie data from IMDb. See 
     <a
       href="https://datasets.imdbws.com/"
     >
@@ -54,7 +54,7 @@ exports[`<Home /> renders correctly 1`] = `
     . The datasets include 8.9 million people, 5.3 million movies and 30 million relationships between them.
     <br />
     <br />
-    Languages used for this project include Java, Javascript, and Typescript. These languages were selected because they are all well documented and well-suited for our purposes.
+    Languages used for this project include Java, Javascript, and Typescript.
     <br />
     <br />
     Technologies used include:
@@ -72,7 +72,7 @@ exports[`<Home /> renders correctly 1`] = `
       <i>
         Docker
       </i>
-      , a tool used in order to isolate different microservices, allowing for easy maintenance and testing
+      , a tool used in order to isolate microservices,simplifying maintenance and testing
     </li>
     <li>
       <i>
@@ -84,7 +84,7 @@ exports[`<Home /> renders correctly 1`] = `
       <i>
         Reach Router
       </i>
-      , a Javascript library that manages the focus of apps on route transitions and focuses on user accessibility
+      , an accessible Javascript library that manages the focus of apps on route transitions
     </li>
     <li>
       <i>
@@ -100,9 +100,9 @@ exports[`<Home /> renders correctly 1`] = `
     </li>
     <li>
       <i>
-        Custom Azure Resource Manager (ARM) templates
+        Azure Resource Manager (ARM) templates
       </i>
-       were utilized, to allow one-click deployment of Azure resources and services
+      , to simplify deployment of Azure resources and services
     </li>
   </ul>
 </div>
