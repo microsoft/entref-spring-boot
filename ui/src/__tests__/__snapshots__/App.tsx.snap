@@ -16,23 +16,22 @@ exports[`<App /> renders correctly 1`] = `
       className="nav-link-container"
     >
       <a
-        aria-current="page"
-        className="nav-link active"
-        href="/"
+        className="nav-link"
+        href="//"
         onClick={[Function]}
       >
         Home
       </a>
       <a
         className="nav-link"
-        href="/people"
+        href="//people"
         onClick={[Function]}
       >
         People
       </a>
       <a
         className="nav-link"
-        href="/titles"
+        href="//titles"
         onClick={[Function]}
       >
         Titles

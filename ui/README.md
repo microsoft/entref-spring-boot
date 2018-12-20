@@ -18,6 +18,10 @@ This UI is written entirely in [TypeScript](https://www.typescriptlang.org/) and
 The application is built to support authentication with Azure Active Directory and interact with the API defined in [`containers-rest-cosmos-appservice-java/api`](../api). To obtain your AAD keys follow [this](docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) tutorial from the Microsoft Doc website. For more information on setting up AAD read our [AAD setup guide](../docs/azureActiveDirectory.md). You must specify the following environment variables in order to connect the UI to these aspects of your project:
   - `WEBPACK_PROP_AAD_CLIENT_ID` - OAuth provider application ID from Azure Active Directory portal
   - `WEBPACK_PROP_API_BASE_URL` - API Base url such as `http://localhost:8080` or `https://example.com/api`
+  - `WEBPACK_PROP_UI_BASEPATH` - basepath string for which the UI will be served from. This is used for client side routing. **The basepath is defaulted to `ui`**.
+    - Valid entries for this variable include the following literals: `\abc`, `abc`. 
+    - Invalid entries include: `/abc` or `\/abc`. The system file path will be prepended to your route and break the client side router. 
+    - `webpack-dev-server` is configured to automatically start the UI app from the basepath environment variable
   - *Note* both environment variables are optional and the app will build without them.
   ```bash
   # On Windows we can use:
@@ -27,7 +31,7 @@ The application is built to support authentication with Azure Active Directory a
   ```
 - Alternatively, you can prepend these environment variables to the `npm run dev` command such as:
   ```bash
-  WEBPACK_PROP_AAD_CLIENT_ID=abc123 WEBPACK_PROP_API_BASE_URL=http://localhost:8080 npm run dev
+  WEBPACK_PROP_AAD_CLIENT_ID=abc123 WEBPACK_PROP_API_BASE_URL=http://localhost:8080 WEBPACK_PROP_UI_BASEPATH=ui npm run dev
   ```
 - Remember to set up these environment variables with your deployment pipeline as shipping a production build without these values will result in a poor user experience.
 

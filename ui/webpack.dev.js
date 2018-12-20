@@ -8,5 +8,6 @@ module.exports = merge(common, {
     port: 3000,
     open: true,
     historyApiFallback: true,
+    openPage: process.env.WEBPACK_PROP_UI_BASEPATH || 'ui'
   },
 })

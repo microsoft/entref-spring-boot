@@ -9,13 +9,13 @@ export class PrivateRoute extends React.Component<IPrivateRouteProps> {
   public static contextType = AuthContext
 
   public componentDidMount() {
-    if (!this.context.accessToken) {
+    if (this.context.accessToken === null) {
       this.context.setAuthResponse(`Please log in to access: ${this.props.path}`)
     }
   }
 
   public componentDidUpdate(prevProps, prevState, snapshot) {
-    if (!this.context.accessToken && this.props.path !== prevProps.path) {
+    if (this.context.accessToken === null && this.props.path !== prevProps.path) {
       this.context.setAuthResponse(`Please log in to access: ${this.props.path}`)
     }
   }
