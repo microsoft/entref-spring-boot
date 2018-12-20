@@ -1,16 +1,6 @@
-# SpringDAL
+# Containerized Java REST Services on Azure App Service with a CosmosDB backend
 
-> Looking to get running quickly? Jump ahead to our [quickstart](#quickstart).
-
-A RESTful DAL (Database Abstraction Layer) reference implementation written using Spring.
-
-# Introduction
-
-This project provides a reference implementation for of Java-based microservices with REST APIs that read and write data stored in Azure Cosmos DB. The services are hosted in containers running in Azure App Service for Containers, (FUTURE: with Azure Redis providing caching). HA/DR is provided by hosting the microservices in multiple regions, as well as CosmosDB's native geo-redundancy. Traffic Manager is used to route traffic based on geo-proximity, and Application Gateway provides path-based routing, service authentication and DDoS protection.
-
-Cosmos DB is configured to use the NoSQL MongoDB API.
-
-In order to demonstrate Cosmos DB performance with large amounts of data, the project imports historical movie data from [IMDb](https://www.imdb.com/interfaces/). See (https://datasets.imdbws.com/). The datasets include 8.9 million people, 5.3 million movies and 30 million relationships between them.
+## Project Health
 
 API Build Status: [![Build Status](https://dev.azure.com/csebostoncrew/ProjectJackson/_apis/build/status/GitHub%20Builds/ProjectJackson-API-GitHub?branchName=master)](https://dev.azure.com/csebostoncrew/ProjectJackson/_build/latest?definitionId=22?branchName=master)
 
@@ -18,50 +8,78 @@ UI Build Status: [![Build Status](https://dev.azure.com/csebostoncrew/ProjectJac
 
 Infrastructure Build Status: [![Build Status](https://dev.azure.com/csebostoncrew/ProjectJackson/_apis/build/status/GitHub%20Builds/ProjectJackson-Infrastructure-GitHub?branchName=master)](https://dev.azure.com/csebostoncrew/ProjectJackson/_build/latest?definitionId=23?branchName=master)
 
+## Contents:
+
+* [Introduction & Overiew (this document)](Introduction)
+* [Quick Start for Developers](./GettingStarted.md)
+* [Sample Application and REST APIs](./RESTAPI.md)
+
+## Introduction
+
+This project was created to demonstrate end-to-end best practices building and running "enterprise-class"
+applications on Azure. This document explains what the project provides and why, and it provides instructions for getting started.
+
+## Enterprise-Class Applications Defined
+
+We are using the term "enterprise-class app" to refer to an end-to-end solution that delivers the following 
+capabilities:
+
+* **Horizontal scalability:** Add capacity by adding additional containers and/or VMs
+* **Infrastructure as code:** Create and manage Azure environments using template code that is under source control
+* **Agile engineering and rapid updates:** CI/CD is used to automated builds, tests and deployments, ensuring that developers cansafely check-in updates continuously and allow frequent production updates to the production environment and application.
+* **High Availability:** The application, as well as all infrastructure, is some combination of stateless and/or redundant so that everything continues running normally when any single component fails or otherwise goes offline
+* **Blue/Green (aka Canary Deployments:** Updates are initally rolled out to a "green" application instance, while the existing deployment continues to run on the "blue" instance. The green instance is intially exposed to only a small number of users. Monitoring is performed to look for any degradations in service related to the green instance. If everything looks good, traffic is gradually diverted to the green instance. Should the service quality degrade,the deployment is rolled back by returning all traffic to the blue instance.
+* **Hardened:** Enterprise applications must be instrinsically resistant to attacks from bad actors, such as Distributed Denial of Service (DDoS) attacks.
+* **Networking compliance:** All enterpises takes steps to ensure the privacy and security of their networks. Enterprise solutions on Azure must support common networking requirements, such as the use of ExpressRoute to communicate with the enterprises's data-centers and/or on-premises networks, and private IPs for all but public end-points.
+* **Testable:** No production solution can truly be trusted to be reliable unless it is continously tested to validate scalability, resilence and security.  
+
+## OSS Technology Choices
+
+Our team, Commercial Software Engineering (CSE), collaboratively codes with Microsoft's biggest and most important customers.
+We see a huge spectrum of technology choices at different customers, ranging from all-Microsoft to all-OSS. Most comonly, we see a mix.
+
+Given the wide range of technology choices out there, it's difficult to create a one-size-fits-all reference solution. For this particular project, we selected a set of technologies that are of interest to many of our customers.
+
+This OSS solution uses the following OSS technologies:
+
+* **GitHub:** This project is self-evidently published to GitHub, but it's also a deliberate choise we made. GitHub is both the most recognized place to publish OSS projects, but it also has phenomenal tools to enable community contributions.
+* **Docker:** Though there are other container technologies out there, Docker/Moby is pretty much synonymous with the idea.
+* **Java Version 8 (1.8.x):** A very common choice of programming langauages my many enterpises
+* **Spring Boot:** One of the most widely used and capable Java frameworks
+* **Spring Data REST:** A simple way to build REST APIs in a Spring Boot application that are backed by a persistent data repository.
+* **Maven:** A commonly used tool for building and managing Java projects
+
+## Azure Technologies & Services
+
+As with our OSS technology choices, we intentionally selected a set of Azure technologies and services that support common enterprise requirements, including:
+
+* **Azure DevOps:** Microsoft's CI/CD solution, which is the Azure-branded version of Microsoft's mature and widely used VSTS solution.
+* **Azure Resource Manager (ARM):** Azure's solution for deploying and managing Azure resources via JSON-based templates
+* **App Services:** A robust platform-as-a-service (PaaS) solution for application hosting. App Services hides the complexity of provisioning and managing VMs, auto-scaling, creating public IPs, etc.
+
+>**Note:** App Services is appropriate for a wide range of enterprise apps, including certain highly scaled apps, though we often recommend 
+>Azure Kubernetes Service (AKS) for apps that require certain advanced capabilities.
+
+* **Cosmos DB:** Cosmos DB is perhaps the fastest and most reliable NoSQL data storage service in the world. It is an excellent choice when performance and reliability are a must, and when enterprises require multi-region write capabilities, which are essential for both application/service performance and for HA/DR scenarios.
+* **Azure Traffic Manager:**
+* **Application Gateway:**
+* **App Insights:** Enterprise developers use App Insights to monitor and detect performance anomolies in production applications.
+
+The solution leverages Azure Dev Ops for Continuous Integration 
+and Delivery (CI/CD), and it deploys complete Azure environments via Azure Resource Manager (ARM) templates.
+
 ## Architecture
 
 This solution provides a robust foundation on which enterprise engineering (EE) teams may build and deploy production-ready microservices solutions.
 
 We built the solution to provide a common enterprise-ready foundation for Azure-based applications with the following architecture:
 
-- Java-based microservices
-- Data stored in Cosmos DB
-- Redis-based caching
-- High Availability & Disaster Recovery (HA/DR)
-- A full CI/CD pipeline
-- Robust but simple codebase that follows common enterprise-engineering best practices
-- Load and failure simulators to validate scale, resiliency and failover
-
-### API Routes
-
-We're using three kinds of models: `Person`, `Title`, and `Principal`. The `Person` model represents a person who participates in media, either in front of the camera or behind the scenes. The `Title` represents what it sounds like - the title of the piece of media, be it a movie, a TV series, or some other kind of similar media. Finally, the `Principal` model and its derivative child class `PrincipalWithName` represent the intersection of Person and Title, ie. what a particular person does or plays in a specific title.
-
-To meaningfully access this IMDb dataset and these models, there are a few routes one can access on the API.
-
-+ `/people`
-  + `POST` - Creates a person, and returns information and ID of new person
-  + `GET` - Returns a small number of people entries
-+ `/people/{nconst}` > nconst is the unique identifier
-  + `GET` - Gets the person associated with ID, and returns information about the person
-  + `PUT` - Updates a person for a given ID, and returns information about updated person
-  + `DELETE` - Deletes a person with a given ID, and returns the success/failure code
-+ `/people/{nconst}/titles` > nconst is the unique identifier
-  + `GET` - Gets the titles in the dataset associated with the person with specified ID and returns them in an array
-+ `/titles`
-  + `POST` - Creates a title, and returns the information and ID of the new titles
-  + `GET` - Returns a small number of title entries
-+ `/titles/{tconst}` > tconst is the unique identifier
-  + `GET` - Gets the title of piece given the ID, and returns information about that title
-  + `PUT` - Updates the title of a piece given the ID, and returns that updated information based on ID
-  + `DELETE` - Deletes the piece of media given the ID, and returns the success/failure code
-+ `/titles/{tconst}/people` > tconst is the unique identifier
-  + `GET` - Gets the people in the dataset associated with the given title, and returns that list
-+ `/titles/{tconst}/cast` > tconst is the unique identifier
-  + `GET` - Gets the people in the dataset associated with the given title who act, and returns that list
-+ `/titles/{tconst}/crew` > tconst is the unique identifier
-  + `GET` - Gets the people in the dataset associated with the given title who participate behind the scenes, and returns that list
-
-For more details, check out the [Swagger documentation](./api/swagger.yml).
+* Java-based microservices
+* Data stored in Cosmos DB
+* High Availability & Disaster Recovery (HA/DR)
+* A full CI/CD pipeline
+* Robust but simple codebase that follows common enterprise-engineering best practices
+* Load and failure simulators to validate scale, resiliency and failover
 
 ### Why We Chose App Services
 
@@ -87,14 +105,6 @@ Key technologies and concepts demonstrated:
 | Demonstrates insfrastructure best practices | <li>Application auto-scaling<li>Minimize network latency through geo-based DNS routing<li>API authentication<li>Distributed denial of service (DDoS) protection & mitigation
 | Load and performance testing | The solution includes an integrated traffic simulator to demonstrate that the solution auto-scales properly, maintaining application performance as scale increases
 | Proves application resiliency through chaos testing | A Chaos Monkey-style solution to shut down different portions of the architecture in order to validate that resilience measures keep everything running in the event of any single failure
-
-## Quickstart
-
-This project is composed of many different pieces - This section is designed to get you up and running as quickly as possible.
-
-* The largest component of this service is the Java Backend - see [the Backend Readme](./api/README.md)
-* Our UI component is a separate service that's built using React and Webpack - see [the UI Readme](./ui/README.md)
-* To scale our service on Azure we leverage ARM templates - see [the Infrastructure Readme](./infrastructure/README.md)
 
 ## Contribute
 
