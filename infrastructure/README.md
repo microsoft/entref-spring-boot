@@ -49,7 +49,7 @@ Your deployment resources can now be used as part of your CD pipeline.
 ## Auto Scaling
 
 - The app service uses auto scaling.  
-- When the CPU usage for an instance exceeds 70%, the app will automatically be scaled to add another compute instance, up to up to 5 instances.  This limit can be changed based on requirements.
+- When the CPU usage for an instance exceeds 70%, the app will automatically be scaled to add another compute instance, up to 5 instances.  This limit can be changed based on requirements.
 - When memory usage for an instance exceeds 70%, the app will automatically be scaled to add another compute instance, up to 5 instances. This limit can be changed based on requirements.
 - The minimum number of instances is set to 1.  This means that if the memory used on an instance is less, the instances will be scaled down automatically.
 
