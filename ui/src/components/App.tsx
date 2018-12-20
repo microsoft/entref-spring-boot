@@ -25,7 +25,7 @@ const userAgentApp = appConfig.clientID && new Msal.UserAgentApplication(appConf
 // webpack replaces this variable on build time
 let basepath = process.env.WEBPACK_PROP_UI_BASEPATH || '' // default to empty string for testing
 const c = basepath.charAt(0)
-basepath = c === '/' || c === '\\' ? basepath : `/${basepath}`
+basepath = c === '' || c === '/' || c === '\\' ? basepath : `/${basepath}`
 
 export class App extends React.Component {
 
