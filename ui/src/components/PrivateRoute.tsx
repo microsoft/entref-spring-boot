@@ -17,6 +17,8 @@ export class PrivateRoute extends React.Component<IPrivateRouteProps> {
   public componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.context.accessToken === null && this.props.path !== prevProps.path) {
       this.context.setAuthResponse(`Please log in to access: ${this.props.path}`)
+    } else if (this.context.authResponse !== null && this.context.accessToken !== null) {
+      this.context.setAuthResponse(null)
     }
   }
 
