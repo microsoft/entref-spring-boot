@@ -10,9 +10,9 @@ Infrastructure Build Status: [![Build Status](https://dev.azure.com/csebostoncre
 
 ## Contents:
 
-* [Introduction & Overiew (this document)](Introduction)
+* Introduction & Overiew (this document)
 * [Quick Start for Developers](./GettingStarted.md)
-* [Sample Application and REST APIs](./RESTAPI.md)
+* [Sample Application and REST APIs](./SampleApp.md)
 
 ## Introduction
 
@@ -26,12 +26,16 @@ capabilities:
 
 * **Horizontal scalability:** Add capacity by adding additional containers and/or VMs
 * **Infrastructure as code:** Create and manage Azure environments using template code that is under source control
-* **Agile engineering and rapid updates:** CI/CD is used to automated builds, tests and deployments, ensuring that developers cansafely check-in updates continuously and allow frequent production updates to the production environment and application.
-* **High Availability:** The application, as well as all infrastructure, is some combination of stateless and/or redundant so that everything continues running normally when any single component fails or otherwise goes offline
-* **Blue/Green (aka Canary Deployments:** Updates are initally rolled out to a "green" application instance, while the existing deployment continues to run on the "blue" instance. The green instance is intially exposed to only a small number of users. Monitoring is performed to look for any degradations in service related to the green instance. If everything looks good, traffic is gradually diverted to the green instance. Should the service quality degrade,the deployment is rolled back by returning all traffic to the blue instance.
-* **Hardened:** Enterprise applications must be instrinsically resistant to attacks from bad actors, such as Distributed Denial of Service (DDoS) attacks.
-* **Networking compliance:** All enterpises takes steps to ensure the privacy and security of their networks. Enterprise solutions on Azure must support common networking requirements, such as the use of ExpressRoute to communicate with the enterprises's data-centers and/or on-premises networks, and private IPs for all but public end-points.
-* **Testable:** No production solution can truly be trusted to be reliable unless it is continously tested to validate scalability, resilence and security.  
+* **Agile engineering and rapid updates:** Use CI/CD to automated builds, tests and deployments, ensuring that developers cansafely check-in updates continuously and allow frequent production updates to the production environment and application.
+* **High Availability:** Design and deploy the application and infrastructure that everything continues running normally when any single component fails or otherwise goes offline.
+* **Blue/Green (aka Canary Deployments):** Rollout updates to a "green" application instance, while the existing deployment continues to run on the "blue" instance. The green instance is intially exposed to only a small number of users. Monitoring is performed to look for any degradations in service related to the green instance. If everything looks good, traffic is gradually diverted to the green instance. Should the service quality degrade,the deployment is rolled back by returning all traffic to the blue instance.
+* **Testable:** Continuously test the application in production to validate scalability, resilence and security.
+* **Hardened:** Assure that the application and infrastructure is instrinsically resistant to attacks from bad actors, such as Distributed Denial of Service (DDoS) attacks.
+* **Networking compliance:** Comply with enterprise network security requirements, such as the use of ExpressRoute to communicate with the enterprise's data-centers and/or on-premises networks, and private IPs for all but public end-points.
+* **Monitoring and Analytics:** Capture telemetry to enable operations dashboards and automatic alerting of critical issues.
+* **Service Authentication:** Allow only authorized access to services via token- or certificate-based service authentication.
+* **Simulated Traffic:**
+* **Chaos Testing:**
 
 ## OSS Technology Choices
 
@@ -42,19 +46,20 @@ Given the wide range of technology choices out there, it's difficult to create a
 
 This OSS solution uses the following OSS technologies:
 
-* **GitHub:** This project is self-evidently published to GitHub, but it's also a deliberate choise we made. GitHub is both the most recognized place to publish OSS projects, but it also has phenomenal tools to enable community contributions.
+* **GitHub:** Publishing this project to GitHub indicates our desire to share it widely and to encourage community contributions. 
 * **Docker:** Though there are other container technologies out there, Docker/Moby is pretty much synonymous with the idea.
-* **Java Version 8 (1.8.x):** A very common choice of programming langauages my many enterpises
-* **Spring Boot:** One of the most widely used and capable Java frameworks
+* **Java Version 8 (1.8.x):** A very common choice of programming langauages by many enterpises.
+* **Spring Boot:** One of the most widely used and capable Java frameworks.
 * **Spring Data REST:** A simple way to build REST APIs in a Spring Boot application that are backed by a persistent data repository.
-* **Maven:** A commonly used tool for building and managing Java projects
+* **Maven:** A commonly used tool for building and managing Java projects.
+* **React:** Popular JavaScript framework for building UI. (Additional OSS tools used in the UI sample include TypeScript, webpack, and Jest.)
 
 ## Azure Technologies & Services
 
 As with our OSS technology choices, we intentionally selected a set of Azure technologies and services that support common enterprise requirements, including:
 
 * **Azure DevOps:** Microsoft's CI/CD solution, which is the Azure-branded version of Microsoft's mature and widely used VSTS solution.
-* **Azure Resource Manager (ARM):** Azure's solution for deploying and managing Azure resources via JSON-based templates
+* **Azure Resource Manager (ARM):** Azure's solution for deploying and managing Azure resources via JSON-based templates.
 * **App Services:** A robust platform-as-a-service (PaaS) solution for application hosting. App Services hides the complexity of provisioning and managing VMs, auto-scaling, creating public IPs, etc.
 
 >**Note:** App Services is appropriate for a wide range of enterprise apps, including certain highly scaled apps, though we often recommend 
