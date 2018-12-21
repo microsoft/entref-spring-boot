@@ -102,7 +102,7 @@ readResourceGroupName () {
 	printf "Existing resource groups:\n"
 	groups="$(az group list -o tsv | cut -f4 | tr '\n' ', ' | sed "s/,/, /g")"
 	printf "\n%s\n" "${groups%??}"
-	validatedRead "\nEnter a resource group name: " "^[a-zA-Z0-9_]+$" "Only letters, numbers and underscores are allowed."
+	validatedRead "\nEnter a resource group name: " "^[a-zA-Z0-9_-]+$" "Only letters, numbers and underscores are allowed."
 	resourceGroupName=$userInput
 
 	set +e
