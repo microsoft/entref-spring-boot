@@ -11,4 +11,4 @@ sed --in-place 's/\\N//g' *.tsv
 echo
 echo "IMDb data files ready:"
 ls *.tsv
-echo
+echo 
