@@ -56,6 +56,12 @@ if [[ -z "$resourceGroupLocation" ]]; then
 	read resourceGroupLocation
 fi
 
+if [[ -z "$deploymentName" ]]; then
+	echo "Please enter a Deployment Name for your Application"
+	read deploymentName
+	[[ "${deploymentName:?}" ]]
+fi
+
 #templateFile Path - template file to be used
 templateFilePath="azuredeploy.json"
 
