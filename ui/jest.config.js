@@ -6,8 +6,7 @@ module.exports = {
   globals: {
     "ts-jest": {
       "tsConfig": "tsconfig.json"
-    },
-    "WEBPACK_PROP_AAD_CLIENT_ID": ''
+    }
   },
   testMatch: [
     "**/__tests__/**/*.(ts|tsx|js)"

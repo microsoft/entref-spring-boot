@@ -1,6 +1,6 @@
 # Project Jackson API
 
-This contains the Backend API, written in [Java](https://www.java.com) using the [Spring Framework](https://spring.io).
+This readme contains the Backend API, written in [Java](https://www.java.com) using the [Spring Framework](https://spring.io).
 
 # Quickstart
 
@@ -12,7 +12,7 @@ git clone https://github.com/Microsoft/containers-rest-cosmos-appservice-java.gi
 ```
 * 🏗 Install [Oracle JDK8u191](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to help us build Java code
 * 📦 Install [Maven 3.6.0](https://maven.apache.org/install.html) to help manage our dependencies
-* 📝 (Optionally) Configure necessary [Application Configuration](#application-configuration) values as [Environment variables](https://en.wikipedia.org/wiki/Environment_variable)
+* 📝 (Optional) Configure necessary [Application Configuration](#application-configuration) values as [Environment variables](https://en.wikipedia.org/wiki/Environment_variable)
 * 🏃‍♀️ Build and Run from your project directory (created when you cloned, typically `containers-rest-cosmos-appservice-java`)
 ```
 mvn spring-boot:run
@@ -36,18 +36,18 @@ git clone https://github.com/Microsoft/containers-rest-cosmos-appservice-java.gi
 ```
 Command Line: spring-boot:run
 ```
-* 📝 (Optionally) Configure necessary [Application Configuration](#application-configuration) values as [Environment variables](https://en.wikipedia.org/wiki/Environment_variable)
+* 📝 (Optional) Configure necessary [Application Configuration](#application-configuration) values as [Environment variables](https://en.wikipedia.org/wiki/Environment_variable)
 * ▶️ [Run the application](https://www.jetbrains.com/help/idea/running-applications.html)
 
 Note: Running the application will use [Maven](https://maven.apache.org/) to install all dependencies, and then use [Java](https://www.java.com/) to run the application.
 
 ## Deploying to Production
 
-In the Quickstart sections above, we covered how to run this reference solution locally. In this next section, we'll discuss how to deploy the solution to Azure to simulate a scalable production environment.
+In the Quickstart section above, we covered how to run this reference solution locally. In this  section, we'll discuss how to deploy the solution to Azure to simulate a scalable production environment.
 
 When running in a production environment, there are a number of required [Application Configuration](#application-configuration) values that must be defined. Please see the [Application Configuration](#application-configuration) section for more information.
 
-To deploy a production instance of this service to Azure, we recommend reading the [infrastructure README.md](../infrastructure/README.md) file, which features an easy deploy to Azure button. Please note that we also recommend the use of a Continuous Delivery pipeline to manage scalable deployments to Azure. A walk-through is [in the works](https://github.com/Microsoft/containers-rest-cosmos-appservice-java/issues/24).
+To deploy a production instance of this service to Azure, we recommend reading the [infrastructure README.md](../infrastructure/README.md) file, which features an easy "deploy to Azure" button. We also recommend the use of a Continuous Delivery pipeline to manage scalable deployments to Azure. A walk-through is [in the works](https://github.com/Microsoft/containers-rest-cosmos-appservice-java/issues/24).
 
 ## Application Configuration
 
@@ -63,7 +63,7 @@ To configure authentication, you'll need to specify your authentication provider
 
 The `OAUTH_KEYSET_URI` environment variable must be set to that uri. For Microsoft Azure, that value can always be `https://login.microsoftonline.com/common/discovery/keys` - this is because a common key set is used for all Azure Active Directory applications.
 
-The `OAUTH_RES_ID` environment variable should (but optionally may not be) set to the application id from the oauth2 provider. If this is omitted the authentication layer will validate whether the token is created by the given provider, but not that it is issued for your specific application.
+The `OAUTH_RES_ID` environment variable should (but optionally may not be) set to the application id from the oauth2 provider. If this is omitted, the authentication layer will validate whether the token is created by the given provider, but not that it is issued for your specific application.
 
 Learn more about how to configure an Azure Active Directory application [here](../docs/azureActiveDirectory.md).
 

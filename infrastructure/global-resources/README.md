@@ -2,7 +2,7 @@
 
 Project Jackson uses a CosmosDB instance enabled with the MongoDB API and an Azure Container Registry to push and pull images.
 These are global resources and should be deployed independently of application infrastructure.
-Deploy your own using the button below based off the included ARM template.
+Deploy your own using the button below, which uses the included ARM template.
 
 [![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/?repository=https://github.com/Microsoft/containers-rest-cosmos-appservice-java/infrastructure/global-resources)
 
@@ -25,13 +25,12 @@ In this section we'll explain how to populate the [CosmosDB](https://azure.micro
 
 - Locate the provisioned CosmosDB instance in the [Azure Portal](https://portal.azure.com)
 - Open the Cosmos Connection String blade
-- Open the `data/importdata.sh` file
-- Make sure the Cosmos DB resource is already created as mentioned above, for the next steps to be successful
-- From Bash command line, run `load_env.sh`. It will will write/load any needed variables to the `vars.env` file
+- Make sure the Cosmos DB resource is already created as described above
+- From Bash command line, run `load_env.sh`. This will write/load any needed variables to the `vars.env` file
   - `RESOURCE_GROUP` - the Azure resource group name
   - `COSMOSDB_NAME` - the CosmosDB collection name (which is case sensitive)
   - `COSMOSDB_PASSWORD` - the CosmosDB's password (needed for when you load the data into Cosmos)
-- Load `vars.env` into your environment or VM where the app is being built locally
+- Load `vars.env` into your environment or the VM where the app is being built locally
   - `source vars.env`
   - or in your chosen IDE, set your environment variables within your project
 - NB: there will also be a DB_NAME and DB_CONNSTR for the Spring application (see the database section below in Application Configuration)

@@ -19,9 +19,7 @@ exports[`<PageForm /> renders correctly 1`] = `
     />
     <span
       className="form-field-sub-text"
-    >
-      Leave empty for random sample
-    </span>
+    />
   </label>
   <input
     className="form-field-submit"

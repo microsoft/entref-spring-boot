@@ -29,8 +29,8 @@ export class Person extends React.Component<IPersonProps, IPersonState> {
       <div className='page-container'>
         <div className='form-container'>
           <h1>Search People</h1>
-          <p className='form-description'>Enter the ID for a person to get their information from the database.
-            Leave the form empty for a random sample of people from the database.</p>
+          <p className='form-description'>Enter the ID for a person to retrieve their information from the database.
+            Leave the form empty to get information about a  random person.</p>
           <PageForm
             inputTitle='Person ID:'
             inputPlaceholder='Person ID'
@@ -39,7 +39,7 @@ export class Person extends React.Component<IPersonProps, IPersonState> {
           />
         </div>
         <div className='results-container'>
-          <h2 className='results-title'>{`Results for PersonId: ${this.state.result ? this.state.personId : ''}`}</h2>
+          <h2 className='results-title'>{`Results for Person ID: ${this.state.result ? this.state.personId : ''}`}</h2>
           <pre className='results-view'>{JSON.stringify(this.state.result, null, 2)}</pre>
           <h4>{this.state.loading ? 'Loading. . .' : null}</h4>
         </div>
@@ -59,7 +59,7 @@ export class Person extends React.Component<IPersonProps, IPersonState> {
 
     // set up endpoint
     const id = this.state.personId && this.state.personId.replace(/\s+/g, '')
-    const base = `${WEBPACK_PROP_API_BASE_URL}/people`
+    const base = `${process.env.WEBPACK_PROP_API_BASE_URL}/people`
     const endpoint = id ? base + id : base
 
     // set up request header with Bearer token
