@@ -4,7 +4,7 @@
   "parameters": {
     "application_name": {
       "type": "string",
-      "defaultValue": "[uniqueString('-app')]"
+      "defaultValue": "[uniqueString(resourceGroup().id)]"
     },
     "docker_registry_url": {
       "type": "string",
@@ -519,7 +519,20 @@
         ],
         "backendHttpSettingsCollection": [
           {
-            "name": "appGatewayBackendHttpSettings",
+            "name": "frontendHttpSettings",
+            "properties": {
+              "Port": 80,
+              "Protocol": "Http",
+              "CookieBasedAffinity": "Disabled",
+              "PickHostNameFromBackendAddress": true,
+              "ProbeEnabled": true,
+              "Probe": {
+                "id": "[concat(variables('application_gateway_ref'), '/probes/frontendProbe')]"
+              }
+            }
+          },
+          {
+            "name": "backendHttpSettings",
             "properties": {
               "Port": 80,
               "Protocol": "Http",
@@ -555,7 +568,7 @@
                 "id": "[concat(variables('application_gateway_ref'), '/backendAddressPools/uiBackendPool')]"
               },
               "defaultBackendHttpSettings": {
-                "id": "[concat(variables('application_gateway_ref'), '/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
+                "id": "[concat(variables('application_gateway_ref'), '/backendHttpSettingsCollection/frontendHttpSettings')]"
               },
               "pathRules": [
                 {
@@ -568,7 +581,7 @@
                       "id": "[concat(variables('application_gateway_ref'), '/backendAddressPools/uiBackendPool')]"
                     },
                     "backendHttpSettings": {
-                      "id": "[concat(variables('application_gateway_ref'), '/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
+                      "id": "[concat(variables('application_gateway_ref'), '/backendHttpSettingsCollection/frontendHttpSettings')]"
                     }
                   },
                   "type": "Microsoft.Network/applicationGateways/urlPathMaps/pathRules"
@@ -583,7 +596,7 @@
                       "id": "[concat(variables('application_gateway_ref'), '/backendAddressPools/titlesBackendPool')]"
                     },
                     "backendHttpSettings": {
-                      "id": "[concat(variables('application_gateway_ref'), '/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
+                      "id": "[concat(variables('application_gateway_ref'), '/backendHttpSettingsCollection/backendHttpSettings')]"
                     }
                   },
                   "type": "Microsoft.Network/applicationGateways/urlPathMaps/pathRules"
@@ -598,7 +611,7 @@
                       "id": "[concat(variables('application_gateway_ref'), '/backendAddressPools/peopleBackendPool')]"
                     },
                     "backendHttpSettings": {
-                      "id": "[concat(variables('application_gateway_ref'), '/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
+                      "id": "[concat(variables('application_gateway_ref'), '/backendHttpSettingsCollection/backendHttpSettings')]"
                     }
                   },
                   "type": "Microsoft.Network/applicationGateways/urlPathMaps/pathRules"
@@ -624,10 +637,28 @@
         ],
         "probes": [
           {
-            "Name": "backendProbe",
+            "Name": "frontendProbe",
             "properties": {
               "Protocol": "Http",
               "Path": "/",
+              "Interval": 30,
+              "Timeout": 10,
+              "UnhealthyThreshold": 3,
+              "MinServers": 0,
+              "PickHostNameFromBackendHttpSettings": true,
+              "match": {
+                "body": "",
+                "statusCodes": [
+                  "200"
+                ]
+              }
+            }
+          },
+          {
+            "Name": "backendProbe",
+            "properties": {
+              "Protocol": "Http",
+              "Path": "/health",
               "Interval": 30,
               "Timeout": 10,
               "UnhealthyThreshold": 3,
