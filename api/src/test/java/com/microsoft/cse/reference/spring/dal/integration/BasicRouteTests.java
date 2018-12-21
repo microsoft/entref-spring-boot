@@ -358,6 +358,18 @@ public class BasicRouteTests {
         Assert.assertEquals(resPeople.getHeaders().getAccessControlAllowOrigin(), "*");
     }
 
+
+    @Test
+    public void ValidateHealthEndpoint() throws URISyntaxException {
+        ResponseEntity<String> resHealth = this.rest.exchange(RequestEntity
+                        .get(new URI("http://localhost:" + httpPort + "/health"))
+                        .build(),
+                String.class
+        );
+
+        Assert.assertTrue(resHealth.getStatusCode().is2xxSuccessful());
+    }
+
     /**
      * A configuration instance for these tests
      */
