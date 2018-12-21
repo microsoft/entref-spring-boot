@@ -11,6 +11,10 @@ import { App } from '../components/App'
 import { DefaultComponent } from '../components/DefaultComponent'
 
 describe('<DefaultComponent />', () => {
+    beforeAll(() => {
+        process.env = Object.assign(process.env, { WEBPACK_PROP_UI_BASEPATH: 'ui' })
+    })
+
     it('renders correctly', () => {
         const tree = renderer
             .create(<DefaultComponent default />)
