@@ -26,12 +26,12 @@ capabilities:
 
 * **Horizontal scalability:** Add capacity by adding additional containers and/or VMs
 * **Infrastructure as code:** Create and manage Azure environments using template code that is under source control
-* **Agile engineering and rapid updates:** Use CI/CD to automated builds, tests and deployments, ensuring that developers cansafely check-in updates continuously and allow frequent production updates to the production environment and application.
-* **High Availability:** Design and deploy the application and infrastructure that everything continues running normally when any single component fails or otherwise goes offline.
-* **Blue/Green (aka Canary Deployments):** Rollout updates to a "green" application instance, while the existing deployment continues to run on the "blue" instance. The green instance is intially exposed to only a small number of users. Monitoring is performed to look for any degradations in service related to the green instance. If everything looks good, traffic is gradually diverted to the green instance. Should the service quality degrade,the deployment is rolled back by returning all traffic to the blue instance.
-* **Testable:** Continuously test the application in production to validate scalability, resilence and security.
+* **Agile engineering and rapid updates:** Use CI/CD for automated builds, tests and deployments, safe code check-ins, and frequent updates to the production environment and application.
+* **High Availability:** Design and deploy robust applications and infrastructure, so that the application continues to run normally even when some components fail or go offline.
+* **Blue/Green (aka Canary Deployments):** Rollout updates to a "green" application instance, while the existing deployment continues to run on the "blue" instance. The green instance is intially exposed to only a small number of users. Monitoring is performed to look for any degradations in service related to the green instance. If everything looks good, traffic is gradually diverted to the green instance. Should the service quality degrade, the deployment is rolled back by returning all traffic to the blue instance.
+* **Testable:** Continuously test the application in production to validate scalability, resilience, and security.
 * **Hardened:** Assure that the application and infrastructure is instrinsically resistant to attacks from bad actors, such as Distributed Denial of Service (DDoS) attacks.
-* **Networking compliance:** Comply with enterprise network security requirements, such as the use of ExpressRoute to communicate with the enterprise's data-centers and/or on-premises networks, and private IPs for all but public end-points.
+* **Networking compliance:** Comply with enterprise network security requirements, such as the use of ExpressRoute to communicate with enterprise data-centers and/or on-premises networks, and private IPs for all but public endpoints.
 * **Monitoring and Analytics:** Capture telemetry to enable operations dashboards and automatic alerting of critical issues.
 * **Service Authentication:** Allow only authorized access to services via token- or certificate-based service authentication.
 * **Simulated Traffic:**
@@ -40,9 +40,10 @@ capabilities:
 ## OSS Technology Choices
 
 Our team, Commercial Software Engineering (CSE), collaboratively codes with Microsoft's biggest and most important customers.
-We see a huge spectrum of technology choices at different customers, ranging from all-Microsoft to all-OSS. Most comonly, we see a mix.
+We see a huge spectrum of technology choices at different customers, ranging from all-Microsoft to all-OSS. More commonly, we see a mix.
 
-Given the wide range of technology choices out there, it's difficult to create a one-size-fits-all reference solution. For this particular project, we selected a set of technologies that are of interest to many of our customers.
+Given the wide range of technology choices, it's difficult to create a one-size-fits-all solution. For this project, we selected a set of technologies that are of interest to many of our customers.
+
 
 This OSS solution uses the following OSS technologies:
 
@@ -68,7 +69,7 @@ As with our OSS technology choices, we intentionally selected a set of Azure tec
 * **Cosmos DB:** Cosmos DB is perhaps the fastest and most reliable NoSQL data storage service in the world. It is an excellent choice when performance and reliability are a must, and when enterprises require multi-region write capabilities, which are essential for both application/service performance and for HA/DR scenarios.
 * **Azure Traffic Manager:** DNS-based routing service to connect users to the nearest data center. Redirects traffic to healthy location when another region goes offline. Also enables recommended method blue-green (aka canary) deployments with Azure App Services.
 * **Application Gateway:** Provides a single public end-point (public IP) and acts as a reverse proxy (based on URI path) to send requests to the correct App Service instance.
-* **App Insights:** Enterprise developers use App Insights to monitor and detect performance anomolies in production applications.
+* **App Insights:** Enterprise developers use App Insights to monitor and detect performance anomalies in production applications.
 
 The solution leverages Azure Dev Ops for Continuous Integration 
 and Delivery (CI/CD), and it deploys complete Azure environments via Azure Resource Manager (ARM) templates.

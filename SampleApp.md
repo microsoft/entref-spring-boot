@@ -4,7 +4,7 @@ This project includes a Java sample application, built on the Sprint Boot Data R
 
 The REST services are hosted in containers running in Azure App Service for Containers.
 
-HA/DR is provided by hosting the services in multiple regions, as well as Cosmos DB's native geo-redundancy. 
+HA/DR is provided by hosting the services in multiple regions, as well as Cosmos DB's native geo-redundancy.
 
 Traffic Manager is used to route traffic based on geo-proximity, and Application Gateway provides path-based routing, service authentication and DDoS protection.
 
