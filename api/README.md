@@ -51,6 +51,14 @@ To deploy a production instance of this service to Azure, we recommend reading t
 
 ## Application Configuration
 
+ ### Azure Resources
+ To configure environmental variables in Azure Resources:
+ 
+ + Open the blade for the application in the [Azure Portal](https://portal.azure.com/)
+ + Click on **Application Settings**
+ + Under the *Application Settings* category, there are key/value pairs that your app will load on start up. Additional information provided [here](https://docs.microsoft.com/en-us/azure/app-service/web-sites-configure#app-settings).
+ 
+
 We use [Profiles](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-profiles.html) for configuration.
 Currently `development` and `production` are the two possible values for the `spring.profiles.active` property.
 By default, `development` is assumed. Note: `default` is technically it's own profile, which is the same as `development`. The following sections document the possible configuration values as logically grouped sets.
@@ -66,14 +74,6 @@ The `OAUTH_KEYSET_URI` environment variable must be set to that uri. For Microso
 The `OAUTH_RES_ID` environment variable should (but optionally may not be) set to the application id from the oauth2 provider. If this is omitted, the authentication layer will validate whether the token is created by the given provider, but not that it is issued for your specific application.
 
 Learn more about how to configure an Azure Active Directory application [here](../docs/azureActiveDirectory.md).
-
- ### Azure Resources
- To configure environmental variables in Azure Resources:
- 
- + Open the blade for the application in the [Azure Portal](https://portal.azure.com/)
- + Click on **Application Settings**
- + Under the *Application Settings* category, there are key/value pairs that your app will load on start up. Additional information provided [here](https://docs.microsoft.com/en-us/azure/app-service/web-sites-configure#app-settings).
- 
 
 ### Database
 
