@@ -67,6 +67,14 @@ The `OAUTH_RES_ID` environment variable should (but optionally may not be) set t
 
 Learn more about how to configure an Azure Active Directory application [here](../docs/azureActiveDirectory.md).
 
+ ### Azure Resources
+ To configure environmental variables in Azure Resources:
+ 
+ + Open the blade for the application in the [Azure Portal](https://portal.azure.com/)
+ + Click on **Application Settings**
+ + Under the *Application Settings* category, there are key/value pairs that your app will load on start up. Additional information provided [here](https://docs.microsoft.com/en-us/azure/app-service/web-sites-configure#app-settings).
+ 
+
 ### Database
 
 > Note: If you're running with the `development` profile, this is __optional__.
