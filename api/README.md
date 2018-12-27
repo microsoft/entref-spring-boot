@@ -49,15 +49,16 @@ When running in a production environment, there are a number of required [Applic
 
 To deploy a production instance of this service to Azure, we recommend reading the [infrastructure README.md](../infrastructure/README.md) file, which features an easy "deploy to Azure" button. We also recommend the use of a Continuous Delivery pipeline to manage scalable deployments to Azure. A walk-through is [in the works](https://github.com/Microsoft/containers-rest-cosmos-appservice-java/issues/24).
 
-## Application Configuration
+ ## Setting Environmental Variables in Azure Resources
 
- ### Azure Resources
  To configure environmental variables in Azure Resources:
  
  + Open the blade for the application in the [Azure Portal](https://portal.azure.com/)
  + Click on **Application Settings**
  + Under the *Application Settings* category, there are key/value pairs that your app will load on start up. Additional information provided [here](https://docs.microsoft.com/en-us/azure/app-service/web-sites-configure#app-settings).
- 
+
+
+## Application Configuration 
 
 We use [Profiles](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-profiles.html) for configuration.
 Currently `development` and `production` are the two possible values for the `spring.profiles.active` property.
