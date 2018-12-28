@@ -1,6 +1,6 @@
 # CosmosDB
 
-Project Jackson uses a CosmosDB instance enabled with the MongoDB API and an Azure Container Registry to push and pull images.
+Project Jackson uses a CosmosDB instance enabled with the DocumentDB API and an Azure Container Registry to push and pull images.
 These are global resources and should be deployed independently of application infrastructure.
 Deploy your own using the button below, which uses the included ARM template.
 
@@ -15,10 +15,8 @@ In this section we'll explain how to populate the [CosmosDB](https://azure.micro
 ### Install Dependencies
 
 * Install [the latest Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
-* Install MongoDB:
-  * Windows: [Install MongoDB Community Edition on Windows](https://docs.mongodb.com/v3.2/tutorial/install-mongodb-on-windows/)
-  * MacOS: From a command line, run `brew install mongodb`
-  * Linux: From command line, run `apt-get install mongodb`
+* Install DocumentDB Emulator:
+  * https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator
 * Open a [shell](https://en.wikipedia.org/wiki/Shell_%28computing%29) in the project root directory (the next steps depend on this)
 
 ### Set up your environment variables

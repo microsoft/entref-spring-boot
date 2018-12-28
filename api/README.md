@@ -73,13 +73,14 @@ Learn more about how to configure an Azure Active Directory application [here](.
 
 To configure communications with a database, the following environment variables are used:
 
-+ `DB_CONNSTR` - a mongo [database connection string](https://docs.mongodb.com/manual/reference/connection-string/) (ex: `mongodb://db.com/myDb`)
-+ `DB_NAME` - a mongo database name (ex: `myDb`)
++ `DB_CONNSTR` - a documentdb [database connection string]
+Example: DefaultEndpointsProtocol=https;AccountName=<Account Name>;AccountKey=<AccountKey>;TableEndpoint=https://accountname.documents.azure.com:443;
++ `DB_NAME` - a document database name (ex: `myDb`)
 + `EXCLUDE_FILTER` - [optional] a (regex capable) list of classes to exclude from loading (ex: `TitleRepository,PersonRepository`)
 
 ### Mock Data
 
-By default, when running with the `development` profile, test data is auto-loaded into the embedded mongo instance.
+By default, when running with the `development` profile, test data is auto-loaded into the embedded documentdb instance.
 However, __if you set the above environment variables, that configuration will take precedence__.
 
 This mock data contains about 8 entries from each collection, and can be found in the `src/main/resources/testdata` folder. There are related entries across each collection to prove out the custom API routes.
@@ -95,7 +96,6 @@ To configure logging, the following environment variables can be used:
 + `logging.level.root` - Configures the logging level for the whole application, including frameworks
 + `logging.level.com.microsoft.cse.*` - Configures the logging level for our application, excluding frameworks
 + `logging.level.org.zalando.logbook` - Configures the logging of HTTP requests/responses to the console. *Set to TRACE*
-+ `logging.level.org.springframework.data.mongodb.core.MongoTemplate` - Configures the logging of a MongoDB query. *Set to DEBUG* to see how any constructed query gets data from MongoDB
 
 To configure [application insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview) logging, the following environment variable must be set:
 
