@@ -61,7 +61,7 @@ data/getdata.sh
 data/importdata.sh
 ```
 
-### TIP: Explore the data from the MongoDB command-line
+### TIP: Explore the data from the DocumentDB Emulator
 
 - Copy the Cosmos DB connection string from the "Connection String" blade
 - Start the MongoDB CLI with this command: `mongo <connection string>`
