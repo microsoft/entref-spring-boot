@@ -64,12 +64,9 @@ data/importdata.sh
 ### TIP: Explore the data from the DocumentDB Emulator
 
 - Copy the Cosmos DB connection string from the "Connection String" blade
-- Start the MongoDB CLI with this command: `mongo <connection string>`
-- Begin executing MongoDB commands, such as:
-
-``` Mongo
-use moviesdb
-show collections
-db.titles.count()
-db.titles.find ({primaryTitle: "Casablanca"})
-```
+- Install documentdb cli using command `npm install -g documentdb-cli`
+- Start the documentDB CLI with this command: `documentdb -s https://abcdef.documents.azure.com -k u1d0wTrlTWPVoA== -d mydatabase -l mycollection`
+- Begin executing documentDB commands, by starting with help command such as:
+`documentdb> .help`
+- To exit the cli use the '.quit' command:
+`documentdb> .quit`

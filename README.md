@@ -8,7 +8,7 @@ A RESTful DAL (Database Abstraction Layer) reference implementation written usin
 
 This project provides a reference implementation for of Java-based microservices with REST APIs that read and write data stored in Azure Cosmos DB. The services are hosted in containers running in Azure App Service for Containers, (FUTURE: with Azure Redis providing caching). HA/DR is provided by hosting the microservices in multiple regions, as well as CosmosDB's native geo-redundancy. Traffic Manager is used to route traffic based on geo-proximity, and Application Gateway provides path-based routing, service authentication and DDoS protection.
 
-Cosmos DB is configured to use the NoSQL MongoDB API.
+Cosmos DB is configured to use the NoSQL DocumentDB API.
 
 In order to demonstrate Cosmos DB performance with large amounts of data, the project imports historical movie data from [IMDb](https://www.imdb.com/interfaces/). See (https://datasets.imdbws.com/). The datasets include 8.9 million people, 5.3 million movies and 30 million relationships between them.
 
@@ -77,7 +77,7 @@ Key technologies and concepts demonstrated:
 
 | Benefit | Supporting Solution
 |---|---
-| Common, standard technologies | <li>Java programming language<li>Spring Boot Framework, one of the most widely used EE frameworks for Java<li>MongoDB NoSQL API (via Azure Cosmos DB)<li>Redis Cache
+| Common, standard technologies | <li>Java programming language<li>Spring Boot Framework, one of the most widely used EE frameworks for Java<li>DocumentDB NoSQL API (via Azure Cosmos DB)<li>Redis Cache
 | Production-ready codebase | High quality codebase that is easily enhanced, well-documented and meets typical enterprise code quality standards
 | Well-designed RESTful API | Solution follows RESTful design best-practices
 | Enhanced productivity via Docker| Microservices implemented in Docker containers, which are hosted by the Azure App Service for Containers PaaS service. Developer productivity enhanced due to service isolation and easy service updates
