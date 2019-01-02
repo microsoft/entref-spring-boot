@@ -6,10 +6,6 @@
       "type": "string",
       "defaultValue": "[uniqueString(resourceGroup().id)]"
     },
-    "docker_registry_url": {
-      "type": "string",
-      "defaultValue": "https://azure.com"
-    },
     "docker_registry_username": {
       "type": "securestring",
       "defaultValue": "username"
@@ -18,15 +14,24 @@
       "type": "securestring",
       "defaultValue": "password"
     },
-    "docker_title_image": {
+    "docker_title_url": {
+      "type": "string",
+    },
+    "docker_person_url": {
+      "type": "string",
+    },
+    "docker_ui_url": {
+      "type": "string",
+    },
+    "docker_title_tag": {
       "type": "string",
       "defaultValue": "api/v1.0"
     },
-    "docker_person_image": {
+    "docker_person_tag": {
       "type": "string",
       "defaultValue": "api/v1.0"
     },
-    "docker_ui_image": {
+    "docker_ui_tag": {
       "type": "string",
       "defaultValue": "ui/v1.0"
     },
@@ -144,8 +149,8 @@
             "spring.profiles.active": "production",
             "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
             "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
-            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]",
-            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_registry_url'), '/', parameters('docker_title_image'))]",
+            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_title_url')]",
+            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_title_url'), ':', parameters('docker_title_tag'))]",
             "EXCLUDE_FILTER": "PersonRepository"
           }
         }
@@ -228,8 +233,8 @@
             "spring.profiles.active": "production",
             "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
             "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
-            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]",
-            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_registry_url'), '/', parameters('docker_person_image'))]",
+            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_person_url')]",
+            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_person_url'), ':', parameters('docker_person_tag'))]",
             "EXCLUDE_FILTER": "TitleRepository"
           }
         }
@@ -306,8 +311,8 @@
             "RESOURCE_GROUP": "[resourceGroup().name]",
             "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
             "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
-            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]",
-            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_registry_url'), '/', parameters('docker_ui_image'))]",
+            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_ui_url')]",
+            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_ui_url'), '/', parameters('docker_ui_tag'))]",
             "WEBSITES_PORT": "8080"
           }
         }
