@@ -35,6 +35,14 @@
       "type": "string",
       "defaultValue": "v1.0"
     },
+    "oauth_id": {
+      "type": "securestring",
+      "defaultValue": ""
+    },
+    "oauth_keyset": {
+      "type": "securestring",
+      "defaultValue": "https://login.microsoftonline.com/common/discovery/keys"
+    },
     "database_connection_string": {
       "type": "securestring",
       "defaultValue": "mongodb://localhost"
@@ -151,7 +159,9 @@
             "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
             "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_title_url')]",
             "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_title_url'), ':', parameters('docker_title_tag'))]",
-            "EXCLUDE_FILTER": "PersonRepository"
+            "EXCLUDE_FILTER": "PersonRepository",
+            "OAUTH_RES_ID": "[parameters('oauth_id')]",
+            "OAUTH_KEYSET_URI": "[parameters('oauth_keyset')]"
           }
         }
       ]
@@ -234,7 +244,9 @@
             "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
             "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_person_url')]",
             "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_person_url'), ':', parameters('docker_person_tag'))]",
-            "EXCLUDE_FILTER": "TitleRepository"
+            "EXCLUDE_FILTER": "TitleRepository",
+            "OAUTH_RES_ID": "[parameters('oauth_id')]",
+            "OAUTH_KEYSET_URI": "[parameters('oauth_keyset')]"
           }
         }
       ]
