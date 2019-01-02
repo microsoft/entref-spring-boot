@@ -12,7 +12,7 @@
         },
         "container_registry_name": {
             "type": "string",
-            "defaultValue": "acr-images"
+            "defaultValue": "acrImages"
         },
         "traffic_manager_profiles_name": {
             "type": "string",
