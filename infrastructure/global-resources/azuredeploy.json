@@ -4,11 +4,11 @@
     "parameters": {
         "database_account_name": {
             "type": "string",
-            "defaultValue": "cosmos-instance"
+            "defaultValue": "[concat(uniqueString(resourceGroup().id), 'cosmos-instance')]"
         },
         "database-name": {
             "type": "string",
-            "defaultValue": "cosmos-data"
+            "defaultValue": "data"
         },
         "container_registry_name": {
             "type": "string",
@@ -25,7 +25,7 @@
             "kind": "MongoDB",
             "name": "[parameters('database_account_name')]",
             "apiVersion": "2015-04-08",
-            "location": "westus",
+            "location": "[resourceGroup().location]",
             "tags": {
                 "defaultExperience": "MongoDB"
             },
