@@ -17,7 +17,14 @@
         "traffic_manager_profiles_name": {
             "type": "string",
             "defaultValue": "tm-profiles"
+        },
+        "traffic_manager_endpoints": {
+            "type": "string",
+            "defaultValue": "[]"
         }
+    },
+    "variables": {
+        "separated_endpoints": "[split(parametrs('traffic_manager_endpoints'),',')]"
     },
     "resources": [
         {
@@ -90,7 +97,20 @@
                 "toleratedNumberOfFailures": 3,
                 "timeoutInSeconds": 10
               },
-              "endpoints": []
+              "endpoints": [
+                    {
+                        "name": "[variables('separted_endpoints')[copyIndex()]]",
+                        "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
+                        "properties": {
+                            "endpointStatus": "Enabled",
+                            "target": "[concat(variables('separted_endpoints')[copyIndex()],'.trafficmanager.net')]",
+                            "copy": {
+                                "name": "endpointcopy",
+                                "count": "[length(variables('seprated_endpoints')]"
+                            }
+                        }
+                    }
+                ]   
             },
             "dependsOn": []
           }
