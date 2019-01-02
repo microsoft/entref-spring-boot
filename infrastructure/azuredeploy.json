@@ -18,6 +18,18 @@
       "type": "securestring",
       "defaultValue": "password"
     },
+    "docker_title_image": {
+      "type": "string",
+      "defaultValue": "api/v1.0"
+    },
+    "docker_person_image": {
+      "type": "string",
+      "defaultValue": "api/v1.0"
+    },
+    "docker_ui_image": {
+      "type": "string",
+      "defaultValue": "ui/v1.0"
+    },
     "database_connection_string": {
       "type": "securestring",
       "defaultValue": "mongodb://localhost"
@@ -133,6 +145,7 @@
             "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
             "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
             "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]",
+            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_registry_url'), '/', parameters('docker_title_image'))]",
             "EXCLUDE_FILTER": "PersonRepository"
           }
         }
@@ -216,6 +229,7 @@
             "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
             "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
             "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]",
+            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_registry_url'), '/', parameters('docker_person_image'))]",
             "EXCLUDE_FILTER": "TitleRepository"
           }
         }
@@ -293,6 +307,7 @@
             "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
             "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
             "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]",
+            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_registry_url'), '/', parameters('docker_ui_image'))]",
             "WEBSITES_PORT": "8080"
           }
         }
