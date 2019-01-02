@@ -25,7 +25,7 @@
             "kind": "MongoDB",
             "name": "[parameters('database_account_name')]",
             "apiVersion": "2015-04-08",
-            "location": "westus",
+            "location": "[resourceGroup().location]",
             "tags": {
                 "defaultExperience": "MongoDB"
             },
