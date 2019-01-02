@@ -24,7 +24,7 @@
         }
     },
     "variables": {
-        "separated_endpoints": "[split(parametrs('traffic_manager_endpoints'),',')]"
+        "separated_endpoints": "[split(parameters('traffic_manager_endpoints'),',')]"
     },
     "resources": [
         {
@@ -99,20 +99,20 @@
               },
               "endpoints": [
                     {
-                        "name": "[variables('separted_endpoints')[copyIndex()]]",
+                        "name": "[variables('separated_endpoints')[copyIndex()]]",
                         "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
                         "properties": {
                             "endpointStatus": "Enabled",
-                            "target": "[concat(variables('separted_endpoints')[copyIndex()],'.trafficmanager.net')]",
+                            "target": "[variables('separated_endpoints')[copyIndex()]]",
                             "copy": {
                                 "name": "endpointcopy",
-                                "count": "[length(variables('seprated_endpoints')]"
+                                "count": "[length(variables('separated_endpoints'))]"
                             }
                         }
                     }
                 ]   
             },
             "dependsOn": []
-          }
+        }
     ]
 }
