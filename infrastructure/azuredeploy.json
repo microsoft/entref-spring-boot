@@ -691,7 +691,7 @@
               "protocol": "Http",
               "path": "/health",
               "interval": 30,
-              "yimeout": 10,
+              "timeout": 10,
               "unhealthyThreshold": 3,
               "minServers": 0,
               "pickHostNameFromBackendHttpSettings": true,
