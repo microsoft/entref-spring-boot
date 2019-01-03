@@ -670,13 +670,13 @@
           {
             "Name": "frontendProbe",
             "properties": {
-              "Protocol": "Http",
-              "Path": "/",
-              "Interval": 30,
-              "Timeout": 10,
-              "UnhealthyThreshold": 3,
-              "MinServers": 0,
-              "PickHostNameFromBackendHttpSettings": true,
+              "protocol": "Http",
+              "path": "/",
+              "interval": 30,
+              "timeout": 10,
+              "unhealthyThreshold": 3,
+              "minServers": 0,
+              "pickHostNameFromBackendHttpSettings": true,
               "match": {
                 "body": "",
                 "statusCodes": [
@@ -688,13 +688,13 @@
           {
             "Name": "backendProbe",
             "properties": {
-              "Protocol": "Http",
-              "Path": "/health",
-              "Interval": 30,
-              "Timeout": 10,
-              "UnhealthyThreshold": 3,
-              "MinServers": 0,
-              "PickHostNameFromBackendHttpSettings": true,
+              "protocol": "Http",
+              "path": "/health",
+              "interval": 30,
+              "yimeout": 10,
+              "unhealthyThreshold": 3,
+              "minServers": 0,
+              "pickHostNameFromBackendHttpSettings": true,
               "match": {
                 "body": "",
                 "statusCodes": [
