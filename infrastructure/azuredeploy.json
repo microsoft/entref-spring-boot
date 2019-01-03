@@ -323,7 +323,7 @@
             "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
             "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
             "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_ui_url')]",
-            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_ui_url'), '/', parameters('docker_ui_tag'))]",
+            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_ui_url'), ':', parameters('docker_ui_tag'))]",
             "WEBSITES_PORT": "8080"
           }
         }
