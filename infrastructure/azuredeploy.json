@@ -370,7 +370,7 @@
                   "timeWindow": "PT10M",
                   "timeAggregation": "Average",
                   "operator": "GreaterThan",
-                  "threshold": 70
+                  "threshold": 90
                 },
                 "scaleAction": {
                   "direction": "Increase",
@@ -389,10 +389,48 @@
                   "timeWindow": "PT10M",
                   "timeAggregation": "Average",
                   "operator": "GreaterThan",
-                  "threshold": 70
+                  "threshold": 90
                 },
                 "scaleAction": {
                   "direction": "Increase",
+                  "type": "ChangeCount",
+                  "value": "1",
+                  "cooldown": "PT5M"
+                }
+              },
+              {
+                "metricTrigger": {
+                  "metricName": "CpuPercentage",
+                  "metricNamespace": "",
+                  "metricResourceUri": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]",
+                  "timeGrain": "PT1M",
+                  "statistic": "Average",
+                  "timeWindow": "PT10M",
+                  "timeAggregation": "Average",
+                  "operator": "LessThan",
+                  "threshold": 70
+                },
+                "scaleAction": {
+                  "direction": "Decrease",
+                  "type": "ChangeCount",
+                  "value": "1",
+                  "cooldown": "PT5M"
+                }
+              },
+              {
+                "metricTrigger": {
+                  "metricName": "MemoryPercentage",
+                  "metricNamespace": "",
+                  "metricResourceUri": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]",
+                  "timeGrain": "PT1M",
+                  "statistic": "Average",
+                  "timeWindow": "PT10M",
+                  "timeAggregation": "Average",
+                  "operator": "LessThan",
+                  "threshold": 70
+                },
+                "scaleAction": {
+                  "direction": "Decrease",
                   "type": "ChangeCount",
                   "value": "1",
                   "cooldown": "PT5M"
@@ -676,6 +714,5 @@
       }
     }
   ],
-  "outputs": {
-  }
+  "outputs": {}
 }
