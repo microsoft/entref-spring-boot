@@ -20,11 +20,16 @@
         },
         "traffic_manager_endpoints": {
             "type": "string",
-            "defaultValue": "[]"
+            "defaultValue":  ""
+        },
+        "traffic_manager_endpoint_locations": {
+            "type": "string",
+            "defaultValue":  ""
         }
     },
     "variables": {
-        "separated_endpoints": "[split(parameters('traffic_manager_endpoints'),',')]"
+        "separated_endpoints": "[split(parameters('traffic_manager_endpoints'),',')]",
+        "separated_endpoint_locations": "[split(parameters('traffic_manager_endpoint_locations'),',')]"
     },
     "resources": [
         {
@@ -83,7 +88,7 @@
             "scale": null,
             "properties": {
               "profileStatus": "Enabled",
-              "trafficRoutingMethod": "Geographic",
+              "trafficRoutingMethod": "Performance",
               "dnsConfig": {
                 "relativeName": "[parameters('traffic_manager_profiles_name')]",
                 "fqdn": "[concat(parameters('traffic_manager_profiles_name'),'.trafficmanager.net')]",
@@ -99,18 +104,19 @@
               },
               "endpoints": [
                     {
-                        "name": "[variables('separated_endpoints')[copyIndex()]]",
-                        "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
+                        "name": "[concat('endpoint-', copyIndex('endpointcopy'))]",
+                        "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
                         "properties": {
                             "endpointStatus": "Enabled",
-                            "target": "[variables('separated_endpoints')[copyIndex()]]",
-                            "copy": {
-                                "name": "endpointcopy",
-                                "count": "[length(variables('separated_endpoints'))]"
-                            }
+                            "target": "[variables('separated_endpoints')[copyIndex('endpointcopy')]]",
+                            "endpointLocation": "[variables('separated_endpoint_locations')[copyIndex('endpointcopy')]]"
                         }
                     }
-                ]   
+              ]   
+            },
+            "copy": {
+                "name": "endpointcopy",
+                "count": "[length(variables('separated_endpoints'))]"
             },
             "dependsOn": []
         }
