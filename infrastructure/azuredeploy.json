@@ -6,10 +6,6 @@
       "type": "string",
       "defaultValue": "[uniqueString(resourceGroup().id)]"
     },
-    "docker_registry_url": {
-      "type": "string",
-      "defaultValue": "https://azure.com"
-    },
     "docker_registry_username": {
       "type": "securestring",
       "defaultValue": "username"
@@ -17,6 +13,35 @@
     "docker_registry_password": {
       "type": "securestring",
       "defaultValue": "password"
+    },
+    "docker_title_url": {
+      "type": "string"
+    },
+    "docker_person_url": {
+      "type": "string"
+    },
+    "docker_ui_url": {
+      "type": "string"
+    },
+    "docker_title_tag": {
+      "type": "string",
+      "defaultValue": "v1.0"
+    },
+    "docker_person_tag": {
+      "type": "string",
+      "defaultValue": "v1.0"
+    },
+    "docker_ui_tag": {
+      "type": "string",
+      "defaultValue": "v1.0"
+    },
+    "oauth_id": {
+      "type": "securestring",
+      "defaultValue": ""
+    },
+    "oauth_keyset": {
+      "type": "securestring",
+      "defaultValue": "https://login.microsoftonline.com/common/discovery/keys"
     },
     "database_connection_string": {
       "type": "securestring",
@@ -132,8 +157,11 @@
             "spring.profiles.active": "production",
             "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
             "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
-            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]",
-            "EXCLUDE_FILTER": "PersonRepository"
+            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_title_url')]",
+            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_title_url'), ':', parameters('docker_title_tag'))]",
+            "EXCLUDE_FILTER": "PersonRepository",
+            "OAUTH_RES_ID": "[parameters('oauth_id')]",
+            "OAUTH_KEYSET_URI": "[parameters('oauth_keyset')]"
           }
         }
       ]
@@ -208,15 +236,17 @@
           },
           "properties": {
             "APPLICATION_INSIGHTS_IKEY": "[reference(concat(resourceId('Microsoft.Insights/components', variables('components_insights_name')))).InstrumentationKey]",
-            "TEST": "foo",
             "DB_CONNSTR": "[parameters('database_connection_string')]",
             "DB_NAME": "IMDb",
             "RESOURCE_GROUP": "[resourceGroup().name]",
             "spring.profiles.active": "production",
             "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
             "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
-            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]",
-            "EXCLUDE_FILTER": "TitleRepository"
+            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_person_url')]",
+            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_person_url'), ':', parameters('docker_person_tag'))]",
+            "EXCLUDE_FILTER": "TitleRepository",
+            "OAUTH_RES_ID": "[parameters('oauth_id')]",
+            "OAUTH_KEYSET_URI": "[parameters('oauth_keyset')]"
           }
         }
       ]
@@ -292,7 +322,8 @@
             "RESOURCE_GROUP": "[resourceGroup().name]",
             "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
             "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
-            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_registry_url')]",
+            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_ui_url')]",
+            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_ui_url'), ':', parameters('docker_ui_tag'))]",
             "WEBSITES_PORT": "8080"
           }
         }
@@ -677,13 +708,13 @@
           {
             "Name": "frontendProbe",
             "properties": {
-              "Protocol": "Http",
-              "Path": "/",
-              "Interval": 30,
-              "Timeout": 10,
-              "UnhealthyThreshold": 3,
-              "MinServers": 0,
-              "PickHostNameFromBackendHttpSettings": true,
+              "protocol": "Http",
+              "path": "/",
+              "interval": 30,
+              "timeout": 10,
+              "unhealthyThreshold": 3,
+              "minServers": 0,
+              "pickHostNameFromBackendHttpSettings": true,
               "match": {
                 "body": "",
                 "statusCodes": [
@@ -695,13 +726,13 @@
           {
             "Name": "backendProbe",
             "properties": {
-              "Protocol": "Http",
-              "Path": "/health",
-              "Interval": 30,
-              "Timeout": 10,
-              "UnhealthyThreshold": 3,
-              "MinServers": 0,
-              "PickHostNameFromBackendHttpSettings": true,
+              "protocol": "Http",
+              "path": "/health",
+              "interval": 30,
+              "timeout": 10,
+              "unhealthyThreshold": 3,
+              "minServers": 0,
+              "pickHostNameFromBackendHttpSettings": true,
               "match": {
                 "body": "",
                 "statusCodes": [
