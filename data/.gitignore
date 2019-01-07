@@ -1,0 +1,3 @@
+# imdb data downloads
+*.tsv
+*.tsv.gz
