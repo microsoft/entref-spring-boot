@@ -1,0 +1,39 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",        
+    "parameters": {
+        "traffic_manager_profiles_name": {
+            "type": "string",
+            "defaultValue": "tm-profiles"
+        },
+        "traffic_manager_endpoints": {
+            "type": "string",
+            "defaultValue":  "test"
+        },
+        "traffic_manager_endpoint_locations": {
+            "type": "string",
+            "defaultValue":  "East US"
+        }
+    },
+    "variables": {
+        "separated_endpoints": "[split(parameters('traffic_manager_endpoints'),',')]",
+        "separated_endpoint_locations": "[split(parameters('traffic_manager_endpoint_locations'),',')]"
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-11-01",
+            "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
+            "location": "global",
+            "name": "[concat(parameters('traffic_manager_profiles_name'), '/Endpoint', copyIndex())]",
+            "copy": {
+              "name": "endpointloop",
+              "count": "[length(variables('separated_endpoints'))]"
+            },
+            "properties": {
+                "endpointStatus": "Enabled",
+                "target": "[variables('separated_endpoints')[copyIndex('endpointloop')]]",
+                "endpointLocation": "[variables('separated_endpoint_locations')[copyIndex('endpointloop')]]"
+            }
+          }
+    ]
+}

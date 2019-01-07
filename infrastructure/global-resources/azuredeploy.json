@@ -76,7 +76,7 @@
             "scale": null,
             "properties": {
               "profileStatus": "Enabled",
-              "trafficRoutingMethod": "Geographic",
+              "trafficRoutingMethod": "Performance",
               "dnsConfig": {
                 "relativeName": "[parameters('traffic_manager_profiles_name')]",
                 "fqdn": "[concat(parameters('traffic_manager_profiles_name'),'.trafficmanager.net')]",
@@ -93,6 +93,6 @@
               "endpoints": []
             },
             "dependsOn": []
-          }
+        }
     ]
 }

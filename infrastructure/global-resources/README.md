@@ -1,4 +1,16 @@
-# CosmosDB
+# Global Resource Deployment
+
+## Traffic Manger Endpoints
+
+Project Jackson uses Traffic Manager to route a specific URL to the correct region. In order to create these endpoints, the [`endpoint_deploy.json`](./endpoint_deploy.json) needs to be run. To do this, run:
+
+```
+az group deployment create --template-file infrastructure/global-resoruces/endpoint_deploy.json --resource-group your-resource-group --parameters traffic_manager_endpoints=app1,app2 traffic_manager_endpoint_locations=eastus,westus
+```
+
+with `your-resource-group` as the name of the resource group you are creating the global resources in, app1 being the target for an endpoint that correlates to the azure region specified by the first parameter in the `traffic_manager_endpoint_locations` parameter. For example, `app1` is created in `eastus` and `app2` is created in `westus`.
+
+## CosmosDB
 
 Project Jackson uses a CosmosDB instance enabled with the MongoDB API and an Azure Container Registry to push and pull images.
 These are global resources and should be deployed independently of application infrastructure.
