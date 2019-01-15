@@ -1,0 +1,23 @@
+{
+  "name": "integration-test-tool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run test",
+    "test": "jest --config jest.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^23.6.0",
+    "jest-puppeteer": "^3.8.0",
+    "ts-jest": "^23.10.5"
+  },
+  "devDependencies": {
+    "@types/expect-puppeteer": "^3.3.0",
+    "@types/jest": "^23.3.12",
+    "@types/jest-environment-puppeteer": "^2.2.1",
+    "@types/puppeteer": "^1.11.1"
+  }
+}
