@@ -111,7 +111,6 @@
       "sku": {
         "tier": "Standard",
         "size": [if(equals(parameters('is_development_environment'),'True'), "S1", "S3")],
-        "size": "S1",
         "family": "S",
         "capacity": 1
       },
