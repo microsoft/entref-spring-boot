@@ -12,7 +12,8 @@
       "allowedValues": [
         "True",
         "False"
-      ],
+      ]
+    },
     "docker_registry_username": {
       "type": "securestring",
       "defaultValue": "username"
