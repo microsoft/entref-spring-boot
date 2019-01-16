@@ -21,7 +21,6 @@
   "devDependencies": {
     "@types/enzyme": "^3.1.15",
     "@types/jest": "^23.3.8",
-    "@types/puppeteer": "^1.11.1",
     "@types/reach__router": "^1.2.1",
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
@@ -33,7 +32,6 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
     "jest-dom": "^2.1.0",
-    "puppeteer": "^1.11.0",
     "react-test-renderer": "^16.6.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
