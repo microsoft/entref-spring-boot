@@ -1,6 +1,6 @@
 # Integration test tool
 
-This tool runs integration tests against production instances
+This tool runs integration tests against production instances.
 
 ## How To Use
 
@@ -8,7 +8,7 @@ Follow the steps in the sections below to get up and running!
 
 ### Install dependencies
 
-Run `npm i` from the project directory
+Run `npm i` from the project directory.
 
 ### Configure Environment Variables
 
@@ -39,7 +39,7 @@ Where...
 
 ### Run
 
-Run `npm test` from the project directory
+Run `npm test` from the project directory.
 
 ## FAQ
 
