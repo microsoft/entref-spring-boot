@@ -26,7 +26,7 @@ steps:
   inputs:
     contents: 'infrastructure/azuredeploy.json'
     targetFolder: '$(Build.ArtifactStagingDirectory)'
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/appsrvcplansize'))
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 # Publish Build Artifacts
 - task: PublishBuildArtifacts@1
@@ -34,4 +34,4 @@ steps:
     PathToPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: package
     publishLocation: Container
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/appsrvcplansize'))
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
