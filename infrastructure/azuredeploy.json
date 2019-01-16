@@ -160,6 +160,7 @@
             "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_title_url')]",
             "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_title_url'), ':', parameters('docker_title_tag'))]",
             "EXCLUDE_FILTER": "PersonRepository",
+            "ALLOWED_ORIGIN": "*",
             "OAUTH_RES_ID": "[parameters('oauth_id')]",
             "OAUTH_KEYSET_URI": "[parameters('oauth_keyset')]"
           }
@@ -245,6 +246,7 @@
             "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_person_url')]",
             "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_person_url'), ':', parameters('docker_person_tag'))]",
             "EXCLUDE_FILTER": "TitleRepository",
+            "ALLOWED_ORIGIN": "*",
             "OAUTH_RES_ID": "[parameters('oauth_id')]",
             "OAUTH_KEYSET_URI": "[parameters('oauth_keyset')]"
           }

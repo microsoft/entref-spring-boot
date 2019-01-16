@@ -76,6 +76,10 @@ The `OAUTH_RES_ID` environment variable should (but optionally may not be) set t
 
 Learn more about how to configure an Azure Active Directory application [here](../docs/azureActiveDirectory.md).
 
+### CORS
+
+We use an environmental variable called `ALLOWED_ORIGIN` and set it to `*` in [`azuredeploy.json`](../infrastructure/azuredeploy.json) for both the person and title APIs. This will allow the frontend to talk to the backend without throwing CORS errors.
+
 ### Database
 
 > Note: If you're running with the `development` profile, this is __optional__.
