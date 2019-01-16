@@ -3,6 +3,17 @@ import {Page} from 'puppeteer'
 
 import {config} from '../config'
 
+/**
+ * Provide a quick log about what jest is configured to point to
+ */
+// tslint:disable-next-line:no-console
+process.stdout.write(`Project Jackson Integration Tests
+  Frontend Base URL: ${config.ui_site}
+  Backend Base URL: ${config.backend_site}
+  Username: ${config.username}
+  Password: ${'*'.repeat(config.password.length)}
+  \n`)
+
 describe('Integration Tests', () => {
   beforeAll(async () => {
     await page.goto(config.ui_site)
