@@ -49,18 +49,17 @@ describe('Integration Tests', () => {
     const loginPage = await loginPageResolver
     // wait for page to load
     await loginPage.waitForSelector('#loginHeader')
-    // TODO(bengreenier): the ids in the login flow should change to more generic, constrained with text
     // fill in username
-    await expect(loginPage).toFill('#i0116', config.username)
+    await expect(loginPage).toFill('input[type="email"]', config.username)
     // click next
-    await expect(loginPage).toClick('#idSIButton9')
+    await expect(loginPage).toClick('input[type="submit"]')
 
     // wait for page to load
     await loginPage.waitForSelector('#displayName')
     // fill in password
-    await expect(loginPage).toFill('#i0118', config.password)
+    await expect(loginPage).toFill('input[type="password"]', config.password)
     // click submit
-    await expect(loginPage).toClick('#idSIButton9')
+    await expect(loginPage).toClick('input[type="submit"]')
 
     // wait for the login window to close
     await loginPage.waitFor(1000).then(() => {
