@@ -6,7 +6,7 @@
       "type": "string",
       "defaultValue": "[uniqueString(resourceGroup().id)]"
     },
-    "is_development_environment": {
+    "dev_env": {
       "type": "string",
       "defaultValue": "True",
       "allowedValues": [
@@ -110,7 +110,7 @@
     {
       "type": "Microsoft.Web/serverfarms",
       "sku": {
-        "name": "[if(equals(parameters('is_development_environment'),'True'), 'S1', 'S3')]",
+        "name": "[if(equals(parameters('dev_env'),'True'), 'S1', 'S3')]",
         "family": "S",
         "capacity": 1
       },
