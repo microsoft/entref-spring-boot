@@ -1,5 +1,7 @@
 # Integration test tool
 
+[![Build Status](https://dev.azure.com/csebostoncrew/ProjectJackson/_apis/build/status/ProjectJackson-IntegrationTestTool-Github?branchName=master)](https://dev.azure.com/csebostoncrew/ProjectJackson/_build/latest?definitionId=29&branchName=master)
+
 This tool runs integration tests against production instances.
 
 ## How To Use
