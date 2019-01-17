@@ -106,7 +106,7 @@
     {
       "type": "Microsoft.Web/serverfarms",
       "sku": {
-        "name": "[if(equals(parameters('dev_env'),'True'), 'S1', 'S3')]",
+        "name": "[if(parameters('dev_env'), 'S1', 'S3')]",
         "family": "S",
         "capacity": 1
       },
