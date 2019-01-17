@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
-import {Page} from 'puppeteer'
+import { Page } from 'puppeteer'
 
-import {config} from '../config'
+import { config } from '../config'
 
 /**
  * Provide a quick log about what jest is configured to point to
@@ -70,11 +70,11 @@ describe('Integration Tests', () => {
 
     // wait for the main page to update
     await page.waitFor(1000)
-    // expect that clicking titles  works
+    // expect that clicking titles works
     await expect(page).toClick('.nav-link', {text: 'Titles'})
     // expect that we are now logged in (therefore the button says Log Out)
     await expect(page).toMatch('Log Out')
-    // expect that the title page shows it's contents
+    // expect that the title page shows its contents
     await expect(page).toMatchElement('h1', {text: 'Search Titles'})
 
   }, 8000)
@@ -196,24 +196,24 @@ describe('Integration Tests', () => {
         expect(data).toEqual(firstTitle)
       })
 
-      describe('POST /title', () => {
-        // tslint:disable:object-literal-sort-keys
-        const obj = {
-          tconst: 'inttest01',
-          titleType: 'short',
-          primaryTitle: 'integration test 01',
-          originalTitle: 'integration test 01',
-          isAdult: false,
-          startYear: 1337,
-          endYear: null,
-          runtimeMinutes: 1337,
-          genres: [
-            'test',
-            'integration',
-          ],
-        }
-        // tslint:enable:object-literal-sort-keys
+      // tslint:disable:object-literal-sort-keys
+      const obj = {
+        tconst: 'inttest01',
+        titleType: 'short',
+        primaryTitle: 'integration test 01',
+        originalTitle: 'integration test 01',
+        isAdult: false,
+        startYear: 1337,
+        endYear: null,
+        runtimeMinutes: 1337,
+        genres: [
+          'test',
+          'integration',
+        ],
+      }
+      // tslint:enable:object-literal-sort-keys
 
+      describe('POST /title', () => {
         beforeAll(async () => {
           await fetch(`${config.backend_site}/titles/${obj.tconst}`, {
             headers: {
@@ -247,23 +247,6 @@ describe('Integration Tests', () => {
       })
 
       describe('DELETE /title', () => {
-        // tslint:disable:object-literal-sort-keys
-        const obj = {
-          tconst: 'inttest01',
-          titleType: 'short',
-          primaryTitle: 'integration test 01',
-          originalTitle: 'integration test 01',
-          isAdult: false,
-          startYear: 1337,
-          endYear: null,
-          runtimeMinutes: 1337,
-          genres: [
-            'test',
-            'integration',
-          ],
-        }
-        // tslint:enable:object-literal-sort-keys
-
         beforeAll(async () => {
           const res = await fetch(`${config.backend_site}/titles`, {
             body: JSON.stringify(obj),
@@ -341,20 +324,21 @@ describe('Integration Tests', () => {
         expect(status).toBe(200)
         expect(data).toEqual(firstPerson)
       })
+    
+      // tslint:disable:object-literal-sort-keys
+      const obj = {
+        nconst: 'inttest01',
+        primaryName: 'integration user 01',
+        birthYear: 1337,
+        deathYear: 1337,
+        primaryProfession: [
+          'dancer',
+        ],
+        knownForTitles: [],
+      }
+      // tslint:enable:object-literal-sort-keys
 
       describe('POST /people', () => {
-        // tslint:disable:object-literal-sort-keys
-        const obj = {
-          nconst: 'inttest01',
-          primaryName: 'integration user 01',
-          birthYear: 1337,
-          deathYear: 1337,
-          primaryProfession: [
-            'dancer',
-          ],
-          knownForTitles: [],
-        }
-        // tslint:enable:object-literal-sort-keys
 
         beforeAll(async () => {
           await fetch(`${config.backend_site}/people/${obj.nconst}`, {
@@ -389,23 +373,6 @@ describe('Integration Tests', () => {
       })
 
       describe('DELETE /people', () => {
-        // tslint:disable:object-literal-sort-keys
-        const obj = {
-          tconst: 'inttest01',
-          titleType: 'short',
-          primaryTitle: 'integration test 01',
-          originalTitle: 'integration test 01',
-          isAdult: false,
-          startYear: 1337,
-          endYear: null,
-          runtimeMinutes: 1337,
-          genres: [
-            'test',
-            'integration',
-          ],
-        }
-        // tslint:enable:object-literal-sort-keys
-
         beforeAll(async () => {
           const res = await fetch(`${config.backend_site}/people`, {
             body: JSON.stringify(obj),
@@ -418,7 +385,7 @@ describe('Integration Tests', () => {
 
         // note: if this test fails, you may wish to go manually delete the inttest01 object
         it('deletes', async () => {
-          const res = await fetch(`${config.backend_site}/people/${obj.tconst}`, {
+          const res = await fetch(`${config.backend_site}/people/${obj.nconst}`, {
             headers: {
               Authorization: `Bearer ${idToken}`,
             },

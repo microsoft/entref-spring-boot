@@ -8,6 +8,7 @@
       "quotemark": [true, "single"],
       "semicolon": [true, "never"],
       "indent": [true, "spaces", 4],
+      "import-spacing": true,
       "ordered-imports": [
           true,
           {

@@ -57,8 +57,6 @@ export class App extends React.Component {
                     const graphScopes = [appConfig.clientID]
                     await userAgentApp.loginPopup(graphScopes)
                     accessToken = await userAgentApp.acquireTokenSilent(graphScopes)
-                        // TODO(bengreenier): ensure both personal and professional still work
-                        // 'https://login.microsoftonline.com/microsoft.onmicrosoft.com')
                 }
                 this.setState({ accessToken })
             } catch (err) {
