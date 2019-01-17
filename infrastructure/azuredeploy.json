@@ -7,12 +7,8 @@
       "defaultValue": "[uniqueString(resourceGroup().id)]"
     },
     "dev_env": {
-      "type": "string",
-      "defaultValue": "True",
-      "allowedValues": [
-        "True",
-        "False"
-      ]
+      "type": "bool",
+      "defaultValue": "[bool('true')]"
     },
     "docker_registry_username": {
       "type": "securestring",
