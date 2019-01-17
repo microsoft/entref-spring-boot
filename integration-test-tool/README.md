@@ -45,7 +45,7 @@ Run `npm test` from the project directory.
 
 ### What browser does this use to simulate user interaction?
 
-We use [puppeteer](https://github.com/GoogleChrome/puppeteer) which, in turn uses Chrome.
+We use [puppeteer](https://github.com/GoogleChrome/puppeteer), which in turn uses Chrome.
 
 ### What values do I use for the base URL properties?
 
