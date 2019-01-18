@@ -147,7 +147,7 @@ readDbName () {
 	
 	while ([[ -z "$dbName" ]]); do
 		printf "Cosmos DB instances in group '$resourceGroupName':\n\n"
-		dbNames="$(az cosmosdb list -g $resourceGroupName -o tsv | cut -f12 | tr '\n' ', ' | sed "s/,/, /g")"
+		dbNames="$(az cosmosdb list -g $resourceGroupName -o tsv | cut -f13 | tr '\n' ', ' | sed "s/,/, /g")"
 		printf "${dbNames%??}\n\n"
 
 		printf "Enter the Cosmos DB name [%s]: " $defaultDb
