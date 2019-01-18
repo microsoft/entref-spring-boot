@@ -196,7 +196,7 @@ if [[ -z "$dbName" ]]; then
 fi
 
 # At this time, list-connection-strings does not support '-o tsv', so this command uses sed to extract the connection string from json results
-connString="$(az cosmosdb list-connection-strings --ids $dbName -g $resourceGroupName | sed -n -e '4 p' | sed -E -e 's/.*mongo(.*)true.*/mongo\1true/')"
+connString="$(az cosmosdb list-connection-strings --name $dbName -g $resourceGroupName | sed -n -e '4 p' | sed -E -e 's/.*mongo(.*)true.*/mongo\1true/')"
 # But list-keys does support `-o tsv`
 dbPassword="$(az cosmosdb list-keys --resource-group $resourceGroupName --name $dbName -o tsv | sed -e 's/\s.*$//')"
 
