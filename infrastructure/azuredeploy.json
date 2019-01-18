@@ -6,6 +6,10 @@
       "type": "string",
       "defaultValue": "[uniqueString(resourceGroup().id)]"
     },
+    "dev_env": {
+      "type": "bool",
+      "defaultValue": "[bool('true')]"
+    },
     "docker_registry_username": {
       "type": "securestring",
       "defaultValue": "username"
@@ -102,9 +106,7 @@
     {
       "type": "Microsoft.Web/serverfarms",
       "sku": {
-        "name": "S1",
-        "tier": "Basic",
-        "size": "S1",
+        "name": "[if(parameters('dev_env'), 'S1', 'S3')]",
         "family": "S",
         "capacity": 1
       },
@@ -389,7 +391,7 @@
             "name": "Auto created scale condition",
             "capacity": {
               "minimum": "1",
-              "maximum": "5",
+              "maximum": "10",
               "default": "1"
             },
             "rules": [
