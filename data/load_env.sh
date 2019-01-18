@@ -142,7 +142,7 @@ readLocation() {
 }
 
 readDbName () {
-	dbNames="$(az cosmosdb list -g $resourceGroupName -o tsv | cut -f12)"
+	dbNames="$(az cosmosdb list -g $resourceGroupName -o tsv | cut -f13)"
 	defaultDb=(${dbNames[@]})
 	
 	while ([[ -z "$dbName" ]]); do
