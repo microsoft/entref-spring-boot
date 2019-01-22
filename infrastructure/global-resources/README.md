@@ -1,6 +1,6 @@
 # Global Resource Deployment
 
-## Traffic Manger Endpoints
+## Traffic Manager Endpoints
 
 Project Jackson uses Traffic Manager to route a specific URL to the correct region. In order to create these endpoints, the [`endpoint_deploy.json`](./endpoint_deploy.json) needs to be run. To do this, run:
 
