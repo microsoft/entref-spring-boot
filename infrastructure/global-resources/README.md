@@ -46,7 +46,7 @@ In this section we'll explain how to populate the [CosmosDB](https://azure.micro
 ``` bash
     source ./vars.env
 ```
-  - or in your chosen IDE, set your environment variables within your project
+  - Or in your chosen IDE, set your environment variables within your project
 - NB: there will also be a DB_NAME and DB_CONNSTR for the Spring application (see the database section below in Application Configuration)
 
 ### Prepare the command line
