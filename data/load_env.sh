@@ -142,12 +142,12 @@ readLocation() {
 }
 
 readDbName () {
-	dbNames="$(az cosmosdb list -g $resourceGroupName -o tsv | cut -f12)"
+	dbNames="$(az cosmosdb list -g $resourceGroupName -o tsv | cut -f13)"
 	defaultDb=(${dbNames[@]})
 	
 	while ([[ -z "$dbName" ]]); do
 		printf "Cosmos DB instances in group '$resourceGroupName':\n\n"
-		dbNames="$(az cosmosdb list -g $resourceGroupName -o tsv | cut -f12 | tr '\n' ', ' | sed "s/,/, /g")"
+		dbNames="$(az cosmosdb list -g $resourceGroupName -o tsv | cut -f13 | tr '\n' ', ' | sed "s/,/, /g")"
 		printf "${dbNames%??}\n\n"
 
 		printf "Enter the Cosmos DB name [%s]: " $defaultDb
@@ -196,7 +196,7 @@ if [[ -z "$dbName" ]]; then
 fi
 
 # At this time, list-connection-strings does not support '-o tsv', so this command uses sed to extract the connection string from json results
-connString="$(az cosmosdb list-connection-strings --ids $dbName -g $resourceGroupName | sed -n -e '4 p' | sed -E -e 's/.*mongo(.*)true.*/mongo\1true/')"
+connString="$(az cosmosdb list-connection-strings --name $dbName -g $resourceGroupName | sed -n -e '4 p' | sed -E -e 's/.*mongo(.*)true.*/mongo\1true/')"
 # But list-keys does support `-o tsv`
 dbPassword="$(az cosmosdb list-keys --resource-group $resourceGroupName --name $dbName -o tsv | sed -e 's/\s.*$//')"
 

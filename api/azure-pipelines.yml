@@ -16,15 +16,9 @@ pool:
 
 steps:
 - script: |
-    echo Starting the build
-    mvn test
-    mvn package
-  workingDirectory: api/
-  displayName: 'Maven test and build'
-- script: |
     docker build -t $ACR_SERVER/$ACR_CONTAINER_TAG .
   workingDirectory: api/
-  displayName: 'Docker Build'
+  displayName: 'Docker Test, Build and Package'
 - script: |
     docker login $(ACR_SERVER) -u $(ACR_USERNAME) -p $(ACR_PASSWORD)
   displayName: 'Docker Login'

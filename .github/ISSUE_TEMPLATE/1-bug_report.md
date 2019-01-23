@@ -13,4 +13,4 @@ Complete the following items then submit your issue:
 - [ ] Clear description of issue
 - [ ] Detailed steps how to reproduce the issue
 - [ ] Attempted solutions you have tried and/or relevant links to potential solutions
-- [ ] Do you plan on fixing this yourself or not?
+- [ ] Do you plan on fixing this yourself?

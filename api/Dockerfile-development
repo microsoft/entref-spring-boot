@@ -1,3 +1,8 @@
+# Use this dockerfile for develpment and testing of the backend api
+# To build: docker build -f Dockerfile-development .
+# To run: docker run --env-file .env -p 8080:8080 <image_id from previous step>
+# Open the browser and point it to: http://locahost:8080
+
 # Use the ubuntu:bionic in order to run the tests
 FROM ubuntu:bionic AS build
 
@@ -17,7 +22,7 @@ WORKDIR /tmp/
 RUN mvn test package
 
 # Start with a base image containing Java runtime
-FROM openjdk:8-jdk-alpine
+FROM openjdk:8-jdk
 
 # Add a volume pointing to /tmp
 VOLUME /tmp
