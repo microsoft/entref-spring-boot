@@ -4,7 +4,7 @@
     "parameters": {
         "database_account_name": {
             "type": "string",
-            "defaultValue": "[concat(uniqueString(resourceGroup().id), 'cosmos-instance')]"
+            "defaultValue": "[concat('cosmos-instance-', uniqueString(resourceGroup().id))]"
         },
         "database-name": {
             "type": "string",
@@ -12,11 +12,11 @@
         },
         "container_registry_name": {
             "type": "string",
-            "defaultValue": "acrImages"
+            "defaultValue": "[concat('acrImages', uniqueString(resourceGroup().id))]"
         },
         "traffic_manager_profiles_name": {
             "type": "string",
-            "defaultValue": "tm-profiles"
+            "defaultValue": "[concat('tm-profiles-', uniqueString(resourceGroup().id))]"
         }
     },
     "resources": [
