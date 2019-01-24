@@ -6,7 +6,7 @@ FROM ubuntu:xenial
 
 # Update and Isntall Dependencies
 RUN apt-get update && \
-    apt-get install apt-transport-https lsb-release software-properties-common dirmngr git mongodb curl -y
+    apt-get install apt-transport-https lsb-release software-properties-common dirmngr git mongodb curl ed -y
 
 # Azure deps
 RUN AZ_REPO=$(lsb_release -cs) && \
