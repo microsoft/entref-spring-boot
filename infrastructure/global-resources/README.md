@@ -1,15 +1,18 @@
 # Global Resource Deployment
 
 ## Deploy Global Resources
-az group deployment create --resource-group code4clouds-jackson-global-resources --template-file azuredeploy.json
 
-Global resources is going to deploy:
-Cosmos Database
-Azure container Registry
-Traffic Manager
+Global resources deployment is going to create:
+- Cosmos Database - To support NoSQL API's.
+- Azure container Registry - To push and pull images.
+- Traffic Manager - To increase app responsiveness by leveraging performance routing.
 
+To do this, run:
+```
+az group deployment create --resource-group <your-resource-group> --template-file infrastructure/global-resources/azuredeploy.json
+```
 
-Writeup: ToDo
+These are global resources and should be deployed independently of application infrastructure.
 
 ## Traffic Manger Endpoints
 
