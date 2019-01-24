@@ -1,6 +1,6 @@
 # Global Resource Deployment
 
-## Traffic Manger Endpoints
+## Traffic Manager Endpoints
 
 Project Jackson uses Traffic Manager to route a specific URL to the correct region. In order to create these endpoints, the [`endpoint_deploy.json`](./endpoint_deploy.json) needs to be run. To do this, run:
 
@@ -43,8 +43,10 @@ In this section we'll explain how to populate the [CosmosDB](https://azure.micro
   - `COSMOSDB_NAME` - the CosmosDB collection name (which is case sensitive)
   - `COSMOSDB_PASSWORD` - the CosmosDB's password (needed for when you load the data into Cosmos)
 - Load `vars.env` into your environment or the VM where the app is being built locally
-  - `source vars.env`
-  - or in your chosen IDE, set your environment variables within your project
+``` bash
+    source ./vars.env
+```
+  - Or in your chosen IDE, set your environment variables within your project
 - NB: there will also be a DB_NAME and DB_CONNSTR for the Spring application (see the database section below in Application Configuration)
 
 ### Prepare the command line
