@@ -7,8 +7,8 @@ echo "Unzipping the data files (overwrites any existing .tsv files)..."
 gunzip -vf *.gz
 echo
 echo "Removing IMDb '\N' values..."
-sed --in-place 's/\\N//g' *.tsv
+ed -s *.tsv <<< 's/\\N//g'
 echo
 echo "IMDb data files ready:"
 ls *.tsv
-echo 
+echo

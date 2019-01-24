@@ -79,8 +79,8 @@ import_data() {
 }
 
 set_throughput() {
+  RUs=1700
   for ((i=0; i<len; i++)); do
-    RUs=1700
     echo
     echo "Setting '${collections[$i]}' throughput to ${RUs} to reduce cost..."
     az cosmosdb collection update -g $resourceGroup -n $cosmosName --db-name $databaseName --collection-name ${collections[$i]} --throughput $RUs
