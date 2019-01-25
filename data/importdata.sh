@@ -20,12 +20,12 @@ len=${#collections[@]}
 create_database() {
   echo "Checking whether the database '${databaseName}' already exists..."
 
-  dbExists="$(az cosmosdb database exists --db-name $databaseName -n $cosmosName --key $password)"
+  dbExists="$(az cosmosdb database exists --db-name ${databaseName} -n ${cosmosName} --key ${password})"
 
   if [[ "${dbExists}" = "false" ]]; then
     echo "Creating database '${databaseName}'..."
 
-    az cosmosdb database create -g $resourceGroup -n $cosmosName --db-name $databaseName > /dev/null
+    az cosmosdb database create -g ${resourceGroup} -n ${cosmosName} --db-name ${databaseName} > /dev/null
 
     echo "Database '${databaseName}' has been created."
   else
@@ -39,14 +39,14 @@ create_collections() {
     step=$((i + 1))
     echo "Checking whether the collection '${collections[i]}' exists..."
 
-    collExists="$(az cosmosdb collection exists -c ${collections[i]} -d $databaseName -n $cosmosName -g $resourceGroup)"
+    collExists="$(az cosmosdb collection exists -c ${collections[i]} -d ${databaseName} -n ${cosmosName} -g ${resourceGroup})"
 
     if [[ "${collExists}" = "false" ]]; then
-      echo "($step of $len) Creating collection '${collections[i]}'"
+      echo "(${step} of ${len}) Creating collection '${collections[i]}'"
 
       partition="/'\$v'/${keys[$i]}/'\$v'"
-      az cosmosdb collection create -g $resourceGroup -n $cosmosName --db-name $databaseName --collection-name ${collections[$i]} \
-      --partition-key-path $partition --throughput 100000 > /dev/null
+      az cosmosdb collection create -g ${resourceGroup} -n ${cosmosName} --db-name ${databaseName} --collection-name ${collections[$i]} \
+      --partition-key-path ${partition} --throughput 100000 > /dev/null
 
       echo "Collection '${collections[i]}' has been created."
     else
@@ -65,13 +65,13 @@ import_data() {
   for ((i=0; i<len; i++)); do
     step=$((i + 1))
     echo
-    echo "($step of $len) Importing data from file '${files[$i]}' to collection '${collections[$i]}''..."
+    echo "(${step} of ${len}) Importing data from file '${files[$i]}' to collection '${collections[$i]}''..."
 
     hostName="${cosmosName}.documents.azure.com:10255"
-    user=$cosmosName
+    user=${cosmosName}
 
-    mongoimport --host $hostName -u $user -p $password --ssl --sslAllowInvalidCertificates --type tsv --headerline \
-      --db $databaseName --collection ${collections[$i]} --numInsertionWorkers 40 --file ${files[$i]}
+    mongoimport --host ${hostName} -u ${user} -p ${password} --ssl --sslAllowInvalidCertificates --type tsv --headerline \
+      --db ${databaseName} --collection ${collections[$i]} --numInsertionWorkers 40 --file ${files[$i]}
 
     echo
     echo "Import to '${collections[$i]}' is complete"
@@ -83,7 +83,7 @@ set_throughput() {
   for ((i=0; i<len; i++)); do
     echo
     echo "Setting '${collections[$i]}' throughput to ${RUs} to reduce cost..."
-    az cosmosdb collection update -g $resourceGroup -n $cosmosName --db-name $databaseName --collection-name ${collections[$i]} --throughput $RUs
+    az cosmosdb collection update -g ${resourceGroup} -n ${cosmosName} --db-name ${databaseName} --collection-name ${collections[$i]} --throughput ${RUs}
   done
 }
 
