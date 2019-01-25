@@ -108,7 +108,7 @@
       "sku": {
         "name": "[if(parameters('dev_env'), 'S1', 'S3')]",
         "family": "S",
-        "capacity": 1
+        "capacity": "[if(parameters('dev_env'), '1', '3')]"
       },
       "kind": "linux",
       "name": "[variables('serverfarms_appservice_plan_name')]",

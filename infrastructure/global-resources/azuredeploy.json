@@ -12,7 +12,7 @@
         },
         "container_registry_name": {
             "type": "string",
-            "defaultValue": "[concat('acrimages', uniqueString(resourceGroup().id))]"
+            "defaultValue": "[concat('acrImages', uniqueString(resourceGroup().id))]"
         },
         "traffic_manager_profiles_name": {
             "type": "string",
