@@ -22,7 +22,7 @@ Project Jackson uses Traffic Manager to route a specific URL to the correct regi
 az group deployment create --template-file infrastructure/global-resoruces/endpoint_deploy.json --resource-group your-resource-group --parameters traffic_manager_endpoints=app1,app2 traffic_manager_endpoint_locations=eastus,westus traffic_manager_profiles_name=<traffic_manager_profile_name>
 ```
 
-with `your-resource-group` as the name of the resource group you are creating the global resources in, app1 being the target for an endpoint that correlates to the azure region specified by the first parameter in the `traffic_manager_endpoint_locations` parameter. For example, `app1` is created in `eastus` and `app2` is created in `westus`.
+with `your-resource-group` as the name of the resource group you are creating the global resources in, `app1` being the target for an endpoint that correlates to the azure region specified by the first parameter in the `traffic_manager_endpoint_locations` parameter. For example, `app1` is created in `eastus` and `app2` is created in `westus`.
 
 ## Deploying Data
 
