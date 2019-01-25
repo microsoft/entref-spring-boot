@@ -4,7 +4,7 @@
 
 Global resources deployment is going to create:
 - Cosmos Database - To support NoSQL API's.
-- Azure container Registry - To push and pull images.
+- Azure Container Registry - To push and pull images.
 - Traffic Manager - To increase app responsiveness by leveraging performance routing.
 
 To do this, run:
