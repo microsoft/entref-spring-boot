@@ -65,7 +65,7 @@ import_data() {
   for ((i=0; i<len; i++)); do
     step=$((i + 1))
     echo
-    echo "(${step} of ${len}) Importing data from file '${files[$i]}' to collection '${collections[$i]}''..."
+    echo "(${step} of ${len}) Importing data from file '${files[$i]}' to collection '${collections[$i]}'..."
 
     hostName="${cosmosName}.documents.azure.com:10255"
     user=${cosmosName}
