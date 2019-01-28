@@ -8,7 +8,11 @@
     },
     "dev_env": {
       "type": "bool",
-      "defaultValue": "[bool('true')]"
+      "defaultValue": true,
+      "allowedValues": [
+        true,
+        false
+      ]
     },
     "docker_registry_username": {
       "type": "securestring",
