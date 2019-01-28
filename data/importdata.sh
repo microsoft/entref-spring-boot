@@ -27,7 +27,7 @@ confirm_locations() {
   fi
 
   # Check if the resource group is correctly set
-  printf "Is this the correct resource group name? [%s] Y,N (leave blank for Y): " ${resourceGroup}
+  printf "Is this the correct resource group name? [%s] Y,N (leave blank for Y): " "${resourceGroup}"
   read userInput
 
   if [[ -z "${userInput}" ]] || [[ "${userInput}" =~ "Y" ]] || [[ "${userInput}" == "y" ]]; then
@@ -39,7 +39,7 @@ confirm_locations() {
 
     # Check to see if the provided resource group actually exists
     echo "Confirming whether the resource group '${resourceGroup}' exists..."
-    resGroupExists="$(az cosmosdb check-name-exists -n ${resourceGroup})"
+    resGroupExists="$(az cosmosdb check-name-exists -n "${resourceGroup}")"
     if [[ "${resGroupExists}" == "false" ]]; then
       echo "Exiting. Provided resource name does not exist. Rerun script."
       exit 1
@@ -51,11 +51,11 @@ confirm_locations() {
 
   # Check if the CosmosDB account name is correctly set
   # If the account name is incorrect, then prompting for the access key follows up
-  printf "Is this the correct CosmosDB account name? [%s] Y,N (leave blank for Y): " ${cosmosName}
+  printf "Is this the correct CosmosDB account name? [%s] Y,N (leave blank for Y): " "${cosmosName}"
   read userInput
 
   if [[ -z "${userInput}" ]] || [[ "${userInput}" == "Y" ]] || [[ "${userInput}" == "y" ]]; then
-    echo "continues"
+    echo "Account name confirmed."
   elif [[ "${userInput}" == "N" ]] || [[ "${userInput}" == "n" ]]; then
     printf "\tPlease enter the correct CosmosDB account name: "
     read userInput
@@ -66,7 +66,7 @@ confirm_locations() {
 
     # Check to see if the provided cosmosName actually exists
     echo "Confirming whether the account '${cosmosName}' exists..."
-    accountExists="$(az cosmosdb check-name-exists -n ${cosmosName})"
+    accountExists="$(az cosmosdb check-name-exists -n "${cosmosName}")"
     if [[ "${accountExists}" == "false" ]]; then
       echo "Exiting. Provided account name does not exist. Rerun script."
       exit 1
@@ -82,13 +82,13 @@ create_database() {
   echo "Checking whether the database '${databaseName}' already exists..."
 
   # Check to see if the database we're creating exists already
-  dbExists="$(az cosmosdb database exists --db-name ${databaseName} -n ${cosmosName} --key ${password})"
+  dbExists="$(az cosmosdb database exists --db-name "${databaseName}" -n "${cosmosName}" --key "${password}")"
 
   if [[ "${dbExists}" = "false" ]]; then
     echo "Creating database '${databaseName}'..."
 
     # Try to create the database
-    az cosmosdb database create -g ${resourceGroup} -n ${cosmosName} --db-name ${databaseName} > /dev/null
+    az cosmosdb database create -g "${resourceGroup}" -n "${cosmosName}" --db-name "${databaseName}" > /dev/null
     if [ "$?" != "0" ]; then
       # Catch any errors if the creation failed
       echo "Error when creating the database" 1>&2
@@ -107,17 +107,17 @@ create_collections() {
     step=$((i + 1))
     echo "Checking whether the collection '${collections[i]}' exists..."
 
-    collExists="$(az cosmosdb collection exists -c ${collections[i]} -d ${databaseName} -n ${cosmosName} -g ${resourceGroup})"
+    collExists="$(az cosmosdb collection exists -c "${collections[i]}" -d "${databaseName}" -n "${cosmosName}" -g "${resourceGroup}")"
 
     if [[ "${collExists}" = "false" ]]; then
       echo "(${step} of ${len}) Creating collection '${collections[i]}'"
 
       # Create the collections with a high throughput since we'll be uploading a lot of data
       partition="/'\$v'/${keys[$i]}/'\$v'"
-      az cosmosdb collection create -g ${resourceGroup} -n ${cosmosName} --db-name ${databaseName} --collection-name ${collections[$i]} \
-        --partition-key-path ${partition} --throughput 100000 > /dev/null
+      az cosmosdb collection create -g "${resourceGroup}" -n "${cosmosName}" --db-name "${databaseName}" --collection-name "${collections[$i]}" \
+        --partition-key-path "${partition}" --throughput 100000 > /dev/null
 
-      if [ "$?" != "0"]; then
+      if [ "$?" != "0" ]; then
         echo "Error when creating the collection '${collections[$i]}'" 1>&2
         exit 1
       fi
@@ -132,7 +132,7 @@ create_collections() {
 delete_tsv_files() {
   # Clean up the download TSVs
   for ((i=0; i<len; i++)); do
-    rm -v ${files[$i]}
+    rm -v "${files[$i]}"
   done
 }
 
@@ -146,8 +146,8 @@ import_data() {
     hostName="${cosmosName}.documents.azure.com:10255"
     user=${cosmosName}
 
-    mongoimport --host ${hostName} -u ${user} -p ${password} --ssl --sslAllowInvalidCertificates --type tsv --headerline \
-      --db ${databaseName} --collection ${collections[$i]} --numInsertionWorkers 40 --file ${files[$i]}
+    mongoimport --host "${hostName}" -u "${user}" -p "${password}" --ssl --sslAllowInvalidCertificates --type tsv --headerline \
+      --db "${databaseName}" --collection "${collections[$i]}" --numInsertionWorkers 40 --file "${files[$i]}"
 
     if [ "$?" != "0" ]; then
       echo "Error while importing from file '${files[$i]}'" 1>&2
@@ -165,7 +165,7 @@ set_throughput() {
   for ((i=0; i<len; i++)); do
     echo
     echo "Setting '${collections[$i]}' throughput to ${RUs} to reduce cost..."
-    az cosmosdb collection update -g ${resourceGroup} -n ${cosmosName} --db-name ${databaseName} --collection-name ${collections[$i]} --throughput ${RUs}
+    az cosmosdb collection update -g "${resourceGroup}" -n "${cosmosName}" --db-name "${databaseName}" --collection-name "${collections[$i]}" --throughput "${RUs}"
 
     if [ "$?" != "0" ]; then
       echo "Error while updating the throughput on collection '${collections[$i]}'" 1>&2
