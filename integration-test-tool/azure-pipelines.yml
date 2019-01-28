@@ -1,0 +1,25 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - integration-test-tool/*
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.13.0'
+    failOnStandardError: 'true'
+  displayName: 'Install Node.js'
+- script: |
+    npm install
+  workingDirectory: integration-test-tool/
+  displayName: 'NPM Install Step'
+- script: |
+    npm run lint
+  workingDirectory: integration-test-tool/
+  displayName: 'NPM Lint Step'
