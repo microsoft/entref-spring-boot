@@ -68,7 +68,6 @@ validatedRead() {
 			printf "'%s' is not valid. %s\n" ${userInput} ${error}
 		fi
 		read -p "${prompt}" userInput
-		# read userInput
 	done
 }
 
@@ -108,8 +107,8 @@ readResourceGroupName () {
 	set +e
 
 	#Check for existing RG
-	az group show --name "${resourceGroupName}" &> /dev/null
-	if [ $? != 0 ]; then
+	az group exists --name "${resourceGroupName}" &> /dev/null
+	if [ "$?" == "false" ]; then
 		echo "To create a new resource group, please enter an Azure location:"
 		readLocation
 
@@ -129,7 +128,7 @@ readLocation() {
 
 		declare locationExists
 		while ([[ -z ${resourceGroupLocation} ]]); do
-			validatedRead "\nEnter resource group location: " "^[a-zA-Z0-9]+$" "Only letters & numbers are allowed."
+			validatedRead "Enter resource group location: " "^[a-zA-Z0-9]+$" "Only letters & numbers are allowed."
 			locationExists="$(echo "${locations}" | grep "${userInput}")"
 			if [[ -z ${locationExists} ]]; then
 				printf "'%s' is not a valid location.\n" "${userInput}"
@@ -158,7 +157,6 @@ readDbName () {
 		fi
 
 		set +e
-		# nameExists="$(echo ${dbNames} | grep ${userInput})"
 		nameExists="$(az cosmosdb check-name-exists -n "${userInput}")"
 
 		if [[ "${nameExists}" == "false" ]]; then
