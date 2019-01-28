@@ -44,7 +44,7 @@ shift $((OPTIND-1))
 azLogin() {
 	(
 		set +e
-		#login to azure using your credentials
+		# Login to azure using your credentials
 		az account show &> /dev/null
 
 		if [ $? != 0 ];
@@ -58,6 +58,9 @@ azLogin() {
 }
 
 validatedRead() {
+	"""
+	Take a prompt for the user, the regex pattern and the error to return if the input fails to pattern-match
+	"""
 	prompt=$1
 	regex=$2
 	error=$3
@@ -72,6 +75,10 @@ validatedRead() {
 }
 
 readSubscriptionId () {
+	"""
+	Display the subscriptions associated with the User
+	User picks, and we validate that choice
+	"""
 	currentSub="$(az account show -o tsv | cut -f2)"
 	subNames="$(az account list -o tsv | cut -f4)"
 	subIds="$(az account list -o tsv | cut -f2)"
@@ -98,6 +105,10 @@ readSubscriptionId () {
 }
 
 readResourceGroupName () {
+	"""
+	Display a list of resource groups available to the signed in user
+	User picks, and we validate that choice
+	"""
 	printf "Existing resource groups:\n"
 	groups="$(az group list -o tsv | cut -f4 | tr '\n' ', ' | sed "s/,/, /g")"
 	printf "\n%s\n" "${groups%??}"
@@ -106,7 +117,7 @@ readResourceGroupName () {
 
 	set +e
 
-	#Check for existing RG
+	# Check for existing RG
 	az group exists --name "${resourceGroupName}" &> /dev/null
 	if [ "$?" == "false" ]; then
 		echo "To create a new resource group, please enter an Azure location:"
@@ -122,6 +133,12 @@ readResourceGroupName () {
 }
 
 readLocation() {
+	"""
+	For use when creating a new database
+
+	Displays a lsit of available database replication origins under the resource group
+	User picks, then we validate that choice
+	"""
 	if [[ -z "${resourceGroupLocation}" ]]; then
 		locations="$(az account list-locations --output tsv | cut -f5 | tr '\n' ', ' | sed "s/,/, /g")"
 		printf "\n%s\n" "${locations%??}"
@@ -141,6 +158,10 @@ readLocation() {
 }
 
 readDbName () {
+	"""
+	Displays the list of available databases under the previously specified resource group
+	User then picks their desired and we validate that choice (in case of typo, etc.)
+	"""
 	dbNames="$(az cosmosdb list -g ${resourceGroupName} -o tsv | cut -f13)"
 	defaultDb=(${dbNames[@]})
 
@@ -175,13 +196,13 @@ readDbName () {
 
 azLogin
 
-#Prompt for parameters if some required parameters are missing
+# Prompt for parameters if some required parameters are missing
 if [[ -z "${subscriptionId}" ]]; then
 	echo
 	readSubscriptionId
 fi
 
-#set the default subscription id
+# Set the default subscription id
 az account set --subscription "${subscriptionId}"
 
 if [[ -z "${resourceGroupName}" ]]; then
