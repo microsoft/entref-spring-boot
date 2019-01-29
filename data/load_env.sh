@@ -136,7 +136,7 @@ readLocation() {
 	"""
 	For use when creating a new database
 
-	Displays a lsit of available database replication origins under the resource group
+	Displays a list of available database replication origins under the resource group
 	User picks, then we validate that choice
 	"""
 	if [[ -z "${resourceGroupLocation}" ]]; then
