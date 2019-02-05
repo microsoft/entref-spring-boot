@@ -20,7 +20,7 @@ read -p "Press the [enter] key to continue" userInput
 if [[ -z "${userInput}" ]]; then
     printf "\n"
     echo "Removing IMDb '\N' values..."
-    ed -s *.tsv <<< 's/\\N//g' || ( echo "Failed to fix bad values in data sets. Exiting" && exit 1 )
+    ed -s *.tsv <<< $',s|\\\N||g\nw' || ( echo "Failed to fix bad values in data sets. Exiting" && exit 1 )
 fi
 
 # Shows the user the files
