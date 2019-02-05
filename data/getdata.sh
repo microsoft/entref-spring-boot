@@ -27,4 +27,3 @@ fi
 printf "\n"
 echo "IMDb data files ready:"
 ls *.tsv
-echo

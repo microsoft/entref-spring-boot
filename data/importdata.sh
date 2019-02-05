@@ -188,15 +188,15 @@ create_database
 printf "\nStep 3. Creating Cosmos DB collections...\n"
 create_collections
 
-# printf "Step 4. Importing IMDb data to Cosmos DB...\n"
-# import_data
+printf "Step 4. Importing IMDb data to Cosmos DB...\n"
+import_data
 
-# printf "Step 5. Finished importing data. Cleaning up...\n"
-# delete_tsv_files
+printf "Step 5. Finished importing data. Cleaning up...\n"
+delete_tsv_files
 
 printf "\nStep 6. Reducing throughput on Azure...\n"
 set_throughput
 printf "This may take 10 minutes to be reflected in the portal."
 
-echo "Complete!"
+printf "\nComplete!"
 
