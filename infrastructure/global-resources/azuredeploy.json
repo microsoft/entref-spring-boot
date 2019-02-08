@@ -206,7 +206,7 @@
                 "attributes": {
                     "enabled": true
                 },
-                "value": "[concat('mongodb://', parameters('database_account_name'), ':', listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('database_account_name')), '2015-04-08').primaryMasterKey, '@', parameters('database_account_name'), '.documents.azure.com:10250/?ssl=true')]"
+                "value": "[concat('mongodb://', parameters('database_account_name'), ':', listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('database_account_name')), '2015-04-08').primaryMasterKey, '@', parameters('database_account_name'), '.documents.azure.com:10250/?ssl=true&replicaSet=globaldb')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.KeyVault/vaults', parameters('key_vault_name'))]",
