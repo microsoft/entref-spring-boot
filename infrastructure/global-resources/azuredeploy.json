@@ -167,7 +167,7 @@
         },
         {
             "type": "Microsoft.KeyVault/vaults/secrets",
-            "name": "[concat(parameters('key_vault_name'), '/', parameters('container_registry_name'), 'username')]",
+            "name": "[concat(parameters('key_vault_name'), '/', parameters('container_registry_name'), 'Username')]",
             "apiVersion": "2016-10-01",
             "location": "[resourceGroup().location]",
             "properties": {
@@ -183,7 +183,7 @@
         },
         {
             "type": "Microsoft.KeyVault/vaults/secrets",
-            "name": "[concat(parameters('key_vault_name'), '/', parameters('container_registry_name'), 'password')]",
+            "name": "[concat(parameters('key_vault_name'), '/', parameters('container_registry_name'), 'Password')]",
             "apiVersion": "2016-10-01",
             "location": "[resourceGroup().location]",
             "properties": {
