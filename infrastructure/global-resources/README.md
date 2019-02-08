@@ -12,7 +12,7 @@ To do this, run:
 az group deployment create --resource-group <your-resource-group> --template-file infrastructure/global-resources/azuredeploy.json
 ```
 
-Another way to deploy is to run one-click deploy for all resources using Deploy to Azure:
+Another way is to run one-click deploy for all resources using Deploy to Azure:
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
 
