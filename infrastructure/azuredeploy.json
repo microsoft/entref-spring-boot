@@ -38,7 +38,7 @@
           "id": "[concat('/subscriptions/', parameters('vault_subscription_id'), '/resourceGroups/', parameters('vault_resource_group_name'),'/providers/Microsoft.KeyVault/vaults/',parameters('vault_name'))]"
         }
       },
-      "secretName": "dockerUsername",
+      "secretName": "ACR_USERNAME",
       "type": "securestring",
       "defaultValue": "username"
     },
@@ -48,7 +48,7 @@
           "id": "[concat('/subscriptions/', parameters('vault_subscription_id'), '/resourceGroups/', parameters('vault_resource_group_name'),'/providers/Microsoft.KeyVault/vaults/',parameters('vault_name'))]"
         }
       },
-      "secretName": "dockerPassword",
+      "secretName": "ACR_PASSWORD",
       "type": "securestring",
       "defaultValue": "password"
     },
@@ -87,7 +87,7 @@
           "id": "[concat('/subscriptions/', parameters('vault_subscription_id'), '/resourceGroups/', parameters('vault_resource_group_name'),'/providers/Microsoft.KeyVault/vaults/', parameters('vault_name'))]"
         }
       },
-      "secretName": "dbConnectionString",
+      "secretName": "databaseConnectionString",
       "type": "securestring",
       "defaultValue": "mongodb://localhost"
     },

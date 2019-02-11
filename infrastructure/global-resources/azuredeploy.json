@@ -167,7 +167,7 @@
         },
         {
             "type": "Microsoft.KeyVault/vaults/secrets",
-            "name": "[concat(parameters('key_vault_name'), '/dockerUsername')]",
+            "name": "[concat(parameters('key_vault_name'), '/ACR_USERNAME')]",
             "apiVersion": "2016-10-01",
             "location": "[resourceGroup().location]",
             "properties": {
@@ -183,7 +183,7 @@
         },
         {
             "type": "Microsoft.KeyVault/vaults/secrets",
-            "name": "[concat(parameters('key_vault_name'), '/dockerPassword')]",
+            "name": "[concat(parameters('key_vault_name'), '/ACR_PASSWORD')]",
             "apiVersion": "2016-10-01",
             "location": "[resourceGroup().location]",
             "properties": {
@@ -199,7 +199,7 @@
         },
         {
             "type": "Microsoft.KeyVault/vaults/secrets",
-            "name": "[concat(parameters('key_vault_name'), '/dbConnectionString')]",
+            "name": "[concat(parameters('key_vault_name'), '/databaseConnectionString')]",
             "apiVersion": "2016-10-01",
             "location": "[resourceGroup().location]",
             "properties": {
