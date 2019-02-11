@@ -167,7 +167,7 @@
         },
         {
             "type": "Microsoft.KeyVault/vaults/secrets",
-            "name": "[concat(parameters('key_vault_name'), '/', parameters('container_registry_name'), 'Username')]",
+            "name": "[concat(parameters('key_vault_name'), '/dockerUsername')]",
             "apiVersion": "2016-10-01",
             "location": "[resourceGroup().location]",
             "properties": {
@@ -183,7 +183,7 @@
         },
         {
             "type": "Microsoft.KeyVault/vaults/secrets",
-            "name": "[concat(parameters('key_vault_name'), '/', parameters('container_registry_name'), 'Password')]",
+            "name": "[concat(parameters('key_vault_name'), '/dockerPassword')]",
             "apiVersion": "2016-10-01",
             "location": "[resourceGroup().location]",
             "properties": {
@@ -199,7 +199,7 @@
         },
         {
             "type": "Microsoft.KeyVault/vaults/secrets",
-            "name": "[concat(parameters('key_vault_name'), '/', parameters('database_account_name'), 'ConnectionString')]",
+            "name": "[concat(parameters('key_vault_name'), '/dbConnectionString')]",
             "apiVersion": "2016-10-01",
             "location": "[resourceGroup().location]",
             "properties": {
