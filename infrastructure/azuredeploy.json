@@ -6,24 +6,6 @@
       "type": "string",
       "defaultValue": "[uniqueString(resourceGroup().id)]"
     },
-    "vault_subscription_id": {
-      "type": "string",
-      "metadata": {
-        "description": "The id of the subscription that contains the keyvault."
-      }
-    },
-    "vault_resource_group_name": {
-      "type": "string",
-      "metadata": {
-        "description": "The name of the resource group that contains the keyvault."
-      }
-    },
-    "vault_name": {
-      "type": "string",
-      "metadata": {
-        "description": "The name of the keyvault that contains the docker username and password"
-      }
-    },
     "dev_env": {
       "type": "bool",
       "defaultValue": true,
@@ -33,22 +15,10 @@
       ]
     },
     "docker_registry_username": {
-      "reference": {
-        "keyVault": {
-          "id": "[concat('/subscriptions/', parameters('vault_subscription_id'), '/resourceGroups/', parameters('vault_resource_group_name'),'/providers/Microsoft.KeyVault/vaults/',parameters('vault_name'))]"
-        }
-      },
-      "secretName": "ACR_USERNAME",
       "type": "securestring",
       "defaultValue": "username"
     },
     "docker_registry_password": {
-      "reference": {
-        "keyVault": {
-          "id": "[concat('/subscriptions/', parameters('vault_subscription_id'), '/resourceGroups/', parameters('vault_resource_group_name'),'/providers/Microsoft.KeyVault/vaults/',parameters('vault_name'))]"
-        }
-      },
-      "secretName": "ACR_PASSWORD",
       "type": "securestring",
       "defaultValue": "password"
     },
@@ -82,12 +52,6 @@
       "defaultValue": "https://login.microsoftonline.com/common/discovery/keys"
     },
     "database_connection_string": {
-      "reference": {
-        "keyVault": {
-          "id": "[concat('/subscriptions/', parameters('vault_subscription_id'), '/resourceGroups/', parameters('vault_resource_group_name'),'/providers/Microsoft.KeyVault/vaults/', parameters('vault_name'))]"
-        }
-      },
-      "secretName": "databaseConnectionString",
       "type": "securestring",
       "defaultValue": "mongodb://localhost"
     },
