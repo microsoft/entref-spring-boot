@@ -14,9 +14,19 @@
             "type": "string",
             "defaultValue": "[concat('acrImages', uniqueString(resourceGroup().id))]"
         },
+        "key_vault_name": {
+            "type": "string",
+            "defaultValue": "[concat('keyVault', uniqueString(resourceGroup().id))]"
+        },
         "traffic_manager_profiles_name": {
             "type": "string",
             "defaultValue": "[concat('tm-profiles-', uniqueString(resourceGroup().id))]"
+        },
+        "objectId": {
+            "type": "string",
+            "metadata": {
+              "description": "Object Id of the AD user. Get using Get-AzureRmADUser or Get-AzureRmADServicePrincipal cmdlets"
+            }
         }
     },
     "resources": [
@@ -93,6 +103,115 @@
               "endpoints": []
             },
             "dependsOn": []
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "name": "[parameters('key_vault_name')]",
+            "apiVersion": "2016-10-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+              "sku": {
+                "name": "standard",
+                "family": "A"
+              },
+              "tenantId": "[subscription().tenantId]",
+              "accessPolicies": [
+                  {
+                    "tenantId": "[subscription().tenantId]",
+                    "objectId": "[parameters('objectId')]",
+                    "permissions": {
+                        "keys": [
+                            "get",
+                            "list",
+                            "update",
+                            "create",
+                            "import",
+                            "delete",
+                            "recover",
+                            "backup",
+                            "restore"
+                        ],
+                        "secrets": [
+                            "get",
+                            "list",
+                            "set",
+                            "delete",
+                            "recover",
+                            "backup",
+                            "restore"
+                        ],
+                        "certificates": [
+                            "get",
+                            "list",
+                            "update",
+                            "create",
+                            "import",
+                            "delete",
+                            "recover",
+                            "managecontacts",
+                            "manageissuers",
+                            "getissuers",
+                            "listissuers",
+                            "setissuers",
+                            "deleteissuers"
+                        ]
+                    }
+                }
+              ],
+              "enabledForDeployment": true,
+              "enabledForDiskEncryption": false,
+              "enabledForTemplateDeployment": true
+            },
+            "dependsOn": [
+            ]
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "name": "[concat(parameters('key_vault_name'), '/ACR_USERNAME')]",
+            "apiVersion": "2016-10-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "value": "[parameters('container_registry_name')]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('key_vault_name'))]",
+                "[resourceId('Microsoft.ContainerRegistry/registries', parameters('container_registry_name'))]"
+            ]  
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "name": "[concat(parameters('key_vault_name'), '/ACR_PASSWORD')]",
+            "apiVersion": "2016-10-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "value": "[listCredentials(resourceId('Microsoft.ContainerRegistry/registries', parameters('container_registry_name')), '2017-10-01').passwords[0].value]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('key_vault_name'))]",
+                "[resourceId('Microsoft.ContainerRegistry/registries', parameters('container_registry_name'))]"
+            ]  
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "name": "[concat(parameters('key_vault_name'), '/databaseConnectionString')]",
+            "apiVersion": "2016-10-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "value": "[concat('mongodb://', parameters('database_account_name'), ':', listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('database_account_name')), '2015-04-08').primaryMasterKey, '@', parameters('database_account_name'), '.documents.azure.com:10250/?ssl=true&replicaSet=globaldb')]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('key_vault_name'))]",
+                "[resourceId('Microsoft.ContainerRegistry/registries', parameters('container_registry_name'))]"
+            ]  
         }
     ]
 }

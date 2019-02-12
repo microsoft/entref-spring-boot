@@ -6,10 +6,11 @@ Global resources deployment is going to create:
 - Cosmos Database - To support NoSQL API's.
 - Azure Container Registry - To push and pull images.
 - Traffic Manager - To increase app responsiveness by leveraging performance routing.
+- Key Vault - To encrypt keys and small secrets like passwords that use keys stored in HSM's
 
 To do this, run:
 ```
-az group deployment create --resource-group <your-resource-group> --template-file infrastructure/global-resources/azuredeploy.json
+az group deployment create --resource-group <your-resource-group> --template-file infrastructure/global-resources/azuredeploy.json --parameters objectId=<object Id>
 ```
 
 Another way is to run one-click deploy for all resources using Deploy to Azure:
