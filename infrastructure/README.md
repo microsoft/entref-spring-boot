@@ -27,7 +27,7 @@ Once the ACR is deployed, follow these manual steps to set up CD pipeline:
 
 1. Create a new variable group in Azure Pipeline Library
 2. Create variable ACR_SERVER and set value to the server name, which will be the output of your deployment (<application name>container.azurecr.io)
-3. Get values of username and password from Key Vault deployed in global resources using Azure Portal
+3. Get values of username and password values from Key Vault deployed in `global resources` resource group using the Azure Portal
 4. Use KeyVault secrets <container_registry_name>Username and <container_registry_name>Password.
 
 Your deployment resources can now be used as part of your CD pipeline.
