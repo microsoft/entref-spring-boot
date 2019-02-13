@@ -167,7 +167,7 @@
         },
         {
             "type": "Microsoft.KeyVault/vaults/secrets",
-            "name": "[concat(parameters('key_vault_name'), '/ACR_USERNAME')]",
+            "name": "[concat(parameters('key_vault_name'), '/acrUsername')]",
             "apiVersion": "2016-10-01",
             "location": "[resourceGroup().location]",
             "properties": {
@@ -183,7 +183,7 @@
         },
         {
             "type": "Microsoft.KeyVault/vaults/secrets",
-            "name": "[concat(parameters('key_vault_name'), '/ACR_PASSWORD')]",
+            "name": "[concat(parameters('key_vault_name'), '/acrPassword')]",
             "apiVersion": "2016-10-01",
             "location": "[resourceGroup().location]",
             "properties": {
@@ -210,7 +210,7 @@
             },
             "dependsOn": [
                 "[resourceId('Microsoft.KeyVault/vaults', parameters('key_vault_name'))]",
-                "[resourceId('Microsoft.ContainerRegistry/registries', parameters('container_registry_name'))]"
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('database_account_name'))]"
             ]  
         }
     ]
