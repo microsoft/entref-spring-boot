@@ -210,7 +210,7 @@
             },
             "dependsOn": [
                 "[resourceId('Microsoft.KeyVault/vaults', parameters('key_vault_name'))]",
-                "[resourceId('Microsoft.ContainerRegistry/registries', parameters('container_registry_name'))]"
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('database_account_name'))]"
             ]  
         }
     ]
