@@ -4,9 +4,9 @@
   "parameters": {
     "templateBaseUri": {
       "type": "string",
-      "defaultValue": "https://github.com/Microsoft/containers-rest-cosmos-appservice-java/tree/master/infrastructure/"
+      "defaultValue": "https://raw.githubusercontent.com/Microsoft/containers-rest-cosmos-appservice-java/tree/master/infrastructure/"
     },
-    "resourcegroup": {
+    "vaultResourceGroup": {
       "type": "string"
     },
     "vaultName": {
@@ -21,13 +21,13 @@
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "Incremental",
-        "uri": "[concat(parameters('templateBaseUri'), 'azuredeploy_nested.json')]",
         "templateLink": {
+          "uri": "[concat(parameters('templateBaseUri'), 'azuredeploy_nested.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "resourcegroup": {
-            "value": "[parameters('resourcegroup')]"
+          "vaultResourceGroup": {
+            "value": "[parameters('vaultResourceGroup')]"
           },
           "vaultName": {
             "value": "[parameters('vaultName')]"
@@ -35,7 +35,7 @@
           "database_connection_string": {
             "reference": {
               "keyVault": {
-                "id": "[resourceId(subscription().subscriptionId,  parameters('resourcegroup'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+                "id": "[resourceId(subscription().subscriptionId,  parameters('vaultResourceGroup'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
               },
               "secretName": "databaseConnectionString"
             }
