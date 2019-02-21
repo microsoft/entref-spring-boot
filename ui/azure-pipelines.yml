@@ -36,7 +36,7 @@ steps:
   workingDirectory: ui/
   displayName: 'Docker Build'
 - script: |
-    docker login $(ACR_SERVER) -u $(ACR_USERNAME) -p $(ACR_PASSWORD)
+    docker login $(ACR_SERVER) -u $(acrUsername) -p $(acrPassword)
   displayName: 'Docker Login'
 - script: |
     docker push $ACR_SERVER/$ACR_CONTAINER_TAG
