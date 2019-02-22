@@ -2,9 +2,74 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "templateBaseUri": {
+    "application_name": {
       "type": "string",
-      "defaultValue": "https://raw.githubusercontent.com/Microsoft/containers-rest-cosmos-appservice-java/tree/master/infrastructure/"
+      "defaultValue": "[uniqueString(resourceGroup().id)]"
+    },
+    "dev_env": {
+      "type": "bool",
+      "defaultValue": true,
+      "allowedValues": [
+        true,
+        false
+      ]
+    },
+    "docker_title_url": {
+      "type": "string"
+    },
+    "docker_person_url": {
+      "type": "string"
+    },
+    "docker_ui_url": {
+      "type": "string"
+    },
+    "docker_title_tag": {
+      "type": "string",
+      "defaultValue": "v1.0"
+    },
+    "docker_person_tag": {
+      "type": "string",
+      "defaultValue": "v1.0"
+    },
+    "docker_ui_tag": {
+      "type": "string",
+      "defaultValue": "v1.0"
+    },
+    "oauth_id": {
+      "type": "securestring",
+      "defaultValue": ""
+    },
+    "oauth_keyset": {
+      "type": "securestring",
+      "defaultValue": "https://login.microsoftonline.com/common/discovery/keys"
+    },
+    "vnet_address_prefix": {
+      "type": "string",
+      "defaultValue": "10.0.0.0/16",
+      "metadata": {
+        "description": "Address prefix for the Virtual Network"
+      }
+    },
+    "vnet_subnet_prefix": {
+      "type": "string",
+      "defaultValue": "10.0.0.0/28",
+      "metadata": {
+        "description": "Subnet prefix"
+      }
+    },
+    "_artifactsLocation": {
+      "type": "string",
+      "metadata": {
+        "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
+      },
+      "defaultValue": "https://raw.githubusercontent.com/Microsoft/containers-rest-cosmos-appservice-java/dynamic_key_vault/infrastructure/"
+    },
+    "_artifactsLocationSasToken": {
+      "type": "securestring",
+      "metadata": {
+        "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated."
+      },
+      "defaultValue": ""
     },
     "vaultResourceGroup": {
       "type": "string"
@@ -17,20 +82,66 @@
   "resources": [
     {
       "apiVersion": "2015-01-01",
-      "name": "nestedTemplate",
+      "name": "applicationTemplate",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('templateBaseUri'), 'azuredeploy_nested.json')]",
+          "uri": "[concat(parameters('_artifactsLocation'), 'azuredeploy_nested.json', parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "vaultResourceGroup": {
-            "value": "[parameters('vaultResourceGroup')]"
+          "application_name": {
+            "value": "[parameters('application_name')]"
           },
-          "vaultName": {
-            "value": "[parameters('vaultName')]"
+          "dev_env": {
+            "value": "[parameters('dev_env')]"
+          },
+          "docker_registry_username": {
+            "reference": {
+              "keyVault": {
+                "id": "[resourceId(subscription().subscriptionId,  parameters('vaultResourceGroup'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+              },
+              "secretName": "acrUsername"
+            }
+          },
+          "docker_registry_password": {
+            "reference": {
+              "keyVault": {
+                "id": "[resourceId(subscription().subscriptionId,  parameters('vaultResourceGroup'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+              },
+              "secretName": "acrPassword"
+            }
+          },
+          "docker_title_url": {
+            "value": "[parameters('docker_title_url')]"
+          },
+          "docker_person_url": {
+            "value": "[parameters('docker_person_url')]"
+          },
+          "docker_ui_url": {
+            "value": "[parameters('docker_ui_url')]"
+          },
+          "docker_title_tag": {
+            "value": "[parameters('docker_title_tag')]"
+          },
+          "docker_person_tag": {
+            "value": "[parameters('docker_person_tag')]"
+          },
+          "docker_ui_tag": {
+            "value": "[parameters('docker_ui_tag')]"
+          },
+          "oauth_id": {
+            "value": "[parameters('oauth_id')]"
+          },
+          "oauth_keyset": {
+            "value": "[parameters('oauth_keyset')]"
+          },
+          "vnet_address_prefix": {
+            "value": "[parameters('vnet_address_prefix')]"
+          },
+          "vnet_subnet_prefix": {
+            "value": "[parameters('vnet_subnet_prefix')]"
           },
           "database_connection_string": {
             "reference": {

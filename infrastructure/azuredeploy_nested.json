@@ -3,24 +3,16 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "application_name": {
-      "type": "string",
-      "defaultValue": "[uniqueString(resourceGroup().id)]"
+      "type": "string"
     },
     "dev_env": {
-      "type": "bool",
-      "defaultValue": true,
-      "allowedValues": [
-        true,
-        false
-      ]
+      "type": "bool"
     },
     "docker_registry_username": {
-      "type": "securestring",
-      "defaultValue": "username"
+      "type": "securestring"
     },
     "docker_registry_password": {
-      "type": "securestring",
-      "defaultValue": "password"
+      "type": "securestring"
     },
     "docker_title_url": {
       "type": "string"
@@ -32,41 +24,28 @@
       "type": "string"
     },
     "docker_title_tag": {
-      "type": "string",
-      "defaultValue": "v1.0"
+      "type": "string"
     },
     "docker_person_tag": {
-      "type": "string",
-      "defaultValue": "v1.0"
+      "type": "string"
     },
     "docker_ui_tag": {
-      "type": "string",
-      "defaultValue": "v1.0"
+      "type": "string"
     },
     "oauth_id": {
-      "type": "securestring",
-      "defaultValue": ""
+      "type": "securestring"
     },
     "oauth_keyset": {
-      "type": "securestring",
-      "defaultValue": "https://login.microsoftonline.com/common/discovery/keys"
+      "type": "securestring"
     },
     "database_connection_string": {
       "type": "securestring"
     },
     "vnet_address_prefix": {
-      "type": "string",
-      "defaultValue": "10.0.0.0/16",
-      "metadata": {
-        "description": "Address prefix for the Virtual Network"
-      }
+      "type": "string"
     },
     "vnet_subnet_prefix": {
-      "type": "string",
-      "defaultValue": "10.0.0.0/28",
-      "metadata": {
-        "description": "Subnet prefix"
-      }
+      "type": "string"
     }
   },
   "variables": {
