@@ -13,7 +13,7 @@ steps:
 - task: AzureResourceGroupDeployment@2
   displayName: 'Validate ARM template'
   inputs:
-    azureSubscription: $(serviceConnectionAzureSubscription)
+    azureSubscription: 'JUCOLON Microsoft Azure Internal Consumption (8ff258b7-0b3b-4827-b240-cb8cfab73615)'
     resourceGroupName: $(resourceGroupName)
     location: $(location)
     csmFile: infrastructure/azuredeploy.json
