@@ -13,7 +13,7 @@ steps:
 - task: AzureResourceGroupDeployment@2
   displayName: 'Validate ARM template'
   inputs:
-    azureSubscription: $(serviceConnectionAzureSubscription)
+    azureSubscription: $(azureSubscription)
     resourceGroupName: $(resourceGroupName)
     location: $(location)
     csmFile: infrastructure/azuredeploy.json
