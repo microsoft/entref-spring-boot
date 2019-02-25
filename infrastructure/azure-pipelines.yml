@@ -17,7 +17,7 @@ steps:
     resourceGroupName: $(resourceGroupName)
     location: $(location)
     csmFile: infrastructure/azuredeploy.json
-    overrideParameters: '-application_name $(applicationName) -docker_title_url $(ACR_SERVER) -docker_person_url $(ACR_SERVER) -docker_ui_url $(ACR_SERVER) -docker_registry_username $(acrUsername) -docker_registry_password $(acrPassword) -database_connection_string $(databaseConnectionString)'
+    overrideParameters: '-application_name $(applicationName) -docker_title_url $(ACR_SERVER) -docker_person_url $(ACR_SERVER) -docker_ui_url $(ACR_SERVER) -docker_registry_username $(acrUsername)  -database_connection_string $(databaseConnectionString) -docker_registry_password $(acrPassword)'
     deploymentMode: Validation
 
 # Copy ARM deployment JSON
