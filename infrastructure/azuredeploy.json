@@ -62,7 +62,7 @@
       "metadata": {
         "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
       },
-      "defaultValue": "https://raw.githubusercontent.com/Microsoft/containers-rest-cosmos-appservice-java/dynamic_key_vault/infrastructure/"
+      "defaultValue": "https://raw.githubusercontent.com/Microsoft/containers-rest-cosmos-appservice-java/master/infrastructure/"
     },
     "_artifactsLocationSasToken": {
       "type": "securestring",
@@ -87,7 +87,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), 'azuredeploy_nested.json', parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), 'azuredeploy_application.json', parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {

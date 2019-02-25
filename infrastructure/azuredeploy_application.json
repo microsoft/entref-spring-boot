@@ -731,10 +731,5 @@
       }
     }
   ],
-  "outputs": {
-    "database_connection_string": {
-      "type": "string",
-      "value": "[parameters('database_connection_string')]"
-    }
-  }
+  "outputs": {}
 }
