@@ -8,6 +8,9 @@
     "dev_env": {
       "type": "bool"
     },
+    "docker_login_server": {
+      "type": "string"
+    },
     "docker_registry_username": {
       "type": "securestring"
     },
