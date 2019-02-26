@@ -14,14 +14,6 @@
         false
       ]
     },
-    "docker_registry_username": {
-      "type": "securestring",
-      "defaultValue": "username"
-    },
-    "docker_registry_password": {
-      "type": "securestring",
-      "defaultValue": "password"
-    },
     "docker_title_url": {
       "type": "string"
     },
@@ -51,10 +43,6 @@
       "type": "securestring",
       "defaultValue": "https://login.microsoftonline.com/common/discovery/keys"
     },
-    "database_connection_string": {
-      "type": "securestring",
-      "defaultValue": "mongodb://localhost"
-    },
     "vnet_address_prefix": {
       "type": "string",
       "defaultValue": "10.0.0.0/16",
@@ -68,688 +56,102 @@
       "metadata": {
         "description": "Subnet prefix"
       }
+    },
+    "_artifactsLocation": {
+      "type": "string",
+      "metadata": {
+        "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
+      },
+      "defaultValue": "https://raw.githubusercontent.com/Microsoft/containers-rest-cosmos-appservice-java/master/infrastructure/"
+    },
+    "_artifactsLocationSasToken": {
+      "type": "securestring",
+      "metadata": {
+        "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated."
+      },
+      "defaultValue": ""
+    },
+    "vaultResourceGroup": {
+      "type": "string"
+    },
+    "vaultName": {
+      "type": "string"
     }
   },
-  "variables": {
-    "regional_application_name": "[concat(parameters('application_name'), '-', resourceGroup().location)]",
-    "autoscale_settings_name": "[concat(variables('regional_application_name'), '-autoscale')]",
-    "components_insights_name": "[concat(variables('regional_application_name'), '-componentsinsights')]",
-    "sites_api_title_name": "[concat(variables('regional_application_name'), '-title')]",
-    "sites_api_person_name": "[concat(variables('regional_application_name'), '-person')]",
-    "sites_ui_client_name": "[concat(variables('regional_application_name'), '-ui')]",
-    "serverfarms_appservice_plan_name": "[concat(variables('regional_application_name'), '-appserviceplan')]",
-    "canary_slot_name": "canary",
-    "application_gateway_size": "WAF_Medium",
-    "application_gateway_capacity": 2,
-    "application_gateway_name": "appGateway",
-    "public_ipaddress_name": "publicIp",
-    "virtual_network_name": "virtualNetwork",
-    "subnet_name": "appGatewaySubnet",
-    "subnet_ref": "[resourceId('Microsoft.Network/virtualNetworks/subnets/', variables('virtual_network_name'), variables('subnet_name'))]",
-    "public_ipaddress_ref": "[resourceId('Microsoft.Network/publicIPAddresses', variables('public_ipaddress_name'))]",
-    "application_gateway_ref": "[resourceId('Microsoft.Network/applicationGateways', variables('application_gateway_name'))]"
-  },
+  "variables": {},
   "resources": [
     {
-      "type": "Microsoft.Insights/components",
-      "kind": "web",
-      "name": "[variables('components_insights_name')]",
-      "apiVersion": "2015-05-01",
-      "location": "South Central US",
-      "tags": {},
-      "scale": null,
+      "apiVersion": "2015-01-01",
+      "name": "applicationTemplate",
+      "type": "Microsoft.Resources/deployments",
       "properties": {
-        "Application_Type": "java",
-        "Flow_Type": "Redfield",
-        "Request_Source": "IbizaAIExtension",
-        "HockeyAppId": null,
-        "SamplingPercentage": null
-      },
-      "dependsOn": []
-    },
-    {
-      "type": "Microsoft.Web/serverfarms",
-      "sku": {
-        "name": "[if(parameters('dev_env'), 'S1', 'S3')]",
-        "family": "S",
-        "capacity": "[if(parameters('dev_env'), '1', '3')]"
-      },
-      "kind": "linux",
-      "name": "[variables('serverfarms_appservice_plan_name')]",
-      "apiVersion": "2016-09-01",
-      "location": "[resourceGroup().location]",
-      "scale": null,
-      "properties": {
-        "name": "[variables('serverfarms_appservice_plan_name')]",
-        "workerTierName": null,
-        "adminSiteName": null,
-        "hostingEnvironmentProfile": null,
-        "perSiteScaling": false,
-        "reserved": true,
-        "targetWorkerCount": 0,
-        "targetWorkerSizeId": 0
-      },
-      "dependsOn": []
-    },
-    {
-      "type": "Microsoft.Web/sites",
-      "name": "[variables('sites_api_title_name')]",
-      "apiVersion": "2016-03-01",
-      "location": "[resourceGroup().location]",
-      "properties": {
-        "name": "[variables('sites_api_title_name')]",
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
-      ],
-      "resources": [
-        {
-          "name": "appsettings",
-          "type": "config",
-          "apiVersion": "2016-03-01",
-          "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', variables('sites_api_title_name'))]",
-            "[resourceId('Microsoft.Insights/components', variables('components_insights_name'))]"
-          ],
-          "tags": {
-            "displayName": "appSettings"
-          },
-          "properties": {
-            "APPLICATION_INSIGHTS_IKEY": "[reference(concat(resourceId('Microsoft.Insights/components', variables('components_insights_name')))).InstrumentationKey]",
-            "DB_CONNSTR": "[parameters('database_connection_string')]",
-            "DB_NAME": "IMDb",
-            "RESOURCE_GROUP": "[resourceGroup().name]",
-            "spring.profiles.active": "production",
-            "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
-            "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
-            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_title_url')]",
-            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_title_url'), ':', parameters('docker_title_tag'))]",
-            "EXCLUDE_FILTER": "PersonRepository",
-            "ALLOWED_ORIGIN": "*",
-            "OAUTH_RES_ID": "[parameters('oauth_id')]",
-            "OAUTH_KEYSET_URI": "[parameters('oauth_keyset')]"
-          }
-        }
-      ]
-    },
-    {
-      "type": "Microsoft.Web/sites/slots",
-      "name": "[concat(variables('sites_api_title_name'), '/', variables('canary_slot_name'))]",
-      "apiVersion": "2016-08-01",
-      "location": "[resourceGroup().location]",
-      "scale": null,
-      "properties": {
-        "enabled": true,
-        "hostNameSslStates": [
-          {
-            "name": "[concat(variables('sites_api_title_name'), '-', variables('canary_slot_name'), '.azurewebsites.net')]",
-            "sslState": "Disabled",
-            "virtualIP": null,
-            "thumbprint": null,
-            "toUpdate": null,
-            "hostType": "Standard"
-          },
-          {
-            "name": "[concat(variables('sites_api_title_name'), '-', variables('canary_slot_name'), '.scm.azurewebsites.net')]",
-            "sslState": "Disabled",
-            "virtualIP": null,
-            "thumbprint": null,
-            "toUpdate": null,
-            "hostType": "Repository"
-          }
-        ],
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]",
-        "reserved": true,
-        "siteConfig": null,
-        "scmSiteAlsoStopped": false,
-        "hostingEnvironmentProfile": null,
-        "clientAffinityEnabled": true,
-        "clientCertEnabled": false,
-        "hostNamesDisabled": false,
-        "containerSize": 0,
-        "dailyMemoryTimeQuota": 0,
-        "cloningInfo": null,
-        "httpsOnly": false
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_api_title_name'))]",
-        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
-      ]
-    },
-    {
-      "type": "Microsoft.Web/sites",
-      "name": "[variables('sites_api_person_name')]",
-      "apiVersion": "2016-03-01",
-      "location": "[resourceGroup().location]",
-      "properties": {
-        "name": "[variables('sites_api_person_name')]",
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
-      ],
-      "resources": [
-        {
-          "name": "appsettings",
-          "type": "config",
-          "apiVersion": "2016-03-01",
-          "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', variables('sites_api_person_name'))]",
-            "[resourceId('Microsoft.Insights/components', variables('components_insights_name'))]"
-          ],
-          "tags": {
-            "displayName": "appSettings"
-          },
-          "properties": {
-            "APPLICATION_INSIGHTS_IKEY": "[reference(concat(resourceId('Microsoft.Insights/components', variables('components_insights_name')))).InstrumentationKey]",
-            "DB_CONNSTR": "[parameters('database_connection_string')]",
-            "DB_NAME": "IMDb",
-            "RESOURCE_GROUP": "[resourceGroup().name]",
-            "spring.profiles.active": "production",
-            "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
-            "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
-            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_person_url')]",
-            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_person_url'), ':', parameters('docker_person_tag'))]",
-            "EXCLUDE_FILTER": "TitleRepository",
-            "ALLOWED_ORIGIN": "*",
-            "OAUTH_RES_ID": "[parameters('oauth_id')]",
-            "OAUTH_KEYSET_URI": "[parameters('oauth_keyset')]"
-          }
-        }
-      ]
-    },
-    {
-      "type": "Microsoft.Web/sites/slots",
-      "name": "[concat(variables('sites_api_person_name'), '/', variables('canary_slot_name'))]",
-      "apiVersion": "2016-08-01",
-      "location": "[resourceGroup().location]",
-      "scale": null,
-      "properties": {
-        "enabled": true,
-        "hostNameSslStates": [
-          {
-            "name": "[concat(variables('sites_api_person_name'), '-', variables('canary_slot_name'), '.azurewebsites.net')]",
-            "sslState": "Disabled",
-            "virtualIP": null,
-            "thumbprint": null,
-            "toUpdate": null,
-            "hostType": "Standard"
-          },
-          {
-            "name": "[concat(variables('sites_api_person_name'), '-', variables('canary_slot_name'), '.scm.azurewebsites.net')]",
-            "sslState": "Disabled",
-            "virtualIP": null,
-            "thumbprint": null,
-            "toUpdate": null,
-            "hostType": "Repository"
-          }
-        ],
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]",
-        "reserved": true,
-        "siteConfig": null,
-        "scmSiteAlsoStopped": false,
-        "hostingEnvironmentProfile": null,
-        "clientAffinityEnabled": true,
-        "clientCertEnabled": false,
-        "hostNamesDisabled": false,
-        "containerSize": 0,
-        "dailyMemoryTimeQuota": 0,
-        "cloningInfo": null,
-        "httpsOnly": false
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_api_person_name'))]",
-        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
-      ]
-    },
-    {
-      "type": "Microsoft.Web/sites",
-      "name": "[variables('sites_ui_client_name')]",
-      "apiVersion": "2016-03-01",
-      "location": "[resourceGroup().location]",
-      "properties": {
-        "name": "[variables('sites_ui_client_name')]",
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
-      ],
-      "resources": [
-        {
-          "name": "appsettings",
-          "type": "config",
-          "apiVersion": "2016-03-01",
-          "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', variables('sites_ui_client_name'))]"
-          ],
-          "tags": {
-            "displayName": "appSettings"
-          },
-          "properties": {
-            "RESOURCE_GROUP": "[resourceGroup().name]",
-            "DOCKER_REGISTRY_SERVER_USERNAME": "[parameters('docker_registry_username')]",
-            "DOCKER_REGISTRY_SERVER_PASSWORD": "[parameters('docker_registry_password')]",
-            "DOCKER_REGISTRY_SERVER_URL": "[parameters('docker_ui_url')]",
-            "DOCKER_CUSTOM_IMAGE_NAME": "[concat(parameters('docker_ui_url'), ':', parameters('docker_ui_tag'))]",
-            "WEBSITES_PORT": "8080"
-          }
-        }
-      ]
-    },
-    {
-      "type": "Microsoft.Web/sites/slots",
-      "name": "[concat(variables('sites_ui_client_name'), '/', variables('canary_slot_name'))]",
-      "apiVersion": "2016-08-01",
-      "location": "[resourceGroup().location]",
-      "scale": null,
-      "properties": {
-        "enabled": true,
-        "hostNameSslStates": [
-          {
-            "name": "[concat(variables('sites_ui_client_name'), '-', variables('canary_slot_name'), '.azurewebsites.net')]",
-            "sslState": "Disabled",
-            "virtualIP": null,
-            "thumbprint": null,
-            "toUpdate": null,
-            "hostType": "Standard"
-          },
-          {
-            "name": "[concat(variables('sites_ui_client_name'), '-', variables('canary_slot_name'), '.scm.azurewebsites.net')]",
-            "sslState": "Disabled",
-            "virtualIP": null,
-            "thumbprint": null,
-            "toUpdate": null,
-            "hostType": "Repository"
-          }
-        ],
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]",
-        "reserved": true,
-        "siteConfig": null,
-        "scmSiteAlsoStopped": false,
-        "hostingEnvironmentProfile": null,
-        "clientAffinityEnabled": true,
-        "clientCertEnabled": false,
-        "hostNamesDisabled": false,
-        "containerSize": 0,
-        "dailyMemoryTimeQuota": 0,
-        "cloningInfo": null,
-        "httpsOnly": false
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_ui_client_name'))]",
-        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
-      ]
-    },
-    {
-      "comments": "Autoscale Settings",
-      "type": "microsoft.insights/autoscalesettings",
-      "name": "[variables('autoscale_settings_name')]",
-      "apiVersion": "2014-04-01",
-      "location": "[resourceGroup().location]",
-      "tags": {},
-      "scale": null,
-      "properties": {
-        "profiles": [
-          {
-            "name": "Auto created scale condition",
-            "capacity": {
-              "minimum": "1",
-              "maximum": "10",
-              "default": "1"
-            },
-            "rules": [
-              {
-                "metricTrigger": {
-                  "metricName": "CpuPercentage",
-                  "metricNamespace": "",
-                  "metricResourceUri": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]",
-                  "timeGrain": "PT1M",
-                  "statistic": "Average",
-                  "timeWindow": "PT10M",
-                  "timeAggregation": "Average",
-                  "operator": "GreaterThan",
-                  "threshold": 90
-                },
-                "scaleAction": {
-                  "direction": "Increase",
-                  "type": "ChangeCount",
-                  "value": "1",
-                  "cooldown": "PT5M"
-                }
-              },
-              {
-                "metricTrigger": {
-                  "metricName": "MemoryPercentage",
-                  "metricNamespace": "",
-                  "metricResourceUri": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]",
-                  "timeGrain": "PT1M",
-                  "statistic": "Average",
-                  "timeWindow": "PT10M",
-                  "timeAggregation": "Average",
-                  "operator": "GreaterThan",
-                  "threshold": 90
-                },
-                "scaleAction": {
-                  "direction": "Increase",
-                  "type": "ChangeCount",
-                  "value": "1",
-                  "cooldown": "PT5M"
-                }
-              },
-              {
-                "metricTrigger": {
-                  "metricName": "CpuPercentage",
-                  "metricNamespace": "",
-                  "metricResourceUri": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]",
-                  "timeGrain": "PT1M",
-                  "statistic": "Average",
-                  "timeWindow": "PT10M",
-                  "timeAggregation": "Average",
-                  "operator": "LessThan",
-                  "threshold": 70
-                },
-                "scaleAction": {
-                  "direction": "Decrease",
-                  "type": "ChangeCount",
-                  "value": "1",
-                  "cooldown": "PT5M"
-                }
-              },
-              {
-                "metricTrigger": {
-                  "metricName": "MemoryPercentage",
-                  "metricNamespace": "",
-                  "metricResourceUri": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]",
-                  "timeGrain": "PT1M",
-                  "statistic": "Average",
-                  "timeWindow": "PT10M",
-                  "timeAggregation": "Average",
-                  "operator": "LessThan",
-                  "threshold": 70
-                },
-                "scaleAction": {
-                  "direction": "Decrease",
-                  "type": "ChangeCount",
-                  "value": "1",
-                  "cooldown": "PT5M"
-                }
-              }
-            ]
-          }
-        ],
-        "enabled": true,
-        "name": "[variables('autoscale_settings_name')]",
-        "targetResourceUri": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_appservice_plan_name'))]"
-      ]
-    },
-    {
-      "apiVersion": "2017-03-01",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[variables('public_ipaddress_name')]",
-      "location": "[resourceGroup().location]",
-      "properties": {
-        "publicIPAllocationMethod": "Dynamic"
-      }
-    },
-    {
-      "apiVersion": "2017-03-01",
-      "type": "Microsoft.Network/virtualNetworks",
-      "name": "[variables('virtual_network_name')]",
-      "location": "[resourceGroup().location]",
-      "properties": {
-        "addressSpace": {
-          "addressPrefixes": [
-            "[parameters('vnet_address_prefix')]"
-          ]
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('_artifactsLocation'), 'azuredeploy_application.json', parameters('_artifactsLocationSasToken'))]",
+          "contentVersion": "1.0.0.0"
         },
-        "subnets": [
-          {
-            "name": "[variables('subnet_name')]",
-            "properties": {
-              "addressPrefix": "[parameters('vnet_subnet_prefix')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2017-06-01",
-      "name": "[variables('application_gateway_name')]",
-      "type": "Microsoft.Network/applicationGateways",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[variables('virtual_network_name')]",
-        "[variables('public_ipaddress_name')]",
-        "[variables('sites_ui_client_name')]",
-        "[variables('sites_api_title_name')]",
-        "[variables('sites_api_person_name')]"
-      ],
-      "properties": {
-        "sku": {
-          "name": "[variables('application_gateway_size')]",
-          "tier": "WAF",
-          "capacity": "[variables('application_gateway_capacity')]"
-        },
-        "gatewayIPConfigurations": [
-          {
-            "name": "appGatewayIpConfig",
-            "properties": {
-              "subnet": {
-                "id": "[variables('subnet_ref')]"
-              }
-            }
-          }
-        ],
-        "frontendIPConfigurations": [
-          {
-            "name": "appGatewayFrontendIP",
-            "properties": {
-              "PublicIPAddress": {
-                "id": "[variables('public_ipaddress_ref')]"
-              }
-            }
-          }
-        ],
-        "frontendPorts": [
-          {
-            "name": "appGatewayFrontendPort",
-            "properties": {
-              "Port": 80
-            }
-          }
-        ],
-        "backendAddressPools": [
-          {
-            "name": "uiBackendPool",
-            "properties": {
-              "BackendAddresses": [
-                {
-                  "fqdn": "[concat(variables('sites_ui_client_name'), '.azurewebsites.net')]"
-                }
-              ]
+        "parameters": {
+          "application_name": {
+            "value": "[parameters('application_name')]"
+          },
+          "dev_env": {
+            "value": "[parameters('dev_env')]"
+          },
+          "docker_registry_username": {
+            "reference": {
+              "keyVault": {
+                "id": "[resourceId(subscription().subscriptionId,  parameters('vaultResourceGroup'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+              },
+              "secretName": "acrUsername"
             }
           },
-          {
-            "name": "titlesBackendPool",
-            "properties": {
-              "BackendAddresses": [
-                {
-                  "fqdn": "[concat(variables('sites_api_title_name'), '.azurewebsites.net')]"
-                }
-              ]
+          "docker_registry_password": {
+            "reference": {
+              "keyVault": {
+                "id": "[resourceId(subscription().subscriptionId,  parameters('vaultResourceGroup'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+              },
+              "secretName": "acrPassword"
             }
           },
-          {
-            "name": "peopleBackendPool",
-            "properties": {
-              "BackendAddresses": [
-                {
-                  "fqdn": "[concat(variables('sites_api_person_name'), '.azurewebsites.net')]"
-                }
-              ]
-            }
-          }
-        ],
-        "backendHttpSettingsCollection": [
-          {
-            "name": "frontendHttpSettings",
-            "properties": {
-              "Port": 80,
-              "Protocol": "Http",
-              "CookieBasedAffinity": "Disabled",
-              "PickHostNameFromBackendAddress": true,
-              "ProbeEnabled": true,
-              "Probe": {
-                "id": "[concat(variables('application_gateway_ref'), '/probes/frontendProbe')]"
-              }
-            }
+          "docker_title_url": {
+            "value": "[parameters('docker_title_url')]"
           },
-          {
-            "name": "backendHttpSettings",
-            "properties": {
-              "Port": 80,
-              "Protocol": "Http",
-              "CookieBasedAffinity": "Disabled",
-              "PickHostNameFromBackendAddress": true,
-              "ProbeEnabled": true,
-              "Probe": {
-                "id": "[concat(variables('application_gateway_ref'), '/probes/backendProbe')]"
-              }
-            }
-          }
-        ],
-        "httpListeners": [
-          {
-            "name": "appGatewayHttpListener",
-            "properties": {
-              "FrontendIPConfiguration": {
-                "Id": "[concat(variables('application_gateway_ref'), '/frontendIPConfigurations/appGatewayFrontendIP')]"
-              },
-              "FrontendPort": {
-                "Id": "[concat(variables('application_gateway_ref'), '/frontendPorts/appGatewayFrontendPort')]"
-              },
-              "Protocol": "Http",
-              "SslCertificate": null
-            }
-          }
-        ],
-        "urlPathMaps": [
-          {
-            "name": "pathRuleMap",
-            "properties": {
-              "defaultBackendAddressPool": {
-                "id": "[concat(variables('application_gateway_ref'), '/backendAddressPools/uiBackendPool')]"
-              },
-              "defaultBackendHttpSettings": {
-                "id": "[concat(variables('application_gateway_ref'), '/backendHttpSettingsCollection/frontendHttpSettings')]"
-              },
-              "pathRules": [
-                {
-                  "name": "ui",
-                  "properties": {
-                    "paths": [
-                      "/ui"
-                    ],
-                    "backendAddressPool": {
-                      "id": "[concat(variables('application_gateway_ref'), '/backendAddressPools/uiBackendPool')]"
-                    },
-                    "backendHttpSettings": {
-                      "id": "[concat(variables('application_gateway_ref'), '/backendHttpSettingsCollection/frontendHttpSettings')]"
-                    }
-                  },
-                  "type": "Microsoft.Network/applicationGateways/urlPathMaps/pathRules"
-                },
-                {
-                  "name": "titles",
-                  "properties": {
-                    "paths": [
-                      "/titles"
-                    ],
-                    "backendAddressPool": {
-                      "id": "[concat(variables('application_gateway_ref'), '/backendAddressPools/titlesBackendPool')]"
-                    },
-                    "backendHttpSettings": {
-                      "id": "[concat(variables('application_gateway_ref'), '/backendHttpSettingsCollection/backendHttpSettings')]"
-                    }
-                  },
-                  "type": "Microsoft.Network/applicationGateways/urlPathMaps/pathRules"
-                },
-                {
-                  "name": "people",
-                  "properties": {
-                    "paths": [
-                      "/people"
-                    ],
-                    "backendAddressPool": {
-                      "id": "[concat(variables('application_gateway_ref'), '/backendAddressPools/peopleBackendPool')]"
-                    },
-                    "backendHttpSettings": {
-                      "id": "[concat(variables('application_gateway_ref'), '/backendHttpSettingsCollection/backendHttpSettings')]"
-                    }
-                  },
-                  "type": "Microsoft.Network/applicationGateways/urlPathMaps/pathRules"
-                }
-              ]
-            },
-            "type": "Microsoft.Network/applicationGateways/urlPathMaps"
-          }
-        ],
-        "requestRoutingRules": [
-          {
-            "Name": "pathRule",
-            "properties": {
-              "RuleType": "PathBasedRouting",
-              "httpListener": {
-                "id": "[concat(variables('application_gateway_ref'), '/httpListeners/appGatewayHttpListener')]"
-              },
-              "urlPathMap": {
-                "id": "[concat(variables('application_gateway_ref'), '/urlPathMaps/pathRuleMap')]"
-              }
-            }
-          }
-        ],
-        "probes": [
-          {
-            "Name": "frontendProbe",
-            "properties": {
-              "protocol": "Http",
-              "path": "/",
-              "interval": 30,
-              "timeout": 10,
-              "unhealthyThreshold": 3,
-              "minServers": 0,
-              "pickHostNameFromBackendHttpSettings": true,
-              "match": {
-                "body": "",
-                "statusCodes": [
-                  "200"
-                ]
-              }
-            }
+          "docker_person_url": {
+            "value": "[parameters('docker_person_url')]"
           },
-          {
-            "Name": "backendProbe",
-            "properties": {
-              "protocol": "Http",
-              "path": "/health",
-              "interval": 30,
-              "timeout": 10,
-              "unhealthyThreshold": 3,
-              "minServers": 0,
-              "pickHostNameFromBackendHttpSettings": true,
-              "match": {
-                "body": "",
-                "statusCodes": [
-                  "200"
-                ]
-              }
+          "docker_ui_url": {
+            "value": "[parameters('docker_ui_url')]"
+          },
+          "docker_title_tag": {
+            "value": "[parameters('docker_title_tag')]"
+          },
+          "docker_person_tag": {
+            "value": "[parameters('docker_person_tag')]"
+          },
+          "docker_ui_tag": {
+            "value": "[parameters('docker_ui_tag')]"
+          },
+          "oauth_id": {
+            "value": "[parameters('oauth_id')]"
+          },
+          "oauth_keyset": {
+            "value": "[parameters('oauth_keyset')]"
+          },
+          "vnet_address_prefix": {
+            "value": "[parameters('vnet_address_prefix')]"
+          },
+          "vnet_subnet_prefix": {
+            "value": "[parameters('vnet_subnet_prefix')]"
+          },
+          "database_connection_string": {
+            "reference": {
+              "keyVault": {
+                "id": "[resourceId(subscription().subscriptionId,  parameters('vaultResourceGroup'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+              },
+              "secretName": "databaseConnectionString"
             }
           }
-        ]
+        }
       }
     }
   ],

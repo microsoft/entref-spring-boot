@@ -18,6 +18,8 @@ The below values are required as inputs to the script:
 2. Azure Resource Group (Add existing if one exists; else create a new one)
 3. Azure Deployment Location (i.e., EastUS, WestUS)
 4. App-name: Application Name
+5. Key Vault Resource Group
+6. Key Vault Name
 
 Another way to deploy is to run one-click deploy for all resources using Deploy to Azure:
 
@@ -25,10 +27,9 @@ Another way to deploy is to run one-click deploy for all resources using Deploy 
 
 Once the ACR is deployed, follow these manual steps to set up CD pipeline:
 
-1. Create a new variable group in Azure Pipeline Library
-2. Create variable ACR_SERVER and set value to the server name, which will be the output of your deployment (<application name>container.azurecr.io)
-3. Get values of username and password values from Key Vault deployed in `global resources` resource group using the Azure Portal
-4. Use KeyVault secrets <container_registry_name>Username and <container_registry_name>Password.
+1. Create variable ACR_SERVER and set value to the server name, which will be the output of your deployment (<application name>container.azurecr.io)
+2. The values of ACR username and password values are referenced and used automatically from Key Vault deployed in `global resources` resource group when you pass the `Key Vault Resource group` and `Key Vault Name` as parameters above.
+3. The value of Cosmos Database connection string is also referenced automatically from Key Vault during the Regional ARM deployment.
 
 Your deployment resources can now be used as part of your CD pipeline.
 
@@ -38,13 +39,6 @@ Your deployment resources can now be used as part of your CD pipeline.
 - Policies can be created between each of the environments to promote builds from one environment to another based on the requirements of the customer.
 - These policies can differ for each customer and product.
 - Once the tests under Dev environment passes, they can be approved to run on the QA environment based on policies set for approvals on each. These policies can be set under Azure DevOps Release Pipeline.
-
-## Redis Cache
-
-- A Redis cache is used to enhance query performance.
-- The capacity of the Redis cache can be set to a value 1-6 in the ARM template.
-- You can enable or disable non-SSL port in the ARM template.
-- Azure allows 3 different values for the sku viz. Basic, Standard and Premium having different costs for each.
 
 ## Auto Scaling
 

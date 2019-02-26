@@ -29,6 +29,12 @@ az group deployment create --template-file infrastructure/global-resoruces/endpo
 
 with `your-resource-group` as the name of the resource group you are creating the global resources in, `app1` being the target for an endpoint that correlates to the azure region specified by the first parameter in the `traffic_manager_endpoint_locations` parameter. For example, `app1` is created in `eastus` and `app2` is created in `westus`.
 
+## Key Vault
+
+Project Jackson uses Key Vault to encrypt and store keys and secrets like username and password for the Azure Container Registry. 
+
+It also stores the connection string for the Cosmos database created above in the Key Vault.
+
 ## Deploying Data
 
 > Note: This is optional, but is a good way to injest some sample data without needing to manually create it.
