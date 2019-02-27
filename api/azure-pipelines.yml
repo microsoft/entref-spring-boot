@@ -16,13 +16,13 @@ pool:
 
 steps:
 - script: |
-    docker build -t $ACR_SERVER/$ACR_CONTAINER_TAG .
+    docker build -t $(acrLoginServer)/$ACR_CONTAINER_TAG .
   workingDirectory: api/
   displayName: 'Docker Test, Build and Package'
 - script: |
-    docker login $(ACR_SERVER) -u $(acrUsername) -p $(acrPassword)
+    docker login $(acrLoginServer) -u $(acrUsername) -p $(acrPassword)
   displayName: 'Docker Login'
 - script: |
-    docker push $ACR_SERVER/$ACR_CONTAINER_TAG
+    docker push $(acrLoginServer)/$ACR_CONTAINER_TAG
   displayName: 'Docker Push'
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
