@@ -16,7 +16,7 @@ pool:
 
 steps:
 - script: |
-    docker build -t $acrLoginServer/$ACR_CONTAINER_TAG .
+    docker build -t $(acrLoginServer)/$ACR_CONTAINER_TAG .
   workingDirectory: api/
   displayName: 'Docker Test, Build and Package'
 - script: |
