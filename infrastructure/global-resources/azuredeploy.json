@@ -174,7 +174,7 @@
                 "attributes": {
                     "enabled": true
                 },
-                "value": "[listCredentials(resourceId('Microsoft.ContainerRegistry/registries', parameters('container_registry_name')), '2017-10-01').loginServer]"
+                "value": "[listCredentials(resourceId('Microsoft.ContainerRegistry/registries', parameters('container_registry_name'))).loginServer]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.KeyVault/vaults', parameters('key_vault_name'))]",
