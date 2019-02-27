@@ -97,14 +97,6 @@
           "dev_env": {
             "value": "[parameters('dev_env')]"
           },
-          "docker_login_server": {
-            "reference": {
-              "keyVault": {
-                "id": "[resourceId(subscription().subscriptionId,  parameters('vaultResourceGroup'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
-              },
-              "secretName": "acrLoginServer"
-            }
-          },
           "docker_registry_username": {
             "reference": {
               "keyVault": {
