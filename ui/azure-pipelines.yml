@@ -32,13 +32,13 @@ steps:
   workingDirectory: ui/
   displayName: 'NPM Build Step'
 - script: |
-    docker build -t $ACR_SERVER/$ACR_CONTAINER_TAG .
+    docker build -t $(acrLoginServer)/$ACR_CONTAINER_TAG .
   workingDirectory: ui/
   displayName: 'Docker Build'
 - script: |
-    docker login $(ACR_SERVER) -u $(acrUsername) -p $(acrPassword)
+    docker login $(acrLoginServer) -u $(acrUsername) -p $(acrPassword)
   displayName: 'Docker Login'
 - script: |
-    docker push $ACR_SERVER/$ACR_CONTAINER_TAG
+    docker push $(acrLoginServer)/$ACR_CONTAINER_TAG
   displayName: 'Docker Push'
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
