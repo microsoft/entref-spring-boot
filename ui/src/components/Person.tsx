@@ -60,7 +60,7 @@ export class Person extends React.Component<IPersonProps, IPersonState> {
     // set up endpoint
     const id = this.state.personId && this.state.personId.replace(/\s+/g, '')
     const base = `${process.env.WEBPACK_PROP_API_BASE_URL}/people`
-    const endpoint = id ? base + id : base
+    const endpoint = id ? base + '/' + id : base
 
     // set up request header with Bearer token
     const headers = new Headers()
