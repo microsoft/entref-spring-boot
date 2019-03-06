@@ -598,6 +598,34 @@
                 "id": "[concat(variables('application_gateway_ref'), '/probes/backendProbe')]"
               }
             }
+          },
+          {
+            "name": "httpsFrontEndSetting",
+            "properties": {
+                "port": 443,
+                "protocol": "Https",
+                "cookieBasedAffinity": "Disabled",
+                "pickHostNameFromBackendAddress": true,
+                "affinityCookieName": "ApplicationGatewayAffinity",
+                "requestTimeout": 20,
+                "probe": {
+                  "id": "[concat(variables('application_gateway_ref'), '/probes/httpsFrontEndHealthProbe')]"
+                }
+            }
+          },
+          {
+            "name": "httpsBackEndHTTPSSettings",
+            "properties": {
+              "port": 443,
+              "protocol": "Https",
+              "cookieBasedAffinity": "Disabled",
+              "pickHostNameFromBackendAddress": true,
+              "affinityCookieName": "ApplicationGatewayAffinity",
+              "requestTimeout": 20,
+              "probe": {
+                  "id": "[concat(variables('application_gateway_ref'), '/probes/httpsBackEndHealthProbe')]"
+              }
+            }
           }
         ],
         "httpListeners": [
@@ -726,7 +754,43 @@
                 ]
               }
             }
+          },
+          {
+          "name": "httpsFrontEndHealthProbe",
+          "properties": {
+            "protocol": "Https",
+            "path": "/",
+            "interval": 30,
+            "timeout": 30,
+            "unhealthyThreshold": 3,
+            "pickHostNameFromBackendHttpSettings": true,
+            "minServers": 0,
+            "match": {
+              "body": "",
+              "statusCodes": [
+                "200-399"
+              ]
+            }
           }
+        },
+        {
+          "name": "httpsBackEndHealthProbe",
+          "properties": {
+            "protocol": "Https",
+            "path": "/health",
+            "interval": 30,
+            "timeout": 30,
+            "unhealthyThreshold": 3,
+            "pickHostNameFromBackendHttpSettings": true,
+            "minServers": 0,
+            "match": {
+              "body": "",
+              "statusCodes": [
+                "200-399"
+              ]
+            }
+          }
+        }
         ]
       }
     }
