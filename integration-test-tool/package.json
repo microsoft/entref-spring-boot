@@ -24,6 +24,6 @@
     "@types/node-fetch": "^2.1.4",
     "@types/puppeteer": "^1.11.1",
     "tslint": "^5.12.1",
-    "typescript": "^3.2.2"
+    "typescript": "^3.3.3333"
   }
 }
