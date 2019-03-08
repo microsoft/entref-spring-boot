@@ -10,6 +10,11 @@ module.exports = {
     }
   },
   testMatch: [
-    "**/src/**/*.(ts|tsx|js)"
+    "**/src/**/*.test.(ts|tsx|js)"
+  ],
+  collectCoverageFrom: [
+    "**/*.{js,jsx}",
+    "!**/node_modules/**",
+    "!**/vendor/**"
   ]
 }

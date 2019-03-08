@@ -19,22 +19,37 @@ describe('Integration Tests', () => {
     await page.goto(config.ui_site)
   })
 
-  it('health endpoint should be active', async () => {
-    const res = await fetch(`${config.backend_site}/health`, {
-      method: 'GET',
-    })
+  it('health endpoint should be active on development mode', async () => {
+    if (config.environment === 'development') {
+      const res = await fetch(`${config.backend_site}/health`, {
+        method: 'GET',
+      })
 
-    const status = res.status
-    const data = await res.text()
+      const status = res.status
+      const data = await res.text()
 
-    expect(status).toBe(200)
-    expect(data).toBe('Alive')
+      expect(status).toBe(200)
+      expect(data).toBe('Alive')
+    }
+  })
+
+  it('health endpoint should not be active on production mode', async () => {
+    if (config.environment === 'production') {
+      const res = await fetch(`${config.backend_site}/health`, {
+        method: 'GET',
+      })
+
+      const status = res.status
+      const data = await res.text()
+      expect(status).toBe(200)
+      expect(data).not.toBe('Alive')
+    }
   })
 
   it('ui should require login', async () => {
-    await expect(page).toClick('.nav-link', {text: 'People'})
+    await expect(page).toClick('.nav-link', { text: 'People' })
     await expect(page).toMatch('Please log in to access: /people')
-    await expect(page).toClick('.nav-link', {text: 'Titles'})
+    await expect(page).toClick('.nav-link', { text: 'Titles' })
     await expect(page).toMatch('Please log in to access: /titles')
   })
 
@@ -43,7 +58,7 @@ describe('Integration Tests', () => {
     const loginPageResolver = new Promise<Page>((x) => browser.once('targetcreated', (t) => x(t.page())))
 
     // click log in on the main page
-    await expect(page).toClick('button', {text: 'Log In'})
+    await expect(page).toClick('button', { text: 'Log In' })
 
     // wait for login window to appear
     const loginPage = await loginPageResolver
@@ -71,13 +86,13 @@ describe('Integration Tests', () => {
     // wait for the main page to update
     await page.waitFor(1000)
     // expect that clicking titles works
-    await expect(page).toClick('.nav-link', {text: 'Titles'})
+    await expect(page).toClick('.nav-link', { text: 'Titles' })
     // expect that we are now logged in (therefore the button says Log Out)
     await expect(page).toMatch('Log Out')
     // expect that the title page shows its contents
-    await expect(page).toMatchElement('h1', {text: 'Search Titles'})
+    await expect(page).toMatchElement('h1', { text: 'Search Titles' })
 
-  }, 8000)
+  }, 9000)
 
   describe('Authenticated', () => {
     /**
@@ -92,8 +107,8 @@ describe('Integration Tests', () => {
 
     it('should query titles', async () => {
       // expect that clicking titles works
-      await expect(page).toClick('.nav-link', {text: 'Titles'})
-      await expect(page).toMatchElement('h1', {text: 'Search Titles'})
+      await expect(page).toClick('.nav-link', { text: 'Titles' })
+      await expect(page).toMatchElement('h1', { text: 'Search Titles' })
       // expect that we are logged in (therefore the button says Log Out)
       await expect(page).toMatch('Log Out')
       // click search
@@ -120,8 +135,8 @@ describe('Integration Tests', () => {
 
     it('should query people', async () => {
       // expect that clicking people works
-      await expect(page).toClick('.nav-link', {text: 'People'})
-      await expect(page).toMatchElement('h1', {text: 'Search People'})
+      await expect(page).toClick('.nav-link', { text: 'People' })
+      await expect(page).toMatchElement('h1', { text: 'Search People' })
       // expect that we are logged in (therefore the button says Log Out)
       await expect(page).toMatch('Log Out')
       // click search
@@ -324,7 +339,7 @@ describe('Integration Tests', () => {
         expect(status).toBe(200)
         expect(data).toEqual(firstPerson)
       })
-    
+
       // tslint:disable:object-literal-sort-keys
       const obj = {
         nconst: 'inttest01',
