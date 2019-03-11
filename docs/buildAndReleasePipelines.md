@@ -41,3 +41,8 @@ The release pipeline for the API was built with Azure Dev Ops, under `Pipelines`
 ## Client Release Pipeline
 
 Like the build pipeline, the release pipeline for the UI is almost identical to the API release pipeline, with key differences being that only the `pj-client` App Service is deployed to and that the docker image being pulled from ACR is from the `pj-client` repository. Only a single environment variable is defined in `Application settings` and it is named `WEBSITES_PORT` with a value of `8080`. In a similar fashion to the API, when there is a build on the master branch of the UI repository, a new release deployment is kicked off.
+
+
+### Walkthrough
+
+A walkthrough release pipeline video can be found [here](https://msit.microsoftstream.com/video/9dab7948-d167-4ec1-b210-bc07f81a1d25).
