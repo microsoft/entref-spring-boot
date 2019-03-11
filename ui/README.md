@@ -50,3 +50,15 @@ The UI is built using [`React.js`](https://reactjs.org/). The `package.json` sho
 The UI is tested using `Jest` and `Enzyme`. All tests are written in `TypeScript` and are compiled/run similar to how the `webpack` configs are set up. You can run the test suite using `npm run test`. Most tests utilize snapshots; if you make a user interface change, be sure to update the snapshots using: `npm run test -- --updateSnapshot`. 
 
 In conjunction with `TypeScript` typings, developers can use our `tslint` configuration to lint their projects. If you are using VS Code, the editor will lint for you as you develop; otherwise, run `npm run lint` to verify the code fits the project's formatting standards.
+
+## Azure Pipeline Environmental Variables
+
+Create the require pipeline variables for the Azure Pipelines.  These are:
+
+- ACR_CONTAINER_TAG = <image_name>-client:$(Build.BuildNumber)
+
+Create an Azure Pipeline Variable Group to store the environment variables needed for the pipeline API yaml file.  Creating a Variable Group will allow you to use these variables across multiple pipelines.   
+
+- ACR_USERNAME = <your_registry_username>
+- ACR_PASSWORD = <your_registry_password>
+- ACR_SERVER = <yourregistry.azurecr.io>
