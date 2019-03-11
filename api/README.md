@@ -117,3 +117,15 @@ To configure [application insights](https://docs.microsoft.com/en-us/azure/appli
 ## Testing
 
 To run the tests, use `mvn test`. This project strives to unit test each behavior, and integration test end to end scenarios.
+
+## Azure Pipeline Environmental Variables
+
+Create the require pipeline variables for the Azure Pipelines.  These are:
+
+- ACR_CONTAINER_TAG = <repository_name>-api/<image_name>-combined:$(Build.BuildNumber)
+
+Create an Azure Pipeline Variable Group to store the environment variables needed for the pipeline API yaml file.  Creating a Variable Group will allow you to use these variables across multiple pipelines.   
+
+- ACR_USERNAME = <your_registry_username>
+- ACR_PASSWORD = <your_registry_password>
+- ACR_SERVER = <yourregistry.azurecr.io>
