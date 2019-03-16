@@ -1,5 +1,5 @@
 
-# Project Jackson Infrastructure
+# Project Infrastructure
 
 This repository includes the ARM templates for Project Jackson.
 
